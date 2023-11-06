@@ -1,0 +1,97 @@
+.frameChild {
+  position: relative;
+  width: 467px;
+  height: 300px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.frameParent {
+  width: 1440px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 243px var(--padding-61xl);
+  box-sizing: border-box;
+  gap: var(--gap-xl);
+}
+.captureDecran20231015A {
+  position: absolute;
+  margin: 0 !important;
+  top: calc(50% - 156.5px);
+  left: calc(50% - 640px);
+  width: 1280px;
+  height: 398px;
+  object-fit: cover;
+  opacity: 0.15;
+  z-index: 0;
+}
+.millionsDePersonnes {
+  position: relative;
+  font-weight: 500;
+  opacity: 0.6;
+}
+.accdez1000 {
+  position: relative;
+  font-size: var(--font-size-6xl);
+  font-weight: 600;
+  color: var(--yellow-300);
+}
+.millionsDePersonnesUtilisenParent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
+  z-index: 1;
+}
+.loremIpsumDolor {
+  align-self: stretch;
+  position: relative;
+  z-index: 2;
+}
+.captureDecran20231015AParent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  gap: var(--gap-xl);
+}
+.frameWrapper,
+.sect1Parent {
+  display: flex;
+  align-items: center;
+}
+.frameWrapper {
+  border-radius: var(--br-xl);
+  background-color: var(--gray-300);
+  width: 1280px;
+  overflow: hidden;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: var(--padding-61xl) 163px;
+  box-sizing: border-box;
+}
+.sect1Parent {
+  position: absolute;
+  top: 83px;
+  left: 0;
+  width: 1920px;
+  flex-direction: column;
+  justify-content: center;
+}
+.hearderParent {
+  margin: 0;
+  position: relative;
+  border-radius: var(--br-3xs);
+  background-color: var(--base-white);
+  width: 100%;
+  height: 2041px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-mini);
+  color: var(--base-white);
+  font-family: var(--font-poppins);
+}

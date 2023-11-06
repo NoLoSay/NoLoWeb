@@ -1,0 +1,479 @@
+.miroirDEauChateauNantesPhIcon {
+  position: absolute;
+  top: calc(50% - 346px);
+  left: 0;
+  width: 1289px;
+  height: 692px;
+  object-fit: cover;
+}
+.miroirDEauChateauNantesPh,
+.miroirDEauChateauNantesPhParent {
+  position: absolute;
+  border-radius: var(--br-41xl) var(--br-xl) var(--br-xl) var(--br-41xl);
+  height: 692px;
+}
+.miroirDEauChateauNantesPh {
+  top: calc(50% - 346px);
+  left: 0;
+  background: linear-gradient(180deg, rgba(30, 48, 58, 0), #1e303a 89.58%);
+  width: 1289px;
+}
+.miroirDEauChateauNantesPhParent {
+  top: 63px;
+  left: 80px;
+  background-color: var(--base-white);
+  width: 1280px;
+  overflow: hidden;
+}
+.nolosay {
+  margin: 0;
+  font-weight: 900;
+}
+.tonAssistantDe {
+  margin: 0;
+  font-size: var(--font-size-31xl);
+  font-weight: 500;
+}
+.nolosayTonAssistantContainer {
+  position: relative;
+  line-height: 65px;
+  display: inline-block;
+  width: 675px;
+}
+.appStoreIcon {
+  position: relative;
+  width: 142.76px;
+  height: 41.24px;
+}
+.appStoreParent,
+.nolosayTonAssistantDeVisiParent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-mid);
+}
+.nolosayTonAssistantDeVisiParent {
+  position: absolute;
+  top: 372px;
+  left: 522px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-xl);
+}
+.sect1Child {
+  position: absolute;
+  top: 194.68px;
+  left: 0;
+  width: 1694px;
+  height: 543.32px;
+}
+.b6936b24d8b9a6a9ffbb3f32f2Icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 4.71px 4.71px 0 0;
+  width: 310.03px;
+  height: 875.95px;
+  object-fit: cover;
+}
+.line {
+  position: absolute;
+  bottom: 8px;
+  left: calc(50% - 68px);
+  border-radius: var(--br-81xl);
+  background-color: var(--basic-dark-000000);
+  width: 135px;
+  height: 5px;
+}
+.iphoneXsHomeIndicator {
+  position: absolute;
+  top: 844px;
+  left: 0;
+  width: 390px;
+  height: 1px;
+}
+.miroirDEauChateauNantesPhIcon1,
+.miroirDEauChateauNantesPhIcon2 {
+  position: relative;
+  border-radius: 7.85px;
+  width: 227.62px;
+  height: 239.39px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.miroirDEauChateauNantesPhIcon2 {
+  width: 229.19px;
+}
+.miroirDEauChateauNantesPhGroup {
+  overflow-x: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 7.85px;
+}
+.new {
+  position: relative;
+  line-height: 10.99px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.newWrapper {
+  border-radius: 37.68px;
+  background-color: var(--yellow-300);
+  backdrop-filter: blur(3.14px);
+  height: 16.87px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2.3546907901763916px 6.279175758361816px;
+  box-sizing: border-box;
+}
+.wheelchair1Icon {
+  position: relative;
+  width: 11.77px;
+  height: 11.77px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.wheelchair1Parent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 3.92px;
+}
+.frameContainer {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+.chteauDesDucs,
+.description {
+  position: relative;
+  display: inline-block;
+}
+.chteauDesDucs {
+  font-size: 18.05px;
+  line-height: 24.33px;
+  font-weight: 600;
+  width: 180.53px;
+}
+.description {
+  font-size: 9.42px;
+  letter-spacing: -0.06px;
+  width: 243.32px;
+}
+.frameGroup {
+  border-radius: 7.85px;
+  background-color: var(--base-white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 15.6979398727417px;
+  gap: 6.28px;
+}
+.image17Icon {
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  border-radius: 4.71px;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.connectButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 88.69px;
+  height: 84.77px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.connectButtonWrapper {
+  position: relative;
+  width: 88.69px;
+  height: 90.26px;
+}
+.description1 {
+  flex: 1;
+  position: relative;
+  letter-spacing: -0.13px;
+  font-weight: 600;
+}
+.descriptionWrapper {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+.description2 {
+  align-self: stretch;
+  position: relative;
+  font-size: 8.63px;
+  letter-spacing: -0.06px;
+  line-height: 12.56px;
+}
+.frameParent2,
+.frameParent3 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 7.85px;
+}
+.frameParent2 {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.frameChild {
+  position: relative;
+  width: 9.5px;
+  height: 16.62px;
+}
+.frameParent1,
+.frameWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+.frameParent1 {
+  align-self: stretch;
+  flex-direction: row;
+  align-items: center;
+  gap: 7.85px;
+}
+.frameWrapper {
+  border-radius: 7.85px;
+  background-color: var(--base-white);
+  box-shadow: 0 3.139587879180908px 7.06px rgba(0, 0, 0, 0.25);
+  width: 269.22px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15.6979398727417px 11.773455619812012px;
+  box-sizing: border-box;
+}
+.frameItem {
+  position: relative;
+  border-radius: 4.71px;
+  width: 88.69px;
+  height: 90.26px;
+  object-fit: cover;
+}
+.description3 {
+  align-self: stretch;
+  position: relative;
+  letter-spacing: -0.13px;
+  font-weight: 600;
+}
+.descriptionContainer {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.frameInner {
+  position: relative;
+  width: 7.12px;
+  height: 14.24px;
+}
+.frameDiv,
+.frameParent,
+.frameParent4 {
+  display: flex;
+  justify-content: flex-start;
+}
+.frameParent4 {
+  align-self: stretch;
+  flex-direction: row;
+  align-items: center;
+  gap: 7.85px;
+}
+.frameDiv,
+.frameParent {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-base-7);
+}
+.frameDiv {
+  height: 259.02px;
+  font-size: 11.77px;
+}
+.frameParent {
+  position: absolute;
+  top: 108.32px;
+  left: 15.7px;
+  height: 800.59px;
+}
+.groupIcon {
+  position: relative;
+  width: 21.96px;
+  height: 16.62px;
+}
+.seCrerUnCompte8Inner {
+  position: absolute;
+  top: 61.22px;
+  left: 16.48px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.groupChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--base-white);
+  box-shadow: 0 3.139587879180908px 7.06px rgba(0, 0, 0, 0.25);
+  width: 306.11px;
+  height: 69.86px;
+}
+.groupItem {
+  position: absolute;
+  top: 0;
+  left: 40.81px;
+  border-radius: 0 0 2.75px 2.75px;
+  background-color: var(--yellow-300);
+  width: 25.03px;
+  height: 3.92px;
+}
+.linearEssentionalUiHom,
+.linearSecurityQrCode {
+  position: relative;
+  width: 23.55px;
+  height: 23.55px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.linearSecurityQrCode {
+  border-radius: 3.92px;
+}
+.linearEssentionalUiHomParent {
+  position: absolute;
+  top: 14.13px;
+  left: 35.05px;
+  width: 236.25px;
+  height: 26.79px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 43.17px;
+}
+.rectangleParent {
+  position: absolute;
+  top: 592.6px;
+  left: 0;
+  box-shadow: 0 0 7.06px rgba(0, 0, 0, 0.25);
+  width: 306.11px;
+  height: 69.86px;
+}
+.frameIcon {
+  position: absolute;
+  top: calc(50% - 7px);
+  right: 14px;
+  width: 68px;
+  height: 14px;
+}
+.action,
+.time {
+  position: absolute;
+  width: 54px;
+}
+.time {
+  top: calc(50% - 11.5px);
+  left: 0;
+  letter-spacing: -0.17px;
+  font-weight: 600;
+  display: inline-block;
+}
+.action {
+  top: calc(50% - 9px);
+  left: 20px;
+  height: 23px;
+}
+.statusBar {
+  position: relative;
+  width: 390px;
+  height: 44px;
+}
+.iphoneXBarsNavigationL {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: center;
+  font-size: var(--font-size-mini);
+  color: var(--basic-dark-000000);
+}
+.seCrerUnCompte8 {
+  position: absolute;
+  top: calc(50% - 331.23px);
+  left: calc(50% - 153.05px);
+  border-radius: 23.55px;
+  background-color: var(--base-white);
+  width: 306.11px;
+  height: 662.45px;
+  overflow-y: auto;
+}
+.graphiteIcon,
+.maskGroup {
+  position: absolute;
+  height: 95.69%;
+  width: 89.24%;
+  top: 2.15%;
+  right: 5.26%;
+  bottom: 2.15%;
+  left: 5.49%;
+}
+.graphiteIcon {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.iphone13Pro {
+  position: absolute;
+  top: 63px;
+  left: 77px;
+  width: 343px;
+  height: 692.28px;
+  font-size: 8.63px;
+  color: var(--base-black);
+}
+.sect1 {
+  position: relative;
+  width: 1440px;
+  height: 817px;
+  overflow: hidden;
+  flex-shrink: 0;
+  text-align: left;
+  font-size: var(--font-size-41xl);
+  color: var(--base-white);
+  font-family: var(--font-poppins);
+}
