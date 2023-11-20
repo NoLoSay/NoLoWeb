@@ -20,7 +20,7 @@ const Home = () => {
           <img
             className="relative w-[467px] h-[300px] overflow-hidden shrink-0"
             alt=""
-            src="/frame-29.svg"
+            src="/images/launch-video.png"
           />
         </div>
         <div className="rounded-xl bg-gray-300 w-[1280px] overflow-hidden flex flex-row items-center justify-start py-20 px-[163px] box-border">
@@ -28,7 +28,7 @@ const Home = () => {
             <img
               className="absolute my-0 mx-[!important] top-[calc(50%_-_156.5px)] left-[calc(50%_-_640px)] w-[1280px] h-[398px] object-cover opacity-[0.15] z-[0]"
               alt=""
-              src="/capture-decran-20231015-a-1555-1@2x.png"
+              src="/images/map.png"
             />
             <div className="flex flex-col items-start justify-center gap-[3px] z-[1]">
               <div className="relative font-medium opacity-[0.6]">

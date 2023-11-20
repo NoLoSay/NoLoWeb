@@ -13,7 +13,7 @@ const VideoCreationContainer = () => {
           <img
             className="relative w-[17px] h-[17px] overflow-hidden shrink-0"
             alt=""
-            src="/linear--essentional-ui--add-square1.svg"
+            src="/icon/full/add.png"
           />
           <div className="relative text-mini font-poppins">
             puis sélectionne “Vidéo à créer”
@@ -34,7 +34,7 @@ const VideoCreationContainer = () => {
         <img
           className="relative w-[13.2px] h-[13.2px]"
           alt=""
-          src="/vector.svg"
+          src="/icon/full/cross.png"
         />
         <div className="relative font-semibold">Traduire une oeuvre</div>
       </div>

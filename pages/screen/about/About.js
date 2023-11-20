@@ -12,7 +12,7 @@ const About = () => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <img className="w-8 h-8" alt="" src="/group-2.svg" />
+      <img className="w-8 h-8" alt="" src="/images/logo/nologo.png" />
     </Fragment>
   );
 };

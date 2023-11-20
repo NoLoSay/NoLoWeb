@@ -5,7 +5,7 @@ const DownloadContainer = () => {
         <img
           className="absolute top-[calc(50%_-_346px)] left-[0px] w-[1289px] h-[692px] object-cover"
           alt=""
-          src="/miroirdeauchateaunantes-photo-j-1@2x.png"
+          src="/images/castle/chateau-large.png"
         />
         <div className="absolute top-[calc(50%_-_346px)] left-[0px] rounded-tl-41xl rounded-tr-xl rounded-br-xl rounded-bl-41xl [background:linear-gradient(180deg,_rgba(30,_48,_58,_0),_#1e303a_89.58%)] w-[1289px] h-[692px]" />
       </div>
@@ -20,19 +20,19 @@ const DownloadContainer = () => {
           <img
             className="relative w-[142.76px] h-[41.24px]"
             alt=""
-            src="/app-store.svg"
+            src="/icon/social/app-store.png"
           />
           <img
             className="relative w-[142.76px] h-[41.24px]"
             alt=""
-            src="/google-play.svg"
+            src="/icon/social/google-play.png"
           />
         </div>
       </div>
       <img
         className="absolute top-[194.68px] left-[0px] w-[1694px] h-[543.32px]"
         alt=""
-        src="/vector-60.svg"
+        src="/images/line.png"
       />
       <div className="absolute top-[63px] left-[77px] w-[343px] h-[692.28px] text-[8.63px] text-base-black">
         <div className="absolute h-[95.69%] w-[89.24%] top-[2.15%] right-[5.26%] bottom-[2.15%] left-[5.49%]">
@@ -40,7 +40,7 @@ const DownloadContainer = () => {
             <img
               className="absolute top-[0px] left-[0px] rounded-t-[4.71px] rounded-b-none w-[310.03px] h-[875.95px] object-cover"
               alt=""
-              src="/50997b6936b24d8b9a6a9ffbb3f32f25-1-105-c-1@2x.png"
+              src="/images/castle/castle.png"
             />
             <div className="absolute top-[844px] left-[0px] w-[390px] h-px">
               <div className="absolute bottom-[8px] left-[calc(50%_-_68px)] rounded-81xl bg-basic-dark-000000 w-[135px] h-[5px]" />
@@ -50,12 +50,12 @@ const DownloadContainer = () => {
                 <img
                   className="relative rounded-[7.85px] w-[227.62px] h-[239.39px] shrink-0 object-cover"
                   alt=""
-                  src="/miroirdeauchateaunantes-photo-j-11@2x.png"
+                  src="/images/castle/chateau-carre.png"
                 />
                 <img
                   className="relative rounded-[7.85px] w-[229.19px] h-[239.39px] shrink-0 object-cover"
                   alt=""
-                  src="/miroirdeauchateaunantes-photo-j-2@2x.png"
+                  src="/images/castle/chateau-vertical.png"
                 />
               </div>
               <div className="rounded-[7.85px] bg-base-white flex flex-col items-start justify-start p-[15.6979398727417px] gap-[6.28px]">
@@ -69,17 +69,17 @@ const DownloadContainer = () => {
                     <img
                       className="relative w-[11.77px] h-[11.77px] overflow-hidden shrink-0"
                       alt=""
-                      src="/wheelchair-1.svg"
+                      src="/icon/full/settings.png"
                     />
                     <img
                       className="relative w-[11.77px] h-[11.77px] overflow-hidden shrink-0"
                       alt=""
-                      src="/wheelchair-2.svg"
+                      src="/icon/full/wheelchair.png"
                     />
                     <img
                       className="relative w-[11.77px] h-[11.77px] overflow-hidden shrink-0"
                       alt=""
-                      src="/wheelchair-3.svg"
+                      src="/icon/full/wheelchair.png"
                     />
                   </div>
                 </div>
@@ -103,7 +103,7 @@ const DownloadContainer = () => {
                           <img
                             className="self-stretch flex-1 relative rounded-[4.71px] max-w-full overflow-hidden max-h-full object-cover"
                             alt=""
-                            src="/image-17@2x.png"
+                            src="/images/castle/old-castle.png"
                           />
                         </div>
                       </div>
@@ -122,18 +122,14 @@ const DownloadContainer = () => {
                     <img
                       className="relative w-[9.5px] h-[16.62px]"
                       alt=""
-                      src="/group-28.svg"
+                      src="/icon/full/arrow-cut.png"
                     />
                   </div>
                 </div>
                 <div className="flex-1 rounded-[7.85px] bg-base-white shadow-[0px_3.139587879180908px_7.06px_rgba(0,_0,_0,_0.25)] w-[269.22px] flex flex-col items-start justify-start py-[15.6979398727417px] px-[11.773455619812012px] box-border">
                   <div className="self-stretch flex flex-row items-center justify-start gap-[7.85px]">
                     <div className="flex-1 flex flex-row items-center justify-start gap-[7.85px]">
-                      <img
-                        className="relative rounded-[4.71px] w-[88.69px] h-[90.26px] object-cover"
-                        alt=""
-                        src="/frame-23395@2x.png"
-                      />
+                     
                       <div className="flex-1 flex flex-col items-start justify-center gap-[7.85px]">
                         <div className="self-stretch flex flex-col items-start justify-center">
                           <div className="self-stretch relative tracking-[-0.13px] font-semibold">
@@ -149,7 +145,7 @@ const DownloadContainer = () => {
                     <img
                       className="relative w-[7.12px] h-[14.24px]"
                       alt=""
-                      src="/group-281.svg"
+                      src="/icon/full/arrow.png"
                     />
                   </div>
                 </div>
@@ -159,7 +155,7 @@ const DownloadContainer = () => {
               <img
                 className="relative w-[21.96px] h-[16.62px]"
                 alt=""
-                src="/group-282.svg"
+                src="/icon/full/arrow.png"
               />
             </div>
             <div className="absolute top-[592.6px] left-[0px] shadow-[0px_0px_7.06px_rgba(0,_0,_0,_0.25)] w-[306.11px] h-[69.86px]">
@@ -169,22 +165,22 @@ const DownloadContainer = () => {
                 <img
                   className="relative w-[23.55px] h-[23.55px] overflow-hidden shrink-0"
                   alt=""
-                  src="/linear--essentional-ui--home.svg"
+                  src="/icon/full/home.png"
                 />
                 <img
                   className="relative w-[23.55px] h-[23.55px] overflow-hidden shrink-0"
                   alt=""
-                  src="/linear--essentional-ui--add-square.svg"
+                  src="/icon/full/add-phone.png"
                 />
                 <img
                   className="relative rounded-[3.92px] w-[23.55px] h-[23.55px] overflow-hidden shrink-0"
                   alt=""
-                  src="/linear--security--qr-code.svg"
+                  src="/icon/full/qr-code.png"
                 />
                 <img
                   className="relative rounded-[3.92px] w-[23.55px] h-[23.55px] overflow-hidden shrink-0"
                   alt=""
-                  src="/linear--settings-fine-tuning--settings.svg"
+                  src="/icon/full/settings.png"
                 />
               </div>
             </div>
@@ -193,7 +189,7 @@ const DownloadContainer = () => {
                 <img
                   className="absolute top-[calc(50%_-_7px)] right-[14px] w-[68px] h-3.5"
                   alt=""
-                  src="/group-281.svg"
+                  src="/icon/full/arrow.png"
                 />
                 <div className="absolute top-[calc(50%_-_9px)] left-[20px] w-[54px] h-[23px]">
                   <div className="absolute top-[calc(50%_-_11.5px)] left-[0px] tracking-[-0.17px] font-semibold inline-block w-[54px]">
@@ -207,7 +203,7 @@ const DownloadContainer = () => {
         <img
           className="absolute h-full w-full top-[0%] right-[0%] bottom-[0%] left-[0%] max-w-full overflow-hidden max-h-full object-cover"
           alt=""
-          src="/graphite@2x.png"
+          src="/images/phone.png"
         />
       </div>
     </div>

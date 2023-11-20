@@ -6,11 +6,11 @@ const NavBar = () => {
     <div className="bg-base-white shadow-[0px_0px_6px_rgba(0,_0,_0,_0.1)] py-5 px-4 lg:px-20 text-base-black font-poppins">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <img className="w-8 h-8" alt="" src="/group-2.svg" />
+          <img className="w-8 h-8" alt="" src="/images/logo/nologo.png" />
           <NavbarLink 
             as="/home" 
             href="/screen/home/Home">
-            <img className="w-32 h-8" alt="" src="/group-1.svg" />
+            <img className="w-32 h-8" alt="" src="/images/logo/nolosay-black.png" />
           </NavbarLink>
         </div>
         <div className="hidden lg:flex flex-row items-center gap-8">
@@ -57,7 +57,7 @@ const NavBar = () => {
         </div>
         <div className="lg:hidden flex items-center gap-4">
           <button className="focus:outline-none">
-            <img className="w-6 h-6" src="/menu-icon.svg" alt="Menu" />
+            <img className="w-6 h-6" src="/menu-icon.png" alt="Menu" />
           </button>
         </div>
       </div>
