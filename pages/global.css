@@ -1,78 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=SF+Pro+Text:wght@600&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 body {
-  margin: 0;
-  line-height: normal;
+  @apply leading-[normal] m-0;
 }
-:root {
-  /* fonts */
-  --font-poppins: Poppins;
-  --font-inherit: inherit;
-  --font-sf-pro-text: "SF Pro Text";
-
-  /* font sizes */
-  --font-size-2xs: 11px;
-  --font-size-mini: 15px;
-  --font-size-6xl: 25px;
-  --font-size-4xs-6: 8.6px;
-  --font-size-xs-8: 11.8px;
-  --font-size-3xs-4: 9.4px;
-  --font-size-lg-1: 18.1px;
-  --font-size-31xl: 50px;
-  --font-size-41xl: 60px;
-
-  /* Colors */
-  --base-white: #fff;
-  --gray-300: #1e303a;
-  --gray-100: #9ab0bd;
-  --yellow-300: #fdc80f;
-  --base-black: #142129;
-  --basic-dark-000000: #000;
-  --gray-200: #5b7482;
-
-  /* Gaps */
-  --gap-22xl: 41px;
-  --gap-51xl: 70px;
-  --gap-base: 16px;
-  --gap-7xs: 6px;
-  --gap-2xl: 21px;
-  --gap-3xs-5: 9.5px;
-  --gap-xl: 20px;
-  --gap-3xs: 10px;
-  --gap-6xs: 7px;
-  --gap-24xl-2: 43.2px;
-  --gap-base-7: 15.7px;
-  --gap-5xs-9: 7.9px;
-  --gap-6xs-3: 6.3px;
-  --gap-9xs-9: 3.9px;
-  --gap-mid: 17px;
-  --gap-6xl: 25px;
-
-  /* Paddings */
-  --padding-51xl: 70px;
-  --padding-101xl: 120px;
-  --padding-12xs: 1px;
-  --padding-61xl: 80px;
-  --padding-3xs: 10px;
-  --padding-xl: 20px;
-  --padding-base-7: 15.7px;
-  --padding-xs-8: 11.8px;
-  --padding-10xs-4: 2.4px;
-  --padding-6xs-3: 6.3px;
-
-  /* Border radiuses */
-  --br-3xs: 10px;
-  --br-xl: 20px;
-  --br-4xl-6: 23.6px;
-  --br-9xs-9: 3.9px;
-  --br-10xs-8: 2.8px;
-  --br-5xs-9: 7.9px;
-  --br-8xs-7: 4.7px;
-  --br-18xl-7: 37.7px;
-  --br-81xl: 100px;
-  --br-41xl: 60px;
-  --br-8xs: 5px;
-
-  /* Effects */
-  --drop-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+*,
+::before,
+::after {
+  border-width: 0;
 }
