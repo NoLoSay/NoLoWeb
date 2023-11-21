@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import Head from "next/head";
 import DownloadContainer from "./Views/download-container";
 import VideoCreationContainer from "./Views/video-creation-container";
-import Layout from '../../components/Layout';
+import Layout from "../../components/Layout";
 const Home = () => {
   return (
     <Fragment>

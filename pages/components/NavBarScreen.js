@@ -7,24 +7,38 @@ const NavBar = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <img className="w-8 h-8" alt="" src="/images/logo/nologo.png" />
-          <NavbarLink 
-            as="/home" 
-            href="/screen/home/Home">
-            <img className="w-32 h-8" alt="" src="/images/logo/nolosay-black.png" />
+          <NavbarLink
+            as="/home"
+            href="/screen/home/Home"
+            size=""
+            colorBase=""
+            colorClick=""
+          >
+            <img
+              className="w-32 h-8"
+              alt=""
+              src="/images/logo/nolosay-black.png"
+            />
           </NavbarLink>
         </div>
         <div className="hidden lg:flex flex-row items-center gap-8">
           <NavbarLink
             as="/about"
             href="/screen/about/About"
+            size="18px"
+            colorBase="black"
+            colorClick="yellow"
             passHref
             shallow
             className="font-medium bg-transparent border-none outline-none"
           >
-            <p>Qui sommes-nous ?</p>
+            Qui sommes-nous ?
           </NavbarLink>
           <NavbarLink
             href="/nolosay-app"
+            size="18px"
+            colorBase="black"
+            colorClick="yellow"
             passHref
             shallow
             className="font-medium bg-transparent border-none outline-none"
@@ -32,15 +46,10 @@ const NavBar = () => {
             Nolosay app
           </NavbarLink>
           <NavbarLink
-            href="/community"
-            passHref
-            shallow
-            className="font-medium bg-transparent border-none outline-none"
-          >
-            Communauté
-          </NavbarLink>
-          <NavbarLink
             href="/faq"
+            size="18px"
+            colorBase="black"
+            colorClick="yellow"
             passHref
             shallow
             className="font-medium bg-transparent border-none outline-none"
@@ -49,10 +58,25 @@ const NavBar = () => {
           </NavbarLink>
         </div>
         <div className="hidden lg:flex flex-row items-center gap-8 text-gray-200">
-          <div className="font-medium">Je me connecte</div>
+          <NavbarLink
+            as="/home"
+            href="/screen/home"
+            size=""
+            colorBase="grey"
+            colorClick=""
+          >
+            <div className="font-medium">Je me connecte</div>
+          </NavbarLink>
           <div className="rounded-full bg-gray-300 flex items-center justify-center py-2 px-6 gap-2 text-base-white">
-            <div className="font-semibold">Je m'inscris</div>
-            <div className="font-semibold">:)</div>
+            <NavbarLink
+              as="/home"
+              href="/screen/home"
+              size=""
+              colorBase="white"
+              colorClick=""
+            >
+              <div className="font-semibold">Je m'inscris :)</div>
+            </NavbarLink>
           </div>
         </div>
         <div className="lg:hidden flex items-center gap-4">

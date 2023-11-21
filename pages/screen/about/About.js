@@ -1,7 +1,7 @@
 // pages/screen/About/about.js
 import { Fragment } from "react";
 import Head from "next/head";
-import Layout from '../../components/Layout';
+import Layout from "../../components/Layout";
 
 const About = () => {
   return (

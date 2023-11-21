@@ -129,7 +129,6 @@ const DownloadContainer = () => {
                 <div className="flex-1 rounded-[7.85px] bg-base-white shadow-[0px_3.139587879180908px_7.06px_rgba(0,_0,_0,_0.25)] w-[269.22px] flex flex-col items-start justify-start py-[15.6979398727417px] px-[11.773455619812012px] box-border">
                   <div className="self-stretch flex flex-row items-center justify-start gap-[7.85px]">
                     <div className="flex-1 flex flex-row items-center justify-start gap-[7.85px]">
-                     
                       <div className="flex-1 flex flex-col items-start justify-center gap-[7.85px]">
                         <div className="self-stretch flex flex-col items-start justify-center">
                           <div className="self-stretch relative tracking-[-0.13px] font-semibold">
