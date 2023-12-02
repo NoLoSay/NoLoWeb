@@ -59,8 +59,8 @@ const NavBar = () => {
         </div>
         <div className="hidden lg:flex flex-row items-center gap-8 text-gray-200">
           <NavbarLink
-            as="/home"
-            href="/screen/home"
+            as="/connection"
+            href="/screen/authenticationSection/connection/ConnectionScreen"
             size=""
             colorBase="grey"
             colorClick=""

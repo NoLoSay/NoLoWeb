@@ -18,3 +18,37 @@ body {
 ::after {
   border-width: 0;
 }
+
+:root {
+  --blackblack: rgba(0, 0, 0, 1);
+  --colors-base-black: rgba(20, 33, 41, 1);
+  --colors-base-white: rgba(255, 255, 255, 1);
+  --colors-blue-color: rgba(23, 132, 232, 1);
+  --colors-gray-100: rgba(154, 176, 189, 1);
+  --colors-gray-200: rgba(91, 116, 130, 1);
+  --colors-gray-300: rgba(30, 48, 58, 1);
+  --colors-gray-50: rgba(225, 231, 235, 1);
+  --colors-yellow-300: rgba(253, 200, 15, 1);
+  --drop-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
+  --gray-100: rgba(241, 245, 249, 1);
+  --gray-300: rgba(203, 213, 225, 1);
+  --shadow-input: 0px 4px 9px 0px rgba(0, 0, 0, 0.25);
+  --test: 0px 0px 16px 0px rgba(0, 0, 0, 0.15);
+  --yellow: 0px 4px 9px 0px rgba(253, 200, 15, 0.25);
+}
+
+[data-colors-mode="light"] {
+  --colors-base-black: rgba(20, 33, 41, 1);
+  --colors-base-white: rgba(255, 255, 255, 1);
+  --colors-gray-100: rgba(154, 176, 189, 1);
+  --colors-gray-300: rgba(30, 48, 58, 1);
+  --colors-gray-50: rgba(225, 231, 235, 1);
+}
+
+[data-colors-mode="dark"] {
+  --colors-base-black: rgba(255, 255, 255, 1);
+  --colors-base-white: rgba(20, 33, 41, 1);
+  --colors-gray-100: rgba(54, 77, 89, 1);
+  --colors-gray-300: rgba(225, 231, 235, 1);
+  --colors-gray-50: rgba(30, 48, 58, 1);
+}

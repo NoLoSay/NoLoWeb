@@ -11,6 +11,11 @@ module.exports = {
         destination: "/screen/home/Home",
         permanent: true,
       },
+      {
+        source: "/connection",
+        destination: "/screen/authenticationSection/connection/ConnectionScreen",
+        permanent: true
+      }
     ];
   },
 };
