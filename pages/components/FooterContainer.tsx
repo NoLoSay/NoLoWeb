@@ -1,4 +1,4 @@
-const FooterContainer = () => {
+const FooterContainer: React.FC = () => {
   return (
     <div className="absolute bottom-[0px] left-[0px] w-[1920px] flex flex-col items-start justify-start text-left text-mini text-base-white font-poppins">
       <div className="bg-gray-300 w-[1920px] flex flex-col items-center justify-start py-[70px] px-[120px] box-border gap-[41px]">

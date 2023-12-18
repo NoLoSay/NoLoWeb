@@ -1,4 +1,4 @@
-const VideoCreationContainer = () => {
+const VideoCreationContainer: React.FC = () => {
   return (
     <div className="w-[467px] flex flex-col items-start justify-center gap-[20px] text-left text-6xl text-base-black font-poppins">
       <div className="self-stretch relative font-semibold">

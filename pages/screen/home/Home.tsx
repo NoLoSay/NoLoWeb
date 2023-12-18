@@ -3,7 +3,10 @@ import Head from "next/head";
 import DownloadContainer from "./Views/download-container";
 import VideoCreationContainer from "./Views/video-creation-container";
 import Layout from "../../components/Layout";
-const Home = () => {
+
+interface HomeProps {}
+
+const Home: React.FC<HomeProps> & { getLayout: (page: React.ReactNode) => React.ReactNode } = () => {
   return (
     <Fragment>
       <Head>
@@ -52,7 +55,8 @@ const Home = () => {
     </Fragment>
   );
 };
-Home.getLayout = function getLayout(page) {
+
+Home.getLayout = function getLayout(page: React.ReactNode) {
   return <Layout>{page}</Layout>;
 };
 

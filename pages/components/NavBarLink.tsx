@@ -1,9 +1,23 @@
-// NavbarLink.js
-import { useEffect, useState } from "react";
+// NavbarLink.tsx
+import { FC, MouseEvent, ReactNode, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const NavbarButton = ({ onClick, colorBase, colorClick, size, children }) => {
+interface NavbarButtonProps {
+  onClick?: (event: MouseEvent<HTMLDivElement>) => void;
+  colorBase: string;
+  colorClick: string;
+  size: string;
+  children: ReactNode;
+}
+
+const NavbarButton: FC<NavbarButtonProps> = ({
+  onClick,
+  colorBase,
+  colorClick,
+  size,
+  children,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -42,10 +56,29 @@ const NavbarButton = ({ onClick, colorBase, colorClick, size, children }) => {
   );
 };
 
-const NavbarLink = ({ as, href, size, colorBase, colorClick, children }) => {
+interface NavbarLinkProps {
+  as: string;
+  href: string;
+  size: string;
+  colorBase: string;
+  colorClick: string;
+  passHref?: boolean;
+  shallow?: boolean;
+  children: ReactNode;
+  className: string;
+}
+
+const NavbarLink: FC<NavbarLinkProps> = ({
+  as,
+  href,
+  size,
+  colorBase,
+  colorClick,
+  children,
+}) => {
   const router = useRouter();
 
-  const handleClick = (e) => {
+  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     router.push(href, as);
   };
