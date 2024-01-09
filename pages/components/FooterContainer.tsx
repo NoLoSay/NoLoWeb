@@ -17,10 +17,11 @@ const FooterContainer: React.FC = () => {
               />
             </div>
             <div className="relative inline-block w-[502px]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-              risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
-              nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-              ligula massa, varius.
+              Nolosay est un groupe composé d'étudiants passionnés et déterminés à créer 
+              un changement positif dans la vie quotidienne des personnes 
+              sourdes ou malentendantes. Leur objectif est clair : 
+              rendre l'information et la communication accessibles à tous, 
+              en brisant les barrières linguistiques.
             </div>
           </div>
           <div className="flex flex-row items-start justify-start gap-[70px]">

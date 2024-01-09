@@ -23,10 +23,10 @@ const About: React.FC<AboutProps> & { getLayout: (page: React.ReactNode) => Reac
         />
         <div className="absolute top-[610px] left-[364px] rounded-41xl bg-base-white box-border w-[1226px] h-[310px] mix-blend-normal text-center text-[26px] text-gray-300 border-[3px] border-solid border-gray-300">
           <b className="absolute top-[86px] left-[77px] inline-block w-[1066px] h-[239px]">
-            NoLoSay, un projet étudiant de 8 personnes en 3ème année du
-            programme Grande école à EPITECH. Le projet se déroule sur 3 ans et
-            nous souhaitons répandre la LSF par le biais de mettre à disposition
-            des vidéos en LSF pour la communauté fait par la communauté.
+            NoLoSay, un projet étudiant de 8 personnes en 4ème année du
+            programme Grande École à EPITECH. Le projet se déroule sur 3 ans et
+            nous souhaitons répandre la langue des signes en mettant à disposition
+            des vidéos pour la communauté réalisées par la communauté.
           </b>
           <img
             className="absolute top-[10px] left-[459px] w-[302px] h-[288px] object-cover"
