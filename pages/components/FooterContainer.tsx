@@ -1,4 +1,4 @@
-const FooterContainer = () => {
+const FooterContainer: React.FC = () => {
   return (
     <div className="absolute bottom-[0px] left-[0px] w-[1920px] flex flex-col items-start justify-start text-left text-mini text-base-white font-poppins">
       <div className="bg-gray-300 w-[1920px] flex flex-col items-center justify-start py-[70px] px-[120px] box-border gap-[41px]">
@@ -17,10 +17,11 @@ const FooterContainer = () => {
               />
             </div>
             <div className="relative inline-block w-[502px]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-              risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
-              nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-              ligula massa, varius.
+              Nolosay est un groupe composé d'étudiants passionnés et déterminés à créer 
+              un changement positif dans la vie quotidienne des personnes 
+              sourdes ou malentendantes. Leur objectif est clair : 
+              rendre l'information et la communication accessibles à tous, 
+              en brisant les barrières linguistiques.
             </div>
           </div>
           <div className="flex flex-row items-start justify-start gap-[70px]">

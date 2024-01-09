@@ -1,4 +1,6 @@
-const DownloadContainer = () => {
+import React from "react";
+
+const DownloadContainer: React.FC = () => {
   return (
     <div className="relative w-[1440px] h-[817px] overflow-hidden shrink-0 text-left text-41xl text-base-white font-poppins">
       <div className="absolute top-[63px] left-[80px] rounded-tl-41xl rounded-tr-xl rounded-br-xl rounded-bl-41xl bg-base-white w-[1280px] h-[692px] overflow-hidden">

@@ -1,7 +1,8 @@
+import React from "react";
 import Link from "next/link";
-import NavbarLink from "./NavBarController";
+import NavbarLink from "./NavBarLink";
 
-const NavBar = () => {
+const NavBar: React.FC = () => {
   return (
     <div className="bg-base-white shadow-[0px_0px_6px_rgba(0,_0,_0,_0.1)] py-5 px-4 lg:px-20 text-base-black font-poppins">
       <div className="flex items-center justify-between">
@@ -13,6 +14,7 @@ const NavBar = () => {
             size=""
             colorBase=""
             colorClick=""
+            className=""
           >
             <img
               className="w-32 h-8"
@@ -36,6 +38,7 @@ const NavBar = () => {
           </NavbarLink>
           <NavbarLink
             href="/nolosay-app"
+            as=""
             size="18px"
             colorBase="black"
             colorClick="yellow"
@@ -46,6 +49,7 @@ const NavBar = () => {
             Nolosay app
           </NavbarLink>
           <NavbarLink
+            as = ""
             href="/faq"
             size="18px"
             colorBase="black"
@@ -64,6 +68,7 @@ const NavBar = () => {
             size=""
             colorBase="grey"
             colorClick=""
+            className=""
           >
             <div className="font-medium">Je me connecte</div>
           </NavbarLink>
@@ -74,6 +79,7 @@ const NavBar = () => {
               size=""
               colorBase="white"
               colorClick=""
+              className=""
             >
               <div className="font-semibold">Je m'inscris :)</div>
             </NavbarLink>
