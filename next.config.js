@@ -11,6 +11,11 @@ module.exports = {
           destination: "/screen/home/Home",
           permanent: true,
         },
+        {
+          source: "/videoAccess",
+          destination: "/screen/videoAccess/VideoAccess",
+          permanent: true,
+        },
       ];
     },
   };

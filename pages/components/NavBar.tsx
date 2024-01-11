@@ -60,6 +60,18 @@ const NavBar: React.FC = () => {
           >
             Questions fréquentes
           </NavbarLink>
+          <NavbarLink
+            as = ""
+            href="/videoAccess"
+            size="18px"
+            colorBase="black"
+            colorClick="yellow"
+            passHref
+            shallow
+            className="font-medium bg-transparent border-none outline-none"
+          >
+            VideoAccess
+          </NavbarLink>
         </div>
         <div className="hidden lg:flex flex-row items-center gap-8 text-gray-200">
           <NavbarLink
