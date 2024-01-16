@@ -1,21 +1,27 @@
-import { Fragment } from "react";
-import Head from "next/head";
-import Layout from "../../components/Layout";
+import React from 'react';
+import imageArt from '../../../stories/components/assets/oeuvre1.jpg';
 
-const VideoInfo = () => {
+const Spec = ({ specInfos }: any) => {
   return (
-    <Fragment>
-      <Head>
-        <title>Nolosay</title>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
-        />
-      </Head>
-      <div className="flex w-screen h-screen">
-        
+    <div className="flex flex-col space-y-5">
+      {Object.entries(specInfos).map(([key, value]: any) => (
+        <div key={key} className="text-line">
+          <p>{value}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const VideoInfo = ({ infos }: any) => {
+  return (
+    <div className="flex flex-col space-y-5 max-w-lg my-5">
+      <div className="flex flex-row justify-between space-x-5">
+        <img src={infos.artImage} alt="Image" className='flex h-60 rounded-lg shadow-lg'/>
+        <Spec specInfos={infos?.spec} />
       </div>
-    </Fragment>
+      <div>{infos?.description}</div>
+    </div>
   );
 };
 

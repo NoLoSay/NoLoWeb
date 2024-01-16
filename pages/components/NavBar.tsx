@@ -72,6 +72,30 @@ const NavBar: React.FC = () => {
           >
             VideoAccess
           </NavbarLink>
+          <NavbarLink
+            as = ""
+            href="/location"
+            size="18px"
+            colorBase="black"
+            colorClick="yellow"
+            passHref
+            shallow
+            className="font-medium bg-transparent border-none outline-none"
+          >
+            Location
+          </NavbarLink>
+          <NavbarLink
+            as = ""
+            href="/account"
+            size="18px"
+            colorBase="black"
+            colorClick="yellow"
+            passHref
+            shallow
+            className="font-medium bg-transparent border-none outline-none"
+          >
+            Account
+          </NavbarLink>
         </div>
         <div className="hidden lg:flex flex-row items-center gap-8 text-gray-200">
           <NavbarLink

@@ -16,6 +16,16 @@ module.exports = {
           destination: "/screen/videoAccess/VideoAccess",
           permanent: true,
         },
+        {
+          source: "/location",
+          destination: "/screen/location/Location",
+          permanent: true,
+        },
+        {
+          source: "/account",
+          destination: "/screen/account/Account",
+          permanent: true,
+        },
       ];
     },
   };
