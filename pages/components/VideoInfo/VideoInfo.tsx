@@ -3,7 +3,7 @@ import imageArt from '../../../stories/components/assets/oeuvre1.jpg';
 
 const Spec = ({ specInfos }: any) => {
   return (
-    <div className="flex flex-col space-y-5">
+    <div className="flex flex-col space-y-5 font-bold">
       {Object.entries(specInfos).map(([key, value]: any) => (
         <div key={key} className="text-line">
           <p>{value}</p>
