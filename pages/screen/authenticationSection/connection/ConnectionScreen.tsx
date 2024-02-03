@@ -1,12 +1,9 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, Fragment } from "react";
 import Layout from "../../../components/Layout";
-// import { EyeClosed } from "./EyeClosed";
-// import { Lock } from "./Lock";
-// import { MentionSquare } from "./MentionSquare";
-// import { SocialButton } from "./SocialButton";
 
 const classes: { [key: string]: CSSProperties } = {
   frame: {
+    width: "100%",
     alignItems: "center",
     display: "inline-flex",
     flexDirection: "column",
@@ -18,7 +15,7 @@ const classes: { [key: string]: CSSProperties } = {
 
   div: {
     alignItems: "center",
-    backgroundColor: "var(--colors-gray-100)",
+    backgroundColor: "var(--colors-base-white)",
     borderRadius: "20px",
     display: "flex",
     flexDirection: "column",
@@ -27,6 +24,7 @@ const classes: { [key: string]: CSSProperties } = {
     padding: "40px",
     position: "relative",
     width: "660px",
+    boxShadow: "0px 4px 9px 0px rgba(0, 0, 0, 0.25)",
   },
 
   "div-2": {
@@ -100,7 +98,7 @@ const classes: { [key: string]: CSSProperties } = {
     display: "flex",
     flex: "0 0 auto",
     gap: "20px",
-    padding: "14px 15px",
+    padding: "0.5rem 0.5rem",
     position: "relative",
     width: "350px",
   },
@@ -114,6 +112,7 @@ const classes: { [key: string]: CSSProperties } = {
   "text-wrapper-3": {
     color: "#000000",
     flex: "1",
+    backgroundColor: "var(--colors-gray-50)",
     fontFamily: '"Poppins-Regular", Helvetica',
     fontSize: "12px",
     fontWeight: "400",
@@ -125,6 +124,7 @@ const classes: { [key: string]: CSSProperties } = {
 
   "text-wrapper-4": {
     alignSelf: "stretch",
+    backgroundColor: "var(--colors-gray-50)",
     color: "#000000",
     flex: "1",
     fontFamily: '"Poppins-Regular", Helvetica',
@@ -152,6 +152,7 @@ const classes: { [key: string]: CSSProperties } = {
   "s-inscrire": {
     color: "#000000",
     flex: "1",
+    backgroundColor: "var(--colors-yellow-300)",
     fontFamily: '"Poppins-SemiBold", Helvetica',
     fontSize: "14px",
     fontWeight: "600",
@@ -464,7 +465,7 @@ const classes: { [key: string]: CSSProperties } = {
     position: "relative",
   },
 
-  "vectorName=-wrapper": {
+  "vector-wrapper": {
     backgroundColor: "var(--colors-gray-100)",
     borderRadius: "15.5px",
     height: "31px",
@@ -514,7 +515,7 @@ export const ConnectionScreen = (): JSX.Element => {
           <img
             style={{ ...classes["black-logo"] }}
             alt="Black logo"
-            src="black-logo-3.png"
+            src="images/tmp/Black_logo 3.png"
           />
           <div style={{ ...classes["div-3"] }}>
             <div style={{ ...classes["text-wrapper"] }}>Se connecter</div>
@@ -526,55 +527,37 @@ export const ConnectionScreen = (): JSX.Element => {
         <div style={{ ...classes["div-4"] }}>
           <div style={{ ...classes["div-5"] }}>
             <div style={{ ...classes["div-6"] }}>
-              {/* <MentionSquare style={{...classes['icon-instance-node']}}/> */}
-              <div style={{ ...classes["text-wrapper-3"] }}>
-                exemple@gmail.com
-              </div>
+              <input
+                style={{ ...classes["text-wrapper-3"] }}
+                type="email"
+                placeholder="exemple@gmail.com"
+              />
             </div>
             <div style={{ ...classes["div-6"] }}>
-              {/* <Lock style={{...classes['icon-instance-node']}}/> */}
-              <div style={{ ...classes["text-wrapper-4"] }}>************</div>
-              {/* <EyeClosed style={{...classes['icon-instance-node']}}/> */}
+              <input
+                style={{ ...classes["text-wrapper-4"] }}
+                type="password"
+                placeholder="************"
+              />
             </div>
           </div>
           <div style={{ ...classes["s-inscrire-wrapper"] }}>
-            <div style={{ ...classes["s-inscrire"] }}>Me connecter</div>
+            <button style={{ ...classes["s-inscrire"] }}>Me connecter</button>
           </div>
         </div>
         <div style={{ ...classes["other-connexions"] }}>
           <div style={{ ...classes["div-7"] }}>
-            <img style={{ ...classes["line"] }} alt="Line" src="line-4.svg" />
+            <img
+              style={{ ...classes["line"] }}
+              alt="Line"
+              src="images/tmp/Line 4.png"
+            />
             <div style={{ ...classes["text-wrapper-5"] }}>ou avec</div>
-            <img style={{ ...classes["line"] }} alt="Line" src="line-5.svg" />
-          </div>
-          <div style={{ ...classes["group"] }}>
-            {/* <SocialButton
-              style={{...classes['social-button-instance']}}
-              concreteComponentNodePlatformFacebookClassName="design-component-instance-node"
-              concreteComponentNodeSubtract="subtract-2.svg"
-              label={false}
-              social="facebook"
-              state="pressed"
-              theme="brand"
+            <img
+              style={{ ...classes["line"] }}
+              alt="Line"
+              src="images/tmp/Line 5.png"
             />
-            <SocialButton
-              style={{...classes['social-button-3']}}
-              companyLogosColor="#FDC80F"
-              companyLogosStyleOverrideClassName="social-button-2"
-              label={false}
-              social="google"
-              state="pressed"
-              theme="brand"
-            />
-            <SocialButton
-              style={{...classes['social-button-4']}}
-              concreteComponentNodePlatformFacebookClassName="social-button-5"
-              concreteComponentNodeUnion="union-2.svg"
-              label={false}
-              social="apple"
-              state="pressed"
-              theme="brand"
-            /> */}
           </div>
         </div>
         <p style={{ ...classes["pas-de-compte-créer"] }}>
@@ -608,7 +591,7 @@ export const ConnectionScreen = (): JSX.Element => {
                 <img
                   style={{ ...classes["ellipse"] }}
                   alt="Ellipse"
-                  src="ellipse-748.png"
+                  src="images/tmp/Ellipse 748.png"
                 />
                 <div style={{ ...classes["div-14"] }}>
                   <div style={{ ...classes["text-wrapper-9"] }}>
@@ -617,7 +600,7 @@ export const ConnectionScreen = (): JSX.Element => {
                   <img
                     style={{ ...classes["img"] }}
                     alt="Frame"
-                    src="frame-74.svg"
+                    src="images/tmp/stars.png"
                   />
                 </div>
               </div>
@@ -633,7 +616,7 @@ export const ConnectionScreen = (): JSX.Element => {
                 <img
                   style={{ ...classes["ellipse"] }}
                   alt="Ellipse"
-                  src="image.png"
+                  src="images/tmp/Ellipse 748.png"
                 />
                 <div style={{ ...classes["div-14"] }}>
                   <div style={{ ...classes["text-wrapper-9"] }}>
@@ -642,7 +625,7 @@ export const ConnectionScreen = (): JSX.Element => {
                   <img
                     style={{ ...classes["img"] }}
                     alt="Frame"
-                    src="image.svg"
+                    src="images/tmp/stars.png"
                   />
                 </div>
               </div>
@@ -658,7 +641,7 @@ export const ConnectionScreen = (): JSX.Element => {
                 <img
                   style={{ ...classes["ellipse"] }}
                   alt="Ellipse"
-                  src="ellipse-748-2.png"
+                  src="images/tmp/Ellipse 748.png"
                 />
                 <div style={{ ...classes["div-14"] }}>
                   <div style={{ ...classes["text-wrapper-9"] }}>
@@ -667,7 +650,7 @@ export const ConnectionScreen = (): JSX.Element => {
                   <img
                     style={{ ...classes["img"] }}
                     alt="Frame"
-                    src="frame-74-2.svg"
+                    src="images/tmp/stars.png"
                   />
                 </div>
               </div>
@@ -680,23 +663,23 @@ export const ConnectionScreen = (): JSX.Element => {
         </div>
         <div style={{ ...classes["frame-wrapper-2"] }}>
           <div style={{ ...classes["div-15"] }}>
-            <div style={{ ...classes["vector-wrapper"] }}>
-              <img
-                style={{ ...classes["vector"] }}
-                alt="Vector"
-                src="vector-63.svg"
-              />
-            </div>
-            <div style={{ ...classes["img-wrapper"] }}>
-              <img
-                style={{ ...classes["vector-2"] }}
-                alt="Vector"
-                src="vector-63-2.svg"
-              />
-            </div>
+            <img
+              style={{ ...classes["vector-wrapper"] }}
+              alt="Vector"
+              src="images/tmp/Vector1.svg"
+            />
+            <img
+              style={{ ...classes["img-wrapper"] }}
+              alt="Vector"
+              src="images/tmp/Vector2.svg"
+            />
           </div>
         </div>
-        <img style={{ ...classes["image"] }} alt="Image" src="image-18.png" />
+        <img
+          style={{ ...classes["image"] }}
+          alt="Image"
+          src="images/tmp/image 18.png"
+        />
       </div>
     </div>
   );
