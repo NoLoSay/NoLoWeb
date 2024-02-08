@@ -3,7 +3,7 @@ import Layout from "../../../components/Layout";
 
 const classes: { [key: string]: React.CSSProperties } = {
   translateButtonBox: {
-    backgroundColor: "var(--colors-yellow-300)",
+    backgroundColor: "var(--colors-button-default)",
     borderRadius: "10px",
     display: "flex",
     gap: "10px",
@@ -13,7 +13,7 @@ const classes: { [key: string]: React.CSSProperties } = {
 
   translateButton: {
     cursor: "pointer",
-    backgroundColor: "var(--colors-yellow-300)",
+    backgroundColor: "var(--colors-button-default)",
     color: "var(--blackblack)",
     fontFamily: '"Poppins-Bold", Helvetica',
     fontSize: "15px",

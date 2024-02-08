@@ -138,7 +138,7 @@ const classes: { [key: string]: CSSProperties } = {
 
   "s-inscrire-wrapper": {
     alignItems: "center",
-    backgroundColor: "var(--colors-yellow-300)",
+    backgroundColor: "var(--colors-button-default)",
     borderRadius: "12px",
     boxShadow: "var(--yellow)",
     display: "flex",
@@ -152,7 +152,7 @@ const classes: { [key: string]: CSSProperties } = {
   "s-inscrire": {
     color: "#000000",
     flex: "1",
-    backgroundColor: "var(--colors-yellow-300)",
+    backgroundColor: "var(--colors-button-default)",
     fontFamily: '"Poppins-SemiBold", Helvetica',
     fontSize: "14px",
     fontWeight: "600",
@@ -346,7 +346,7 @@ const classes: { [key: string]: CSSProperties } = {
 
   "text-wrapper-8": {
     alignSelf: "stretch",
-    color: "var(--colors-yellow-300)",
+    color: "var(--colors-button-default)",
     fontFamily: '"Poppins-SemiBold", Helvetica',
     fontSize: "25px",
     fontWeight: "600",

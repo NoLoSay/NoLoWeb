@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import Layout from "../../components/Layout";
 
+const toto: string = "bg-yellow-300 text-base-white";
+const tata: string = "bg-base-black text-yellow-300";
+
 const classes: { [key: string]: React.CSSProperties } = {
   mainDiv: {
     alignItems: "center",
@@ -28,7 +31,7 @@ const classes: { [key: string]: React.CSSProperties } = {
     boxShadow: "0px 4px 9px 0px rgba(0, 0, 0, 0.25)",
   },
   buttonBox: {
-    backgroundColor: "var(--colors-yellow-300)",
+    // backgroundColor: "var(--colors-button-default)",
     borderRadius: "10px",
     display: "flex",
     gap: "10px",
@@ -37,8 +40,8 @@ const classes: { [key: string]: React.CSSProperties } = {
   },
   button: {
     cursor: "pointer",
-    backgroundColor: "var(--colors-yellow-300)",
-    color: "var(--blackblack)",
+    // backgroundColor: "var(--colors-button-default)",
+    // color: "var(--blackblack)",
     fontFamily: '"Poppins-Bold", Helvetica',
     fontSize: "10px",
     fontWeight: "400",
@@ -137,23 +140,23 @@ export const RecordVideo = (): JSX.Element => {
         <div
           style={{
             ...classes["buttonBox"],
-            backgroundColor: !isRecording
-              ? "var(--colors-yellow-300)"
-              : "var(--colors-button-disabled)"
+            // backgroundColor: !isRecording
+            //   ? "var(--colors-button-default)"
+            //   : "var(--colors-button-disabled)",
           }}
-          className="buttonBox"
+          className={`buttonBox ${!isRecording ? toto : tata}`}
         >
           <button
             style={{
               ...classes["button"],
-              backgroundColor: !isRecording
-                ? "var(--colors-yellow-300)"
-                : "var(--colors-button-disabled)",
+              // backgroundColor: !isRecording
+              //   ? "var(--colors-button-default)"
+              //   : "var(--colors-button-disabled)",
               cursor: !isRecording ? "pointer" : "not-allowed",
             }}
             onClick={startCapture}
             disabled={isRecording}
-            className="button"
+            className={`button ${!isRecording ? toto : tata}`}
           >
             Start Recording
           </button>
@@ -162,8 +165,8 @@ export const RecordVideo = (): JSX.Element => {
           style={{
             ...classes["buttonBox"],
             backgroundColor: isRecording
-              ? "var(--colors-yellow-300)"
-              : "var(--colors-button-disabled)"
+              ? "var(--colors-button-default)"
+              : "var(--colors-button-disabled)",
           }}
           className="buttonBox"
         >
@@ -171,7 +174,7 @@ export const RecordVideo = (): JSX.Element => {
             style={{
               ...classes["button"],
               backgroundColor: isRecording
-                ? "var(--colors-yellow-300)"
+                ? "var(--colors-button-default)"
                 : "var(--colors-button-disabled)",
               cursor: isRecording ? "pointer" : "not-allowed",
             }}
@@ -187,8 +190,8 @@ export const RecordVideo = (): JSX.Element => {
             ...classes["buttonBox"],
             backgroundColor:
               recordedChunks.length > 0
-                ? "var(--colors-yellow-300)"
-                : "var(--colors-button-disabled)"
+                ? "var(--colors-button-default)"
+                : "var(--colors-button-disabled)",
           }}
           className="buttonBox"
         >
@@ -197,7 +200,7 @@ export const RecordVideo = (): JSX.Element => {
               ...classes["button"],
               backgroundColor:
                 recordedChunks.length > 0
-                  ? "var(--colors-yellow-300)"
+                  ? "var(--colors-button-default)"
                   : "var(--colors-button-disabled)",
               cursor: recordedChunks.length > 0 ? "pointer" : "not-allowed",
             }}
