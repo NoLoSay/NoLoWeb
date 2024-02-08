@@ -11,7 +11,13 @@ module.exports = {
         "gray-300": "#1e303a",
         "gray-100": "#9ab0bd",
         "yellow-300": "#fdc80f",
+        goldenrod: "#c99400",
         black: "#000",
+        darkslategray: "#1e303a",
+        lightgoldenrodyellow: "#dfffcc",
+        limegreen: "#42b100",
+        gray: "#0b0b0b",
+        gainsboro: "#e6e6e6",
         "base-black": "#142129",
         "basic-dark-000000": "#000",
         "gray-200": "#5b7482",
@@ -19,6 +25,7 @@ module.exports = {
       spacing: {},
       fontFamily: {
         poppins: "Poppins",
+        "dm-sans": "'DM Sans'",
         inherit: "inherit",
         "sf-pro-text": "'SF Pro Text'",
       },
@@ -39,6 +46,8 @@ module.exports = {
     fontSize: {
       "2xs": "11px",
       mini: "15px",
+      "4xs": "9px",
+      "3xl": "22px",
       "6xl": "25px",
       "4xs-6": "8.6px",
       "xs-8": "11.8px",
@@ -47,7 +56,25 @@ module.exports = {
       "31xl": "50px",
       "41xl": "60px",
       "5xl": "24px",
+      lg: "18px",
+      xs: "12px",
+      base: "16px",
+      sm: "14px",
       inherit: "inherit",
+    },
+    screens: {
+      lg: {
+        max: "1200px",
+      },
+      mq1050: {
+        raw: "screen and (max-width: 1050px)",
+      },
+      mq750: {
+        raw: "screen and (max-width: 750px)",
+      },
+      mq450: {
+        raw: "screen and (max-width: 450px)",
+      },
     },
   },
   corePlugins: {
