@@ -1,13 +1,12 @@
 import { Fragment } from "react";
 import Head from "next/head";
-import DownloadContainer from "./Views/download-container";
-import VideoCreationContainer from "./Views/video-creation-container";
+import DownloadContainer from "./Views/DownloadContainer";
+import VideoCreationContainer from "./Views/VideoCreationContainer";
 import Layout from "../../components/Layout";
 
 interface HomeProps {}
 
-const styles: {[key: string]: string} = {
-
+const styles: { [key: string]: string } = {
   // body styles
   mainDiv: "absolute top-[83px] left-[0px] w-[1920px] flex flex-col items-center justify-center",
   VideoCreationDiv: "w-[1440px] flex flex-row items-center justify-start pt-0 px-[243px] pb-20 box-border gap-[20px]",
@@ -19,7 +18,7 @@ const styles: {[key: string]: string} = {
   DescriptionDivTitleText: "relative font-medium opacity-[0.6]",
   DescriptionDivSubtitleText: "relative text-6xl font-semibold text-yellow-300",
   DescriptionDivText: "self-stretch relative z-[2]",
-}
+};
 
 const Home: React.FC<HomeProps> & {
   getLayout: (page: React.ReactNode) => React.ReactNode;
@@ -37,7 +36,7 @@ const Home: React.FC<HomeProps> & {
         />
       </Head>
       <div className={styles["mainDiv"]}>
-        <DownloadContainer  />
+        <DownloadContainer />
         <div className={styles["VideoCreationDiv"]}>
           <VideoCreationContainer />
           <img
@@ -47,11 +46,11 @@ const Home: React.FC<HomeProps> & {
           />
         </div>
         <div className={styles["DescriptionDiv"]}>
-            <img
-              className={styles["DescriptionDivImage"]}
-              alt="Map as a background"
-              src="/images/map.png"
-            />
+          <img
+            className={styles["DescriptionDivImage"]}
+            alt="Map as a background"
+            src="/images/map.png"
+          />
           <div className={styles["DescriptionDivTextDiv"]}>
             <div className={"DescriptionDivTitlteDiv"}>
               <div className={"DescriptionDivTitleText"}>
