@@ -58,6 +58,11 @@ const DownloadContainer: React.FC = () => {
           src="/images/castle/chateau-large.png"
         />
       </div>
+      <img
+        className={`DownloadContainer/lineImg ${styles["lineImg"]}`}
+        alt=""
+        src="/images/line.png"
+      />
       <div
         className={`DownloadContainer/contentDiv ${styles["contentDiv"]} ${styles["mdContentDiv"]} ${styles["smContentDiv"]}`}
       >
@@ -87,11 +92,6 @@ const DownloadContainer: React.FC = () => {
         </div>
       </div>
       {/* <img className={styles["LineImg"]} alt="" src="/images/line.png" /> */}
-      <img
-        className={`DownloadContainer/lineImg ${styles["lineImg"]}`}
-        alt=""
-        src="/images/line.png"
-      />
       <img
         className={`DownloadContainer/phoneImg ${styles["phoneImg"]}`}
         alt=""
