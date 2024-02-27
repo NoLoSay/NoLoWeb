@@ -28,7 +28,7 @@ const NavBar: React.FC = () => {
           />
         </NavbarLink>
       </div>
-      <div className="hidden lg:flex flex-row items-center gap-8">
+      <div className="flex flex-row items-center gap-8">
         <NavbarLink
           as="/about"
           href="/screen/about/About"
@@ -40,6 +40,30 @@ const NavBar: React.FC = () => {
           className="font-medium bg-transparent border-none outline-none"
         >
           Qui sommes-nous ?
+        </NavbarLink>
+        <NavbarLink
+          as="/tickets"
+          href="/screen/creationSection/artworkToTranslateSelectionSection/ArtworkToTranslateSelectionScreen"
+          size="18px"
+          colorBase="black"
+          colorClick="yellow"
+          passHref
+          shallow
+          className="font-medium bg-transparent border-none outline-none"
+        >
+          Oeuvres à traduire
+        </NavbarLink>
+        <NavbarLink
+          as="/record"
+          href="/screen/videoCaptureSection/RecordVideo"
+          size="18px"
+          colorBase="black"
+          colorClick="yellow"
+          passHref
+          shallow
+          className="font-medium bg-transparent border-none outline-none"
+        >
+          Enregistrer une vidéo
         </NavbarLink>
         <NavbarLink
           href="/nolosay-app"
@@ -66,10 +90,10 @@ const NavBar: React.FC = () => {
           Questions fréquentes
         </NavbarLink>
       </div>
-      <div className="hidden lg:flex flex-row items-center gap-8 text-gray-200">
+      <div className="flex flex-row items-center gap-8 text-gray-200">
         <NavbarLink
-          as="/home"
-          href="/screen/home"
+          as="/connection"
+          href="/screen/authenticationSection/connection/ConnectionScreen"
           size=""
           colorBase="grey"
           colorClick=""
@@ -79,8 +103,8 @@ const NavBar: React.FC = () => {
         </NavbarLink>
         <div className="rounded-full bg-gray-300 flex items-center justify-center py-2 px-6 gap-2 text-base-white">
           <NavbarLink
-            as="/home"
-            href="/screen/home"
+            as="/subscription"
+            href="/screen/authenticationSection/subscription/SubscriptionScreen"
             size=""
             colorBase="white"
             colorClick=""

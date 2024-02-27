@@ -8,7 +8,11 @@ interface LayoutProps {
 }
 
 const styles: {[key: string]: string} = {
-  mainDiv: "relative rounded-3xs bg-base-white w-full h-[2041px] overflow-hidden text-left text-mini text-base-white font-poppins",
+  /* Default */
+  // mainDiv: "relative rounded-3xs bg-base-white w-full h-[2041px] overflow-hidden text-left text-mini text-base-white font-poppins",
+
+  /* Rework */
+  mainDiv: "bg-base-white flex flex-col w-full text-left text-mini text-base-white font-poppins gap-y-3",
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
