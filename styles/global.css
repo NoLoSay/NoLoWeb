@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=SF+Pro+Text:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "../pages/screen/find_video/ImageSlider.css";
 
 @tailwind base;
 @tailwind components;

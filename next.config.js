@@ -2,8 +2,8 @@ module.exports = {
     async redirects() {
       return [
         {
-          source: "/about",
-          destination: "/screen/about/About",
+          source: "/findvideo",
+          destination: "/screen/find_video/FindVideo",
           permanent: true,
         },
         {
