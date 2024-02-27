@@ -30,8 +30,8 @@ const NavBar: React.FC = () => {
       </div>
       <div className="flex flex-row items-center gap-8">
         <NavbarLink
-          as="/about"
-          href="/screen/about/About"
+          as="/findvideo"
+          href="/screen/find_video/FindVideo"
           size="18px"
           colorBase="black"
           colorClick="yellow"
@@ -39,7 +39,7 @@ const NavBar: React.FC = () => {
           shallow
           className="font-medium bg-transparent border-none outline-none"
         >
-          Qui sommes-nous ?
+          Trouver une traduction
         </NavbarLink>
         <NavbarLink
           as="/tickets"
@@ -66,7 +66,7 @@ const NavBar: React.FC = () => {
           Enregistrer une vidéo
         </NavbarLink>
         <NavbarLink
-          href="/nolosay-app"
+          href="/screen/find_video/"
           as=""
           size="18px"
           colorBase="black"
@@ -75,7 +75,7 @@ const NavBar: React.FC = () => {
           shallow
           className="font-medium bg-transparent border-none outline-none"
         >
-          Nolosay app
+          Traduire un texte
         </NavbarLink>
         <NavbarLink
           as=""
@@ -87,7 +87,7 @@ const NavBar: React.FC = () => {
           shallow
           className="font-medium bg-transparent border-none outline-none"
         >
-          Questions fréquentes
+          Mes vidéos
         </NavbarLink>
       </div>
       <div className="flex flex-row items-center gap-8 text-gray-200">

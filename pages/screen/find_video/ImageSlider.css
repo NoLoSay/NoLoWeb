@@ -1,0 +1,38 @@
+
+.image__slider__container{
+    max-width: 1280px;
+    max-height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+}
+
+.image__slider__container .slick-dots{
+    top: 200px;
+}
+
+.image__slider__container .slick-prev{
+    left: 5px;
+    z-index: 1;
+    top:125px
+}
+
+.image__slider__container .slick-next{
+    right: 5px;
+    z-index: 1;
+    top:125px
+
+}
+
+@media (max-width:1000px){
+    .image__slider__container{
+        max-width: 100vw;
+    }
+}
+
+@media (max-height:200px){
+  .image__slider__container{
+      max-height: 100vw;
+  }
+}
