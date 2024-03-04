@@ -13,19 +13,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const WithCertifiedVideos: Story = {
+export const Default: Story = {
   args: {
     title: "Chateau des Duc de Nantes",
-    description: " un super château tres beau en pierre du 16eme siecle",
-    img: "/images/castle/chateau-large.png",
-    certified: 22
-  }
-};
-
-export const WithoutCertifiedVideos: Story = {
-  args: {
-    title: "Chateau des Duc de Nantes",
-    description: " un super château tres beau en pierre du 16eme siecle",
+    description: "Un super château tres beau en pierre du 16eme siecle",
     img: "/images/castle/chateau-large.png",
   }
 };

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import VideoVignette from '../../pages/components/VideoVignette/VideoVignette';
 
+// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: 'Component/VideoVignette',
   component: VideoVignette,
@@ -13,19 +14,19 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const WithCertifiedVideos: Story = {
+export const WithCertified: Story = {
   args: {
-    title: "Chateau des Duc de Nantes",
-    description: " un super château tres beau en pierre du 16eme siecle",
+    title: "Portrait Henry IV",
+    description: "Un portrait du fameux roi de France datant du 16eme siecle",
     img: "/images/castle/chateau-large.png",
     certified: 22
-  }
+  },
 };
 
-export const WithoutCertifiedVideos: Story = {
+export const WithoutCertified: Story = {
   args: {
-    title: "Chateau des Duc de Nantes",
-    description: " un super château tres beau en pierre du 16eme siecle",
+    title: "Portrait Henry IV",
+    description: "Un portrait du fameux roi de France datant du 16eme siecle",
     img: "/images/castle/chateau-large.png",
-  }
+  },
 };

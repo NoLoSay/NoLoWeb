@@ -6,7 +6,7 @@ import { ButtonBase } from "@mui/material";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import testProfile from "../../../stories/components/assets/testProfile.json"
 import CategoryButton from "../../components/CategoryButton/CategoryButton";
-import GraphCard from "../../components/GraphCard/GraphCArd";
+import GraphCard from "../../components/GraphCard/GraphCard";
 
 const BigButton = ({ label, textSize }: any) => {
   return (

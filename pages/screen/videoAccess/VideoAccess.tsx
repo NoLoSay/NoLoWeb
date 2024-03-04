@@ -12,16 +12,16 @@ const VideoAccess = () => {
         <title>Nolosay</title>
       </Head>
       <div>
-        <ArtCard infos={infosJson}/>
+        <ArtCard infos={infosJson} />
         <div className="w-4/5 mx-auto py-14">
-          <p>Découvrez d'autres oeuvres similaires :</p>
+          <p className="text-black">Découvrez d'autres oeuvres similaires :</p>
           <div className=" grid grid-cols-3 space-5">
-          <VideoVignette img="/images/castle/chateau-large.png" title="Château des ducs de Bretagne" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={22}/>
-          <VideoVignette img="/images/castle/chateau-large.png" title="Château des ducs de Bretagne" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={22}/>
-          <VideoVignette img="/images/castle/chateau-large.png" title="Château des ducs de Bretagne" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={22}/>
-          <VideoVignette img="/images/castle/chateau-large.png" title="Château des ducs de Bretagne" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={22}/>
-          <VideoVignette img="/images/castle/chateau-large.png" title="Château des ducs de Bretagne" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={22}/>
-          <VideoVignette img="/images/castle/chateau-large.png" title="Château des ducs de Bretagne" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={22}/>
+            <VideoVignette img="/images/castle/chateau-large.png" title="Statue d'Anne de Bretagne" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={3} />
+            <VideoVignette img="/images/castle/chateau-large.png" title="Statue d'Anne de Bretagne" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={96} />
+            <VideoVignette img="/images/castle/chateau-large.png" title="Statue d'Anne de Bretagne" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={12} />
+            <VideoVignette img="/images/castle/chateau-large.png" title="Statue d'Anne de Bretagne" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" />
+            <VideoVignette img="/images/castle/chateau-large.png" title="Statue d'Anne de Bretagne" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={54} />
+            <VideoVignette img="/images/castle/chateau-large.png" title="Statue d'Anne de Bretagne" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum"/>
           </div>
         </div>
       </div>
