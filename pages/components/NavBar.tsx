@@ -41,7 +41,9 @@ const NavBar: React.FC = () => {
         >
           Trouver une traduction
         </NavbarLink>
-        <NavbarLink
+
+        {/* remove the commented code below when the development of the page are done */}
+        {/* <NavbarLink
           as="/tickets"
           href="/screen/creationSection/artworkToTranslateSelectionSection/ArtworkToTranslateSelectionScreen"
           size="18px"
@@ -52,8 +54,8 @@ const NavBar: React.FC = () => {
           className="font-medium bg-transparent border-none outline-none"
         >
           Oeuvres à traduire
-        </NavbarLink>
-        <NavbarLink
+        </NavbarLink> */}
+        {/* <NavbarLink
           as="/record"
           href="/screen/videoCaptureSection/RecordVideo"
           size="18px"
@@ -64,7 +66,8 @@ const NavBar: React.FC = () => {
           className="font-medium bg-transparent border-none outline-none"
         >
           Enregistrer une vidéo
-        </NavbarLink>
+        </NavbarLink> */}
+
         <NavbarLink
           href="/screen/find_video/"
           as=""
