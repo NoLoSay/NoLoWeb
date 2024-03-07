@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import ArtVignette from '../../pages/components/ArtVignette/ArtVignette';
 
 const meta = {
-  title: 'Component/ArtVignette',
+  title: 'Page Location/ArtVignette',
   component: ArtVignette,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],

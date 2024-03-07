@@ -4,7 +4,7 @@ import GenericCard from '../../pages/components/GenericCard/GenericCard';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'Component/GenericCard',
+  title: 'Common/GenericCard',
   component: GenericCard,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],

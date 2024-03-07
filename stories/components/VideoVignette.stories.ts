@@ -4,7 +4,7 @@ import VideoVignette from '../../pages/components/VideoVignette/VideoVignette';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'Component/VideoVignette',
+  title: 'Art Page/VideoVignette',
   component: VideoVignette,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],

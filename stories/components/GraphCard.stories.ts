@@ -4,7 +4,7 @@ import GraphCard from '../../pages/components/GraphCard/GraphCard';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'Component/GraphCard',
+  title: 'Profile/GraphCard',
   component: GraphCard,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],

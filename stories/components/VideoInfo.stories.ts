@@ -4,7 +4,7 @@ import VideoInfo from '../../pages/components/VideoInfo/VideoInfo';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'Component/VideoInfo',
+  title: 'Art Page/VideoInfo',
   component: VideoInfo,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
