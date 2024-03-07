@@ -12,8 +12,7 @@ import AnimatedNavbar from "./AnimatedNavbar/AnimatedNavbar";
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="relative rounded-3xs bg-base-white w-full h-[2041px] overflow-hidden text-left text-mini text-base-white font-poppins">
-      {/* <NavBar /> */}
-      <AnimatedNavbar />
+      <AnimatedNavbar/>
       {children}
       <div>
         <NewsletterField />

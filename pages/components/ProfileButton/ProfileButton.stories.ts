@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import ProfileButton from './ProfileButton';
 
 const meta = {
-  title: 'Common/ProfileButton',
+  title: 'Layout/ProfileButton',
   component: ProfileButton,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Drawer, Box, List, ListItem, ListItemButton, ListItemText, Divider, IconButton } from "@mui/material";
 import { Menu } from "@mui/icons-material";
+import ProfileButton from "../ProfileButton/ProfileButton";
 
 
 type NavLinkProps = {
@@ -12,6 +13,7 @@ type NavLinkProps = {
 
 type NavbarProps = {
   InApp?: boolean;
+  IsLogged?: boolean;
 };
 
 const NavLinksItems = [
@@ -48,7 +50,7 @@ const LogoButton = () => {
 const NavLinks = (props: NavLinkProps) => {
   const renderLinks = () => {
     return props.links.map((link, index) => (
-      <Link key={index} href={link.href}>
+      <Link key={index} href={link.href} className="text-zinc-500 hover:underline underline-offset-2">
         {link.title}
       </Link>
     ));
@@ -90,8 +92,15 @@ export function LinkList(props: NavLinkProps) {
     <Box sx={{ width: '100%', minWidth: 360, bgcolor: 'background.paper' }}>
       <nav aria-label="main mailbox folders">
         <List>
-          <LogoButton />
+          <div className="p-3">
+            <LogoButton />
+          </div>
           <Divider />
+          <ListItem disablePadding>
+            <ListItemButton disabled>
+              <ListItemText primary={" "} />
+            </ListItemButton>
+          </ListItem>
           {renderLinks()}
         </List>
       </nav>
@@ -100,11 +109,12 @@ export function LinkList(props: NavLinkProps) {
 }
 
 const AnimatedNavbar = (props: NavbarProps) => {
-  const [searchBarNeeded, setSearchBarNeeded] = useState(true);
+  const [searchBarNeeded, setSearchBarNeeded] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isLogged, setIsLogged] = useState(props.IsLogged);
 
   return (
-    <div className="flex flex-row items-center px-10 shadow-md">
+    <div className="flex flex-row items-center px-10 h-20 shadow-md">
       {props.InApp ? (
         <div>
           <IconButton sx={{ paddingX: 2 }} onClick={() => setIsDrawerOpen(true)}>
@@ -116,10 +126,10 @@ const AnimatedNavbar = (props: NavbarProps) => {
         </div>) : null}
       <LogoButton />
       {props.InApp ? <SearchBar /> : <NavLinks links={[...NavLinksItems]} />}
-      
+
       <div className="hidden lg:flex flex-row items-center gap-8 text-gray-200">
-      <Divider orientation="vertical" variant="middle" flexItem />
-        <LoginButton />
+        <Divider orientation="vertical" variant="middle" flexItem />
+        {props.IsLogged ? <ProfileButton /> : <LoginButton />}
       </div>
     </div>
   );
