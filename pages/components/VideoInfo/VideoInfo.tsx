@@ -1,5 +1,5 @@
 import React from 'react';
-import imageArt from '../../../stories/components/assets/oeuvre1.jpg';
+import imageArt from '../../../stories/assets/oeuvre1.jpg';
 
 const Spec = ({ specInfos }: any) => {
   return (

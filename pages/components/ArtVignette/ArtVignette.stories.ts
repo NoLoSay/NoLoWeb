@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import NoVideoPlaceholder from '../../pages/components/NoVideoPlaceholder/NoVideoPlaceholder';
+import ArtVignette from './ArtVignette';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'Art Page/NoVideoPlaceholder',
-  component: NoVideoPlaceholder,
+  title: 'Page Location/ArtVignette',
+  component: ArtVignette,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
 } satisfies Meta;
@@ -14,4 +13,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {};
+export const Default: Story = {
+  args: {
+    title: "Chateau des Duc de Nantes",
+    description: "Un super château tres beau en pierre du 16eme siecle",
+    img: "/images/castle/chateau-large.png",
+  }
+};

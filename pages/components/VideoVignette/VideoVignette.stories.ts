@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import VideoVignette from '../../pages/components/VideoVignette/VideoVignette';
+import VideoVignette from './VideoVignette';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {

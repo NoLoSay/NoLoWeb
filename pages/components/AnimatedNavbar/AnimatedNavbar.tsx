@@ -2,9 +2,8 @@ import SearchBar from "../SearchBar/SearchBar";
 import NavbarLink from "../NavBarLink";
 import { useState } from "react";
 import Link from "next/link";
-import { Drawer, Button, Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider, IconButton } from "@mui/material";
-import { Drafts, Inbox, Menu } from "@mui/icons-material";
-import { useRouter } from "next/router";
+import { Drawer, Box, List, ListItem, ListItemButton, ListItemText, Divider, IconButton } from "@mui/material";
+import { Menu } from "@mui/icons-material";
 
 
 type NavLinkProps = {
@@ -105,7 +104,7 @@ const AnimatedNavbar = (props: NavbarProps) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <div className="flex flex-row items-center bg-slate-300 p-3">
+    <div className="flex flex-row items-center px-10 shadow-md">
       {props.InApp ? (
         <div>
           <IconButton sx={{ paddingX: 2 }} onClick={() => setIsDrawerOpen(true)}>
@@ -117,7 +116,9 @@ const AnimatedNavbar = (props: NavbarProps) => {
         </div>) : null}
       <LogoButton />
       {props.InApp ? <SearchBar /> : <NavLinks links={[...NavLinksItems]} />}
+      
       <div className="hidden lg:flex flex-row items-center gap-8 text-gray-200">
+      <Divider orientation="vertical" variant="middle" flexItem />
         <LoginButton />
       </div>
     </div>

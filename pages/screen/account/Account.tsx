@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 import GenericCard from "../../components/GenericCard/GenericCard";
 import { ButtonBase } from "@mui/material";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
-import testProfile from "../../../stories/components/assets/testProfile.json"
+import testProfile from "../../../stories/assets/testProfile.json"
 import CategoryButton from "../../components/CategoryButton/CategoryButton";
 import GraphCard from "../../components/GraphCard/GraphCard";
 

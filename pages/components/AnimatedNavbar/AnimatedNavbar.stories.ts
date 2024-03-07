@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import NewsletterField from '../../pages/components/NewsletterField/NewsletterField';
+import AnimatedNavbar from './AnimatedNavbar';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'Layout/NewsletterField',
-  component: NewsletterField,
+  title: 'Common/AnimatedNavbar',
+  component: AnimatedNavbar,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
 } satisfies Meta;
@@ -14,4 +13,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {};
+export const Homepage: Story = {
+  args: {
+    InApp: false
+  }
+};
+
+export const InApp: Story = {
+  args: {
+    InApp: true
+  }
+};

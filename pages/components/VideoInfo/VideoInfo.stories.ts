@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import CategoryButton from '../../pages/components/CategoryButton/CategoryButton';
+import VideoInfo from './VideoInfo';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'Profile/CategoryButton',
-  component: CategoryButton,
+  title: 'Art Page/VideoInfo',
+  component: VideoInfo,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
 } satisfies Meta;
@@ -16,6 +16,15 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
-    text: "Nom de la category"
-  }
+    infos: {
+      description:  "une description qui pourrait etre plus longue mais ca fait l'affaire",
+      spec: {
+        creator: "Date: 28 Juillet 1992",
+        location: "Lieu: Drancy",
+        date: "28 Juillet 1992",
+        style: "Pastel et huile",
+        price: "42M $"
+      }
+    }
+  },
 };
