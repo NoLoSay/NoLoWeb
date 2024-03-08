@@ -7,19 +7,6 @@ import Layout from "../../components/Layout";
 interface HomeProps {}
 
 const styles: { [key: string]: string } = {
-  /* original */
-  // mainDiv: "absolute top-[83px] left-[0px] w-[1920px] flex flex-col items-center justify-center",
-  // videoCreationDiv: "w-[1440px] flex flex-row items-center justify-start pt-0 px-[243px] pb-20 box-border gap-[20px]",
-  // videoCreationImage: "relative w-[467px] h-[300px] overflow-hidden shrink-0",
-  // descriptionDiv: "rounded-xl bg-gray-300 w-[1280px] overflow-hidden flex flex-row items-center justify-start py-20 px-[163px] box-border",
-  // descriptionDivTextDiv: "flex-1 flex flex-col items-start justify-center relative gap-[20px]",
-  // descriptionDivImage: "absolute my-0 mx-[!important] top-[calc(50%_-_156.5px)] left-[calc(50%_-_640px)] w-[1280px] h-[398px] object-cover opacity-[0.15] z-[0]",
-  // descriptionDivTitlteDiv: "flex flex-col items-start justify-center gap-[3px] z-[1]",
-  // descriptionDivTitleText: "relative font-medium opacity-[0.6]",
-  // descriptionDivSubtitleText: "relative text-6xl font-semibold text-yellow-300",
-  // descriptionDivText: "self-stretch relative z-[2]",
-
-  /* rework */
   mainDiv: "relative w-full flex flex-col items-center justify-center gap-y-5",
 
   videoCreationDiv: "w-3/4 flex flex-row justify-start gap-2",
@@ -28,24 +15,24 @@ const styles: { [key: string]: string } = {
 
   videoCreationImage: "relative w-3/4 self-center",
 
-  descriptionDiv: "relative rounded-xl bg-gray-300 w-4/5 justify-start",
+  descriptionDiv: "relative rounded-xl bg-gray-300 bg-cover bg-[url(/images/map.png)] w-4/5 justify-start",
   lgDescriptionDiv:
-    "md:h-1/4 md:w-6/7",
+    "lg:h-1/4 lg:w-6/7",
   mdDescriptionDiv:
     "md:h-1/4 md:w-6/7",
   smDescriptionDiv:
-    "sm:h-1/4 sm:w-9/10 sm:rounded-sm",
+    "sm:h-1/4 sm:w-9/10 sm:rounded-md",
 
   descriptionDivImage:
     "flex w-full top-0 left-0 rounded-xl object-cover brightness-50",
   smDescriptionDivImage:
-    "sm:rounded-sm",
+    "sm:rounded-md",
 
   descriptionDivTextDiv:
-    "absolute top-0 left-0 flex flex-col items-start self-center justify-start gap-5 py-20 px-20",
-  lgDescriptionDivTextDiv: "lg:px-16 lg:gap-2 lg:py-3",
+    "relative w-full flex flex-col items-start self-center justify-start gap-5 py-20 px-20",
+  lgDescriptionDivTextDiv: "lg:py-3 lg:px-16 lg:gap-2",
   mdDescriptionDivTextDiv: "md:py-2 md:px-14 md:gap-2",
-  smDescriptionDivTextDiv: "sm:py-0 sm:px-2 sm:gap-1",
+  smDescriptionDivTextDiv: "sm:py-2 sm:px-2 sm:gap-1",
 
   descriptionDivTitleText: "text-6xl font-medium brightness-75",
   lgDescriptionDivTitleText: "lg:text-[1rem]",
@@ -68,9 +55,6 @@ const Home: React.FC<HomeProps> & {
 } = () => {
   return (
     <Fragment>
-      {/* <div className={`buttonBox ${
-            !isRecording ? toto : tata
-          }`}></div> */}
       <Head>
         <title>Nolosay</title>
         <meta
@@ -91,11 +75,6 @@ const Home: React.FC<HomeProps> & {
           />
         </div>
         <div className={`Home/descriptionDiv ${styles["descriptionDiv"]} ${styles["mdDescriptionDiv"]} ${styles["smDescriptionDiv"]}`}>
-          <img
-            className={`Home/descriptionDivImage ${styles["descriptionDivImage"]} ${styles["smDescriptionDivImage"]}`}
-            alt="Map as a background"
-            src="/images/map.png"
-          />
           <div
             className={`Home/descriptionDivTextDiv ${styles["descriptionDivTextDiv"]} ${styles["mdDescriptionDivTextDiv"]} ${styles["smDescriptionDivTextDiv"]} ${styles["lgDescriptionDivTextDiv"]}`}
           >

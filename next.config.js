@@ -31,6 +31,11 @@ module.exports = {
           destination: "/screen/videoCaptureSection/RecordVideo",
           permanent: true,
         },
+        {
+          source: "/about",
+          destination: "/screen/about/About",
+          permanent: true,
+        },
       ];
     },
   };

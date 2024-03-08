@@ -42,7 +42,7 @@ const NavBar: React.FC = () => {
           Trouver une traduction
         </NavbarLink>
 
-        {/* remove the commented code below when the development of the page are done */}
+        {/* remove the commented code below when the development of the pages is done */}
         {/* <NavbarLink
           as="/tickets"
           href="/screen/creationSection/artworkToTranslateSelectionSection/ArtworkToTranslateSelectionScreen"
