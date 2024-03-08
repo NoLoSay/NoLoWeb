@@ -45,7 +45,7 @@
     "build": "next build && next export -o build/",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.js\"",
+    "format": "prettier --write \"**/*.ts\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   }
