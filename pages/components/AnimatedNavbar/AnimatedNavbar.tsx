@@ -66,7 +66,7 @@ const NavLinks = (props: NavLinkProps) => {
 const LoginButton = () => {
   return (
     <div className="flex flex-row justify-between items-center space-x-4">
-      <Link href={"/screen/home"} className="hidden lg:flex flex-row items-center gap-8 text-gray-200">
+      <Link href={"/screen/home"} className="flex flex-row items-center gap-8 text-gray-200">
         <div className="font-medium">Je me connecte</div>
       </Link>
       <Link href={"/screen/home"} className="rounded-full bg-gray-300 flex items-center justify-center py-2 px-6 gap-2 text-base-white font-semibold">
@@ -127,7 +127,7 @@ const AnimatedNavbar = (props: NavbarProps) => {
       <LogoButton />
       {props.InApp ? <SearchBar /> : <NavLinks links={[...NavLinksItems]} />}
 
-      <div className="hidden lg:flex flex-row items-center gap-8 text-gray-200">
+      <div className="flex flex-row items-center gap-8 text-gray-200">
         <Divider orientation="vertical" variant="middle" flexItem />
         {props.IsLogged ? <ProfileButton /> : <LoginButton />}
       </div>

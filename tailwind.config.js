@@ -5,7 +5,17 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      sm: { max: "767px" },
+
+      md: { min: "768px", max: "1023px" },
+
+      lg: { min: "1024px", max: "1800px" },
+    },
     extend: {
+      backgroundImage: theme => ({
+        'map': "url('/images/map.png')",
+      }),
       colors: {
         "base-white": "#fff",
         "gray-300": "#1e303a",
