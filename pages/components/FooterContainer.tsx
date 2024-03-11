@@ -1,13 +1,13 @@
-import Link from "../../node_modules/next/link";
+import Link from "next/link";
 
 const styles: { [key: string]: string } = {
   mainDiv:
     "relative w-full bg-gray-300 px-14 py-14 text-white text-left font-poppins flex flex-row justify-between",
-  smMainDiv: "sm:p-0 sm:justify-normal sm:flex-col",
+  smMainDiv: "sm:py-8 sm:justify-normal sm:flex-col sm:gap-8",
 
   descriptionDiv:
-    "flex flex-col items-start justify-evenly gap-y-[1rem]",
-  smDescriptionDiv: "sm:scale-[0.6]",
+    "flex flex-col items-start justify-evenly gap-y-[1rem] flex-3",
+  smDescriptionDiv: "sm:gap-6",
 
   titleDesciptionDiv: "flex flex-row justify-start gap-2",
 
@@ -17,19 +17,24 @@ const styles: { [key: string]: string } = {
 
   descriptionText: "",
 
-  informationsDiv: "informations flex flex-col items-start justify-evenly",
-  smInformationsDiv: "sm:scale-[0.6]",
+  informationsDiv:
+    "informations flex flex-col items-start justify-evenly flex-1",
+  smInformationsDiv: "sm:gap-4",
 
   informationsContentDivs: "flex items-center justify-start gap-2",
 
-  aboutLink: "text-blue-400 hover:underline"
+  contactLink: "text-white",
+
+  aboutLink: "text-blue-400 hover:underline",
 };
 
 /* rework */
 const FooterContainer: React.FC = () => {
   return (
     <div className={`mainDiv ${styles["mainDiv"]} ${styles["smMainDiv"]}`}>
-      <div className={`descriptionDiv ${styles["descriptionDiv"]} ${styles["smDescriptionDiv"]}`}>
+      <div
+        className={`descriptionDiv ${styles["descriptionDiv"]} ${styles["smDescriptionDiv"]}`}
+      >
         <div className={`titleDesciptionDiv ${styles["titleDesciptionDiv"]}`}>
           <img
             className={`titleLogo ${styles["titleLogo"]}`}
@@ -42,16 +47,23 @@ const FooterContainer: React.FC = () => {
             src="/images/logo/nolosay-white.png"
           />
         </div>
-        <p style={{maxWidth: "24rem"}} className={`descriptionText ${styles["descriptionText"]}`}>
+        <p
+          style={{}}
+          className={`descriptionText ${styles["descriptionText"]}`}
+        >
           Nolosay est un groupe composé d'étudiants passionnés et déterminés à
           créer un changement positif dans la vie quotidienne des personnes
           sourdes ou malentendantes. Leur objectif est clair : rendre
           l'information et la communication accessibles à tous, en brisant les
           barrières linguistiques.
         </p>
-        <p>© 2023 NOLOSAY. Tous droits réservés.</p>
+        <p>
+          © 2022 - {new Date().getFullYear()} NOLOSAY. Tous droits réservés.
+        </p>
       </div>
-      <div className={`informationsDiv ${styles["informationsDiv"]} ${styles["smInformationsDiv"]}`}>
+      <div
+        className={`informationsDiv ${styles["informationsDiv"]} ${styles["smInformationsDiv"]}`}
+      >
         <b>Informations</b>
         <p className="w-32">Mentions légales</p>
         <div
@@ -62,7 +74,11 @@ const FooterContainer: React.FC = () => {
             alt="phone logo"
             src="/icon/full/communication--phone.png"
           />
-          <p>02.97.67.80.87</p>
+          <p>
+            <Link href="tel:+330297678087" className={styles["contactLink"]}>
+              +33 02.97.67.80.87
+            </Link>
+          </p>
         </div>
         <div
           className={`informationsContentDivs ${styles["informationsContentDivs"]}`}
@@ -72,9 +88,17 @@ const FooterContainer: React.FC = () => {
             alt="mail logo"
             src="/icon/full/communication--mail.png"
           />
-          <p>contact@nolosay.fr</p>
+          <Link href="to:contact@nolosay.fr" className={styles["contactLink"]}>
+            contact@nolosay.fr
+          </Link>
         </div>
-        <Link href="/screen/about/About" as="/about" className={styles["aboutLink"]}>About</Link>
+        <Link
+          href="/screen/about/About"
+          as="/about"
+          className={styles["aboutLink"]}
+        >
+          About
+        </Link>
       </div>
     </div>
   );
