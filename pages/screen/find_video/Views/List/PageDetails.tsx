@@ -1,8 +1,14 @@
 // pages/PageDetails.tsx
+import React from 'react';
 import { useRouter } from 'next/router';
 import { NextPage } from 'next';
+import Layout from "../../../../components/Layout";
 
-const PageDetails: NextPage = () => {
+interface FindVideoProps {}
+
+const PageDetails: React.FC<FindVideoProps> & {
+  getLayout: (page: React.ReactNode) => React.ReactNode;
+} = () => {
   const router = useRouter();
 
   // Utilisez router.query pour accéder aux paramètres de requête
@@ -16,7 +22,7 @@ const PageDetails: NextPage = () => {
   const getVideoCountPlaceholder = Array.isArray(videoCountPlaceholder) ? videoCountPlaceholder[0] : videoCountPlaceholder;
 
   return (
-    <div>
+    <div className='text-darkslategray font-poppins'>
       <h1>{getTitle1}</h1>
       <h2>{getTitle2}</h2>
       <p>{getDescription}</p>
@@ -27,3 +33,8 @@ const PageDetails: NextPage = () => {
 };
 
 export default PageDetails;
+
+PageDetails.getLayout = function getLayout(page: React.ReactNode) {
+  return <Layout>{page}</Layout>;
+};
+
