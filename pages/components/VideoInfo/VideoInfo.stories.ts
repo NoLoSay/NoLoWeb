@@ -16,15 +16,13 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
-    infos: {
-      description:  "une description qui pourrait etre plus longue mais ca fait l'affaire",
-      spec: {
-        creator: "Date: 28 Juillet 1992",
-        location: "Lieu: Drancy",
-        date: "28 Juillet 1992",
-        style: "Pastel et huile",
-        price: "42M $"
-      }
+    description: "une description qui pourrait etre plus longue mais ca fait l'affaire",
+    spec: {
+      creator: "Date: 28 Juillet 1992",
+      location: "Lieu: Drancy",
+      date: "28 Juillet 1992",
+      style: "Pastel et huile",
+      price: "42M $"
     }
-  },
+  }
 };

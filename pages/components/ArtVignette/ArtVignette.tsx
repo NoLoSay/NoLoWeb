@@ -2,7 +2,13 @@ import { Fragment } from "react";
 import { ButtonBase, Paper } from "@mui/material";
 import { title } from "process";
 
-function ArtVignette({ title, description, img }: any) {
+type VignetteInfos = {
+  title: string;
+  description: string;
+  img: string;
+};
+
+function ArtVignette({ title, description, img }: VignetteInfos) {
   return (
     <Paper className="m-5 flex flex-row items-center rounded-lg">
       <img src={img} className="h-40 w-40 p-5 object-cover" />

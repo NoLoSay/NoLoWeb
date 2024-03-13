@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, ReactNode } from "react";
 import Head from "next/head";
 import Layout from "../../components/Layout";
 import ArtCard from "../../components/ArtCard/ArtCard";
@@ -12,7 +12,12 @@ const VideoAccess = () => {
         <title>Nolosay</title>
       </Head>
       <div>
-        <ArtCard infos={infosJson} />
+        <ArtCard
+          title={infosJson.title}
+          videoPath={infosJson.videoPath}
+          artImage={infosJson.artImage}
+          description={infosJson.description}
+          spec={infosJson.spec}/>
         <div className="w-4/5 mx-auto py-14">
           <p className="text-black">Découvrez d'autres oeuvres similaires :</p>
           <div className=" grid grid-cols-3 space-5">
@@ -29,7 +34,7 @@ const VideoAccess = () => {
   );
 };
 
-VideoAccess.getLayout = function getLayout(page: any) {
+VideoAccess.getLayout = function getLayout(page: ReactNode) {
   return <Layout>{page}</Layout>;
 };
 

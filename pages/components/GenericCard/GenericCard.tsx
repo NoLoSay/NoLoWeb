@@ -1,6 +1,12 @@
 import { Paper } from "@mui/material";
 
-function GenericCard({ title, text, imgPath }: any) {
+type CardProps = {
+  title: string;
+  text: string;
+  imgPath?: string;
+};
+
+function GenericCard({ title, text, imgPath }: CardProps) {
   return (
     <Paper className={`flex flex-col items-center p-3 space-y-5 m-5`}>
       <h1 className="font-sans text-6xl">{title}</h1>

@@ -2,6 +2,12 @@ import { Paper } from "@mui/material";
 import { LineChart, Line } from 'recharts';
 import MovingIcon from '@mui/icons-material/Moving';
 
+type GraphProps = {
+  title?: string;
+  datas?: any[];
+  value?: any;
+};
+
 const otherObjects = [
   { name: 'Page B', uv: 300, pv: 1000, amt: 1500 },
   { name: 'Page C', uv: 600, pv: 2000, amt: 1800 }
@@ -9,7 +15,7 @@ const otherObjects = [
 
 const data = [{ name: 'Page A', uv: 400, pv: 2400, amt: 2400 }, ...otherObjects];
 
-function GraphCard({ title, datas, value }: any) {
+function GraphCard({ title, datas, value }: GraphProps) {
   return (
     <Paper className={`flex flex-col items-center p-3 space-y-5 m-5`}>
       <p className="font-sans font-bold">{title}</p>

@@ -4,6 +4,7 @@ import Layout from "../../components/Layout";
 import TitleCard from "../../components/TitleCard/TitleCard";
 import VideoVignette from "../../components/VideoVignette/VideoVignette";
 import ArtVignette from "../../components/ArtVignette/ArtVignette";
+import { ReactNode } from "react";
 
 const Location = () => {
   return (
@@ -19,12 +20,12 @@ const Location = () => {
         <div className="flex flex-col">
           <h2 className="text-black">Oeuvre accessibles</h2>
           <div className=" grid grid-cols-3 space-5">
-            <ArtVignette img="/images/castle/old-castle.png" title="Tableau de Louis XIV" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={22} />
-            <ArtVignette img="/images/castle/old-castle.png" title="Tableau de Louis XIV" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={22} />
-            <ArtVignette img="/images/castle/old-castle.png" title="Tableau de Louis XIV" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={22} />
-            <ArtVignette img="/images/castle/old-castle.png" title="Tableau de Louis XIV" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={22} />
-            <ArtVignette img="/images/castle/old-castle.png" title="Tableau de Louis XIV" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={22} />
-            <ArtVignette img="/images/castle/old-castle.png" title="Tableau de Louis XIV" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum" certified={22} />
+            <ArtVignette img="/images/castle/old-castle.png" title="Tableau de Louis XIV" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum"/>
+            <ArtVignette img="/images/castle/old-castle.png" title="Tableau de Louis XIV" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum"/>
+            <ArtVignette img="/images/castle/old-castle.png" title="Tableau de Louis XIV" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum"/>
+            <ArtVignette img="/images/castle/old-castle.png" title="Tableau de Louis XIV" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum"/>
+            <ArtVignette img="/images/castle/old-castle.png" title="Tableau de Louis XIV" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum"/>
+            <ArtVignette img="/images/castle/old-castle.png" title="Tableau de Louis XIV" description="Lorem Imsum Lorem Imsum Lorem Imsum v vLorem Imsum Lorem Imsum Lorem Imsum"/>
           </div>
         </div>
       </div>
@@ -32,7 +33,7 @@ const Location = () => {
   );
 };
 
-Location.getLayout = function getLayout(page: any) {
+Location.getLayout = function getLayout(page: ReactNode) {
   return <Layout>{page}</Layout>;
 };
 

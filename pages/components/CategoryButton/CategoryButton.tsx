@@ -2,7 +2,13 @@ import { ButtonBase } from "@mui/material"
 import PersonIcon from '@mui/icons-material/Person';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-const CategoryButton = ({ text, description, altColor }: any) => {
+type CategoryProps = {
+  text?: string;
+  description?: string;
+  altColor?: boolean;
+};
+
+const CategoryButton = ({ text, description, altColor }: CategoryProps) => {
   return (
 
     <ButtonBase disableRipple className="w-full h-full">

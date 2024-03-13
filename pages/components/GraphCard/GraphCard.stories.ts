@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args:{
     title: "Nombre de vues de la semaine",
-    data: "",
+    datas: ["", ""],
     value: "8456"
   }
 };

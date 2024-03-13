@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, ReactNode } from "react";
 import Head from "next/head";
 import Layout from "../../components/Layout";
 import GenericCard from "../../components/GenericCard/GenericCard";
@@ -8,7 +8,12 @@ import testProfile from "../../../stories/assets/testProfile.json"
 import CategoryButton from "../../components/CategoryButton/CategoryButton";
 import GraphCard from "../../components/GraphCard/GraphCard";
 
-const BigButton = ({ label, textSize }: any) => {
+type BigButtonProps = {
+  label: string;
+  textSize: string;
+};
+
+const BigButton = ({ label, textSize }: BigButtonProps) => {
   return (
     <ButtonBase
       className={"shadow-lg items-center rounded-lg font-sans font-bold p-5 w-full" + ' ' + textSize}
@@ -42,7 +47,7 @@ const Account = () => {
 
         </div>
         <div>
-          <ProfileCard infos={testProfile} />
+          <ProfileCard cityId={testProfile.cityId} email={testProfile.email} firstName={testProfile.firstName} lastName={testProfile.lastName} phone={testProfile.phone} profilePicturePath={testProfile.profilePicturePath} />
           <div className="space-y-3 m-5">
             <CategoryButton altColor description="Faire des changements sur mon compte" text="Mon compte" />
             <CategoryButton altColor description="Faire des changements sur mon compte" text="Biométrie" />
@@ -60,7 +65,7 @@ const Account = () => {
   );
 };
 
-Account.getLayout = function getLayout(page: any) {
+Account.getLayout = function getLayout(page: ReactNode) {
   return <Layout>{page}</Layout>;
 };
 
