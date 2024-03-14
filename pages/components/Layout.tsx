@@ -5,8 +5,8 @@ import FooterContainer from "./FooterContainer";
 import NewsletterField from "./NewsletterField/NewsletterField";
 import AnimatedNavbar from "./AnimatedNavbar/AnimatedNavbar";
 
-  interface LayoutProps {
-    children: ReactNode;
+interface LayoutProps {
+  children: ReactNode;
 }
 
 const styles: { [key: string]: string } = {
@@ -21,12 +21,9 @@ const styles: { [key: string]: string } = {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className={styles["mainDiv"]}>
-      <AnimatedNavbar/>
+      <AnimatedNavbar />
       {children}
-      <div>
-        <NewsletterField />
-        <FooterContainer />
-      </div>
+      <FooterContainer />
     </div>
   );
 };

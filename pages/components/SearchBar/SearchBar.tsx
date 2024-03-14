@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { TextField, IconButton, InputLabel } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
+import { ChangeEventHandler } from "react";
 
 const SearchBar = () => {
   const [isInputFocused, setIsInputFocused] = useState(false);
@@ -12,6 +13,10 @@ const SearchBar = () => {
 
   function enableFocus() {
     setIsInputFocused(true)
+  }
+
+  function onTextChange(event: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>) {
+    setInputValue(event.target.value);
   }
 
   return (

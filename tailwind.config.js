@@ -14,7 +14,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: theme => ({
-        'map': "url('/images/map.png')",
+        'map': "url('../public/images/map.png')",
       }),
       flex: {
         "1": "1 1 0%",
