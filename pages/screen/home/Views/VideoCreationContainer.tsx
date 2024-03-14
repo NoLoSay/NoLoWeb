@@ -44,31 +44,23 @@ const VideoCreationContainer: React.FC = () => {
       <p
         className={`VideoCreationContainer/title ${styles["title"]} ${styles["mdTitle"]} ${styles["smTitle"]}`}
       >
-        Pour créer une vidéo, rien de plus simple !
+        Vous pourrez acceder à de nombreuses focntionnalitées :
       </p>
       <div
         className={`VideoCreationContainer/contentDiv ${styles["contentDiv"]} ${styles["mdContentDiv"]} ${styles["smContentDiv"]}`}
       >
         <ol type="1">
-          <div
-            className={`VideoCreationContainer/firstLineDiv ${styles["firstLineDiv"]}`}
-          >
-            <li>Appuie sur</li>
-            <img
-              className={`VideoCreationContainer/addImg ${styles["addImg"]}`}
-              alt=""
-              src="/icon/full/add.png"
-            />
-            <p>puis sélectionne “Vidéo à créer”</p>
-          </div>
-          <li>Choisi une oeuvre à traduire</li>
-          <li>Te voila prêt à débuter ta création !</li>
+          <li>Acceder à des videos</li>
+          <li>Trouver le lieux de son choix</li>
+          <li>Choisir la video qui nous correspond le mieux</li>
+          <li> Trouver un lieux à traduire</li>
+          <li>Creer sa propre traduction en video !</li>
         </ol>
       </div>
       <button
         className={`VideoCreationContainer/translateButton ${styles["translateButton"]}`}
       >
-        + Traduire une oeuvre
+        Et de nombreuses autres....
       </button>
     </div>
   );

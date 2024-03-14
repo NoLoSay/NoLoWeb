@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const styles: { [key: string]: string } = {
   mainDiv:
-    "relative w-full bg-gray-300 px-14 py-14 text-white text-left font-poppins flex flex-row justify-between",
+    "relative w-full bg-gray-300 px-14 py-10 text-white text-left font-poppins flex flex-row justify-between gap-y-16",
   smMainDiv: "sm:py-8 sm:justify-normal sm:flex-col sm:gap-8",
 
   descriptionDiv:

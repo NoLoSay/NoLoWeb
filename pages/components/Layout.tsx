@@ -13,7 +13,7 @@ const styles: { [key: string]: string } = {
 
   /* Rework */
   mainDiv:
-    "bg-base-white flex flex-col w-full text-left text-mini text-base-white font-poppins gap-y-3 min-h-screen",
+    " w-full text-left text-mini text-base-white font-poppins min-h-screen",
 };
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {

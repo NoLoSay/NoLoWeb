@@ -3,11 +3,14 @@ import Head from "next/head";
 import DownloadContainer from "./Views/DownloadContainer";
 import VideoCreationContainer from "./Views/VideoCreationContainer";
 import Layout from "../../components/Layout";
+import { motion, useInView, useScroll } from "framer-motion";
+import { useEffect, useRef } from 'react';
+
 
 interface HomeProps {}
 
 const styles: { [key: string]: string } = {
-  mainDiv: "relative w-full flex flex-col items-center justify-center gap-y-5",
+  mainDiv: " flex flex-col items-center justify-center gap-y-16 pb-10 pt-5",
 
   videoCreationDiv: "w-3/4 flex flex-row justify-start gap-2",
   mdVideoCreationDiv: "md:flex-col md:w-3/4",
@@ -15,7 +18,7 @@ const styles: { [key: string]: string } = {
 
   videoCreationImage: "relative w-3/4 self-center",
 
-  descriptionDiv: "relative rounded-xl bg-gray-300 bg-cover bg-[url(/images/map.png)] w-4/5 justify-start",
+  descriptionDiv: "relative w-4/5 rounded-xl  p-10 bg-gray-300 bg-cover bg-[url(/images/map.png)] justify-start ",
   lgDescriptionDiv:
     "lg:h-1/4 lg:w-6/7",
   mdDescriptionDiv:
@@ -29,7 +32,7 @@ const styles: { [key: string]: string } = {
     "sm:rounded-md",
 
   descriptionDivTextDiv:
-    "relative w-full flex flex-col items-start self-center justify-start gap-5 py-20 px-20",
+    "relative w-full flex flex-col items-start self-center justify-start gap-5 py-20 px-10",
   lgDescriptionDivTextDiv: "lg:py-3 lg:px-16 lg:gap-2",
   mdDescriptionDivTextDiv: "md:py-2 md:px-14 md:gap-2",
   smDescriptionDivTextDiv: "sm:py-2 sm:px-2 sm:gap-1",
@@ -53,6 +56,9 @@ const styles: { [key: string]: string } = {
 const Home: React.FC<HomeProps> & {
   getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
+  const skillRef = useRef(null);
+  const DownRef = useRef(null);
+  const isDownRefInView = useInView(DownRef, {});
   return (
     <Fragment>
       <Head>
@@ -63,11 +69,20 @@ const Home: React.FC<HomeProps> & {
         />
       </Head>
       <div className={`mainDiv ${styles["mainDiv"]}`}>
+
         <DownloadContainer />
         <div
           className={`videoCreationDiv ${styles["videoCreationDiv"]} ${styles["mdVideoCreationDiv"]} ${styles["smVideoCreationDiv"]} `}
         >
-          <VideoCreationContainer />
+          <motion.div
+            initial={{ opacity: 0}}
+            animate={isDownRefInView ? { opacity: 1 } : {opacity: 0}}
+            transition={{duration: 3}}
+            >
+          <div ref={DownRef}>
+          <VideoCreationContainer/>
+          </div>
+          </motion.div> 
           <img
             className={`Home/videoCreationImage ${styles["videoCreationImage"]}`}
             alt="Video Creation Image"
@@ -81,22 +96,28 @@ const Home: React.FC<HomeProps> & {
             <p
               className={`Home/descriptionDivTitleText ${styles["descriptionDivTitleText"]} ${styles["lgDescriptionDivTitleText"]} ${styles["mdDescriptionDivTitleText"]} ${styles["smDescriptionDivTitleText"]}`}
             >
-              5,5 millions de personnes utilisent déjà Nolosay au quotidien.
+              7 MILLIONS de personnes sourdes ou malentendantes en France
             </p>
             <p
               className={`Home/descriptionDivSubtitleText ${styles["descriptionDivSubtitleText"]} ${styles["lgDescriptionDivSubtitleText"]} ${styles["mdDescriptionDivSubtitleText"]} ${styles["smDescriptionDivSubtitleText"]}`}
             >
-              Accèdez à +1000 vidéos traduites en langue des signes
+              65% d'en eux ont des difficultés avec la langue française écrite
+            </p>
+            <p
+              className={`Home/descriptionDivSubtitleText ${styles["descriptionDivSubtitleText"]} ${styles["lgDescriptionDivSubtitleText"]} ${styles["mdDescriptionDivSubtitleText"]} ${styles["smDescriptionDivSubtitleText"]}`}
+            >
+              34% SONT INACTIFS
             </p>
             <p
               className={`Home/descriptionDivText ${styles["descriptionDivText"]} ${styles["lgDescriptionDivText"]} ${styles["mdDescriptionDivText"]} ${styles["smDescriptionDivText"]}`}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-              risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
-              nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-              ligula massa, varius a, semper congue, euismod non, mi. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-              Suspendisse lectus tortor.
+              Faciliter l'accès aux lieux pour les personnes sourdes utilisant la LSF revêt une importance 
+              cruciale. L'inclusion sociale dépend de la mise en place de mesures adaptées, permettant à 
+              chacun de participer pleinement à la vie communautaire. En rendant les environnements 
+              accessibles, nous favorisons l'égalité des chances, la communication fluide et l'intégration 
+              harmonieuse de tous, garantissant ainsi une société véritablement inclusive. L'accessibilité, loin 
+              d'être une option, devient un impératif pour construire un monde où chaque individu 
+              peut s'épanouir sans entraves
             </p>
           </div>
         </div>

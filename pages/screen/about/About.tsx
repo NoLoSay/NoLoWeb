@@ -1,7 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, useRef } from "react";
 import Head from "next/head";
 import Layout from "../../components/Layout";
 import Container from "./Views/Container";
+import Timeline from "./Views/Timeline";
+import { motion, useInView } from "framer-motion";
+
 
 interface AboutProps {}
 
@@ -29,6 +32,10 @@ const styles: { [key: string]: string } = {
 const About: React.FC<AboutProps> & {
   getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
+  const experienceRef = useRef(null);
+  const isExperienceRefInView = useInView(experienceRef, { margin: "-100px" });
+  const ContentRef = useRef(null);
+  const isContentRefInView = useInView(ContentRef, {});
   return (
     <Fragment>
       <Head>
@@ -49,7 +56,7 @@ const About: React.FC<AboutProps> & {
             <div className={styles.TeamText}>L’équipe NOLOSAY !</div>
           </div>
         </div>
-        <div className={styles.ContentDiv}>
+        <div className={styles.ContentDiv} ref={ContentRef}>
           <span className={styles.ContentText}>
             NoLoSay est un projet étudiant de 8 personnes en 4ème année du
             Programme Grande École à EPITECH. Le projet se déroule sur 3 ans et
@@ -63,8 +70,18 @@ const About: React.FC<AboutProps> & {
             src="/images/logo/logoEpitech.png"
           />
         </div>
+
+        <div ref={experienceRef}>
+        <motion.div
+          initial={{ x: "+300px" }}
+          animate={isExperienceRefInView ? { x: "0" } : {}}
+          transition={{ delay: 0.2 }}
+        >
         <Container />
+        </motion.div>
+        </div>
       </div>
+      <Timeline />
     </Fragment>
   );
 };

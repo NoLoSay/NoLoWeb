@@ -1,6 +1,8 @@
 import "../styles/global.css";
 import Head from "next/head";
 import { AppProps } from "next/app";
+import { useEffect } from "react";
+import { animateScroll as scroll } from 'react-scroll';
 
 interface MyAppProps extends AppProps {
   Component: React.ComponentType & {
@@ -10,6 +12,11 @@ interface MyAppProps extends AppProps {
 
 export default function MyApp({ Component, pageProps }: MyAppProps) {
   const getLayout = Component.getLayout || ((page: React.ReactNode) => page);
+
+  useEffect(() => {
+    scroll.scrollToTop();
+  }, []);
+
 
   return (
     <div>

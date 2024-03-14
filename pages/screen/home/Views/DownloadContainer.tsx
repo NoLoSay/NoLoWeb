@@ -35,7 +35,7 @@ const styles: { [key: string]: string } = {
   mdTitleText: "md:text-[3rem]",
   smTitleText: "sm:text-[2rem]",
 
-  nolosayText: "text-[2.25rem] font-medium",
+  nolosayText: "text-[2.25rem] font-medium pt-7",
   mdNolosayText: "md:text-[1.25rem]",
   smNolosayText: "sm:text-[0.75rem]",
 
@@ -75,20 +75,8 @@ const DownloadContainer: React.FC = () => {
           <p
             className={`DownloadContainer/nolosayText ${styles["nolosayText"]} ${styles["mdNolosayText"]} ${styles["smNolosayText"]}`}
           >
-            ton assistant de visite 100% interactif !
+            La premère plateforme communautaire de diffusion et creation de video en langue des signes !
           </p>
-        </div>
-        <div className={`DownloadContainer/iconDiv ${styles["iconDiv"]}`}>
-          <img
-            className={`DownloadContainer/iconImg ${styles["iconImg"]}`}
-            alt=""
-            src="/icon/social/app-store.png"
-          />
-          <img
-            className={`DownloadContainer/iconImg ${styles["iconImg"]}`}
-            alt=""
-            src="/icon/social/google-play.png"
-          />
         </div>
       </div>
       {/* <img className={styles["LineImg"]} alt="" src="/images/line.png" /> */}
