@@ -35,7 +35,7 @@ const SearchBar = () => {
       }}
       onFocus={enableFocus}
       onBlur={removeFocus}
-      onChange={(event) => setInputValue(event.target.value)}
+      onChange={onTextChange}
     />
   );
 }
