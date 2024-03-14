@@ -13,7 +13,7 @@ type NavLinkProps = {
 
 type NavbarProps = {
   InApp?: boolean;
-  IsLogged?: boolean;
+  LoginStatus?: boolean;
 };
 
 const NavLinksItems = [
@@ -47,9 +47,9 @@ const LogoButton = () => {
   );
 }
 
-const NavLinks = (props: NavLinkProps) => {
+const NavLinks = ({links}: NavLinkProps) => {
   const renderLinks = () => {
-    return props.links.map((link, index) => (
+    return links.map((link, index) => (
       <Link key={index} href={link.href} className="text-zinc-500 hover:underline underline-offset-2">
         {link.title}
       </Link>
@@ -76,10 +76,10 @@ const LoginButton = () => {
   );
 }
 
-export function LinkList(props: NavLinkProps) {
+export function LinkList({links}: NavLinkProps) {
 
   const renderLinks = () => {
-    return props.links.map((link, index) => (
+    return links.map((link, index) => (
       <ListItem disablePadding>
         <ListItemButton href={link.href}>
           <ListItemText primary={link.title} />
@@ -108,14 +108,13 @@ export function LinkList(props: NavLinkProps) {
   );
 }
 
-const AnimatedNavbar = (props: NavbarProps) => {
-  const [searchBarNeeded, setSearchBarNeeded] = useState(false);
+const AnimatedNavbar = ({InApp, LoginStatus}: NavbarProps) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isLogged, setIsLogged] = useState(props.IsLogged);
+  const [isLogged, setIsLogged] = useState(LoginStatus);
 
   return (
     <div className="flex flex-row items-center px-10 h-20 shadow-md">
-      {props.InApp ? (
+      {InApp && (
         <div>
           <IconButton sx={{ paddingX: 2 }} onClick={() => setIsDrawerOpen(true)}>
             <Menu />
@@ -123,13 +122,13 @@ const AnimatedNavbar = (props: NavbarProps) => {
           <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
             <LinkList links={[...NavLinksItems]} />
           </Drawer>
-        </div>) : null}
+        </div>)}
       <LogoButton />
-      {props.InApp ? <SearchBar /> : <NavLinks links={[...NavLinksItems]} />}
+      {InApp ? <SearchBar /> : <NavLinks links={[...NavLinksItems]} />}
 
       <div className="flex flex-row items-center gap-8 text-gray-200">
         <Divider orientation="vertical" variant="middle" flexItem />
-        {props.IsLogged ? <ProfileButton /> : <LoginButton />}
+        {isLogged ? <ProfileButton /> : <LoginButton />}
       </div>
     </div>
   );

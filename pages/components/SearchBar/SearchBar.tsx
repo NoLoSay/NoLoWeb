@@ -6,6 +6,14 @@ const SearchBar = () => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
+  function removeFocus() {
+    setIsInputFocused(false)
+  }
+
+  function enableFocus() {
+    setIsInputFocused(true)
+  }
+
   return (
     <TextField
       id="search-bar"
@@ -20,8 +28,8 @@ const SearchBar = () => {
           </IconButton>
         ),
       }}
-      onFocus={() => setIsInputFocused(true)}
-      onBlur={() => setIsInputFocused(false)}
+      onFocus={enableFocus}
+      onBlur={removeFocus}
       onChange={(event) => setInputValue(event.target.value)}
     />
   );
