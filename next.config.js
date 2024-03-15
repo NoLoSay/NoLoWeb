@@ -12,6 +12,18 @@ module.exports = {
           permanent: true,
         },
         {
+          source: "/videoAccess",
+          destination: "/screen/videoAccess/VideoAccess",
+          permanent: true,
+        },
+        {
+          source: "/location",
+          destination: "/screen/location/Location",
+          permanent: true,
+        },
+        {
+          source: "/account",
+          destination: "/screen/account/Account",
           source: "/connection",
           destination: "/screen/authenticationSection/connection/ConnectionScreen",
           permanent: true

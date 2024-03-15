@@ -13,6 +13,9 @@ module.exports = {
       lg: { min: "1024px", max: "1800px" },
     },
     extend: {
+      backgroundImage: theme => ({
+        'map': "url('../public/images/map.png')",
+      }),
       flex: {
         "1": "1 1 0%",
         '2': '2 2 0%',

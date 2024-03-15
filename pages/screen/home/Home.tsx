@@ -15,7 +15,7 @@ const styles: { [key: string]: string } = {
 
   videoCreationImage: "relative w-3/4 self-center",
 
-  descriptionDiv: "relative rounded-xl bg-gray-300 bg-cover bg-[url(/images/map.png)] w-4/5 justify-start",
+  descriptionDiv: "relative rounded-xl bg-gray-300 bg-cover bg-map w-4/5 justify-start",
   lgDescriptionDiv:
     "lg:h-1/4 lg:w-6/7",
   mdDescriptionDiv:
