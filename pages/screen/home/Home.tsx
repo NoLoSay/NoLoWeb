@@ -3,6 +3,7 @@ import Head from "next/head";
 import DownloadContainer from "./Views/DownloadContainer";
 import VideoCreationContainer from "./Views/VideoCreationContainer";
 import Layout from "../../components/Layout";
+import APITester from "../../components/APITester/APITester";
 
 interface HomeProps {}
 
@@ -67,6 +68,7 @@ const Home: React.FC<HomeProps> & {
         <div
           className={`videoCreationDiv ${styles["videoCreationDiv"]} ${styles["mdVideoCreationDiv"]} ${styles["smVideoCreationDiv"]} `}
         >
+          <APITester apiRoute="https://localhost:3001/auth/google" />
           <VideoCreationContainer />
           <img
             className={`Home/videoCreationImage ${styles["videoCreationImage"]}`}
