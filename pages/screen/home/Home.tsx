@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import Head from "next/head";
 import DownloadContainer from "./Views/DownloadContainer";
 import VideoCreationContainer from "./Views/VideoCreationContainer";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/Layout";
 
 interface HomeProps {}
 

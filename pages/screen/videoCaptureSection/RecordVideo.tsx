@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/Layout";
 
 const toto: string = "bg-yellow-300 text-base-white";
 const tata: string = "bg-base-black text-yellow-300";
