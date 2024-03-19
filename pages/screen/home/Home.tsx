@@ -83,12 +83,12 @@ const Home: React.FC<HomeProps> & {
             <p
               className={`Home/descriptionDivTitleText ${styles["descriptionDivTitleText"]} ${styles["lgDescriptionDivTitleText"]} ${styles["mdDescriptionDivTitleText"]} ${styles["smDescriptionDivTitleText"]}`}
             >
-              {textData.page.home.descriptionDiv.title1}
+              {textData.page.home.descriptionDiv.title}
             </p>
             <p
               className={`Home/descriptionDivSubtitleText ${styles["descriptionDivSubtitleText"]} ${styles["lgDescriptionDivSubtitleText"]} ${styles["mdDescriptionDivSubtitleText"]} ${styles["smDescriptionDivSubtitleText"]}`}
             >
-              {textData.page.home.descriptionDiv.title2}
+              {textData.page.home.descriptionDiv.subtitle}
             </p>
             <p
               className={`Home/descriptionDivText ${styles["descriptionDivText"]} ${styles["lgDescriptionDivText"]} ${styles["mdDescriptionDivText"]} ${styles["smDescriptionDivText"]}`}
