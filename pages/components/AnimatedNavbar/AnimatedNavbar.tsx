@@ -21,6 +21,10 @@ type NavbarProps = {
   LoginStatus?: boolean;
 };
 
+type LogoProps = {
+  className?: string;
+};
+
 const NavLinksItems = [
   { href: "/about", title: "Qui sommes-nous ?" },
   { href: "/nolosay-app", title: "Nolosay app" },
@@ -30,10 +34,10 @@ const NavLinksItems = [
   { href: "/account", title: "Mon compte" }
 ];
 
-const LogoButton = () => {
+const LogoButton = ({ className }: LogoProps) => {
   return (
-    <div className="flex items-center gap-2">
-      <img className="w-8 h-8" alt="" src="/images/logo/nologo.png" />
+    <div className={`flex items-center gap-2 ${className}`}>
+      <img className="visible w-8 h-8" alt="" src="/images/logo/nologo.png" />
       <NavbarLink
         as="/home"
         href="/screen/home/Home"
@@ -52,7 +56,7 @@ const LogoButton = () => {
   );
 }
 
-const NavLinks = ({links}: NavLinkProps) => {
+const NavLinks = ({ links }: NavLinkProps) => {
   const renderLinks = () => {
     return links.map((link, index) => (
       <Link key={index} href={link.href} className="text-zinc-500 hover:underline underline-offset-2">
@@ -81,7 +85,7 @@ const LoginButton = () => {
   );
 }
 
-export function LinkList({links, setIsDrawerOpen}: LinkListProps) {
+export function LinkList({ links, setIsDrawerOpen }: LinkListProps) {
 
   const renderLinks = () => {
     return links.map((link, index) => (
@@ -116,27 +120,34 @@ export function LinkList({links, setIsDrawerOpen}: LinkListProps) {
   );
 }
 
-const AnimatedNavbar = ({InApp, LoginStatus}: NavbarProps) => {
+const AnimatedNavbar = ({ InApp, LoginStatus }: NavbarProps) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLogged, setIsLogged] = useState(LoginStatus);
 
   return (
     <div className="flex flex-row items-center px-10 h-20 shadow-md">
-      {InApp && (
-        <div>
-          <IconButton sx={{ paddingX: 2 }} onClick={() => setIsDrawerOpen(true)}>
-            <Menu />
-          </IconButton>
-          <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-            <LinkList setIsDrawerOpen={setIsDrawerOpen} links={[...NavLinksItems]} />
-          </Drawer>
-        </div>)}
-      <LogoButton />
+
+      <div className={`${InApp ? "" : " hidden sm:block"}`}>
+        <IconButton sx={{ paddingX: 2 }} onClick={() => setIsDrawerOpen(true)}>
+          <Menu />
+        </IconButton>
+
+        <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
+          <LinkList setIsDrawerOpen={setIsDrawerOpen} links={[...NavLinksItems]} />
+          <div className="hidden sm:block flex flex-row items-center gap-8 text-gray-200 mt-auto">
+            <Divider orientation="vertical" variant="middle" flexItem />
+            {isLogged ? <ProfileButton /> : <LoginButton />}
+          </div>
+        </Drawer>
+      </div>
+
+      <LogoButton className={`${InApp ? "hidden" : " block sm:hidden"}`} />
+
       {InApp ? <SearchBar /> : <NavLinks links={[...NavLinksItems]} />}
 
-      <div className="flex flex-row items-center gap-8 text-gray-200">
-        <Divider orientation="vertical" variant="middle" flexItem />
+      <div className="sm:hidden flex flex-row items-center gap-8 text-gray-200">
         {isLogged ? <ProfileButton /> : <LoginButton />}
+        <Divider orientation="vertical" variant="middle" flexItem />
       </div>
     </div>
   );
