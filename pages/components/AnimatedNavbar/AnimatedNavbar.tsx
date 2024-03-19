@@ -2,12 +2,17 @@ import SearchBar from "../SearchBar/SearchBar";
 import NavbarLink from "../NavBarLink";
 import { useState } from "react";
 import Link from "next/link";
-import { Drawer, Box, List, ListItem, ListItemButton, ListItemText, Divider, IconButton } from "@mui/material";
-import { Menu } from "@mui/icons-material";
+import { Drawer, Box, List, ListItem, ListItemButton, ListItemText, Divider, IconButton, ButtonBase } from "@mui/material";
+import { ArrowBack, Menu } from "@mui/icons-material";
 import ProfileButton from "../ProfileButton/ProfileButton";
 
 
 type NavLinkProps = {
+  links: { href: string; title: string; }[];
+};
+
+type LinkListProps = {
+  setIsDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
   links: { href: string; title: string; }[];
 };
 
@@ -76,11 +81,11 @@ const LoginButton = () => {
   );
 }
 
-export function LinkList({links}: NavLinkProps) {
+export function LinkList({links, setIsDrawerOpen}: LinkListProps) {
 
   const renderLinks = () => {
     return links.map((link, index) => (
-      <ListItem disablePadding>
+      <ListItem disablePadding key={index}>
         <ListItemButton href={link.href}>
           <ListItemText primary={link.title} />
         </ListItemButton>
@@ -92,8 +97,11 @@ export function LinkList({links}: NavLinkProps) {
     <Box sx={{ width: '100%', minWidth: 360, bgcolor: 'background.paper' }}>
       <nav aria-label="main mailbox folders">
         <List>
-          <div className="p-3">
+          <div className="p-3 flex flex-row items-center justify-between">
             <LogoButton />
+            <button onClick={() => setIsDrawerOpen(false)} className="bg-white">
+              <ArrowBack />
+            </button>
           </div>
           <Divider />
           <ListItem disablePadding>
@@ -120,7 +128,7 @@ const AnimatedNavbar = ({InApp, LoginStatus}: NavbarProps) => {
             <Menu />
           </IconButton>
           <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-            <LinkList links={[...NavLinksItems]} />
+            <LinkList setIsDrawerOpen={setIsDrawerOpen} links={[...NavLinksItems]} />
           </Drawer>
         </div>)}
       <LogoButton />
