@@ -24,6 +24,9 @@ module.exports = {
         {
           source: "/account",
           destination: "/screen/account/Account",
+          permanent: true
+        },
+        {
           source: "/connection",
           destination: "/screen/authenticationSection/connection/ConnectionScreen",
           permanent: true

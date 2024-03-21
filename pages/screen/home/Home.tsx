@@ -23,11 +23,6 @@ const styles: { [key: string]: string } = {
   smDescriptionDiv:
     "sm:h-1/4 sm:w-9/10 sm:rounded-md",
 
-  descriptionDivImage:
-    "flex w-full top-0 left-0 rounded-xl object-cover brightness-50",
-  smDescriptionDivImage:
-    "sm:rounded-md",
-
   descriptionDivTextDiv:
     "relative w-full flex flex-col items-start self-center justify-start gap-5 py-20 px-20",
   lgDescriptionDivTextDiv: "lg:py-3 lg:px-16 lg:gap-2",
