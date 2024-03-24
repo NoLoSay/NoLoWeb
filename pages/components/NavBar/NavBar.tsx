@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import NavbarLink from "./NavBarLink";
+import NavbarLink from "../NavBarLink/NavBarLink";
 
 const styles: { [key: string]: string } = {
   mainDiv:

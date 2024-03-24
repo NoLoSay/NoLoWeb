@@ -1,5 +1,5 @@
 import SearchBar from "../SearchBar/SearchBar";
-import NavbarLink from "../NavBarLink";
+import NavbarLink from "../NavBarLink/NavBarLink";
 import { useState } from "react";
 import Link from "next/link";
 import { Drawer, Box, List, ListItem, ListItemButton, ListItemText, Divider, IconButton } from "@mui/material";
