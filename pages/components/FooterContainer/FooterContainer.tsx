@@ -1,4 +1,5 @@
 import Link from "next/link";
+import textData from "../../public/text.json";
 
 const styles: { [key: string]: string } = {
   mainDiv:
@@ -51,11 +52,7 @@ const FooterContainer: React.FC = () => {
           style={{}}
           className={`descriptionText ${styles["descriptionText"]}`}
         >
-          Nolosay est un groupe composé d'étudiants passionnés et déterminés à
-          créer un changement positif dans la vie quotidienne des personnes
-          sourdes ou malentendantes. Leur objectif est clair : rendre
-          l'information et la communication accessibles à tous, en brisant les
-          barrières linguistiques.
+          {textData.page.global.footer.footerText}
         </p>
         <p>
           © 2022 - {new Date().getFullYear()} NOLOSAY. Tous droits réservés.
