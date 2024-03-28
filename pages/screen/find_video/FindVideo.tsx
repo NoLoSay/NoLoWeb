@@ -1,8 +1,6 @@
 import React from 'react';
 import Layout from "../../components/Layout";
-import ImageSlider from "./Views/List/ImageSlider";
 import SearchBar from "./SearchBar";
-import PlaceList from './Views/List/PlaceList';
 
 interface FindVideoProps {}
 

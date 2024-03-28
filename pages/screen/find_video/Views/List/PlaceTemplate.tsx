@@ -30,7 +30,7 @@ const PlaceTemplate: NextPage<PlaceTemplateProps> = ({ cardInfos }) => {
 
   const handleCardClick = (cardInfo: CardInfo) => {
     router.push({
-      pathname: '/screen/find_video/Views/List/PageDetails',
+      pathname: '/screen/location/Location',
       query: { ...cardInfo },
     });
   };

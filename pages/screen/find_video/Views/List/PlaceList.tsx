@@ -81,7 +81,6 @@ const PlaceList: NextPage = () => {
       imageSrc: "/images/castle/castle-template-list.png",
       videoCountPlaceholder: "22 Vidéos",
     },
-    // Ajoutez d'autres objets pour chaque carte
   ];
 
   const styles: { [key: string]: string } = {

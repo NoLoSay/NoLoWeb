@@ -1,13 +1,7 @@
 import React, { useState, useMemo }  from 'react';
-import dynamic from 'next/dynamic';
 import ImageSlider from "./Views/List/ImageSlider";
 import PlaceList from './Views/List/PlaceList';
 import Map from'./Views/Map/Map';
-import { MapContainer, Marker, TileLayer, Tooltip, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import "leaflet-defaulticon-compatibility";
-import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-import styless from './Home.module.scss';
 
 const DEFAULT_CENTER: [number, number] = [47.216671, -1.55];
 const DEFAULT_WIDTH = 400;

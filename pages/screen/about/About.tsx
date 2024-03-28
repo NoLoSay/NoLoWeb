@@ -6,19 +6,29 @@ import Container from "./Views/Container";
 interface AboutProps {}
 
 const styles: { [key: string]: string } = {
-  container: "absolute top-[111px] left-[0px] w-[1920px] h-[1556px]",
-  LineImg: "absolute top-[388.86px] left-[440.49px] w-[585.95px] h-[757.03px] object-contain",
-  ContentDiv: "absolute top-[610px] left-[364px] rounded-41xl bg-base-white box-border w-[1226px] h-[310px] mix-blend-normal text-center text-[26px] text-gray-300 border-[3px] border-solid border-gray-300",
-  ContentText: "absolute top-[86px] left-[77px] inline-block w-[1066px] h-[239px]",
-  EpitechImg: "absolute top-[10px] left-[459px] w-[302px] h-[288px] object-cover",
-  AboutDiv: "absolute top-[34px] left-[0px] rounded-tl-41xl rounded-tr-xl rounded-br-xl rounded-bl-41xl w-[1954px] h-[739px] overflow-hidden text-left text-[60px] text-base-white",
-  TeamImg: "absolute top-[12px] left-[461px] rounded-41xl w-[1033px] h-[503px] object-cover",
-  MirrorTeamImg: "absolute top-[calc(50% - 338.5px)] left-[457px] w-[1039px] h-[503px] object-cover",
-  TeamTextDiv: "absolute top-[406px] left-[505px] flex flex-col items-start justify-start",
-  TeamText: "relative leading-[65px] font-black whitespace-pre-wrap inline-block w-[675px]",
+  container:
+    "w-full py-24 md:py-16 sm:py-12 bg-base-white flex flex-col items-center justify-center",
+  AboutDiv:
+    "rounded-41xl w-2/3 overflow-hidden text-left text-base-white relative mb-12",
+  gradient:
+    "absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#FDC81065] to-[#00000000]",
+  TeamImg: "w-full",
+  ContentDiv:
+    "w-4/5 px-12 py-4 items-center justify-center border-[#FDC81088] border-8 border-solid rounded-xl relative mb-16",
+  ContentText:
+    "inline-block text-[1.8rem] md:text-[1.2rem] sm:text-[0.8rem] font-black text-center text-black",
+  EpitechImg:
+    "absolute w-auto h-[80%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
+  MirrorTeamImg:
+    "absolute top-[calc(50% - 338.5px)] left-[457px] w-[1039px] h-[503px] object-cover",
+  TeamTextDiv: "absolute bottom-[10%] w-full text-center",
+  TeamText:
+    "font-black whitespace-pre-wrap inline-block text-[3rem] md:text-[2rem] sm:text-[1.5rem]",
 };
 
-const About: React.FC<AboutProps> & { getLayout: (page: React.ReactNode) => React.ReactNode } = () => {
+const About: React.FC<AboutProps> & {
+  getLayout: (page: React.ReactNode) => React.ReactNode;
+} = () => {
   return (
     <Fragment>
       <Head>
@@ -28,26 +38,32 @@ const About: React.FC<AboutProps> & { getLayout: (page: React.ReactNode) => Reac
         />
       </Head>
       <div className={styles.container}>
-        <img className={styles.LineImg} alt="" src="/images/lineAbout.png" />
-        <div className={styles.ContentDiv}>
-          <b className={styles.ContentText}>
-            NoLoSay, un projet étudiant de 8 personnes en 4ème année du
-            programme Grande École à EPITECH. Le projet se déroule sur 3 ans et
-            nous souhaitons répandre la langue des signes en mettant à disposition
-            des vidéos pour la communauté réalisées par la communauté.
-          </b>
-          <img className={styles.EpitechImg} alt="" src="/images/logo/logoEpitech.png" />
-        </div>
-        <Container />
         <div className={styles.AboutDiv}>
-          <img className={styles.TeamImg} alt="" src="/images/people/nologroup.png" />
-          <img className={styles.MirrorTeamImg} alt="" src="/images/people/miroir-nologroup.png" />
+          <div className={styles.gradient} />
+          <img
+            className={styles.TeamImg}
+            alt=""
+            src="/images/people/nologroup.png"
+          />
           <div className={styles.TeamTextDiv}>
-            <div className={styles.TeamText}>
-              L’équipe NOLOSAY !
-            </div>
+            <div className={styles.TeamText}>L’équipe NOLOSAY !</div>
           </div>
         </div>
+        <div className={styles.ContentDiv}>
+          <span className={styles.ContentText}>
+            NoLoSay est un projet étudiant de 8 personnes en 4ème année du
+            Programme Grande École à EPITECH. Le projet se déroule sur 3 ans et
+            nous souhaitons répandre la langue des signes en mettant à
+            disposition des vidéos pour la communauté réalisées par la
+            communauté.
+          </span>
+          <img
+            className={styles.EpitechImg}
+            alt=""
+            src="/images/logo/logoEpitech.png"
+          />
+        </div>
+        <Container />
       </div>
     </Fragment>
   );
