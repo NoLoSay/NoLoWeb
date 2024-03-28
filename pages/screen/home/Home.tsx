@@ -10,7 +10,7 @@ import { useEffect, useRef } from 'react';
 interface HomeProps {}
 
 const styles: { [key: string]: string } = {
-  mainDiv: " flex flex-col items-center justify-center gap-y-16 pb-10 pt-5",
+  mainDiv: " flex flex-col items-center justify-center gap-y-16 pb-10 pt-3",
 
   videoCreationDiv: "w-3/4 flex flex-row justify-start gap-2",
   mdVideoCreationDiv: "md:flex-col md:w-3/4",

@@ -10,9 +10,9 @@ interface AboutProps {}
 
 const styles: { [key: string]: string } = {
   container:
-    "w-full py-24 md:py-16 sm:py-12 bg-base-white flex flex-col items-center justify-center",
+    "w-full py-10 md:py-16 sm:py-12 bg-base-white flex flex-col items-center justify-center",
   AboutDiv:
-    "rounded-41xl w-2/3 overflow-hidden text-left text-base-white relative mb-12",
+    "rounded-41xl w-4/5 overflow-hidden text-left text-base-white relative mb-12",
   gradient:
     "absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#FDC81065] to-[#00000000]",
   TeamImg: "w-full",
@@ -32,10 +32,6 @@ const styles: { [key: string]: string } = {
 const About: React.FC<AboutProps> & {
   getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
-  const experienceRef = useRef(null);
-  const isExperienceRefInView = useInView(experienceRef, { margin: "-100px" });
-  const ContentRef = useRef(null);
-  const isContentRefInView = useInView(ContentRef, {});
   return (
     <Fragment>
       <Head>
@@ -56,7 +52,7 @@ const About: React.FC<AboutProps> & {
             <div className={styles.TeamText}>L’équipe NOLOSAY !</div>
           </div>
         </div>
-        <div className={styles.ContentDiv} ref={ContentRef}>
+        <div className={styles.ContentDiv}>
           <span className={styles.ContentText}>
             NoLoSay est un projet étudiant de 8 personnes en 4ème année du
             Programme Grande École à EPITECH. Le projet se déroule sur 3 ans et
@@ -70,16 +66,7 @@ const About: React.FC<AboutProps> & {
             src="/images/logo/logoEpitech.png"
           />
         </div>
-
-        <div ref={experienceRef}>
-        <motion.div
-          initial={{ x: "+300px" }}
-          animate={isExperienceRefInView ? { x: "0" } : {}}
-          transition={{ delay: 0.2 }}
-        >
         <Container />
-        </motion.div>
-        </div>
       </div>
       <Timeline />
     </Fragment>
