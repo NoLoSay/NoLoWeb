@@ -10,13 +10,13 @@ import { useEffect, useRef } from 'react';
 interface HomeProps {}
 
 const styles: { [key: string]: string } = {
-  mainDiv: " flex flex-col items-center justify-center gap-y-16 pb-10 pt-3",
+  mainDiv: "flex flex-col items-center justify-center gap-y-16 pb-10 pt-3",
 
   videoCreationDiv: "w-3/4 flex flex-row justify-start gap-2",
   mdVideoCreationDiv: "md:flex-col md:w-3/4",
   smVideoCreationDiv: "sm:flex-col sm:w-3/4",
 
-  videoCreationImage: "relative w-3/4 self-center",
+  videoCreationImage: "relative w-3/4 self-center rounded-xl",
 
   descriptionDiv: "relative w-4/5 rounded-xl  p-10 bg-gray-300 bg-cover bg-[url(/images/map.png)] justify-start ",
   lgDescriptionDiv:
@@ -86,7 +86,7 @@ const Home: React.FC<HomeProps> & {
           <img
             className={`Home/videoCreationImage ${styles["videoCreationImage"]}`}
             alt="Video Creation Image"
-            src="/images/launch-video.png"
+            src="/images/SignImage.jpg"
           />
         </div>
         <div className={`Home/descriptionDiv ${styles["descriptionDiv"]} ${styles["mdDescriptionDiv"]} ${styles["smDescriptionDiv"]}`}>

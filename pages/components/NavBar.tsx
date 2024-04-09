@@ -11,8 +11,7 @@ const styles: { [key: string]: string } = {
 const NavBar: React.FC = () => {
   return (
     <div className={styles["mainDiv"]}>
-      <div className="flex gap-4 mx-auto ">
-        <img className=" w-10 h-10" alt="" src="/images/logo/nologo.png" />
+      <div className="flex mx-auto items-center">
         <NavbarLink
           as="/home"
           href="/screen/home/Home"
@@ -22,9 +21,9 @@ const NavBar: React.FC = () => {
           className=""
         >
           <img
-            className="w-max h-10"
+            className="w-max h-14 sm:h-5  items-center"
             alt=""
-            src="/images/logo/nolosay-white.png"
+            src="/images/logo/WhiteLogo.png"
           />
         </NavbarLink>
       </div>

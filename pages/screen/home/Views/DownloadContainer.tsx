@@ -37,7 +37,7 @@ const styles: { [key: string]: string } = {
 
   nolosayText: "text-[2.25rem] font-medium pt-7",
   mdNolosayText: "md:text-[1.25rem]",
-  smNolosayText: "sm:text-[0.75rem]",
+  smNolosayText: "sm:text-[0.5rem] sm:pt-0",
 
   iconDiv: "w-full flex flex-row items-center justify-start gap-3",
 
@@ -67,16 +67,16 @@ const DownloadContainer: React.FC = () => {
         className={`DownloadContainer/contentDiv ${styles["contentDiv"]} ${styles["mdContentDiv"]} ${styles["smContentDiv"]}`}
       >
         <div className={`DownloadContainer/textDiv ${styles["textDiv"]}`}>
-          <p
+          <div
             className={`DownloadContainer/titleText ${styles["titleText"]} ${styles["mdTitleText"]} ${styles["smTitleText"]}`}
           >
             Nolosay,{" "}
-          </p>
-          <p
+          </div>
+          <div
             className={`DownloadContainer/nolosayText ${styles["nolosayText"]} ${styles["mdNolosayText"]} ${styles["smNolosayText"]}`}
           >
             La premère plateforme communautaire de diffusion et creation de video en langue des signes !
-          </p>
+          </div>
         </div>
       </div>
       {/* <img className={styles["LineImg"]} alt="" src="/images/line.png" /> */}
