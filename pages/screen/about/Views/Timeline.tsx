@@ -56,8 +56,16 @@ const Timeline: React.FC = () => {
           <ExperienceItem title="Debut du projet - Piscine Epitech MoonShot" jobDesc="" jobDate="Septembre 2022" />
           <ExperienceItem title="Devfest Nantes - Présentaton du Projet" jobDate="Octobre 2022" />
           <ExperienceItem title="Forward - Premier maquetage" jobDate="Décembre 2022" />
-          <ExperienceItem title="Epitech Experience - Présentation du projet devant des investisseurs" jobDate="Fevrier 2023" />
-          <ExperienceItem title="Depart à l'étranger de l'ensemble du groupe dans le cadre de notre 4ème année à Epitech" jobDate="Août 2023" />
+          <ExperienceItem title="Premier test de technologies pour l'application mobile" jobDate="Avril 2023" />
+          <ExperienceItem title="Première version de l'API et de la base de données" jobDate="Juillet 2023" />
+          <ExperienceItem title="Premier dévéloppement de l'application mobile" jobDate="Juillet 2023" />
+          <ExperienceItem title="Première test de technologies pour le site web" jobDate="Septembre 2023" />
+          <ExperienceItem title="Amélioration de l'architecture de l'API" jobDate="Octobre 2023" />
+          <ExperienceItem title="Partenariat avec l'association KapSignes" jobDate="Novembre 2023" />
+          <ExperienceItem title="Premier dévéloppement du site web à partir de la maquette" jobDate="Décembre 2023" />
+          <ExperienceItem title="Première version de la base de données fonctionnel" jobDate="Mars 2023" />
+          <ExperienceItem title="Premier version de l'application mobile fontionnel" jobDate="Avril 2023" />
+
         </motion.div>
       </div>
     </div>

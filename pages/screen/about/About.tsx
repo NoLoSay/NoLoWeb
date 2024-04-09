@@ -33,13 +33,6 @@ const About: React.FC<AboutProps> & {
   getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
   return (
-    <Fragment>
-      <Head>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
-        />
-      </Head>
       <div className={styles.container}>
         <div className={styles.AboutDiv}>
           <div className={styles.gradient} />
@@ -67,9 +60,9 @@ const About: React.FC<AboutProps> & {
           />
         </div>
         <Container />
+        <Timeline />
       </div>
-      <Timeline />
-    </Fragment>
+
   );
 };
 
