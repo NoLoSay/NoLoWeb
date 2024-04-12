@@ -5,6 +5,67 @@ import { Fragment } from "react";
 
 interface ExhibitionsProps {}
 
+const staticExhibitions = [
+    {
+        id: 1,
+        name: "Expo de Test",
+        shortDescription: "Il faut bien une première à tout",
+        longDescription: "On sait bien qu'elle sera ratée mais bon on s'accroche quand même",
+        startDate: "2024-01-15T00:00:00.000Z",
+        endDate: "2024-01-15T00:00:00.000Z",
+        site: {
+            id: 1,
+            name: "Château d'Angers",
+            shortDescription: "Un château trop bien",
+            longDescription: "Je te jure! Tu as une superbe vue et je ne dis pas ça car c'est ma ville natale! Non pas du tout!",
+            telNumber: "+33 2 41 86 48 77",
+            price: 9.5,
+            address: {
+                street: "Prom. du Bout du Monde",
+                zip: "49100",
+                City: {
+                    name: "Angers",
+                    Department: {
+                        name: "Maine et Loire",
+                        Country: {
+                            name: "France"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        id: 2,
+        name: "Expo d'Art Moderne",
+        shortDescription: "Découvrez l'art moderne comme jamais auparavant",
+        longDescription: "Cette exposition explore des œuvres modernes du 20ème siècle avec une attention particulière portée aux expressions artistiques émergentes.",
+        startDate: "2024-02-20T00:00:00.000Z",
+        endDate: "2024-03-20T00:00:00.000Z",
+        site: {
+            id: 2,
+            name: "Musée des Beaux-Arts",
+            shortDescription: "Un musée central à la riche histoire artistique",
+            longDescription: "Situé au cœur de la ville, le musée présente une collection impressionnante qui attire les amateurs d'art du monde entier.",
+            telNumber: "+33 2 41 23 50 00",
+            price: 15,
+            address: {
+                street: "Rue de la Liberté",
+                zip: "75000",
+                City: {
+                    name: "Paris",
+                    Department: {
+                        name: "Île-de-France",
+                        Country: {
+                            name: "France"
+                        }
+                    }
+                }
+            }
+        }
+    }
+];
+
 const styles: { [key: string]: string } = {
     divBlockTitlePage:
         "text-black justify-between items-center flex mb-12 px-8 " +
@@ -27,7 +88,7 @@ const styles: { [key: string]: string } = {
         "sm:px-5 ",
     divExhibitionList: "flex flex-col w-full",
     divExhibition:
-        "shadow-xl flex flex-row items-center justify-start p-5 rounded-lg w-full " +
+        "shadow-xl flex flex-row items-center justify-start p-5 rounded-lg w-full mb-10 " +
         "md:flex-col md:items-center " +
         "sm:flex-col sm:items-start ",
     image16:
@@ -61,7 +122,7 @@ const styles: { [key: string]: string } = {
         "sm:items-start " +
         "md:flex-col md:justify-between",
     divGeneralInformation:
-        "flex items-center justify-between w-full " +
+        "flex items-start justify-between w-full " +
         "md:flex-col md:items-start md:justify-between " +
         "sm:flex-col sm:items-start",
     exhibitionDescription:
@@ -78,65 +139,84 @@ const Exhibition: React.FC<HomeProps> & {
         <Fragment>
             <section className={`exhibitionsPage ${styles["exhibitionsPage"]}`}>
                 <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
-                    <img src="https://assets-global.website-files.com/plugins/Basic/assets/placeholder.60f9b1840c.svg"
+                    <img src=""
                          loading="lazy" alt="" className={`image18 ${styles["image18"]}`}/>
                     <div className={`divTitlePage ${styles["divTitlePage"]}`}>
                         <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
                     </div>
-                    <img src="https://assets-global.website-files.com/plugins/Basic/assets/placeholder.60f9b1840c.svg"
+                    <img src=""
                          loading="lazy" alt="" className={`image17 ${styles["image17"]}`}/>
                 </div>
                 <div className={`divBlockExhibitionList ${styles["divBlockExhibitionList"]}`}>
                     <div className={`divExhibitionList ${styles["divExhibitionList"]}`}>
-                        <div className={`divExhibition ${styles["divExhibition"]}`}>
-                            <img
-                                src="https://assets-global.website-files.com/plugins/Basic/assets/placeholder.60f9b1840c.svg"
-                                loading="lazy" alt="" className={`image16 ${styles["image16"]}`}/>
-                            <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>
-                                <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>
-                                    <h1 className={`heading13 ${styles["heading13"]}`}>Exposition 1</h1>
-                                    <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
-                                        <div className={`divChangeBtn ${styles["divChangeBtn"]}`}>
-                                            <img
-                                                src="https://assets-global.website-files.com/plugins/Basic/assets/placeholder.60f9b1840c.svg"
-                                                loading="lazy" alt=""
-                                                className={`changeBtnIcon ${styles["changeBtnIcon"]}`}/>
-                                        </div>
-                                        <div className={`divDeleteBtn ${styles["divDeleteBtn"]}`}>
-                                            <img
-                                                src="https://assets-global.website-files.com/plugins/Basic/assets/placeholder.60f9b1840c.svg"
-                                                loading="lazy" alt=""
-                                                className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}/>
+                        {staticExhibitions.map((exhibition) => (
+
+                            /// TODO move this code into Exhibition Component
+                            /// TODO add image in exhibition
+
+                            <div key={exhibition.id} className={`divExhibition ${styles["divExhibition"]}`}>
+                                <img
+                                    src=""
+                                    loading="lazy" alt="" className={`image16 ${styles["image16"]}`}/>
+                                <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>
+                                    <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>
+                                        <h1 className={`heading13 ${styles["heading13"]}`}> {exhibition.name} </h1>
+                                        <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
+                                            <div className={`divChangeBtn ${styles["divChangeBtn"]}`}>
+                                                <img
+                                                    src=""
+                                                    loading="lazy" alt=""
+                                                    className={`changeBtnIcon ${styles["changeBtnIcon"]}`}/>
+                                            </div>
+                                            <div className={`divDeleteBtn ${styles["divDeleteBtn"]}`}>
+                                                <img
+                                                    src=""
+                                                    loading="lazy" alt=""
+                                                    className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}/>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div
-                                    className={`divBlockExhibitionInformations ${styles["divBlockExhibitionInformations"]}`}>
-                                    <div className={`divExhibitionInformations ${styles["divExhibitionInformations"]}`}>
-                                        <div className={`divGeneralInformation ${styles["divGeneralInformation"]}`}>
-                                            <div className={`placeText ${styles["placeText"]}`}>Chateau des tourelles
-                                                Nantes
+                                    <div
+                                        className={`divBlockExhibitionInformations ${styles["divBlockExhibitionInformations"]}`}>
+                                        <div
+                                            className={`divExhibitionInformations ${styles["divExhibitionInformations"]}`}>
+                                            <div className={`divGeneralInformation ${styles["divGeneralInformation"]}`}>
+                                                <div className={`placeText ${styles["placeText"]}`}>
+                                                    {exhibition.site.address.street}, {exhibition.site.address.zip}
+                                                    {exhibition.site.address.City ? `, ${exhibition.site.address.City.name}` : ''}
+                                                    {exhibition.site.address.City && exhibition.site.address.City.Department ? `, ${exhibition.site.address.City.Department.name}` : ''}
+                                                    {exhibition.site.address.City && exhibition.site.address.City.Department && exhibition.site.address.City.Department.Country ? `, ${exhibition.site.address.City.Department.Country.name}` : ''}
+                                                </div>
+                                                <div className={`dateText ${styles["dateText"]}`}>
+                                                    Du {new Date(exhibition.startDate).toLocaleDateString()} <br/> Au {new Date(exhibition.endDate).toLocaleDateString()}
+                                                </div>
+                                                <div
+                                                    className={`priceText ${styles["priceText"]}`}>{exhibition.site.price}€
+                                                    l'entrée
+                                                </div>
+                                                <div className={`artworkNbText ${styles["artworkNbText"]}`}>nb oeuvres
+                                                </div>
                                             </div>
-                                            <div className={`dateText ${styles["dateText"]}`}>Du 22 Janvier 2022 au 16
-                                                Aout 2056
+                                            <div className={`exhibitionDescription ${styles["exhibitionDescription"]}`}>
+                                                {exhibition.longDescription}
+                                                <br/>
+                                                <br/>
+                                                {exhibition.site.name}
                                             </div>
-                                            <div className={`priceText ${styles["priceText"]}`}>6€ l'entrée</div>
-                                            <div className={`artworkNbText ${styles["artworkNbText"]}`}>24 oeuvres</div>
                                         </div>
-                                        <div className={`exhibitionDescription ${styles["exhibitionDescription"]}`}>
-                                            Description de l'exposition : <br/><br/>
-                                            Contrary to popular belief, Lorem Ipsum is not simply random text...
-                                        </div>
-                                    </div>
-                                    <div className={`divBlockGoToArtworksBtn ${styles["divBlockGoToArtworksBtn"]}`}>
-                                        <div className={`divGoToArtworksBtn ${styles["divGoToArtworksBtn"]}`}>
-                                            <div className={`goToArtworksText ${styles["goToArtworksText"]}`}>Voir les oeuvres
+                                        <div className={`divBlockGoToArtworksBtn ${styles["divBlockGoToArtworksBtn"]}`}>
+                                            <div className={`divGoToArtworksBtn ${styles["divGoToArtworksBtn"]}`}>
+                                                <div className={`goToArtworksText ${styles["goToArtworksText"]}`}>Voir
+                                                    les oeuvres
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+
+
+                        ))}
                     </div>
                 </div>
             </section>
