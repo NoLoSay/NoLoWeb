@@ -135,6 +135,11 @@ const styles: { [key: string]: string } = {
 const Exhibition: React.FC<HomeProps> & {
     getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
+
+    const handleChange = (buttonName: string, exhibitionId: number) => {
+        console.log(`Le bouton ${buttonName} a été cliqué pour l'exhibition ${exhibitionId}! `);
+    };
+
     return (
         <Fragment>
             <section className={`exhibitionsPage ${styles["exhibitionsPage"]}`}>
@@ -162,17 +167,43 @@ const Exhibition: React.FC<HomeProps> & {
                                     <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>
                                         <h1 className={`heading13 ${styles["heading13"]}`}> {exhibition.name} </h1>
                                         <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
-                                            <div className={`divChangeBtn ${styles["divChangeBtn"]}`}>
+                                            <div
+                                                role="goToChangeExhibitionPageBtn"
+                                                tabIndex={0}
+                                                className={`divChangeBtn ${styles.divChangeBtn}`}
+                                                onClick={() => handleChange('changeButton', exhibition.id)}
+                                                onKeyDown={(event) => {
+                                                    if (event.key === 'Enter' || event.key === ' ') {
+                                                        handleChange('changeButton', exhibition.id);
+                                                        event.preventDefault();
+                                                    }
+                                                }}
+                                            >
                                                 <img
                                                     src=""
-                                                    loading="lazy" alt=""
-                                                    className={`changeBtnIcon ${styles["changeBtnIcon"]}`}/>
+                                                    loading="lazy"
+                                                    alt=""
+                                                    className={`changeBtnIcon ${styles.changeBtnIcon}`}
+                                                />
                                             </div>
-                                            <div className={`divDeleteBtn ${styles["divDeleteBtn"]}`}>
+                                            <div
+                                                role="deleteExhibitionBtn"
+                                                tabIndex={0}
+                                                className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
+                                                onClick={() => handleChange('deleteButton', exhibition.id)}
+                                                onKeyDown={(event) => {
+                                                    if (event.key === 'Enter' || event.key === ' ') {
+                                                        handleChange('deleteButton', exhibition.id);
+                                                        event.preventDefault();
+                                                    }
+                                                }}
+                                            >
                                                 <img
                                                     src=""
-                                                    loading="lazy" alt=""
-                                                    className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}/>
+                                                    loading="lazy"
+                                                    alt=""
+                                                    className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}
+                                                />
                                             </div>
                                         </div>
                                     </div>
