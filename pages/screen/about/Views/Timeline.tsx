@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from "framer-motion";
-import Layout from "../../../components/Layout";
 
 interface ExperienceProps {
   title: string;
@@ -9,16 +8,14 @@ interface ExperienceProps {
   jobDate?: string;
 }
 
-const ExperienceItem: React.FC<ExperienceProps> = ({ title, jobTitle, jobDesc, jobDate }) => {
-  const jobDetails = jobTitle || jobDesc;
+const ExperienceItem: React.FC<ExperienceProps> = ({ title, jobDate }) => {
 
   return (
     <div className="flex justify-between h-48">
       <div className="w-1/3">
-        <div className="bg-base-black text-white p-3 font-semibold rounded-b-lg rounded-s-lg">
+        <div className="bg-base-black text-white p-3 font-semibold sm:text-2xs">
           {title}
         </div>
-        {jobDetails && <div className="p-3 text-gray-300 text-sm italic">{jobDetails}</div>}
       </div>
       <div className="w-1/6 flex justify-center">
         <div className="w-1 h-full bg-gray-600 rounded relative">
@@ -26,7 +23,6 @@ const ExperienceItem: React.FC<ExperienceProps> = ({ title, jobTitle, jobDesc, j
         </div>
       </div>
       <div className="w-1/3">
-        {jobTitle && <div className="bg-base-black text-white p-3 font-semibold rounded-b-lg rounded-s-lg">{jobTitle}</div>}
         {jobDate && <div className="p-3 text-yellow-300 text-sm font-semibold">{jobDate}</div>}
       </div>
     </div>
@@ -53,19 +49,13 @@ const Timeline: React.FC = () => {
           initial={{ x: "-300px" }}
           animate={isExperienceRefInView ? { x: "0" } : {}}
         >
-          <ExperienceItem title="Debut du projet - Piscine Epitech MoonShot" jobDesc="" jobDate="Septembre 2022" />
+          <ExperienceItem title="Debut du projet - Piscine Epitech MoonShot" jobDate="Septembre 2022" />
           <ExperienceItem title="Devfest Nantes - Présentaton du Projet" jobDate="Octobre 2022" />
           <ExperienceItem title="Forward - Premier maquetage" jobDate="Décembre 2022" />
-          <ExperienceItem title="Premier test de technologies pour l'application mobile" jobDate="Avril 2023" />
           <ExperienceItem title="Première version de l'API et de la base de données" jobDate="Juillet 2023" />
-          <ExperienceItem title="Premier dévéloppement de l'application mobile" jobDate="Juillet 2023" />
-          <ExperienceItem title="Première test de technologies pour le site web" jobDate="Septembre 2023" />
-          <ExperienceItem title="Amélioration de l'architecture de l'API" jobDate="Octobre 2023" />
           <ExperienceItem title="Partenariat avec l'association KapSignes" jobDate="Novembre 2023" />
           <ExperienceItem title="Premier dévéloppement du site web à partir de la maquette" jobDate="Décembre 2023" />
-          <ExperienceItem title="Première version de la base de données fonctionnel" jobDate="Mars 2023" />
-          <ExperienceItem title="Premier version de l'application mobile fontionnel" jobDate="Avril 2023" />
-
+          <ExperienceItem title="Premier version de l'application mobile fontionnel" jobDate="Avril 2024" />
         </motion.div>
       </div>
     </div>

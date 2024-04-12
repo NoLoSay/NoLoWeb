@@ -66,9 +66,9 @@ function GridCell({ name, image, role }: Person) {
 
 const Container: NextPage = () => {
   return (
-    <div className="grid grid-cols-4 gap-y-16 w-full px-16">
+    <div className="items-center justify-center grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-y-16 w-full px-16">
       {people.map(({ name, image, role }, index) => (
-        <div key={index} className="md:w-2/3 sm: 1/3">
+        <div key={index} className="md:w-2/3 sm:w-1/2">
           <GridCell name={name} image={image} role={role} />
         </div>
       ))}

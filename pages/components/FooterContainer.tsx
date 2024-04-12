@@ -76,7 +76,7 @@ const FooterContainer: React.FC = () => {
           />
           <p>
             <Link href="tel:+330297678087" className={styles["contactLink"]}>
-              +33 02.97.67.80.87
+              +33 07.81.97.28.51
             </Link>
           </p>
         </div>
@@ -89,7 +89,7 @@ const FooterContainer: React.FC = () => {
             src="/icon/full/communication--mail.png"
           />
           <Link href="to:contact@nolosay.fr" className={styles["contactLink"]}>
-            contact@nolosay.fr
+            no.lo.say.pro@gmail.com
           </Link>
         </div>
         <Link
@@ -97,7 +97,7 @@ const FooterContainer: React.FC = () => {
           as="/about"
           className={styles["aboutLink"]}
         >
-          About
+          À propos de nous
         </Link>
       </div>
     </div>
