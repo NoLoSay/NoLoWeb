@@ -136,21 +136,63 @@ const Exhibition: React.FC<HomeProps> & {
     getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
 
-    const handleChange = (buttonName: string, exhibitionId: number) => {
+    const handleAction = (buttonName: string, exhibitionId: number) => {
         console.log(`Le bouton ${buttonName} a été cliqué pour l'exhibition ${exhibitionId}! `);
+    };
+
+    const handleBack = () => {
+        console.log('go to previous page');
+    };
+
+    const handleAddExhibition = () => {
+        console.log('createExhibition');
     };
 
     return (
         <Fragment>
             <section className={`exhibitionsPage ${styles["exhibitionsPage"]}`}>
                 <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
-                    <img src=""
-                         loading="lazy" alt="" className={`image18 ${styles["image18"]}`}/>
+                    <div
+                        role="returnToPreviousPageBtn"
+                        tabIndex={0}
+                        className={`returnToPreviousPageBtn ${styles["returnToPreviousPageBtn"]}`}
+                        onClick={() => handleBack()}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                                handleBack();
+                                event.preventDefault();
+                            }
+                        }}
+                    >
+                        <img
+                            src=""
+                            loading="lazy"
+                            alt="Retour"
+                            className={`image18 ${styles["image18"]}`}
+                        />
+                    </div>
                     <div className={`divTitlePage ${styles["divTitlePage"]}`}>
                         <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
                     </div>
-                    <img src=""
-                         loading="lazy" alt="" className={`image17 ${styles["image17"]}`}/>
+                    <div
+                        role="addExhibitionBtn"
+                        tabIndex={0}
+                        className={`addExhibitionBtn ${styles["addExhibitionBtn"]}`}
+                        onClick={() => handleAddExhibition()}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                                handleAddExhibition();
+                                event.preventDefault();
+                            }
+                        }}
+                    >
+                        <img
+                            src=""
+                            loading="lazy"
+                            alt="Ajouter une exposition"
+                            className={`image17 ${styles["image17"]}`}
+                        />
+                    </div>
                 </div>
                 <div className={`divBlockExhibitionList ${styles["divBlockExhibitionList"]}`}>
                     <div className={`divExhibitionList ${styles["divExhibitionList"]}`}>
@@ -171,10 +213,10 @@ const Exhibition: React.FC<HomeProps> & {
                                                 role="goToChangeExhibitionPageBtn"
                                                 tabIndex={0}
                                                 className={`divChangeBtn ${styles.divChangeBtn}`}
-                                                onClick={() => handleChange('changeButton', exhibition.id)}
+                                                onClick={() => handleAction('changeButton', exhibition.id)}
                                                 onKeyDown={(event) => {
                                                     if (event.key === 'Enter' || event.key === ' ') {
-                                                        handleChange('changeButton', exhibition.id);
+                                                        handleAction('changeButton', exhibition.id);
                                                         event.preventDefault();
                                                     }
                                                 }}
@@ -190,10 +232,10 @@ const Exhibition: React.FC<HomeProps> & {
                                                 role="deleteExhibitionBtn"
                                                 tabIndex={0}
                                                 className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
-                                                onClick={() => handleChange('deleteButton', exhibition.id)}
+                                                onClick={() => handleAction('deleteButton', exhibition.id)}
                                                 onKeyDown={(event) => {
                                                     if (event.key === 'Enter' || event.key === ' ') {
-                                                        handleChange('deleteButton', exhibition.id);
+                                                        handleAction('deleteButton', exhibition.id);
                                                         event.preventDefault();
                                                     }
                                                 }}
@@ -236,9 +278,20 @@ const Exhibition: React.FC<HomeProps> & {
                                             </div>
                                         </div>
                                         <div className={`divBlockGoToArtworksBtn ${styles["divBlockGoToArtworksBtn"]}`}>
-                                            <div className={`divGoToArtworksBtn ${styles["divGoToArtworksBtn"]}`}>
-                                                <div className={`goToArtworksText ${styles["goToArtworksText"]}`}>Voir
-                                                    les oeuvres
+                                            <div
+                                                role="button"
+                                                tabIndex={0}
+                                                className={`divGoToArtworksBtn ${styles["divGoToArtworksBtn"]}`}
+                                                onClick={() => handleAction('goToArtworks', exhibition.id)}
+                                                onKeyDown={(event) => {
+                                                    if (event.key === 'Enter' || event.key === ' ') {
+                                                        handleAction('goToArtworks', exhibition.id);
+                                                        event.preventDefault();
+                                                    }
+                                                }}
+                                            >
+                                                <div className={`goToArtworksText ${styles["goToArtworksText"]}`}>
+                                                    Voir les oeuvres
                                                 </div>
                                             </div>
                                         </div>
