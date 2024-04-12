@@ -12,15 +12,15 @@ const styles: { [key: string]: string } = {
   mdContentDiv: "md:gap-y-0",
   smContentDiv: "sm:gap-y-0",
 
-  textDiv: "relative w-full inline-block",
+  textDiv: "relative w-full contents",
 
-  titleText: "font-black text-[3.5rem]",
-  mdTitleText: "md:text-[3rem]",
-  smTitleText: "sm:text-[2rem]",
+  titleText: "font-black text-6xl",
+  mdTitleText: "md:text-3xl",
+  smTitleText: "sm:text-xl",
 
-  nolosayText: "text-[2.25rem] font-medium",
-  mdNolosayText: "md:text-[1.25rem]",
-  smNolosayText: "sm:text-[0.75rem]",
+  nolosayText: "text-4xl font-medium",
+  mdNolosayText: "md:text-xl",
+  smNolosayText: "sm:text-xs",
 
   iconDiv: "w-full flex flex-row items-center justify-start gap-3",
 

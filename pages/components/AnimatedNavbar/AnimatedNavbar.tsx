@@ -1,7 +1,7 @@
 import SearchBar from "../SearchBar/SearchBar";
 import NavbarLink from "../NavBarLink";
 import { useState } from "react";
-import Link from "next/link";
+import Link from "../../../node_modules/next/link";
 import { Drawer, Box, List, ListItem, ListItemButton, ListItemText, Divider, IconButton } from "@mui/material";
 import { Menu } from "@mui/icons-material";
 import ProfileButton from "../ProfileButton/ProfileButton";
@@ -22,7 +22,8 @@ const NavLinksItems = [
   { href: "/faq", title: "FAQ" },
   { href: "/videoAccess", title: "VideoAccess" },
   { href: "/location", title: "Location" },
-  { href: "/account", title: "Mon compte" }
+  { href: "/account", title: "Mon compte" },
+  { href: "/tickets", title: "Tickets" }
 ];
 
 const LogoButton = () => {
@@ -66,10 +67,10 @@ const NavLinks = ({links}: NavLinkProps) => {
 const LoginButton = () => {
   return (
     <div className="flex flex-row justify-between items-center space-x-4">
-      <Link href={"/screen/home"} className="flex flex-row items-center gap-8 text-gray-200">
+      <Link href={"/connection"} className="flex flex-row items-center gap-8 text-gray-200">
         <div className="font-medium">Je me connecte</div>
       </Link>
-      <Link href={"/screen/home"} className="rounded-full bg-gray-300 flex items-center justify-center py-2 px-6 gap-2 text-base-white font-semibold">
+      <Link href={"/subscription"} className="rounded-full bg-gray-300 flex items-center justify-center py-2 px-6 gap-2 text-base-white font-semibold">
         <div className="font-semibold">Je m'inscris :)</div>
       </Link>
     </div>

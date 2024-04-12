@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import Head from "next/head";
+import Head from "../../../node_modules/next/head";
 import DownloadContainer from "./Views/DownloadContainer";
 import VideoCreationContainer from "./Views/VideoCreationContainer";
 import Layout from "../../components/Layout";
@@ -15,33 +15,31 @@ const styles: { [key: string]: string } = {
 
   videoCreationImage: "relative w-3/4 self-center",
 
-  descriptionDiv: "relative rounded-xl bg-gray-300 bg-cover bg-map w-4/5 justify-start",
-  lgDescriptionDiv:
-    "lg:h-1/4 lg:w-6/7",
-  mdDescriptionDiv:
-    "md:h-1/4 md:w-6/7",
-  smDescriptionDiv:
-    "sm:h-1/4 sm:w-9/10 sm:rounded-md",
+  descriptionDiv:
+    "relative rounded-2.5xl bg-gray-300 bg-cover bg-map w-4/5 justify-start",
+  lgDescriptionDiv: "lg:h-1/4 lg:w-5/6",
+  mdDescriptionDiv: "md:h-1/4 md:w-5/6",
+  smDescriptionDiv: "sm:h-1/4 sm:w-11/12 sm:rounded-md",
 
   descriptionDivTextDiv:
     "relative w-full flex flex-col items-start self-center justify-start gap-5 py-20 px-20",
-  lgDescriptionDivTextDiv: "lg:py-3 lg:px-16 lg:gap-2",
-  mdDescriptionDivTextDiv: "md:py-2 md:px-14 md:gap-2",
-  smDescriptionDivTextDiv: "sm:py-2 sm:px-2 sm:gap-1",
+  lgDescriptionDivTextDiv: "lg:py-10 lg:px-16 lg:gap-2",
+  mdDescriptionDivTextDiv: "md:py-5 md:px-14 md:gap-2",
+  smDescriptionDivTextDiv: "sm:py-2 sm:px-2 sm:gap-0",
 
-  descriptionDivTitleText: "text-6xl font-medium brightness-75",
-  lgDescriptionDivTitleText: "lg:text-[1rem]",
-  mdDescriptionDivTitleText: "md:text-[0.75rem]",
+  descriptionDivTitleText: "text-2xl font-medium brightness-75",
+  lgDescriptionDivTitleText: "lg:text-base",
+  mdDescriptionDivTitleText: "md:text-xs",
   smDescriptionDivTitleText: "sm:text-[0.5rem]",
 
-  descriptionDivSubtitleText: "text-6xl font-semibold text-yellow-300",
-  lgDescriptionDivSubtitleText: "lg:text-[1rem]",
-  mdDescriptionDivSubtitleText: "md:text-[0.75rem]",
+  descriptionDivSubtitleText: "text-2xl font-semibold text-yellow-300",
+  lgDescriptionDivSubtitleText: "lg:text-base",
+  mdDescriptionDivSubtitleText: "md:text-xs",
   smDescriptionDivSubtitleText: "sm:text-[0.5rem]",
 
-  descriptionDivText: "text-6xl",
-  lgDescriptionDivText: "lg:text-[1rem]",
-  mdDescriptionDivText: "md:text-[0.75rem]",
+  descriptionDivText: "text-2xl",
+  lgDescriptionDivText: "lg:text-base",
+  mdDescriptionDivText: "md:text-xs",
   smDescriptionDivText: "sm:text-[0.35rem]",
 };
 
@@ -51,7 +49,7 @@ const Home: React.FC<HomeProps> & {
   return (
     <Fragment>
       <Head>
-        <title>Nolosay</title>
+        <title className="font-poppins">Nolosay</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -69,7 +67,9 @@ const Home: React.FC<HomeProps> & {
             src="/images/launch-video.png"
           />
         </div>
-        <div className={`Home/descriptionDiv ${styles["descriptionDiv"]} ${styles["mdDescriptionDiv"]} ${styles["smDescriptionDiv"]}`}>
+        <div
+          className={`Home/descriptionDiv ${styles["descriptionDiv"]} ${styles["mdDescriptionDiv"]} ${styles["smDescriptionDiv"]}`}
+        >
           <div
             className={`Home/descriptionDivTextDiv ${styles["descriptionDivTextDiv"]} ${styles["mdDescriptionDivTextDiv"]} ${styles["smDescriptionDivTextDiv"]} ${styles["lgDescriptionDivTextDiv"]}`}
           >

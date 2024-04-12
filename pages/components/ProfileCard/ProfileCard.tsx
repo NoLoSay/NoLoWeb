@@ -16,7 +16,7 @@ function ProfileCard({ profilePicturePath, firstName, lastName, email, phone, ci
       <img className="w-20 h-20 rounded-full" src={profilePicturePath} alt="Photo de profile"/>
       <div className="flex flex-col flex-grow mx-5 space-y-2">
         <p className="text-sky-600">Identification</p>
-        <p className="text-lg-1 font-bold my-2">{firstName + ' ' + lastName}</p>
+        <p className="text-lg font-bold my-2">{firstName + ' ' + lastName}</p>
         <p>{email}</p>
         <p>{phone}</p>
         <Select
