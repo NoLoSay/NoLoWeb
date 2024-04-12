@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import Head from "next/head";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/Layout";
 import TitleCard from "../../components/TitleCard/TitleCard";
 import VideoVignette from "../../components/VideoVignette/VideoVignette";
 import ArtVignette from "../../components/ArtVignette/ArtVignette";

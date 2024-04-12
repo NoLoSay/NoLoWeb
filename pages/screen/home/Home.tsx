@@ -2,7 +2,8 @@ import { Fragment } from "react";
 import Head from "../../../node_modules/next/head";
 import DownloadContainer from "./Views/DownloadContainer";
 import VideoCreationContainer from "./Views/VideoCreationContainer";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/Layout";
+import textData from "../../../public/text.json";
 
 interface HomeProps {}
 
@@ -76,22 +77,17 @@ const Home: React.FC<HomeProps> & {
             <p
               className={`Home/descriptionDivTitleText ${styles["descriptionDivTitleText"]} ${styles["lgDescriptionDivTitleText"]} ${styles["mdDescriptionDivTitleText"]} ${styles["smDescriptionDivTitleText"]}`}
             >
-              5,5 millions de personnes utilisent déjà Nolosay au quotidien.
+              {textData.page.home.descriptionDiv.title}
             </p>
             <p
               className={`Home/descriptionDivSubtitleText ${styles["descriptionDivSubtitleText"]} ${styles["lgDescriptionDivSubtitleText"]} ${styles["mdDescriptionDivSubtitleText"]} ${styles["smDescriptionDivSubtitleText"]}`}
             >
-              Accèdez à +1000 vidéos traduites en langue des signes
+              {textData.page.home.descriptionDiv.subtitle}
             </p>
             <p
               className={`Home/descriptionDivText ${styles["descriptionDivText"]} ${styles["lgDescriptionDivText"]} ${styles["mdDescriptionDivText"]} ${styles["smDescriptionDivText"]}`}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-              risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
-              nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
-              ligula massa, varius a, semper congue, euismod non, mi. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-              Suspendisse lectus tortor.
+              {textData.page.home.descriptionDiv.text}
             </p>
           </div>
         </div>

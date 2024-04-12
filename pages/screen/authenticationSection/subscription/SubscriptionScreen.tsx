@@ -1,6 +1,6 @@
 import React, { CSSProperties, Fragment } from "react";
 import Link from "../../../../node_modules/next/link";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Layout/Layout";
 
 const styles: { [key: string]: string } = {
   mainDiv:

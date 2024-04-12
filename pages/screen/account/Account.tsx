@@ -1,6 +1,6 @@
 import { Fragment, ReactNode } from "react";
 import Head from "../../../node_modules/next/head";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/Layout";
 import GenericCard from "../../components/GenericCard/GenericCard";
 import { ButtonBase } from "@mui/material";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
