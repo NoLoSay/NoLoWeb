@@ -4,11 +4,15 @@ import SearchBar from "./SearchBar";
 
 interface FindVideoProps {}
 
+const styles: { [key: string]: string } = {
+  mainDiv:"relative w-full flex flex-col items-center justify-center gap-y-5",
+}
+
 const FindVideo: React.FC<FindVideoProps> & {
   getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
   return (
-    <div className="absolute top-[120px] left-[0px] flex flex-col items-center justify-center">
+    <div className={`findVideodiv ${styles["mainDiv"]} `}>
       <SearchBar />
     </div>
   );

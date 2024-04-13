@@ -1,13 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
-import L from 'leaflet';
-
-
-const DEFAULT_WIDTH = 0;
-const DEFAULT_HEIGHT = 0;
-const DEFAULT_CENTER: [number, number] = [0, 0];
-const DEFAULT_ZOOM = 12;
 
 interface MapProps {
   width?: number;
@@ -15,16 +7,33 @@ interface MapProps {
   center?: [number, number];
 }
 
-const styles: { [key: string]: string } = {
-  Map: "w-[300%] h-full",
-};
-
 const Map: React.FC<MapProps> = (props) => {
-  const { width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT, center=DEFAULT_CENTER } = props;
-
+  const [Leaflet, setLeaflet] = useState<any>(null);
 
   useEffect(() => {
+    // Import dynamique de la bibliothèque Leaflet uniquement côté client
+    import('react-leaflet').then((module) => {
+      setLeaflet(module);
+    });
+  }, []);
+
+  const DEFAULT_WIDTH = 0;
+  const DEFAULT_HEIGHT = 0;
+  const DEFAULT_CENTER: [number, number] = [0, 0];
+  const DEFAULT_ZOOM = 12;
+
+  const styles: { [key: string]: string } = {
+    Map: "w-[300%] h-full",
+  };
+
+  useEffect(() => {
+    if (!Leaflet) return;
+
+    // Placez votre logique Leaflet à l'intérieur de cet effet
+    const L = require('leaflet');
+
     (async function init() {
+      if (!L) return;
       delete (L.Icon.Default.prototype as any)._getIconUrl;
       L.Icon.Default.mergeOptions({
         iconRetinaUrl: 'leaflet/images/marker-icon-2x.png',
@@ -32,14 +41,20 @@ const Map: React.FC<MapProps> = (props) => {
         shadowUrl: 'leaflet/images/marker-shadow.png',
       });
     })();
-  }, []);
+  }, [Leaflet]);
+
+  const { width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT, center = DEFAULT_CENTER } = props;
 
   return (
     <div style={{ aspectRatio: width / height }}>
-      <MapContainer className={styles.Map} center={center} zoom={DEFAULT_ZOOM}>
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Marker position={DEFAULT_CENTER} />
-      </MapContainer>
+      {Leaflet ? (
+        <Leaflet.MapContainer className={styles.Map} center={center} zoom={DEFAULT_ZOOM}>
+          <Leaflet.TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <Leaflet.Marker position={DEFAULT_CENTER} />
+        </Leaflet.MapContainer>
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 };
