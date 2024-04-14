@@ -1,22 +1,36 @@
+import React from 'react';
 import "../styles/global.css";
 import Head from "next/head";
-import { AppProps } from "next/app";
+import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from "./components/Layout/Layout";
+import Home from "./screen/home/Home";
+import About from "./screen/about/About";
+import ArtworksPage from "./screen/artworks/Artworks";
+import ExhibitionsPage from "./screen/exhibitions/Exhibitions";
 
-interface MyAppProps extends AppProps {
-  Component: React.ComponentType & {
-    getLayout?: (page: React.ReactNode) => React.ReactNode;
-  };
-}
+const AppRouter = () => {
+  const [isClient, setIsClient] = useState(false);
 
-export default function MyApp({ Component, pageProps }: MyAppProps) {
-  const getLayout = Component.getLayout || ((page: React.ReactNode) => page);
+  useEffect(() => {
+    setIsClient(typeof window !== 'undefined');
+  }, []);
+
+  if (!isClient) {
+    return <div>Loading...</div>; // Or render null or any other placeholder content
+  }
 
   return (
-    <div>
-      <Head>
-        <link rel="icon" href="/images/logo/nologo.png" />
-      </Head>
-      {getLayout(<Component {...pageProps} />)}
-    </div>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/exhibitions" element={<ExhibitionsPage />} />
+          <Route path="/artworks" element={<ArtworksPage />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
-}
+};
+
+export default AppRouter;

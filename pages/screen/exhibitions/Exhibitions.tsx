@@ -290,8 +290,9 @@ const Exhibition: React.FC<HomeProps> & {
                     <div className={`divExhibitionList ${styles["divExhibitionList"]}`}>
                         {staticExhibitions.map((exhibition) => (
 
-                            /// TODO move this code into Exhibition Component
-                            /// TODO add image in exhibition
+                            /// TODO Move this code into Exhibition Component
+                            /// TODO Add image in each exhibitions
+                            /// TODO Remove debug after test by all developers
 
                             <div key={exhibition.id} className={`divExhibition ${styles["divExhibition"]}`}>
                                 <img
