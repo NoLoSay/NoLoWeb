@@ -23,7 +23,7 @@ const Map: React.FC<MapProps> = (props) => {
   const DEFAULT_ZOOM = 12;
 
   const styles: { [key: string]: string } = {
-    Map: "w-[300%] h-full",
+    Map: "relative w-[1280px] h-[800px] md:w-[700px] md:h-[300px] sm:w-[100px] sm:h-[50px] border rounded-lg ",
   };
 
   useEffect(() => {
@@ -46,14 +46,14 @@ const Map: React.FC<MapProps> = (props) => {
   const { width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT, center = DEFAULT_CENTER } = props;
 
   return (
-    <div style={{ aspectRatio: width / height }}>
+    <div>
       {Leaflet ? (
         <Leaflet.MapContainer className={styles.Map} center={center} zoom={DEFAULT_ZOOM}>
           <Leaflet.TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <Leaflet.Marker position={DEFAULT_CENTER} />
         </Leaflet.MapContainer>
       ) : (
-        <div>Loading...</div>
+        <div className='text-base-black'>Loading...</div>
       )}
     </div>
   );

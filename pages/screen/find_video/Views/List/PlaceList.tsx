@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import PlaceTemplate from "./PlaceTemplate";
+import Pagination from "./Pagination";
 
 interface CardData {
   title1: string;
@@ -87,17 +88,20 @@ const PlaceList: NextPage = () => {
     container: "w-[1280px] flex flex-col items-start justify-start gap-[24px] min-h-[493px] max-w-full text-left text-3xl text-base-black font-poppins",
     TitleText: "m-0 relative text-inherit leading-[22px] font-semibold font-inherit z-[1] mq450:text-lg mq450:leading-[18px]",
     CardsDiv: "self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray mq450:gap-[19px] mq750:gap-[38px]",
+    pagDiv:"flex justify-center items-center pt-4",
   };
 
   return (
-    <div className={styles.container} >
-      <h1 className={styles.TitleText}>
-        Lieux
-      </h1>
-      <div className={styles.CardsDiv}>
-        {cardData.map((card, index) => (
-          <PlaceTemplate key={index} cardInfos={[card]} />
-        ))}
+    <div>
+      <div className={styles.container} >
+        <div className={styles.CardsDiv}>
+          {cardData.map((card, index) => (
+            <PlaceTemplate key={index} cardInfos={[card]} />
+          ))}
+        </div>
+      </div>
+      <div className={styles.pagDiv}>
+        <Pagination />
       </div>
     </div>
   );
