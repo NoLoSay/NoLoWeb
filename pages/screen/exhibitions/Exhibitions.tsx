@@ -1,68 +1,152 @@
 import Layout from "../../components/Layout/Layout";
 import Home from "../home/Home";
+import { useNavigate } from 'react-router-dom';
 import { Fragment } from "react";
+import * as objectorarray from "objectorarray";
 
 
 interface ExhibitionsProps {}
 
 const staticExhibitions = [
     {
-        id: 1,
-        name: "Expo de Test",
-        shortDescription: "Il faut bien une première à tout",
-        longDescription: "On sait bien qu'elle sera ratée mais bon on s'accroche quand même",
-        startDate: "2024-01-15T00:00:00.000Z",
-        endDate: "2024-01-15T00:00:00.000Z",
-        site: {
-            id: 1,
-            name: "Château d'Angers",
-            shortDescription: "Un château trop bien",
-            longDescription: "Je te jure! Tu as une superbe vue et je ne dis pas ça car c'est ma ville natale! Non pas du tout!",
-            telNumber: "+33 2 41 86 48 77",
-            price: 9.5,
-            address: {
-                street: "Prom. du Bout du Monde",
-                zip: "49100",
-                City: {
-                    name: "Angers",
-                    Department: {
-                        name: "Maine et Loire",
-                        Country: {
-                            name: "France"
+        "id": 1,
+        "name": "Expo de Test",
+        "shortDescription": "Il faut bien une permière a tout",
+        "longDescription": "On sait bien qu'elle sera rété mais bon on s'accroche quand meme",
+        "startDate": "2024-01-15T00:00:00.000Z",
+        "endDate": "2024-01-15T00:00:00.000Z",
+        "site": {
+            "id": 1,
+            "name": "Château d'Angers",
+            "shortDescription": "Un chateau trop bien",
+            "longDescription": "Je te jure! Tu as une superbe vue et je dis pas ca car c'est ma ville natale ! Non pas du tout !",
+            "telNumber": "+33 2 41 86 48 77",
+            "email": null,
+            "website": null,
+            "price": 9.5,
+            "picture": null,
+            "type": "MUSEUM",
+            "tags": [
+                "DISABILITY_FRIENDLY",
+                "DEAF_FRIENDLY"
+            ],
+            "address": {
+                "id": 1,
+                "houseNumber": "2",
+                "street": " Prom. du Bout du Monde",
+                "zip": "49100",
+                "City": {
+                    "id": 1,
+                    "name": "Angers",
+                    "zip": "49000",
+                    "Department": {
+                        "id": 1,
+                        "name": "Maine et Loire",
+                        "Country": {
+                            "id": 1,
+                            "name": "France"
                         }
                     }
-                }
+                },
+                "otherDetails": "",
+                "longitude": 491,
+                "latitude": 491
             }
-        }
+        },
+        "items": [
+            {
+                "id": 1,
+                "name": "La tete d'un Epoutanflus",
+                "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
+                "picture": null,
+                "relatedPerson": {
+                    "id": 1,
+                    "name": "Max Verstappen"
+                },
+                "itemType": null
+            },
+            {
+                "id": 2,
+                "name": "La tete d'un Epoutanflus",
+                "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
+                "picture": null,
+                "relatedPerson": {
+                    "id": 1,
+                    "name": "Max Verstappen"
+                },
+                "itemType": null
+            }
+        ]
     },
     {
-        id: 2,
-        name: "Expo d'Art Moderne",
-        shortDescription: "Découvrez l'art moderne comme jamais auparavant",
-        longDescription: "Cette exposition explore des œuvres modernes du 20ème siècle avec une attention particulière portée aux expressions artistiques émergentes.",
-        startDate: "2024-02-20T00:00:00.000Z",
-        endDate: "2024-03-20T00:00:00.000Z",
-        site: {
-            id: 2,
-            name: "Musée des Beaux-Arts",
-            shortDescription: "Un musée central à la riche histoire artistique",
-            longDescription: "Situé au cœur de la ville, le musée présente une collection impressionnante qui attire les amateurs d'art du monde entier.",
-            telNumber: "+33 2 41 23 50 00",
-            price: 15,
-            address: {
-                street: "Rue de la Liberté",
-                zip: "75000",
-                City: {
-                    name: "Paris",
-                    Department: {
-                        name: "Île-de-France",
-                        Country: {
-                            name: "France"
+        "id": 2,
+        "name": "Expo de Test",
+        "shortDescription": "Il faut bien une permière a tout",
+        "longDescription": "On sait bien qu'elle sera rété mais bon on s'accroche quand meme",
+        "startDate": "2024-01-15T00:00:00.000Z",
+        "endDate": "2024-01-15T00:00:00.000Z",
+        "site": {
+            "id": 1,
+            "name": "Château d'Angers",
+            "shortDescription": "Un chateau trop bien",
+            "longDescription": "Je te jure! Tu as une superbe vue et je dis pas ca car c'est ma ville natale ! Non pas du tout !",
+            "telNumber": "+33 2 41 86 48 77",
+            "email": null,
+            "website": null,
+            "price": 9.5,
+            "picture": null,
+            "type": "MUSEUM",
+            "tags": [
+                "DISABILITY_FRIENDLY",
+                "DEAF_FRIENDLY"
+            ],
+            "address": {
+                "id": 1,
+                "houseNumber": "2",
+                "street": " Prom. du Bout du Monde",
+                "zip": "49100",
+                "City": {
+                    "id": 1,
+                    "name": "Angers",
+                    "zip": "49000",
+                    "Department": {
+                        "id": 1,
+                        "name": "Maine et Loire",
+                        "Country": {
+                            "id": 1,
+                            "name": "France"
                         }
                     }
-                }
+                },
+                "otherDetails": "",
+                "longitude": 491,
+                "latitude": 491
             }
-        }
+        },
+        "items": [
+            {
+                "id": 1,
+                "name": "La tete d'un Epoutanflus",
+                "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
+                "picture": null,
+                "relatedPerson": {
+                    "id": 1,
+                    "name": "Max Verstappen"
+                },
+                "itemType": null
+            },
+            {
+                "id": 2,
+                "name": "La tete d'un Epoutanflus",
+                "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
+                "picture": null,
+                "relatedPerson": {
+                    "id": 1,
+                    "name": "Max Verstappen"
+                },
+                "itemType": null
+            }
+        ]
     }
 ];
 
@@ -135,10 +219,18 @@ const styles: { [key: string]: string } = {
 const Exhibition: React.FC<HomeProps> & {
     getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
+    const navigate = useNavigate();
 
     const handleAction = (buttonName: string, exhibitionId: number) => {
         console.log(`Le bouton ${buttonName} a été cliqué pour l'exhibition ${exhibitionId}! `);
     };
+
+    const handleGoToArtworks = (exhibition) => {
+        // Naviguer vers la page Artworks et passer l'exposition complète en état
+        console.log(`exxxxx = ${exhibition.items}`);
+        navigate('/artworks',  { state: { items: exhibition.items } });
+    };
+
 
     const handleBack = () => {
         console.log('go to previous page');
@@ -282,10 +374,10 @@ const Exhibition: React.FC<HomeProps> & {
                                                 role="button"
                                                 tabIndex={0}
                                                 className={`divGoToArtworksBtn ${styles["divGoToArtworksBtn"]}`}
-                                                onClick={() => handleAction('goToArtworks', exhibition.id)}
+                                                onClick={() => handleGoToArtworks(exhibition)}
                                                 onKeyDown={(event) => {
                                                     if (event.key === 'Enter' || event.key === ' ') {
-                                                        handleAction('goToArtworks', exhibition.id);
+                                                        handleGoToArtworks(exhibition);
                                                         event.preventDefault();
                                                     }
                                                 }}
