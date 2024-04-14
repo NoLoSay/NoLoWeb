@@ -58,8 +58,6 @@ interface SubscriptionScreenProps {}
 const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
   getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
-  
-
   return (
     <div
       className={`SubscriptionScreen/mainDiv ${styles["mainDiv"]} ${styles["smMainDiv"]} ${styles["mdMainDiv"]} ${styles["lgMainDiv"]}`}
