@@ -1,7 +1,8 @@
 import { Fragment } from "react";
 import Head from "next/head";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/Layout";
 import Container from "./Views/Container";
+import textData from "../../../public/text.json";
 
 interface AboutProps {}
 
@@ -51,11 +52,7 @@ const About: React.FC<AboutProps> & {
         </div>
         <div className={styles.ContentDiv}>
           <span className={styles.ContentText}>
-            NoLoSay est un projet étudiant de 8 personnes en 4ème année du
-            Programme Grande École à EPITECH. Le projet se déroule sur 3 ans et
-            nous souhaitons répandre la langue des signes en mettant à
-            disposition des vidéos pour la communauté réalisées par la
-            communauté.
+            {textData.page.about.description}
           </span>
           <img
             className={styles.EpitechImg}

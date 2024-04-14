@@ -5,10 +5,10 @@ import { useRouter } from "next/router";
 
 interface NavbarButtonProps {
   onClick?: (event: MouseEvent<HTMLDivElement>) => void;
-  colorBase: string;
-  colorClick: string;
-  size: string;
-  children: ReactNode;
+  colorBase?: string;
+  colorClick?: string;
+  size?: string;
+  children?: ReactNode;
 }
 
 const NavbarButton: FC<NavbarButtonProps> = ({

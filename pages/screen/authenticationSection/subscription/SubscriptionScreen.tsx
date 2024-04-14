@@ -1,5 +1,5 @@
 import React, { CSSProperties, Fragment } from "react";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Layout/Layout";
 
 const classes: { [key: string]: CSSProperties } = {
   frame: {

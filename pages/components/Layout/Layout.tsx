@@ -1,9 +1,9 @@
 // components/Layout.js
-import NavBar from "./NavBar";
+import NavBar from "../NavBar/NavBar";
 import React, { ReactNode } from "react";
-import FooterContainer from "./FooterContainer";
-import NewsletterField from "./NewsletterField/NewsletterField";
-import AnimatedNavbar from "./AnimatedNavbar/AnimatedNavbar";
+import FooterContainer from "../FooterContainer/FooterContainer";
+import NewsletterField from "../NewsletterField/NewsletterField";
+import AnimatedNavbar from "../AnimatedNavbar/AnimatedNavbar";
 
 interface LayoutProps {
   children: ReactNode;

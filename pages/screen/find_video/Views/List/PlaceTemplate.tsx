@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { useRouter } from 'next/router';
 
+
 interface CardInfo {
   title1: string;
   title2: string;

@@ -1,4 +1,4 @@
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/Layout";
 import React, { useState }  from 'react';
 import ImageSlider from "./Views/List/ImageSlider";
 import PlaceList from './Views/List/PlaceList';
@@ -24,20 +24,20 @@ const FindVideo: React.FC<FindVideoProps> & {
   getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
   const [currentDiv, setCurrentDiv] = useState<'ListView' | 'MapView'>('ListView');
-    const [buttonText, setButtonText] = useState('Voir la carte');
-    const [buttonIcon, setButtonIcon] = useState('/icon/search/MapIcon.png');
+  const [buttonText, setButtonText] = useState('Voir la carte');
+  const [buttonIcon, setButtonIcon] = useState('/icon/search/MapIcon.png');
 
-    const toggleDiv = () => {
-        console.log('Toggle Div function called');
-        setCurrentDiv(currentDiv === 'ListView' ? 'MapView' : 'ListView');
-        if (currentDiv === 'ListView') {
-            setButtonText('Voir la liste');
-            setButtonIcon('/icon/search/ListIcon.png');
-          } else {
-            setButtonText('Voir la carte');
-            setButtonIcon('/icon/search/MapIcon.png');
-          }
-      };   
+  const toggleDiv = () => {
+      console.log('Toggle Div function called');
+      setCurrentDiv(currentDiv === 'ListView' ? 'MapView' : 'ListView');
+      if (currentDiv === 'ListView') {
+          setButtonText('Voir la liste');
+          setButtonIcon('/icon/search/ListIcon.png');
+        } else {
+          setButtonText('Voir la carte');
+          setButtonIcon('/icon/search/MapIcon.png');
+        }
+  };   
   return (
     <div>
       <div className={`findVideodiv ${styles["mainDiv"]} `}>
