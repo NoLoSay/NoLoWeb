@@ -10,7 +10,8 @@ const styles: { [key: string]: string } = {
   mdMainDiv: "md:w-3/4 md:px-5 md:py-15",
   lgMainDiv: "lg:w-2/3",
 
-  titleDiv: "relative flex flex-col flex-auto gap-5 items-center justify-center text-center",
+  titleDiv:
+    "relative flex flex-col flex-auto gap-5 items-center justify-center text-center",
   smTitleDiv: "sm:w-1/2",
 
   titleDivLogo: "relative w-1/3",
@@ -52,12 +53,20 @@ const styles: { [key: string]: string } = {
   noAccountLink: "font-bold font-poppins hover:underline text-black",
 };
 
-export const SubscriptionScreen = (): JSX.Element => {
+interface SubscriptionScreenProps {}
+
+const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
+  getLayout: (page: React.ReactNode) => React.ReactNode;
+} = () => {
+  
+
   return (
     <div
       className={`SubscriptionScreen/mainDiv ${styles["mainDiv"]} ${styles["smMainDiv"]} ${styles["mdMainDiv"]} ${styles["lgMainDiv"]}`}
     >
-      <div className={`SubscriptionScreen/titleDiv ${styles["titleDiv"]} ${styles["smTitleDiv"]}`}>
+      <div
+        className={`SubscriptionScreen/titleDiv ${styles["titleDiv"]} ${styles["smTitleDiv"]}`}
+      >
         <img
           className={`SubscriptionScreen/titleDivLogo ${styles["titleDivLogo"]}`}
           alt="Black logo"
