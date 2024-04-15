@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import Head from "next/head";
+import Head from "../../../node_modules/next/head";
 import Layout from "../../components/Layout/Layout";
 import Container from "./Views/Container";
 import textData from "../../../public/text.json";
@@ -10,12 +10,12 @@ const styles: { [key: string]: string } = {
   container:
     "w-full py-24 md:py-16 sm:py-12 bg-base-white flex flex-col items-center justify-center",
   AboutDiv:
-    "rounded-41xl w-2/3 overflow-hidden text-left text-base-white relative mb-12",
+    "rounded-15xl w-2/3 overflow-hidden text-left text-base-white relative mb-12",
   gradient:
     "absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#FDC81065] to-[#00000000]",
   TeamImg: "w-full",
   ContentDiv:
-    "w-4/5 px-12 py-4 items-center justify-center border-[#FDC81088] border-8 border-solid rounded-xl relative mb-16",
+    "w-4/5 px-12 py-4 items-center justify-center border-[#FDC81088] border-8 border-solid rounded-2.5xl relative mb-16",
   ContentText:
     "inline-block text-[1.8rem] md:text-[1.2rem] sm:text-[0.8rem] font-black text-center text-black",
   EpitechImg:

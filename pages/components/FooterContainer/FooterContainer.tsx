@@ -1,4 +1,5 @@
-import Link from "next/link";
+import Link from "../../../node_modules/next/link";
+import { useNavigate } from "../../../node_modules/react-router-dom/dist/index";
 import textData from "../../../public/text.json";
 
 const styles: { [key: string]: string } = {
@@ -26,11 +27,17 @@ const styles: { [key: string]: string } = {
 
   contactLink: "text-white",
 
-  aboutLink: "text-blue-400 hover:underline",
+  aboutLink:
+    "text-blue-400 hover:underline hover:cursor-pointer bg-transparent",
 };
 
-/* rework */
 const FooterContainer: React.FC = () => {
+  const navigate = useNavigate();
+
+  function handleNavigation(link: string) {
+    navigate(link);
+  }
+
   return (
     <div className={`mainDiv ${styles["mainDiv"]} ${styles["smMainDiv"]}`}>
       <div
@@ -89,13 +96,14 @@ const FooterContainer: React.FC = () => {
             contact@nolosay.fr
           </Link>
         </div>
-        <Link
-          href="/screen/about/About"
-          as="/about"
+        <button
+          onClick={() => {
+            handleNavigation("/about");
+          }}
           className={styles["aboutLink"]}
         >
           About
-        </Link>
+        </button>
       </div>
     </div>
   );

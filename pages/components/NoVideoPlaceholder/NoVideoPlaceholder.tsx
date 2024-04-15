@@ -7,11 +7,11 @@ const NoVideoPlaceholder = () => {
     <div className="flex flex-row text-black max-w-lg">
       <div className='flex flex-col space-y-5 justify-center'>
         <div>
-          <p className='font-sans text-5xl'>Créer une vidéo</p>
+          <p className='font-sans text-2xl'>Créer une vidéo</p>
           <p>Of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
         </div>
         <div>
-          <p className='font-sans text-5xl'>Demander une traduction</p>
+          <p className='font-sans text-2xl'>Demander une traduction</p>
           <p>Of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
         </div>
       </div>

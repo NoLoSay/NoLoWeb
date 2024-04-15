@@ -1,5 +1,5 @@
 import { Fragment, ReactNode } from "react";
-import Head from "next/head";
+import Head from "../../../node_modules/next/head";
 import Layout from "../../components/Layout/Layout";
 import GenericCard from "../../components/GenericCard/GenericCard";
 import { ButtonBase } from "@mui/material";
@@ -32,9 +32,9 @@ const Account = () => {
       <div className="grid grid-cols-3 gap-4 text-black w-4/5 mx-auto my-10">
         <div className="flex flex-col space-y-5 items-center m-5">
           <h2>Rechercher des oeuvres par :</h2>
-          <BigButton label="Recherche personnalisée" textSize="text-5xl" />
-          <BigButton label="Villes" textSize="text-5xl" />
-          <BigButton label="Lieux" textSize="text-5xl" />
+          <BigButton label="Recherche personnalisée" textSize="text-2xl" />
+          <BigButton label="Villes" textSize="text-2xl" />
+          <BigButton label="Lieux" textSize="text-2xl" />
           <GraphCard title="Nombre de vues de la semaine" value="49327"/>
         </div>
         <div>

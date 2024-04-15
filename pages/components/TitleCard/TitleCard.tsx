@@ -14,7 +14,7 @@ function TitleCard({ title, imgPath }: TitleProps) {
       </ButtonBase>
       <h1 className="
         flex-grow flex justify-center
-        text-41xl text-white font-bold font-sans drop-shadow-xl
+        text-6xl text-white font-bold font-sans drop-shadow-xl
       ">{title}</h1>
     </div>
   );

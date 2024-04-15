@@ -216,7 +216,7 @@ const styles: { [key: string]: string } = {
         "flex flex-col items-center justify-between flex-none",
 };
 
-const Exhibition: React.FC<HomeProps> & {
+const Exhibition: React.FC<ExhibitionsProps> & {
     getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
     const navigate = useNavigate();
