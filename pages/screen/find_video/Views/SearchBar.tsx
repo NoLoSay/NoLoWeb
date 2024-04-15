@@ -1,8 +1,11 @@
-import React, { ReactNode }  from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 
 interface SearchBarProps {
-    children: ReactNode;
-  }
+  children: ReactNode;
+  userLocation: [number, number];
+  places?: { position: [number, number]; name: string; location: string }[];
+  onSearch: (query: string) => void;
+}
 
 const styles: { [key: string]: string } = {
   container: "relative flex flex-row items-center justify-start gap-[20px] max-w-full",
@@ -14,26 +17,65 @@ const styles: { [key: string]: string } = {
   locationTextContainer: "flex flex-row items-center justify-start gap-[9px]",
   locationText: "relative tracking-[-0.41px] leading-[22px] font-medium text-black",
   
-  searchInput: "flex-1 relative tracking-[-0.41px] leading-[22px] font-medium text-gray-100 whitespace-nowrap",
+  searchInput: "flex-1 relative tracking-[-0.41px] leading-[22px] font-medium text-base-black whitespace-nowrap",
   
   searchIcon: "h-[13.9px] w-3 relative",
-  
 };
 
-const SearchBar: React.FC<SearchBarProps> = ({ children }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ children, userLocation, onSearch}) => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [userCity, setUserCity] = useState<string>("");
+
+  useEffect(() => {
+    const fetchUserCity = async () => {
+      try {
+        const [latitude, longitude] = userLocation;
+        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`);
+        const data = await response.json();
+        setUserCity(data.address.city || data.address.town || data.address.village || data.address.county || data.address.state || data.address.country);
+      } catch (error) {
+        console.error("Error fetching user city:", error);
+      }
+    };
+
+    fetchUserCity();
+  }, [userLocation]);
+
+  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearch = () => {
+    onSearch(searchQuery);
+    console.log("Searching for:", searchQuery);
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div>
         <div>
             <div className={styles.container}>
                 <div className={styles.searchBar}>
                     <div className={styles.locationInputContainer}>
-                    <div className={styles.locationTextContainer}>
-                        <div className={styles.locationText}>Nantes</div>
-                        <img className={styles.searchIcon} alt="" src="/icon/search/CityIcon.png" />
+                      <div className={styles.locationTextContainer}>
+                          <div className={styles.locationText}>{userCity}</div>
+                          <img className={styles.searchIcon} alt="" src="/icon/search/CityIcon.png" />
+                      </div>
+                      <input
+                        className={styles.searchInput}
+                        type="text"
+                        placeholder="Recherche par thème, note..."
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
+                        onKeyPress={handleKeyPress}
+                      />
                     </div>
-                    <div className={styles.searchInput}>Recherche par thème, note...</div>
-                    </div>
-                    <img className={styles.searchIcon} alt="" src="/icon/search/search.png" />
+                    <img className={styles.searchIcon} alt="" src="/icon/search/search.png" onClick={handleSearch} />
                 </div>
                 {children}
             </div>

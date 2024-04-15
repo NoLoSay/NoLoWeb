@@ -1,14 +1,10 @@
 import Layout from "../../components/Layout/Layout";
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import ImageSlider from "./Views/List/ImageSlider";
 import PlaceList from './Views/List/PlaceList';
 import Map from'./Views/Map/Map';
 import FilterPage from "./Views/List/Filter";
 import SearchBar from "./Views/SearchBar";
-
-const DEFAULT_CENTER: [number, number] = [47.216671, -1.55];
-const DEFAULT_WIDTH = 400;
-const DEFAULT_HEIGHT = 500;
 
 interface FindVideoProps {}
 
@@ -26,6 +22,68 @@ const FindVideo: React.FC<FindVideoProps> & {
   const [currentDiv, setCurrentDiv] = useState<'ListView' | 'MapView'>('ListView');
   const [buttonText, setButtonText] = useState('Voir la carte');
   const [buttonIcon, setButtonIcon] = useState('/icon/search/MapIcon.png');
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+
+  const nantesPlaces: { position: [number, number]; name: string; city: string; location: string; description : string, image: string, videocount: string, website: string}[] = [
+    { position: [47.2186371, -1.5541362], 
+      name: "Château des Ducs de Bretagne", 
+      city: "Nantes", location: "France", 
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
+      image: "/images/castle/castle-template-list.png", 
+      videocount: "22 Vidéos",
+      website: "https://www.chateaunantes.fr/"},
+    { position: [47.2146061, -1.5562657], name: "Cathédrale Saint-Pierre et Saint-Paul de Nantes", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2133658, -1.5580792], name: "Place Royale", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2109537, -1.5623094], name: "Île de Versailles", city: "Paris", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2170899, -1.5537168], name: "Jardin des Plantes de Nantes", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2146061, -1.5562657], name: "Cathédrale Saint-Pierre et Saint-Paul de Nantes", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2133658, -1.5580792], name: "Place Royale", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2109537, -1.5623094], name: "Île de Versailles", city: "Paris", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2170899, -1.5537168], name: "Jardin des Plantes de Nantes", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2146061, -1.5562657], name: "Cathédrale Saint-Pierre et Saint-Paul de Nantes", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2133658, -1.5580792], name: "Place Royale", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2109537, -1.5623094], name: "Île de Versailles", city: "Paris", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2170899, -1.5537168], name: "Jardin des Plantes de Nantes", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2146061, -1.5562657], name: "Cathédrale Saint-Pierre et Saint-Paul de Nantes", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2133658, -1.5580792], name: "Place Royale", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2109537, -1.5623094], name: "Île de Versailles", city: "Paris", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2170899, -1.5537168], name: "Jardin des Plantes de Nantes", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2146061, -1.5562657], name: "Cathédrale Saint-Pierre et Saint-Paul de Nantes", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2133658, -1.5580792], name: "Place Royale", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2109537, -1.5623094], name: "Île de Versailles", city: "Paris", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2170899, -1.5537168], name: "Jardin des Plantes de Nantes", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2146061, -1.5562657], name: "Cathédrale Saint-Pierre et Saint-Paul de Nantes", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2133658, -1.5580792], name: "Place Royale", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2109537, -1.5623094], name: "Île de Versailles", city: "Paris", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+    { position: [47.2170899, -1.5537168], name: "Jardin des Plantes de Nantes", city: "Nantes", location: "France", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: "/images/castle/castle-template-list.png", videocount: "22 Vidéos", website: "https://www.chateaunantes.fr/"},
+  ];
+  
+  const [userPosition, setUserPosition] = useState<[number, number]>([47.216671, -1.55]);
+  
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserPosition([position.coords.latitude, position.coords.longitude]);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }, []);
+
+  const handleSearch = (query: string) => {
+    console.log("Recherche effectuée avec la query:", query);
+    const queryLower = query.toLowerCase();
+    const matchingPlaces = nantesPlaces.filter(place =>
+      place.name.toLowerCase().includes(queryLower) || place.location.toLowerCase().includes(queryLower) || place.city.toLowerCase().includes(queryLower)
+    );
+    console.log("Lieux correspondants :", matchingPlaces);
+    setSearchResults(matchingPlaces);
+  };
 
   const toggleDiv = () => {
       console.log('Toggle Div function called');
@@ -42,7 +100,7 @@ const FindVideo: React.FC<FindVideoProps> & {
     <div>
       <div className={`findVideodiv ${styles["mainDiv"]} `}>
         <div>
-          <SearchBar>
+          <SearchBar userLocation={userPosition} places={nantesPlaces} onSearch={handleSearch}>
               <div>
                 <button className={styles.mapButton} onClick={toggleDiv}>
                     <div className={styles.mapButtonText}>
@@ -59,13 +117,12 @@ const FindVideo: React.FC<FindVideoProps> & {
           {currentDiv === 'ListView' && (
             <div className="pt-10">
               <ImageSlider/>
-              <FilterPage />
-              <PlaceList/>
+              <PlaceList places={searchResults.length > 0 ? searchResults : nantesPlaces} />            
             </div>
           )}
           {currentDiv === 'MapView' && (
             <div className="pt-4 pb-4">
-              <Map width={DEFAULT_WIDTH} height={DEFAULT_HEIGHT} center={DEFAULT_CENTER}/>
+              <Map center={userPosition} places={searchResults.length > 0 ? searchResults : nantesPlaces}/>
             </div>
           )}
         </div>

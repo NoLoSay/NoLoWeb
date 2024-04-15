@@ -1,35 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import Link from 'next/link';
 import 'leaflet/dist/leaflet.css';
-
 interface MapProps {
-  width?: number;
-  height?: number;
-  center?: [number, number];
+
+  center: [number, number];
+  places?: { position: [number, number]; name: string, description: string, location:string, city: string, website: string, image: string }[];
 }
 
+const styles: { [key: string]: string } = {
+  Map: "relative w-[1280px] h-[800px] md:w-[700px] md:h-[300px] sm:w-[100px] sm:h-[50px] border rounded-lg ",
+};
+
 const Map: React.FC<MapProps> = (props) => {
+  const DEFAULT_ZOOM = 12;
+  const DEFAULT_CENTER: [number, number] = [0, 0];
   const [Leaflet, setLeaflet] = useState<any>(null);
+  const mapRef = useRef<any>(null);
+  const {center = DEFAULT_CENTER, places = [] } = props;
+
 
   useEffect(() => {
-    // Import dynamique de la bibliothèque Leaflet uniquement côté client
     import('react-leaflet').then((module) => {
       setLeaflet(module);
     });
   }, []);
 
-  const DEFAULT_WIDTH = 0;
-  const DEFAULT_HEIGHT = 0;
-  const DEFAULT_CENTER: [number, number] = [0, 0];
-  const DEFAULT_ZOOM = 12;
-
-  const styles: { [key: string]: string } = {
-    Map: "relative w-[1280px] h-[800px] md:w-[700px] md:h-[300px] sm:w-[100px] sm:h-[50px] border rounded-lg ",
-  };
-
   useEffect(() => {
     if (!Leaflet) return;
 
-    // Placez votre logique Leaflet à l'intérieur de cet effet
     const L = require('leaflet');
 
     (async function init() {
@@ -43,15 +41,52 @@ const Map: React.FC<MapProps> = (props) => {
     })();
   }, [Leaflet]);
 
-  const { width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT, center = DEFAULT_CENTER } = props;
+  const L = require('leaflet')
+  const redIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+  const blueIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
 
   return (
     <div>
       {Leaflet ? (
-        <Leaflet.MapContainer className={styles.Map} center={center} zoom={DEFAULT_ZOOM}>
-          <Leaflet.TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          <Leaflet.Marker position={DEFAULT_CENTER} />
-        </Leaflet.MapContainer>
+        <div>
+          <Leaflet.MapContainer ref={mapRef} className={styles.Map} center={center} zoom={DEFAULT_ZOOM}>
+            <Leaflet.TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            {center[0] !== 47.216671 && center[1] !== -1.55 && (
+              <Leaflet.Marker position={center} icon={blueIcon}>
+                <Leaflet.Popup>You are here</Leaflet.Popup>
+              </Leaflet.Marker>
+            )}
+            {places.map((place, index) => (
+              <Leaflet.Marker key={index} position={place.position} icon={redIcon}>
+                <Leaflet.Popup>
+                    <div>
+                        <img className="bg-cover bg-center w-[300px] h-[200px]" loading="eager" alt="" src={place.image} />
+                        <p>{place.name}</p>
+                        <p>{place.city}, {place.location}</p>
+                        <p>Description: {place.description}</p>
+                        <p>Website: <Link href={place.website}>{place.website}</Link></p>
+                    </div>
+                </Leaflet.Popup>
+
+              </Leaflet.Marker>
+            ))}
+          </Leaflet.MapContainer>
+        </div>
       ) : (
         <div className='text-base-black'>Loading...</div>
       )}

@@ -37,6 +37,7 @@ module.exports = {
         black: "#000",
         darkslategray: "#1e303a",
         lightgoldenrodyellow: "#dfffcc",
+        lightyellow:"#FEEAAE",
         limegreen: "#42b100",
         gray: "#0b0b0b",
         gainsboro: "#e6e6e6",
