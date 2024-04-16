@@ -1,5 +1,5 @@
-import React, { CSSProperties, Fragment } from "react";
-import Link from "../../../../node_modules/next/link";
+import React, { CSSProperties, Fragment, useEffect, useState } from "react";
+import { useNavigate } from "../../../../node_modules/react-router-dom/dist/index";
 import Layout from "../../../components/Layout/Layout";
 
 const styles: { [key: string]: string } = {
@@ -29,6 +29,8 @@ const styles: { [key: string]: string } = {
   formInput: "bg-gray-50 font-normal text-xl p-2 relative rounded-1.5lg w-full",
   smFormInput: "sm:text-sm",
 
+  formPasswordDiv: "flex flex-row bg-gray-50 px-2 w-full rounded-1.5lg",
+
   formConnectionButton:
     "bg-base-button font-poppins font-semibold hover:cursor-pointer p-2 relative rounded-1.5lg text-black text-sm w-2/3",
 
@@ -50,7 +52,8 @@ const styles: { [key: string]: string } = {
   noAccountText:
     "font-normal font-poppins relative text-center text-gray-300 text-xs",
 
-  noAccountLink: "font-bold font-poppins hover:underline text-black",
+  noAccountButton:
+    "bg-transparent font-bold font-poppins hover:underline text-black",
 };
 
 interface SubscriptionScreenProps {}
@@ -58,6 +61,69 @@ interface SubscriptionScreenProps {}
 const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
   getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showPasswordConfirmation, setShowPasswordConfirmation] =
+    useState<boolean>(false);
+  const [error, setError] = useState<string | undefined>(undefined);
+  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  async function subscribeUser(): Promise<void> {
+    setError(undefined);
+    if (emailRegex.test(formData.email) === false) {
+      setError("Veuillez rentrer un email valide");
+      return;
+    }
+    if (formData.password.length < 8) {
+      setError("Mot de passe trop court");
+      return;
+    }
+    if (formData.password !== formData.confirmPassword) {
+      setError("Mots de passe différents");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3001/register", {
+        method: "POST",
+        headers: {
+          Accept: "*/*",
+          ContentType: "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.userName,
+          email: formData.email,
+          password: formData.password,
+          telNumber: formData.phoneNumber,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create account");
+      }
+
+    } catch (e) {
+      console.error("API error: ", e);
+      stop();
+    }
+  }
+
+  const handleInputChange = (event: { target: { name: any; value: any } }) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   return (
     <div
       className={`SubscriptionScreen/mainDiv ${styles["mainDiv"]} ${styles["smMainDiv"]} ${styles["mdMainDiv"]} ${styles["lgMainDiv"]}`}
@@ -90,49 +156,89 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="text"
           placeholder="Nom"
+          name="lastName"
+          onChange={handleInputChange}
         />
         <input
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="text"
           placeholder="Prénom"
+          name="firstName"
+          onChange={handleInputChange}
+        />
+        <input
+          className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
+          type="text"
+          placeholder="Nom d'utilisateur"
+          name="userName"
+          onChange={handleInputChange}
         />
         <input
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="email"
           placeholder="exemple@gmail.com"
+          name="email"
+          onChange={handleInputChange}
         />
         <input
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="tel"
           placeholder="Téléphone"
+          name="phoneNumber"
+          onChange={handleInputChange}
         />
-        <input
-          className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
-          type="password"
-          placeholder="Mot de passe"
-        />
-        <input
-          className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
-          type="password"
-          placeholder="Confirmer le mot de passe"
-        />
+        <div
+          className={`SubscriptionScreen/formPasswordDiv ${styles["formPasswordDiv"]}`}
+        >
+          <input
+            className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
+            type={showPassword ? "text" : "password"}
+            placeholder="Mot de passe"
+            name="password"
+            onChange={handleInputChange}
+          />
+          <input
+            type="checkbox"
+            onChange={() => setShowPassword(!showPassword)}
+          />
+        </div>
+        <div
+          className={`SubscriptionScreen/formPasswordDiv ${styles["formPasswordDiv"]}`}
+        >
+          <input
+            className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
+            type={showPasswordConfirmation ? "text" : "password"}
+            placeholder="Confirmer le mot de passe"
+            name="confirmPassword"
+            onChange={handleInputChange}
+          />
+          <input
+            type="checkbox"
+            onChange={() =>
+              setShowPasswordConfirmation(!showPasswordConfirmation)
+            }
+          />
+        </div>
         <button
-          className={`SubscriptionScreen/formConnectionButton ${styles["formConnectionButton"]}`} /* style={{ ...classes["s-inscrire"] }} */
+          className={`SubscriptionScreen/formConnectionButton ${styles["formConnectionButton"]}`}
+          onClick={() => subscribeUser()}
         >
           Créer un compte
         </button>
       </form>
+      {error && <p>{error}</p>}
       <p
         className={`SubscriptionScreen/noAccountText ${styles["noAccountText"]}`}
       >
-        Déjà un compte ?
-        <Link
-          className={`SubscriptionScreen/noAccountLink ${styles["noAccountLink"]}`}
-          href={"/screen/authenticationSection/connection/ConnectionScreen"}
+        Déjà un compte ?{" "}
+        <button
+          className={`SubscriptionScreen/noAccountButton ${styles["noAccountButton"]}`}
+          onClick={() => {
+            navigate("/connection");
+          }}
         >
-          {" "}
           Se connecter
-        </Link>
+        </button>
       </p>
     </div>
   );
