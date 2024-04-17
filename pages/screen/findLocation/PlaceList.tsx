@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import PlaceTemplate from "./PlaceTemplate";
-import Pagination from "./Pagination";
-import FilterPage from './Filter';
+import PlaceTemplate from "../../components/CardTemplate/CardTemplate";
+import Pagination from "../../components/Pagination/Pagination";
+import FilterListPlace from '../../components/Filter/FilterListPlace';
 interface Place {
   name: string;
   description: string;
@@ -17,12 +17,6 @@ interface PlaceListProps {
 }
 
 const PlaceList: React.FC<PlaceListProps> = ({ places }) => {
-  const splitName = (name: string): [string, string] => {
-    const splitIndex = Math.ceil(name.length / 2);
-    const firstPart = name.split(" ").slice(0, Math.ceil(name.split(" ").length / 2)).join(" ");
-    const secondPart =name.split(" ").slice(Math.ceil(name.split(" ").length / 2)).join(" ");
-    return [firstPart, secondPart];
-  };
 
   const styles: { [key: string]: string } = {
     container: "w-[1280px] mt-8 flex flex-col items-start justify-start gap-[35px] min-h-[493px] max-w-full text-left text-3xl text-base-black font-poppins",
@@ -49,23 +43,22 @@ const PlaceList: React.FC<PlaceListProps> = ({ places }) => {
 
   return (
     <div>
-      <FilterPage handlePerPageChange={handlePerPageChange} /> 
+      <FilterListPlace handlePerPageChange={handlePerPageChange} /> 
       <div className={styles.container}>
         <div className={styles.CardsDiv}>
           {currentPlaces.map((place, index) => {
-            const [title1, title2] = splitName(place.name);
             return (
               <PlaceTemplate
                 key={index}
                 cardInfo={{
-                  title1: title1,
-                  title2: title2,
+                  title: place.name,
                   description: place.description,
                   imageSrc: place.image,
                   videoCountPlaceholder: place.videocount,
                   website: place.website,
                   city: place.city,
                   location: place.location,
+                  pathname: "/screen/location/Location",
                 }}
               />
             );

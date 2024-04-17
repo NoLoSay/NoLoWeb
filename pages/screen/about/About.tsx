@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Head from "next/head";
 import Layout from "../../components/Layout/Layout";
-import Container from "./Views/Container";
+import Container from "../../components/About/Container";
 import textData from "../../../public/text.json";
 
 interface AboutProps {}

@@ -9,16 +9,16 @@ type Infos = {
   artImage?: string;
   videoPath?: string;
   spec?: any;
-  description?: string;
+  description: string;
+  pagePath: string;
 };
 
-function ArtCard({ title, videoPath, artImage, description, spec } : Infos) {
+function ArtCard({ title, videoPath, artImage, description, spec, pagePath } : Infos) {
   return (
     <div className="
       flex flex-col space-y-5 m-5 
       w-4/5 mx-auto
     ">
-      <TitleCard title={title} imgPath="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/fc/a9/b2/le-jardin-d-anne-de-bretagne.jpg?w=1200&h=-1&s=1" pagePath="/location"/>
       <Paper className="flex p-5 flex-col space-x-5 w-full items-center justify-around">
         <div className=" flex flex-row">
           <VideoInfo artImage={artImage} description={description} spec={spec}/>

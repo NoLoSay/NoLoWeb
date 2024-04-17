@@ -1,43 +1,87 @@
-import { useState } from "react";
-import { TextField, IconButton, InputLabel } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
-import { ChangeEventHandler } from "react";
+import React, { ReactNode, useEffect, useState } from 'react';
 
-const SearchBar = () => {
-  const [isInputFocused, setIsInputFocused] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+interface SearchBarProps {
+  children: ReactNode;
+  userLocation: [number, number];
+  places?: { position: [number, number]; name: string; location: string }[];
+  onSearch: (query: string) => void;
+}
 
-  function removeFocus() {
-    setIsInputFocused(false)
-  }
+const styles: { [key: string]: string } = {
+  container: "relative flex flex-row items-center justify-start gap-[20px] max-w-full",
+  
+  searchBar: "flex-1 rounded-3xs bg-base-white shadow-[0px_4px_9px_rgba(0,_0,_0,_0.25)] box-border flex flex-row items-center justify-start py-[9px] pr-4 pl-[11px] gap-[57px] max-w-full border-[1px] border-solid border-gray-100 mq450:gap-[28px]",
+  lgsearchBar:"py-[9px] pr-4 pl-[11px] gap-[57px]",
+  
+  locationInputContainer: "flex-1 flex flex-row items-center justify-start py-0 pr-px pl-0 box-border gap-[21px] max-w-full",
+  locationTextContainer: "flex flex-row items-center justify-start gap-[9px]",
+  locationText: "relative tracking-[-0.41px] leading-[22px] font-medium text-black",
+  
+  searchInput: "flex-1 relative tracking-[-0.41px] leading-[22px] font-medium text-base-black whitespace-nowrap",
+  
+  searchIcon: "h-[13.9px] w-3 relative",
+};
 
-  function enableFocus() {
-    setIsInputFocused(true)
-  }
+const SearchBar: React.FC<SearchBarProps> = ({ children, userLocation, onSearch}) => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [userCity, setUserCity] = useState<string>("");
 
-  function onTextChange(event: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>) {
-    setInputValue(event.target.value);
-  }
+  useEffect(() => {
+    const fetchUserCity = async () => {
+      try {
+        const [latitude, longitude] = userLocation;
+        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`);
+        const data = await response.json();
+        setUserCity(data.address.city || data.address.town || data.address.village || data.address.county || data.address.state || data.address.country);
+      } catch (error) {
+        console.error("Error fetching user city:", error);
+      }
+    };
+
+    fetchUserCity();
+  }, [userLocation]);
+
+  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearch = () => {
+    onSearch(searchQuery);
+    console.log("Searching for:", searchQuery);
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
 
   return (
-    <TextField
-      id="search-bar"
-      label={isInputFocused || inputValue ? "" : "Search"}
-      type="search"
-      fullWidth
-      sx={{marginX: 5}}
-      InputProps={{
-        endAdornment: (
-          <IconButton aria-label="search">
-            <SearchIcon />
-          </IconButton>
-        ),
-      }}
-      onFocus={enableFocus}
-      onBlur={removeFocus}
-      onChange={onTextChange}
-    />
+    <div>
+        <div>
+            <div className={styles.container}>
+                <div className={styles.searchBar}>
+                    <div className={styles.locationInputContainer}>
+                      <div className={styles.locationTextContainer}>
+                          <div className={styles.locationText}>{userCity}</div>
+                          <img className={styles.searchIcon} alt="" src="/icon/search/CityIcon.png" />
+                      </div>
+                      <input
+                        className={styles.searchInput}
+                        type="text"
+                        placeholder="Recherche par thème, note..."
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
+                        onKeyPress={handleKeyPress}
+                      />
+                    </div>
+                    <img className={styles.searchIcon} alt="" src="/icon/search/search.png" onClick={handleSearch} />
+                </div>
+                {children}
+            </div>
+        </div>
+    </div>
   );
-}
+};
 
 export default SearchBar;

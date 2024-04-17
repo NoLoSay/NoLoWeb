@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 
-  interface FilterPageProps {
+  interface FilterListPlaceProps {
     handlePerPageChange: (event: React.ChangeEvent<HTMLSelectElement>) => void; // Fonction pour mettre à jour le nombre d'éléments par page
   }
   
-  const FilterPage: React.FC<FilterPageProps> = ({ handlePerPageChange }) => {
+  const FilterListPlace: React.FC<FilterListPlaceProps> = ({ handlePerPageChange }) => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     
@@ -31,7 +31,6 @@ import React, { useState } from 'react';
                   className="border-gray-300 focus:ring-yellow-300 focus:border-yellow-300 h-10 pl-3 pr-7 border-1 border-gray-300 rounded-lg"
                   onChange={handlePerPageChange}
                 >
-                  <option value="">Éléments par page</option>
                   <option value="12">12 éléments par page</option>
                   <option value="24">24 éléments par page</option>
                   <option value="36">36 éléments par page</option>
@@ -50,7 +49,7 @@ import React, { useState } from 'react';
                   <option value="">Plus Populaire</option>
                   <option value="">Meilleur Note</option>
                   <option value="">Nouveauté</option>
-                  <option value="">Distance: + Proche au - loin</option>
+                  <option value="">Distance: Du + au - Proche</option>
                 </select>
               </div>
             </div>
@@ -61,4 +60,4 @@ import React, { useState } from 'react';
   );
 }
 
-export default FilterPage;
+export default FilterListPlace;

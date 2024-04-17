@@ -2,14 +2,14 @@ import type { NextPage } from "next";
 import Link from "next/link";
 
 interface CardInfo {
-  title1: string;
-  title2: string;
+  title: string;
   description: string;
   imageSrc: string;
   videoCountPlaceholder: string;
-  website:string;
-  city: string;
-  location:string;
+  website?:string;
+  city?: string;
+  location?: string;
+  pathname: string;
 }
 
 interface PlaceTemplateProps {
@@ -23,27 +23,34 @@ const styles: { [key: string]: string } = {
   cardImage: "t h-[115px] w-[113px] relative rounded-md object-cover mq450:flex-1",
   cardDetails: "flex-1 flex flex-col items-start justify-center gap-[10px] min-w-[138px]",
   cardTitle: "self-stretch relative text-inherit leading-[19px] font-bold font-inherit",
-  cardDescription: "self-stretch relative text-2xs tracking-[-0.08px] leading-[16px] text-base-black m-0",
+  cardDescription: "self-stretch relative text-xs tracking-[-0.08px] leading-[16px] text-base-black m-0",
   videoCountInput: "w-full [border:none] [outline:none] bg-lightyellow self-stretch h-6 rounded-8xs flex flex-row items-start justify-center py-1 px-2.5 box-border font-poppins font-semibold text-2xs text-base-black min-w-[127px]",
 };
 
 
 const PlaceTemplate: NextPage<PlaceTemplateProps> = ({ cardInfo }) => {
-  console.log("CardInfossss:", cardInfo); // Ajout du log de débogage
+
+  const spltiTitle = (title:string) : [string, string] => {
+    const firstPart = title.split(" ").slice(0, Math.ceil(title.split(" ").length / 2)).join(" ");
+    const secondPart =title.split(" ").slice(Math.ceil(title.split(" ").length / 2)).join(" ");
+    return [firstPart, secondPart];
+  };
+
+  const [title1, title2] = spltiTitle(cardInfo.title);
 
   return (
     <div className={styles.container}>
         <Link
           href={{
-          pathname: "/screen/location/Location",
+          pathname: cardInfo.pathname,
           query: {
-            name: cardInfo.title1+ ' '+ cardInfo.title2,
+            name: title1+ ' '+ title2,
             description: cardInfo.description,
             imageSrc: cardInfo.imageSrc,
             videoCountPlaceholder: cardInfo.videoCountPlaceholder,
-            website: cardInfo.website,
-            city: cardInfo.city,
-            location: cardInfo.location,
+            ...(cardInfo.website && { website: cardInfo.website }),
+            ...(cardInfo.city && { city: cardInfo.city }),
+            ...(cardInfo.location && { location: cardInfo.location }),
           },
         }}
         >
@@ -52,8 +59,8 @@ const PlaceTemplate: NextPage<PlaceTemplateProps> = ({ cardInfo }) => {
                 <img className={styles.cardImage} loading="eager" alt="" src={cardInfo.imageSrc} />
                 <div className={styles.cardDetails}>
                   <div className={styles.cardTitle}>
-                    <p>{cardInfo.title1}</p>
-                    <p>{cardInfo.title2}</p>
+                    <p>{title1}</p>
+                    <p>{title2}</p>
                   </div>
                   <div className={styles.cardDescription}>{cardInfo.description}</div>
                   <input className={styles.videoCountInput} placeholder={cardInfo.videoCountPlaceholder} type="text" />

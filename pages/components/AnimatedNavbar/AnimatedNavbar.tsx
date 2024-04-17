@@ -1,4 +1,4 @@
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "./SearchBar";
 import NavbarLink from "../NavBarLink/NavBarLink";
 import { useState } from "react";
 import Link from "next/link";
@@ -18,7 +18,7 @@ type NavbarProps = {
 
 const NavLinksItems = [
   { href: "/about", title: "Qui sommes-nous ?" },
-  { href: "/findvideo", title: "Trouver une video" },
+  { href: "/findlocation", title: "Trouver une video" },
   { href: "/record", title: "Réaliser une video" },
 ];
 

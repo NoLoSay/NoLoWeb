@@ -12,7 +12,6 @@ type TitleProps = {
 };
 
 function TitleCard({ title, description, website, location, imgPath, pagePath }: TitleProps) {
-
   return (
     <div className="relative w-full">
       <div className="flex w-full bg-[url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/fc/a9/b2/le-jardin-d-anne-de-bretagne.jpg?w=1200&h=-1&s=1')] bg-center bg-cover rounded-lg items-center p-10 shadow-lg">
