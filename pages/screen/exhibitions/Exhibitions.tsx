@@ -24,7 +24,7 @@ const staticExhibitions = [
             "email": null,
             "website": null,
             "price": 9.5,
-            "picture": null,
+            "picture": "https://cataas.com/cat",
             "type": "MUSEUM",
             "tags": [
                 "DISABILITY_FRIENDLY",
@@ -58,7 +58,7 @@ const staticExhibitions = [
                 "id": 1,
                 "name": "La tete d'un Epoutanflus",
                 "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-                "picture": null,
+                "picture": "https://cataas.com/cat",
                 "relatedPerson": {
                     "id": 1,
                     "name": "Max Verstappen"
@@ -69,7 +69,7 @@ const staticExhibitions = [
                 "id": 2,
                 "name": "La tete d'un Epoutanflus",
                 "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-                "picture": null,
+                "picture": "https://cataas.com/cat",
                 "relatedPerson": {
                     "id": 1,
                     "name": "Max Verstappen"
@@ -94,7 +94,7 @@ const staticExhibitions = [
             "email": null,
             "website": null,
             "price": 9.5,
-            "picture": null,
+            "picture": "https://cataas.com/cat",
             "type": "MUSEUM",
             "tags": [
                 "DISABILITY_FRIENDLY",
@@ -128,7 +128,7 @@ const staticExhibitions = [
                 "id": 1,
                 "name": "La tete d'un Epoutanflus",
                 "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-                "picture": null,
+                "picture": "https://cataas.com/cat",
                 "relatedPerson": {
                     "id": 1,
                     "name": "Max Verstappen"
@@ -139,7 +139,7 @@ const staticExhibitions = [
                 "id": 2,
                 "name": "La tete d'un Epoutanflus",
                 "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-                "picture": null,
+                "picture": "https://cataas.com/cat",
                 "relatedPerson": {
                     "id": 1,
                     "name": "Max Verstappen"

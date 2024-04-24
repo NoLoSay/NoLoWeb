@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout/Layout";
 import Home from "../home/Home";
 import { Fragment } from "react";
-import { useLocation } from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 
 interface ArtworksProps {}
 
@@ -75,16 +75,29 @@ const ArtworksPage: React.FC<HomeProps> & {
     getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
 
-    const handleAction = (buttonName: string, artworkId: number) => {
-        console.log(`Le bouton ${buttonName} a été cliqué pour l'artwork ${artworkId}! `);
-    };
+    const navigate = useNavigate();
 
-    const handleBack = () => {
-        console.log('go to previous page');
+    // Simple action without arguments
+    const handleAction = (buttonName: string) => {
+        console.log(`Le bouton ${buttonName} a été cliqué pour l'artwork ! `);
+        switch (buttonName) {
+            case "addArtworkBtn":
+                console.log('createArtwork');
+                navigate('/artwork');
+                break;
+            case "returnToPreviousPageBtn":
+                console.log('go to previous page');
+                // TODO get all exhibitions by call db with id global
+                navigate('/exhibitions');
+                break;
+        }
     };
-
-    const handleAddArtwork = () => {
-        console.log('createArtwork');
+    // TODO create deleteArtwork in DB
+    const handleDeleteArtwork = (buttonId: string) => {};
+    // TODO create Artwork in DB with this page. Maybe add possibility to add artwork static in cookies to improve ux
+    const handleGoToArtwork = (buttonId: string, artwork) => {
+        console.log('go to artwork');
+        navigate('/artworkmodifications', { state: { items: artwork } });
     };
 
     const location = useLocation();
@@ -99,10 +112,10 @@ const ArtworksPage: React.FC<HomeProps> & {
                         role="returnToPreviousPageBtn"
                         tabIndex={0}
                         className={`returnToPreviousPageBtn ${styles["returnToPreviousPageBtn"]}`}
-                        onClick={() => handleBack()}
+                        onClick={() => handleAction("returnToPreviousPageBtn")}
                         onKeyDown={(event) => {
                             if (event.key === 'Enter' || event.key === ' ') {
-                                handleBack();
+                                handleAction("returnToPreviousPageBtn");
                                 event.preventDefault();
                             }
                         }}
@@ -121,10 +134,10 @@ const ArtworksPage: React.FC<HomeProps> & {
                         role="addArtworkBtn"
                         tabIndex={0}
                         className={`addArtworkBtn ${styles["addArtworkBtn"]}`}
-                        onClick={() => handleAddArtwork()}
+                        onClick={() => handleAction("addArtworkBtn")}
                         onKeyDown={(event) => {
                             if (event.key === 'Enter' || event.key === ' ') {
-                                handleAddArtwork();
+                                handleAction("addArtworkBtn");
                                 event.preventDefault();
                             }
                         }}
@@ -157,10 +170,10 @@ const ArtworksPage: React.FC<HomeProps> & {
                                                 role="goToChangeArtworkPageBtn"
                                                 tabIndex={0}
                                                 className={`divChangeBtn ${styles.divChangeBtn}`}
-                                                onClick={() => handleAction('changeButton', artwork.id)}
+                                                onClick={() => handleAction('changeButton')}
                                                 onKeyDown={(event) => {
                                                     if (event.key === 'Enter' || event.key === ' ') {
-                                                        handleAction('changeButton', artwork.id);
+                                                        handleAction('changeButton');
                                                         event.preventDefault();
                                                     }
                                                 }}
@@ -176,10 +189,10 @@ const ArtworksPage: React.FC<HomeProps> & {
                                                 role="deleteArtworkBtn"
                                                 tabIndex={0}
                                                 className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
-                                                onClick={() => handleAction('deleteButton', artwork.id)}
+                                                onClick={() => handleDeleteArtwork('deleteButton')}
                                                 onKeyDown={(event) => {
                                                     if (event.key === 'Enter' || event.key === ' ') {
-                                                        handleAction('deleteButton', artwork.id);
+                                                        handleAction('deleteButton');
                                                         event.preventDefault();
                                                     }
                                                 }}
@@ -198,8 +211,7 @@ const ArtworksPage: React.FC<HomeProps> & {
                                         <div
                                             className={`divArtworkInformations ${styles["divArtworkInformations"]}`}>
                                             <div className={`divGeneralInformation ${styles["divGeneralInformation"]}`}>
-                                                <div className={`artworkNbText ${styles["artworkNbText"]}`}>nb oeuvres
-                                                </div>
+                                                // TODO put general information of a button
                                             </div>
                                             <div className={`artworkDescription ${styles["artworkDescription"]}`}>
                                                 {artwork.description}
@@ -212,16 +224,16 @@ const ArtworksPage: React.FC<HomeProps> & {
                                                 role="button"
                                                 tabIndex={0}
                                                 className={`divGoToArtworksBtn ${styles["divGoToArtworksBtn"]}`}
-                                                onClick={() => handleAction('goToArtworks', artwork.id)}
+                                                onClick={() => handleGoToArtwork('goToArtworks', artwork)}
                                                 onKeyDown={(event) => {
                                                     if (event.key === 'Enter' || event.key === ' ') {
-                                                        handleAction('goToArtworks', artwork.id);
+                                                        handleGoToArtwork('goToArtworks', artwork);
                                                         event.preventDefault();
                                                     }
                                                 }}
                                             >
                                                 <div className={`goToArtworksText ${styles["goToArtworksText"]}`}>
-                                                    Voir les oeuvres
+                                                    Voir l'oeuvre
                                                 </div>
                                             </div>
                                         </div>
