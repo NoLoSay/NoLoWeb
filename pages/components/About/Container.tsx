@@ -49,26 +49,35 @@ const people: Person[] = [
   },
 ];
 
+const styles: { [key: string]: string } = {
+  cellDiv:"flex flex-col items-center w-ful",
+  nameDiv:"text-center text-black mb-4",
+  roleDiv:"text-center text-black",
+
+  containerDiv:"grid grid-cols-4 gap-y-16 w-full px-16",
+  gridDiv:"md:w-2/3 sm: 1/3"
+}
+
 function GridCell({ name, image, role }: Person) {
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className={`cellDiv ${styles["cellDiv"]}`}>
       <img
         src={image}
         alt={`Profile Picture of ${name}`}
         className="rounded-full mb-2"
         style={{ maxWidth: "100%", height: "auto" }}
       />
-      <p className="text-center text-black mb-4">{name}</p>
-      <p className="text-center text-black">{role}</p>
+      <p className={`nameDiv ${styles["nameDiv"]}`}>{name}</p>
+      <p className={`roleDiv ${styles["roleDiv"]}`}>{role}</p>
     </div>
   );
 }
 
 const Container: NextPage = () => {
   return (
-    <div className="grid grid-cols-4 gap-y-16 w-full px-16">
+    <div className={`containerDiv ${styles["containerDiv"]}`}>
       {people.map(({ name, image, role }, index) => (
-        <div key={index} className="md:w-2/3 sm: 1/3">
+        <div key={index} className={`gridDiv ${styles["gridDiv"]}`}>
           <GridCell name={name} image={image} role={role} />
         </div>
       ))}

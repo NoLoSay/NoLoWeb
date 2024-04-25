@@ -2,7 +2,7 @@ import { Fragment, useState, ChangeEvent } from "react";
 import Head from "next/head";
 import Layout from "../../components/Layout/Layout";
 import TitleCard from "../../components/TitleCard/TitleCard";
-import PlaceTemplate from "../../components/CardTemplate/CardTemplate";
+import CardTemplate from "../../components/CardTemplate/CardTemplate";
 import { ReactNode } from "react";
 import { GetServerSideProps } from 'next';
 import FilterListArtwork from "../../components/Filter/FilterListArtwork";
@@ -31,6 +31,13 @@ interface LocationProps {
   website: string;
   city: string;
   location: string;
+}
+
+const styles: { [key: string]: string } = {
+  mainDiv:"flex flex-col space-y-5 m-5 justify-center w-3/4 mx-auto",
+  listDiv:"flex flex-col",
+  cardlistDiv:"w-[1280px] mt-8 flex flex-col items-start justify-start gap-[35px] min-h-[493px] max-w-full text-left text-3xl text-base-black font-poppins",
+  nbcardlistDiv:"self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray mq450:gap-[19px] mq750:gap-[38px]",
 }
 
 const Location = ({ name, description, imageSrc, videoCountPlaceholder, website, city, location }: LocationProps) => {
@@ -80,7 +87,7 @@ const Location = ({ name, description, imageSrc, videoCountPlaceholder, website,
       <Head>
         <title>Nolosay</title>
       </Head>
-      <div className="flex flex-col space-y-5 m-5 justify-center w-3/4 mx-auto">
+      <div className={`mainDiv ${styles["mainDiv"]}`}>
         <TitleCard
           title={name}
           description={description}
@@ -89,12 +96,12 @@ const Location = ({ name, description, imageSrc, videoCountPlaceholder, website,
           imgPath=""
           pagePath="../findLocation/FindLocation/"
         />
-        <div className="flex flex-col  ">
+        <div className={`listDiv ${styles["listDiv"]}`}>
           <FilterListArtwork handleArtworkTypeChange={handleArtworkTypeChange} />
-          <div className="w-[1280px] mt-8 flex flex-col items-start justify-start gap-[35px] min-h-[493px] max-w-full text-left text-3xl text-base-black font-poppins">
-            <div className="self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray mq450:gap-[19px] mq750:gap-[38px]">
+          <div className={`cardlistDiv ${styles["cardlistDiv"]}`}>
+            <div className={`nbcardlistDiv ${styles["nbcardlistDiv"]}`} >
               {filteredItems.map((item, index) => (
-                <PlaceTemplate
+                <CardTemplate
                   key={index}
                   cardInfo={renderCardInfo(item)}
                 />

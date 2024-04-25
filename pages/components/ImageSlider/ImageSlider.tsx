@@ -28,7 +28,7 @@ const ImageSlider: React.FC<FindVideoProps> & {} = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`container ${styles["container"]}`}>
       <Slider {...settings}>
         {bannerImages.map((image, index) => (
           <img src={image} alt="" key={index} />

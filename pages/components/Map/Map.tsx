@@ -9,6 +9,8 @@ interface MapProps {
 
 const styles: { [key: string]: string } = {
   Map: "relative w-[1280px] h-[800px] md:w-[700px] md:h-[300px] sm:w-[100px] sm:h-[50px] border rounded-lg ",
+  Img: "bg-cover bg-center w-[300px] h-[200px]",
+  LoadingText: "text-base-black text-base"
 };
 
 const Map: React.FC<MapProps> = (props) => {
@@ -64,7 +66,7 @@ const Map: React.FC<MapProps> = (props) => {
     <div>
       {Leaflet ? (
         <div>
-          <Leaflet.MapContainer ref={mapRef} className={styles.Map} center={center} zoom={DEFAULT_ZOOM}>
+          <Leaflet.MapContainer ref={mapRef} className={`Map ${styles["Map"]}`} center={center} zoom={DEFAULT_ZOOM}>
             <Leaflet.TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {center[0] !== 47.216671 && center[1] !== -1.55 && (
               <Leaflet.Marker position={center} icon={blueIcon}>
@@ -75,7 +77,7 @@ const Map: React.FC<MapProps> = (props) => {
               <Leaflet.Marker key={index} position={place.position} icon={redIcon}>
                 <Leaflet.Popup>
                     <div>
-                        <img className="bg-cover bg-center w-[300px] h-[200px]" loading="eager" alt="" src={place.image} />
+                        <img className={`Img ${styles["Img"]}`} loading="eager" alt="" src={place.image} />
                         <p>{place.name}</p>
                         <p>{place.city}, {place.location}</p>
                         <p>Description: {place.description}</p>
@@ -88,7 +90,7 @@ const Map: React.FC<MapProps> = (props) => {
           </Leaflet.MapContainer>
         </div>
       ) : (
-        <div className='text-base-black'>Loading...</div>
+        <div className={`LoadingText ${styles["LoadingText"]}`}>Loading...</div>
       )}
     </div>
   );

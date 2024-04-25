@@ -12,7 +12,7 @@ interface CardInfo {
   pathname: string;
 }
 
-interface PlaceTemplateProps {
+interface CardTemplateProps {
   cardInfo: CardInfo;
 }
 
@@ -28,7 +28,7 @@ const styles: { [key: string]: string } = {
 };
 
 
-const PlaceTemplate: NextPage<PlaceTemplateProps> = ({ cardInfo }) => {
+const CardTemplate: NextPage<CardTemplateProps> = ({ cardInfo }) => {
 
   const spltiTitle = (title:string) : [string, string] => {
     const firstPart = title.split(" ").slice(0, Math.ceil(title.split(" ").length / 2)).join(" ");
@@ -39,38 +39,39 @@ const PlaceTemplate: NextPage<PlaceTemplateProps> = ({ cardInfo }) => {
   const [title1, title2] = spltiTitle(cardInfo.title);
 
   return (
-    <div className={styles.container}>
-        <Link
-          href={{
-          pathname: cardInfo.pathname,
-          query: {
-            name: title1+ ' '+ title2,
-            description: cardInfo.description,
-            imageSrc: cardInfo.imageSrc,
-            videoCountPlaceholder: cardInfo.videoCountPlaceholder,
-            ...(cardInfo.website && { website: cardInfo.website }),
-            ...(cardInfo.city && { city: cardInfo.city }),
-            ...(cardInfo.location && { location: cardInfo.location }),
-          },
-        }}
-        >
-            <div className={styles.card}>
-              <div className={styles.cardContent}>
-                <img className={styles.cardImage} loading="eager" alt="" src={cardInfo.imageSrc} />
-                <div className={styles.cardDetails}>
-                  <div className={styles.cardTitle}>
-                    <p>{title1}</p>
-                    <p>{title2}</p>
-                  </div>
-                  <div className={styles.cardDescription}>{cardInfo.description}</div>
-                  <input className={styles.videoCountInput} placeholder={cardInfo.videoCountPlaceholder} type="text" />
+    <div className={`container ${styles.container}`}>
+      <Link
+        href={{
+        pathname: cardInfo.pathname,
+        query: {
+          name: title1+ ' '+ title2,
+          description: cardInfo.description,
+          imageSrc: cardInfo.imageSrc,
+          videoCountPlaceholder: cardInfo.videoCountPlaceholder,
+          ...(cardInfo.website && { website: cardInfo.website }),
+          ...(cardInfo.city && { city: cardInfo.city }),
+          ...(cardInfo.location && { location: cardInfo.location }),
+        },
+      }}
+      >
+          <div className={`card ${styles.card}`}>
+            <div className={`cardContent ${styles.cardContent}`}>
+              <img className={`cardImage ${styles.cardImage}`} loading="eager" alt="" src={cardInfo.imageSrc} />
+              <div className={`cardDetails ${styles.cardDetails}`}>
+                <div className={`cardTitle ${styles.cardTitle}`}>
+                  <p>{title1}</p>
+                  <p>{title2}</p>
                 </div>
+                <div className={`cardDescription ${styles.cardDescription}`}>{cardInfo.description}</div>
+                <input className={`videoCountInput ${styles.videoCountInput}`} placeholder={cardInfo.videoCountPlaceholder} type="text" />
               </div>
             </div>
-          </Link>
+          </div>
+        </Link>
     </div>
+
   );
 };
 
 
-export default PlaceTemplate;
+export default CardTemplate;

@@ -20,24 +20,24 @@ const styles: { [key: string]: string } = {
 
   backDiv: "relative w-full brightness-50",
 
-  castleImg: "rounded-[4rem] w-full flex object-contain",
-  mdCastleImg: "md:rounded-3xl",
-  smCastleImg: "sm:rounded-2xl",
+  castleImg: "rounded-[4rem] w-full flex object-contain " +
+    "md:rounded-3xl " +
+    "sm:rounded-2xl",
 
   contentDiv:
-    "absolute w-[50%] top-[30%] left-[30%] flex flex-col items-start justify-start gap-y-6",
-  mdContentDiv: "md:gap-y-0",
-  smContentDiv: "sm:gap-y-0",
+    "absolute w-[50%] top-[30%] left-[30%] flex flex-col items-start justify-start gap-y-6 " +
+    "md:gap-y-0 " +
+    "sm:gap-y-0",
 
   textDiv: "relative w-full inline-block",
 
-  titleText: "font-black text-[3.5rem]",
-  mdTitleText: "md:text-[3rem]",
-  smTitleText: "sm:text-[2rem]",
+  titleText: "font-black text-[3.5rem] " +
+    "md:text-[3rem] " +
+    "sm:text-[2rem]",
 
-  nolosayText: "text-[2.25rem] font-medium",
-  mdNolosayText: "md:text-[1.25rem]",
-  smNolosayText: "sm:text-[0.75rem]",
+  nolosayText: "text-[2.25rem] font-medium " +
+    "md:text-[1.25rem] " +
+    "sm:text-[0.75rem]",
 
   iconDiv: "w-full flex flex-row items-center justify-start gap-3",
 
@@ -53,7 +53,7 @@ const DownloadContainer: React.FC = () => {
     <div className={`DownloadContainer/mainDiv ${styles["mainDiv"]}`}>
       <div className={`DownloadContainer/backDiv ${styles["backDiv"]}`}>
         <img
-          className={`DownloadContainer/castleImg ${styles["castleImg"]} ${styles["mdCastleImg"]} ${styles["smCastleImg"]}`}
+          className={`DownloadContainer/castleImg ${styles["castleImg"]}`}
           alt=""
           src="/images/castle/chateau-large.png"
         />
@@ -64,16 +64,16 @@ const DownloadContainer: React.FC = () => {
         src="/images/line.png"
       />
       <div
-        className={`DownloadContainer/contentDiv ${styles["contentDiv"]} ${styles["mdContentDiv"]} ${styles["smContentDiv"]}`}
+        className={`DownloadContainer/contentDiv ${styles["contentDiv"]}`}
       >
         <div className={`DownloadContainer/textDiv ${styles["textDiv"]}`}>
           <p
-            className={`DownloadContainer/titleText ${styles["titleText"]} ${styles["mdTitleText"]} ${styles["smTitleText"]}`}
+            className={`DownloadContainer/titleText ${styles["titleText"]}`}
           >
             Nolosay,{" "}
           </p>
           <p
-            className={`DownloadContainer/nolosayText ${styles["nolosayText"]} ${styles["mdNolosayText"]} ${styles["smNolosayText"]}`}
+            className={`DownloadContainer/nolosayText ${styles["nolosayText"]}`}
           >
             ton assistant de visite 100% interactif !
           </p>

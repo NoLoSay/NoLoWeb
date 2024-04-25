@@ -22,13 +22,13 @@ const styles: { [key: string]: string } = {
   mainDiv:
     "w-full flex flex-col items-start justify-center text-left text-[1.5rem] text-black font-poppins gap-2",
 
-  title: "relative text-[2rem] font-semibold",
-  mdTitle: "md:text-[1.5rem]",
-  smTitle: "sm:text-[0.75rem]",
+  title: "relative text-[2rem] font-semibold " +
+    "md:text-[1.5rem] " +
+    "sm:text-[0.75rem]",
 
-  contentDiv: "flex flex-col pl-10 gap-1 text-[1.5rem]",
-  mdContentDiv: "md:text-[1rem] md:pl-7",
-  smContentDiv: "sm:text-[0.5rem] sm:pl-4",
+  contentDiv: "flex flex-col pl-10 gap-1 text-[1.5rem] " +
+    "md:text-[1rem] md:pl-7 " +
+    "sm:text-[0.5rem] sm:pl-4",
 
   firstLineDiv: "flex flex-row flex-wrap items-center gap-1",
 
@@ -42,12 +42,12 @@ const VideoCreationContainer: React.FC = () => {
   return (
     <div className={`VideoCreationContainer/mainDiv ${styles["mainDiv"]}`}>
       <p
-        className={`VideoCreationContainer/title ${styles["title"]} ${styles["mdTitle"]} ${styles["smTitle"]}`}
+        className={`VideoCreationContainer/title ${styles["title"]}`}
       >
         Pour créer une vidéo, rien de plus simple !
       </p>
       <div
-        className={`VideoCreationContainer/contentDiv ${styles["contentDiv"]} ${styles["mdContentDiv"]} ${styles["smContentDiv"]}`}
+        className={`VideoCreationContainer/contentDiv ${styles["contentDiv"]}`}
       >
         <ol type="1">
           <div

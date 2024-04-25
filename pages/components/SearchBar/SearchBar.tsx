@@ -58,28 +58,28 @@ const SearchBar: React.FC<SearchBarProps> = ({ children, userLocation, onSearch}
 
   return (
     <div>
-        <div>
-            <div className={styles.container}>
-                <div className={styles.searchBar}>
-                    <div className={styles.locationInputContainer}>
-                      <div className={styles.locationTextContainer}>
-                          <div className={styles.locationText}>{userCity}</div>
-                          <img className={styles.searchIcon} alt="" src="/icon/search/CityIcon.png" />
-                      </div>
-                      <input
-                        className={styles.searchInput}
-                        type="text"
-                        placeholder="Recherche par thème, note..."
-                        value={searchQuery}
-                        onChange={handleSearchInputChange}
-                        onKeyPress={handleKeyPress}
-                      />
-                    </div>
-                    <img className={styles.searchIcon} alt="" src="/icon/search/search.png" onClick={handleSearch} />
-                </div>
-                {children}
+      <div>
+        <div className={`container ${styles.container}`}>
+          <div className={`searchBar ${styles.searchBar}`}>
+            <div className={`locationInputContainer ${styles.locationInputContainer}`}>
+              <div className={`locationTextContainer ${styles.locationTextContainer}`}>
+                <div className={`locationText ${styles.locationText}`}>{userCity}</div>
+                <img className={`searchIcon ${styles.searchIcon}`} alt="" src="/icon/search/CityIcon.png" />
+              </div>
+              <input
+                className={`searchInput ${styles.searchInput}`}
+                type="text"
+                placeholder="Recherche par thème, note..."
+                value={searchQuery}
+                onChange={handleSearchInputChange}
+                onKeyPress={handleKeyPress}
+              />
             </div>
+            <img className={`searchIcon ${styles.searchIcon}`} alt="" src="/icon/search/search.png" onClick={handleSearch} />
+          </div>
+          {children}
         </div>
+      </div>
     </div>
   );
 };
