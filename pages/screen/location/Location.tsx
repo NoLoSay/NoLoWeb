@@ -23,16 +23,6 @@ interface Exhibition {
   artworks: Artwork[];
 }
 
-interface LocationProps {
-  name: string;
-  description: string;
-  imageSrc: string;
-  videoCountPlaceholder: string;
-  website: string;
-  city: string;
-  location: string;
-}
-
 const styles: { [key: string]: string } = {
   mainDiv:"flex flex-col space-y-5 m-5 justify-center w-3/4 mx-auto",
   listDiv:"flex flex-col",
@@ -90,7 +80,7 @@ const Location = () => {
         location: artwork.location,
         city: artwork.city,
         videoCountPlaceholder: "22 videos",
-        pathname: "/screen/videoAccess/VideoAcess/",
+        pathname: "/videoaccess",
       };
     } else {
       const exhibition = item as Exhibition;
@@ -98,10 +88,8 @@ const Location = () => {
         title: exhibition.name,
         description: exhibition.description,
         imageSrc: exhibition.image,
-        location: location,
-        city: city,
         videoCountPlaceholder: `${exhibition.artworks.length} oeuvres`,
-        pathname: "/screen/videoAccess/VideoAcess/",
+        pathname: "/videoaccess",
       };
     }
   }  

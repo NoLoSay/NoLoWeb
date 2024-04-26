@@ -16,6 +16,7 @@ import ArtworksPage from "./screen/artworks/Artworks";
 import ExhibitionsPage from "./screen/exhibitions/Exhibitions";
 import FindLocation from "./screen/findLocation/FindLocation";
 import Location from "./screen/location/Location";
+import VideoAccess from "./screen/videoAccess/VideoAccess";
 import Account from "./screen/account/Account";
 import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
 
@@ -47,6 +48,7 @@ const AppRouter = () => {
           <Route path="/artworks" element={<ArtworksPage />} />
           <Route path="/findlocation" element={<FindLocation />} />
           <Route path="/location" element={<Location />} />
+          <Route path="/videoaccess" element={<VideoAccess />} />
           <Route path="/account" element={<Account />} />
           <Route path="/record" element={<RecordVideo />} />
         </Routes>

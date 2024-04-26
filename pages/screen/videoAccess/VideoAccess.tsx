@@ -1,21 +1,34 @@
-import { Fragment, ReactNode } from "react";
+import { Fragment, ReactNode, useEffect, useState } from "react";
 import Head from "next/head";
 import Layout from "../../components/Layout/Layout";
 import ArtCard from "../../components/ArtCard/ArtCard";
 import infosJson from "../../../stories/assets/testArtCard.json"
 import VideoVignette from "../../components/VideoVignette/VideoVignette";
-import { GetServerSideProps } from 'next';
+import { useLocation } from 'react-router-dom';
 
-interface VideoProps {
-  name: string;
-  description: string;
-  imageSrc: string;
-  videoCountPlaceholder: string;
-  city: string;
-  location: string;
-}
 
-const VideoAccess = ({ name, description, imageSrc, videoCountPlaceholder }: VideoProps) => {
+const VideoAccess = () => {
+  const locationn = useLocation();  
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [imageSrc, setImageSrc] = useState("");
+  const [videoCountPlaceholder, setVideoCountPlaceholder] = useState("");
+  const [city, setCity] = useState("");
+  const [locationText, setLocationText] = useState("");
+
+  useEffect(() => {
+    if (locationn.state) {
+      const { name, description, imageSrc, videoCountPlaceholder, city, location } = locationn.state;
+      setName(name);
+      setDescription(description);
+      setImageSrc(imageSrc);
+      setVideoCountPlaceholder(videoCountPlaceholder);
+      setCity(city);
+      setLocationText(location);
+    }
+    console.log(name);
+  }, [locationn.state]);
+
   return (
     <Fragment>
       <Head>
@@ -43,20 +56,6 @@ const VideoAccess = ({ name, description, imageSrc, videoCountPlaceholder }: Vid
       </div>
     </Fragment>
   );
-};
-
-export const getServerSideProps: GetServerSideProps<VideoProps> = async (context) => {
-  const { query } = context;
-  return {
-    props: {
-      name: query.name as string,
-      description: query.description as string,
-      imageSrc: query.imageSrc as string,
-      city: query.city as string,
-      location: query.location as string,
-      videoCountPlaceholder: query.videoCountPlaceholder as string,
-    },
-  };
 };
 
 VideoAccess.getLayout = function getLayout(page: ReactNode) {
