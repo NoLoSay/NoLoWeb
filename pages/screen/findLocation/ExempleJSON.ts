@@ -9,7 +9,7 @@ export const Places: { position: [number, number]; name: string; city: string; l
       videocount: "22 Vidéos",
       website: "https://www.chateaunantes.fr/"},
     { position: [47.21725, -1.55363], 
-      name: "Cathédrale Saint-Pierre et Saint-Paul de Nantes", 
+      name: "Cathédrale Saint-Pierre", 
       city: "Nantes", 
       location: "France", 
       description: "Monument gothique majeur abritant les tombeaux de François II et Marguerite de Foix", 

@@ -1,14 +1,23 @@
 import SearchBar from "./SearchBar";
 import NavbarLink from "../NavBarLink/NavBarLink";
 import { useState } from "react";
-import Link from "next/link";
-import { Drawer, Box, List, ListItem, ListItemButton, ListItemText, Divider, IconButton } from "@mui/material";
-import { Menu } from "@mui/icons-material";
+import { useNavigate } from "../../../node_modules/react-router-dom/dist/index";
+import {
+  Drawer,
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Divider,
+  IconButton,
+} from "../../../node_modules/@mui/material/index";
+import { Menu } from "../../../node_modules/@mui/material/index";
 import ProfileButton from "../ProfileButton/ProfileButton";
 
-
 type NavLinkProps = {
-  links: { href: string; title: string; }[];
+  links: { href: string; title: string }[];
+  handleChangePage: (link: string) => void;
 };
 
 type NavbarProps = {
@@ -20,36 +29,37 @@ const NavLinksItems = [
   { href: "/about", title: "Qui sommes-nous ?" },
   { href: "/findlocation", title: "Trouver une video" },
   { href: "/record", title: "Réaliser une video" },
+  { href: "/account", title: "Mon compte" },
+  { href: "/tickets", title: "Tickets" },
 ];
 
-const LogoButton = () => {
+interface logoButtonProps {
+  handleChangePage: (link: string) => void;
+}
+const LogoButton = ({ handleChangePage }: logoButtonProps) => {
   return (
     <div className="flex items-center gap-2">
       <img className="w-8 h-8" alt="" src="/images/logo/nologo.png" />
-      <NavbarLink
-        as="/home"
-        href="/screen/home/Home"
-        size=""
-        colorBase=""
-        colorClick=""
-        className=""
+      <button
+        className="bg-transparent hover:cursor-pointer"
+        onClick={() => handleChangePage("/home")}
       >
-        <img
-          className="w-32 h-8"
-          alt=""
-          src="/images/logo/nolosay-black.png"
-        />
-      </NavbarLink>
+        <img className="w-32 h-8" alt="" src="/images/logo/nolosay-black.png" />
+      </button>
     </div>
   );
-}
+};
 
-const NavLinks = ({links}: NavLinkProps) => {
+const NavLinks = ({ links, handleChangePage }: NavLinkProps) => {
   const renderLinks = () => {
     return links.map((link, index) => (
-      <Link key={index} href={link.href} className="text-zinc-500 hover:underline underline-offset-2">
+      <button
+        key={index}
+        onClick={() => handleChangePage(link.href)}
+        className="text-zinc-500 hover:underline hover:cursor-pointer bg-transparent underline-offset-2"
+      >
         {link.title}
-      </Link>
+      </button>
     ));
   };
 
@@ -60,21 +70,29 @@ const NavLinks = ({links}: NavLinkProps) => {
   );
 };
 
-const LoginButton = () => {
+interface loginButtonProps {
+  handleChangePage: (link: string) => void;
+}
+const LoginButton = ({ handleChangePage }: loginButtonProps) => {
   return (
     <div className="flex flex-row justify-between items-center space-x-4">
-      <Link href={"/screen/home"} className="flex flex-row items-center gap-8 text-gray-200">
+      <button
+        onClick={() => handleChangePage("/connection")}
+        className="flex flex-row items-center gap-8 text-gray-200 bg-transparent hover:underline hover:cursor-pointer"
+      >
         <div className="font-medium">Je me connecte</div>
-      </Link>
-      <Link href={"/screen/home"} className="rounded-full bg-gray-300 flex items-center justify-center py-2 px-6 gap-2 text-base-white font-semibold">
+      </button>
+      <button
+        onClick={() => handleChangePage("/subscription")}
+        className="rounded-full bg-gray-300 hover:cursor-pointer flex items-center justify-center py-2 px-6 gap-2 text-base-white font-semibold hover:underline"
+      >
         <div className="font-semibold">Je m'inscris :)</div>
-      </Link>
+      </button>
     </div>
   );
-}
+};
 
-export function LinkList({links}: NavLinkProps) {
-
+export function LinkList({ links, handleChangePage }: NavLinkProps) {
   const renderLinks = () => {
     return links.map((link, index) => (
       <ListItem disablePadding>
@@ -86,11 +104,11 @@ export function LinkList({links}: NavLinkProps) {
   };
 
   return (
-    <Box sx={{ width: '100%', minWidth: 360, bgcolor: 'background.paper' }}>
+    <Box sx={{ width: "100%", minWidth: 360, bgcolor: "background.paper" }}>
       <nav aria-label="main mailbox folders">
         <List>
           <div className="p-3">
-            <LogoButton />
+            <LogoButton handleChangePage={handleChangePage} />
           </div>
           <Divider />
           <ListItem disablePadding>
@@ -105,30 +123,56 @@ export function LinkList({links}: NavLinkProps) {
   );
 }
 
-const AnimatedNavbar = ({InApp, LoginStatus}: NavbarProps) => {
+const AnimatedNavbar: React.FC<NavbarProps> = ({
+  InApp,
+  LoginStatus,
+}: NavbarProps) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLogged, setIsLogged] = useState(LoginStatus);
+  const navigate = useNavigate();
+
+  function handleChangePage(link: string) {
+    navigate(link);
+  }
 
   return (
     <div className="flex flex-row items-center px-10 h-20 shadow-md">
       {InApp && (
         <div>
-          <IconButton sx={{ paddingX: 2 }} onClick={() => setIsDrawerOpen(true)}>
+          <IconButton
+            sx={{ paddingX: 2 }}
+            onClick={() => setIsDrawerOpen(true)}
+          >
             <Menu />
           </IconButton>
           <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-            <LinkList links={[...NavLinksItems]} />
+            <LinkList
+              links={[...NavLinksItems]}
+              handleChangePage={handleChangePage}
+            />
           </Drawer>
-        </div>)}
-      <LogoButton />
-      {InApp ? <SearchBar /> : <NavLinks links={[...NavLinksItems]} />}
+        </div>
+      )}
+      <LogoButton handleChangePage={handleChangePage} />
+      {InApp ? (
+        <SearchBar />
+      ) : (
+        <NavLinks
+          links={[...NavLinksItems]}
+          handleChangePage={handleChangePage}
+        />
+      )}
 
       <div className="flex flex-row items-center gap-8 text-gray-200">
         <Divider orientation="vertical" variant="middle" flexItem />
-        {isLogged ? <ProfileButton /> : <LoginButton />}
+        {isLogged ? (
+          <ProfileButton />
+        ) : (
+          <LoginButton handleChangePage={handleChangePage} />
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default AnimatedNavbar;

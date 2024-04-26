@@ -50,7 +50,8 @@ const people: Person[] = [
 ];
 
 const styles: { [key: string]: string } = {
-  cellDiv:"flex flex-col items-center w-ful",
+  cellDiv:"flex flex-col items-center w-full",
+  imgDiv:"rounded-full mb-2",
   nameDiv:"text-center text-black mb-4",
   roleDiv:"text-center text-black",
 
@@ -64,7 +65,7 @@ function GridCell({ name, image, role }: Person) {
       <img
         src={image}
         alt={`Profile Picture of ${name}`}
-        className="rounded-full mb-2"
+        className={`imgDiv ${styles["imgDiv"]}`}
         style={{ maxWidth: "100%", height: "auto" }}
       />
       <p className={`nameDiv ${styles["nameDiv"]}`}>{name}</p>

@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 
 const styles: { [key: string]: string } = {
   backgroundDiv: "bg-white",
-  main: "mx-auto max-w-7xl flex items-baseline justify-between border-b border-gray-200 pb-6 pt-14 px-4 " +
-    "sm:px-6 " +
-    "lg:px-8",
-  textDiv: "text-5xl font-bold tracking-tight text-base-black",
+  main: "mx-auto max-w-full flex items-baseline justify-between border-b border-gray-200 pb-6 pt-14 px-4 sm:px-6 lg:px-8",
+  textDiv: "text-2xl font-bold tracking-tight text-base-black",
   lineDiv: "border-b-4 border-solid border-yellow-300 w-[800px] mt-2",
-  blockfilterDiv: "relative inline-block text-left",
+  blockfilterDiv: "relative inline-block text-left ml-4",
   borderDiv: "border-gray-300 " +
     "focus:ring-yellow-300 " +
     "focus:border-yellow-300 " +
@@ -49,7 +47,7 @@ const styles: { [key: string]: string } = {
                   </select>
                 </div>
               </div>
-              <div className={`blockfilterDiv ${styles.blockfilterDiv} pl-2`}>
+              <div className={`blockfilterDiv ${styles.blockfilterDiv}`}>
                 <div>
                   <label htmlFor="sortSelect" className="sr-only">Sort</label>
                   <select

@@ -1,10 +1,10 @@
-import { Fragment, useState, ChangeEvent } from "react";
+import { Fragment, useState, ChangeEvent, useEffect } from "react";
 import Head from "next/head";
 import Layout from "../../components/Layout/Layout";
 import TitleCard from "../../components/TitleCard/TitleCard";
 import CardTemplate from "../../components/CardTemplate/CardTemplate";
 import { ReactNode } from "react";
-import { GetServerSideProps } from 'next';
+import { useLocation } from 'react-router-dom';
 import FilterListArtwork from "../../components/Filter/FilterListArtwork";
 import { exhibitions } from './ExempleJSON'; // Importer la nouvelle liste d'expositions
 
@@ -40,7 +40,31 @@ const styles: { [key: string]: string } = {
   nbcardlistDiv:"self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray mq450:gap-[19px] mq750:gap-[38px]",
 }
 
-const Location = ({ name, description, imageSrc, videoCountPlaceholder, website, city, location }: LocationProps) => {
+const Location = () => {
+  const locationn = useLocation();  
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [imageSrc, setImageSrc] = useState("");
+  const [videoCountPlaceholder, setVideoCountPlaceholder] = useState("");
+  const [website, setWebsite] = useState("");
+  const [city, setCity] = useState("");
+  const [locationText, setLocationText] = useState("");
+
+  useEffect(() => {
+    if (locationn.state) {
+      const { name, description, imageSrc, videoCountPlaceholder, website, city, location } = locationn.state;
+      setName(name);
+      setDescription(description);
+      setImageSrc(imageSrc);
+      setVideoCountPlaceholder(videoCountPlaceholder);
+      setWebsite(website);
+      setCity(city);
+      setLocationText(location);
+    }
+    console.log(name);
+  }, [locationn.state]);
+
+
   type FilteredItems = Artwork[] | Exhibition[];
   const [filteredItems, setFilteredItems] = useState<FilteredItems>(exhibitions);
   const [selectedType, setSelectedType] = useState<string>("");
@@ -94,7 +118,7 @@ const Location = ({ name, description, imageSrc, videoCountPlaceholder, website,
           website={website}
           location={`${city}, ${location}`}
           imgPath=""
-          pagePath="../findLocation/FindLocation/"
+          pagePath="/findlocation/"
         />
         <div className={`listDiv ${styles["listDiv"]}`}>
           <FilterListArtwork handleArtworkTypeChange={handleArtworkTypeChange} />
@@ -112,22 +136,6 @@ const Location = ({ name, description, imageSrc, videoCountPlaceholder, website,
       </div>
     </Fragment>
   );
-};
-
-export const getServerSideProps: GetServerSideProps<LocationProps> = async (context) => {
-  const { query } = context;
-  
-  return {
-    props: {
-      name: query.name as string,
-      description: query.description as string,
-      imageSrc: query.imageSrc as string,
-      videoCountPlaceholder: query.videoCountPlaceholder as string,
-      website: query.website as string,
-      city: query.city as string,
-      location: query.location as string,
-    },
-  };
 };
 
 Location.getLayout = function getLayout(page: ReactNode) {

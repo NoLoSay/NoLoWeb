@@ -1,6 +1,8 @@
 import { ButtonBase } from "@mui/material";
 import { ArrowBackIosNewRounded } from "@mui/icons-material";
 import Link from "next/link";
+import { useNavigate } from 'react-router-dom';
+
 
 type TitleProps = {
   title: string;
@@ -12,15 +14,28 @@ type TitleProps = {
 };
 
 function TitleCard({ title, description, website, location, imgPath, pagePath }: TitleProps) {
+
+  const navigate = useNavigate();
+
+  const handleGoToPlaceList = (pathname: string) => {
+    navigate(pathname);
+  };
+
   return (
     <div className="relative w-full">
       <div className="flex w-full bg-[url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/fc/a9/b2/le-jardin-d-anne-de-bretagne.jpg?w=1200&h=-1&s=1')] bg-center bg-cover rounded-lg items-center p-10 shadow-lg">
-        <Link href={pagePath}>
+        <div  onClick={() => handleGoToPlaceList(pagePath)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  handleGoToPlaceList(pagePath);
+                    event.preventDefault();
+                }
+              }}>
           <ButtonBase className="flex-shrink-0 pr-10">
             <ArrowBackIosNewRounded sx={{ color: "#FFF" }} />
           </ButtonBase>
-        </Link>
-        <h1 className="flex-grow flex justify-center text-41xl text-white font-bold font-sans drop-shadow-xl">
+        </div>
+        <h1 className="flex-grow flex justify-center pl-5  text-5xl text-white font-bold font-sans drop-shadow-xl">
           {title}
         </h1>
         <div className="pt-4  relative w-full inline-block text-base-black rounded-3xs bg-base-white bg-opacity-70 shadow-[0px_4px_9px_rgba(0,_0,_0,_0.25)] flex flex-col items-start justify-center p-5 box-border">

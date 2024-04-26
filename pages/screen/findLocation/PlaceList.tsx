@@ -57,7 +57,7 @@ const PlaceList: React.FC<PlaceListProps> = ({ places }) => {
                   website: place.website,
                   city: place.city,
                   location: place.location,
-                  pathname: "/screen/location/Location",
+                  pathname: "/location",
                 }}
               />
             );
