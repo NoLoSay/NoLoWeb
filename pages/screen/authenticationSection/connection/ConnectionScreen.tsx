@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Link from "../../../../node_modules/next/link";
 import { useNavigate } from "../../../../node_modules/react-router-dom/dist/index";
 import Layout from "../../../components/Layout/Layout";
 
@@ -34,6 +33,8 @@ const styles: { [key: string]: string } = {
     "bg-base-button font-poppins font-semibold hover:cursor-pointer p-2 relative rounded-1.5lg text-black text-sm w-2/3",
   mdFormConnectionButton: "md:w-3/4",
 
+  errorMessage: "text-red-600 text-center",
+
   otherConnectionsDiv: "flex flex-col gap-5 items-center justify-center w-full",
 
   otherConnectionsDivSeperationDiv:
@@ -52,7 +53,8 @@ const styles: { [key: string]: string } = {
   noAccountText:
     "font-normal font-poppins relative text-center text-gray-300 text-xs",
 
-  noAccountButton: "font-bold font-poppins bg-transparent hover:underline text-black",
+  noAccountButton:
+    "font-bold font-poppins bg-transparent hover:underline text-black",
 };
 
 export const ConnectionScreen = (): JSX.Element => {
@@ -60,44 +62,39 @@ export const ConnectionScreen = (): JSX.Element => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   useState<boolean>(false);
   const [error, setError] = useState<string | undefined>(undefined);
-  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-  const [formData, setFormData] = useState({
-    userName: "",
-    password: "",
-  });
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  async function loginUser(): Promise<void> {
+  const loginUser = async (event: React.FormEvent<HTMLFormElement>) => {
+    var data;
+
+    event.preventDefault();
     try {
-      const username: string = formData.userName;
-      const password: string = formData.password;
-
       const response = await fetch("http://localhost:3001/auth/login", {
         method: "POST",
         headers: {
           Accept: "*/*",
-          ContentType: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username,
-          password,
+          username: username,
+          password: password,
         }),
       });
 
-      if (!response.ok) {
+      if (response.ok) {
+        data = await response.json();
+        // have to add userContext setting
+        console.log("connected: " + JSON.stringify(data));
+      } else if (response.status == 401) {
+        setError("Nom d'utilisateur ou mot de passe incorrecte");
+        throw new Error("Failed to connect");
+      } else {
         throw new Error("Failed to connect");
       }
-
     } catch (e) {
       console.error("API error: ", e);
-      stop();
     }
-  }
-
-  const handleInputChange = (event: { target: { name: any; value: any } }) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
   };
 
   return (
@@ -127,13 +124,14 @@ export const ConnectionScreen = (): JSX.Element => {
       </div>
       <form
         className={`ConnectionScreen/form ${styles["form"]} ${styles["smForm"]} ${styles["mdForm"]}`}
+        onSubmit={loginUser}
       >
         <input
           className={`ConnectionScreen/formInput ${styles["formInput"]}`}
           type="text"
           placeholder="Nom d'utilisateur"
-          name="userName"
-          onChange={handleInputChange}
+          name="username"
+          onChange={(e) => setUsername(e.target.value)}
         />
         <div
           className={`ConnectionScreen/formPasswordDiv ${styles["formPasswordDiv"]}`}
@@ -143,7 +141,7 @@ export const ConnectionScreen = (): JSX.Element => {
             type={showPassword ? "text" : "password"}
             placeholder="Mot de passe"
             name="password"
-            onChange={handleInputChange}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <input
             type="checkbox"
@@ -153,12 +151,17 @@ export const ConnectionScreen = (): JSX.Element => {
 
         <button
           className={`ConnectionScreen/formConnectionButton ${styles["formConnectionButton"]} ${styles["mdFormConnectionButton"]}`}
-          onClick={() => loginUser()}
         >
           Me connecter
         </button>
       </form>
-      {error && <p>{error}</p>}
+      {error && (
+        <p
+          className={`ConnectionScreen/errorMessage ${styles["errorMessage"]}`}
+        >
+          {error}
+        </p>
+      )}
       <div
         className={`ConnectionScreen/otherConnectionsDiv ${styles["otherConnectionsDiv"]}`}
       >

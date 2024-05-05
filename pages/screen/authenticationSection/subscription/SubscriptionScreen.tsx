@@ -34,6 +34,8 @@ const styles: { [key: string]: string } = {
   formConnectionButton:
     "bg-base-button font-poppins font-semibold hover:cursor-pointer p-2 relative rounded-1.5lg text-black text-sm w-2/3",
 
+  errorMessage: "text-red-600 text-center",
+
   otherConnectionsDiv: "flex flex-col gap-5 items-center justify-center w-full",
 
   otherConnectionsDivSeperationDiv:
@@ -77,8 +79,10 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
     confirmPassword: "",
   });
 
-  async function subscribeUser(): Promise<void> {
+  const subscribeUser = async (event: React.FormEvent<HTMLFormElement>) => {
     setError(undefined);
+
+    event.preventDefault();
     if (emailRegex.test(formData.email) === false) {
       setError("Veuillez rentrer un email valide");
       return;
@@ -97,7 +101,7 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
         method: "POST",
         headers: {
           Accept: "*/*",
-          ContentType: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           username: formData.userName,
@@ -107,15 +111,16 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
         }),
       });
 
-      if (!response.ok) {
+      if (response.ok) {
+        const data = await response.json();
+        // have to add userContext setting
+      } else {
         throw new Error("Failed to create account");
       }
-
     } catch (e) {
       console.error("API error: ", e);
-      stop();
     }
-  }
+  };
 
   const handleInputChange = (event: { target: { name: any; value: any } }) => {
     setFormData({
@@ -151,7 +156,10 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
           </p>
         </div>
       </div>
-      <form className={`SubscriptionScreen/form ${styles["form"]}`}>
+      <form
+        className={`SubscriptionScreen/form ${styles["form"]}`}
+        onSubmit={subscribeUser}
+      >
         <input
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="text"
@@ -221,12 +229,17 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
         </div>
         <button
           className={`SubscriptionScreen/formConnectionButton ${styles["formConnectionButton"]}`}
-          onClick={() => subscribeUser()}
         >
           Créer un compte
         </button>
       </form>
-      {error && <p>{error}</p>}
+      {error && (
+        <p
+          className={`SubscriptionScreen/errorMessage ${styles["errorMessage"]}`}
+        >
+          {error}
+        </p>
+      )}
       <p
         className={`SubscriptionScreen/noAccountText ${styles["noAccountText"]}`}
       >
