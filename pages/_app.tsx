@@ -18,6 +18,7 @@ import VideoAccess from "./screen/videoAccess/VideoAccess";
 import Location from "./screen/location/Location";
 import Account from "./screen/account/Account";
 import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
+import { UserProvider } from "../contexts/UserProvider";
 
 const AppRouter = () => {
   const [isClient, setIsClient] = useState(false);
@@ -31,27 +32,29 @@ const AppRouter = () => {
   }
 
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/connection" element={<ConnectionScreen />} />
-          <Route path="/subscription" element={<SubscriptionScreen />} />
-          <Route path="/exhibitions" element={<ExhibitionsPage />} />
-          <Route
-            path="/tickets"
-            element={<ArtworkToTranslateSelectionScreen />}
-          />
-          <Route path="/artworks" element={<ArtworksPage />} />
-          <Route path="/videoAccess" element={<VideoAccess />} />
-          <Route path="/location" element={<Location />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/record" element={<RecordVideo />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <UserProvider>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/connection" element={<ConnectionScreen />} />
+            <Route path="/subscription" element={<SubscriptionScreen />} />
+            <Route path="/exhibitions" element={<ExhibitionsPage />} />
+            <Route
+              path="/tickets"
+              element={<ArtworkToTranslateSelectionScreen />}
+            />
+            <Route path="/artworks" element={<ArtworksPage />} />
+            <Route path="/videoAccess" element={<VideoAccess />} />
+            <Route path="/location" element={<Location />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/record" element={<RecordVideo />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </UserProvider>
   );
 };
 

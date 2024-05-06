@@ -1,9 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, useContext, useEffect } from "react";
 import Head from "../../../node_modules/next/head";
 import DownloadContainer from "./Views/DownloadContainer";
 import VideoCreationContainer from "./Views/VideoCreationContainer";
 import Layout from "../../components/Layout/Layout";
 import textData from "../../../public/text.json";
+import { UserContext } from "../../../contexts/UserProvider";
 
 interface HomeProps {}
 
@@ -47,6 +48,19 @@ const styles: { [key: string]: string } = {
 const Home: React.FC<HomeProps> & {
   getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
+  /* Start of the example to access user data */
+
+  const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    const func = async (): Promise<void> => {
+      console.log(user);
+    };
+    func();
+  }, [user]);
+
+  /* End of the example */
+
   return (
     <Fragment>
       <Head>

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "../../../../node_modules/react-router-dom/dist/index";
 import Layout from "../../../components/Layout/Layout";
+import ConnectionController from "./ConnectionController";
 
 const styles: { [key: string]: string } = {
   mainDiv:
     "relative w-[40%] self-center justify-center items-center rounded-2.5xl\
-    flex flex-1 flex-col gap-5 px-10 py-20 my-[5rem] bg-base-white shadow-[0_4px_9px_0_rgba(0,0,0,0.25)]",
-  smMainDiv: "sm:w-[90%] sm:px-0",
-  mdMainDiv: "md:w-3/4 md:px-5 md:py-15",
-  lgMainDiv: "lg:w-2/3",
+    flex flex-1 flex-col gap-5 px-10 py-20 my-[5rem] bg-base-white shadow-[0_4px_9px_0_rgba(0,0,0,0.25)] " +
+    "sm:w-[90%] sm:px-0 " +
+    "md:w-3/4 md:px-5 md:py-15 " +
+    "lg:w-2/3",
 
   titleDiv: "relative items-center flex flex-col flex-auto gap-5",
 
@@ -20,9 +21,10 @@ const styles: { [key: string]: string } = {
 
   titleDivTextDivSubtitle: "text-[rgba(100,100,100,1)] text-xl font-normal",
 
-  form: "flex flex-1 flex-col gap-5 items-center relative text-center w-2/5",
-  smForm: "sm:w-3/4",
-  mdForm: "md:w-3/5",
+  form:
+    "flex flex-1 flex-col gap-5 items-center relative text-center w-2/5 " +
+    "sm:w-3/4 " +
+    "md:w-3/5",
 
   formInput:
     "bg-gray-50 w-auto font-normal text-xl p-2 relative rounded-1.5lg w-full",
@@ -30,8 +32,8 @@ const styles: { [key: string]: string } = {
   formPasswordDiv: "flex flex-row bg-gray-50 px-2 w-full rounded-1.5lg",
 
   formConnectionButton:
-    "bg-base-button font-poppins font-semibold hover:cursor-pointer p-2 relative rounded-1.5lg text-black text-sm w-2/3",
-  mdFormConnectionButton: "md:w-3/4",
+    "bg-base-button font-poppins font-semibold hover:cursor-pointer p-2 relative rounded-1.5lg text-black text-sm w-2/3 " +
+    "md:w-3/4",
 
   errorMessage: "text-red-600 text-center",
 
@@ -59,48 +61,17 @@ const styles: { [key: string]: string } = {
 
 export const ConnectionScreen = (): JSX.Element => {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  useState<boolean>(false);
-  const [error, setError] = useState<string | undefined>(undefined);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const loginUser = async (event: React.FormEvent<HTMLFormElement>) => {
-    var data;
-
-    event.preventDefault();
-    try {
-      const response = await fetch("http://localhost:3001/auth/login", {
-        method: "POST",
-        headers: {
-          Accept: "*/*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      });
-
-      if (response.ok) {
-        data = await response.json();
-        // have to add userContext setting
-        console.log("connected: " + JSON.stringify(data));
-      } else if (response.status == 401) {
-        setError("Nom d'utilisateur ou mot de passe incorrecte");
-        throw new Error("Failed to connect");
-      } else {
-        throw new Error("Failed to connect");
-      }
-    } catch (e) {
-      console.error("API error: ", e);
-    }
-  };
+  const {
+    setUsername,
+    setPassword,
+    showPassword,
+    setShowPassword,
+    connect,
+    error,
+  } = ConnectionController({ navigate });
 
   return (
-    <div
-      className={`ConnectionScreen/mainDiv ${styles["mainDiv"]} ${styles["smMainDiv"]} ${styles["mdMainDiv"]} ${styles["lgMainDiv"]}`}
-    >
+    <div className={`ConnectionScreen/mainDiv ${styles["mainDiv"]}`}>
       <div className={`ConnectionScreen/titleDiv ${styles["titleDiv"]}`}>
         <img
           className={`ConnectionScreen/titleDivLogo ${styles["titleDivLogo"]}`}
@@ -123,8 +94,8 @@ export const ConnectionScreen = (): JSX.Element => {
         </div>
       </div>
       <form
-        className={`ConnectionScreen/form ${styles["form"]} ${styles["smForm"]} ${styles["mdForm"]}`}
-        onSubmit={loginUser}
+        className={`ConnectionScreen/form ${styles["form"]}`}
+        onSubmit={connect}
       >
         <input
           className={`ConnectionScreen/formInput ${styles["formInput"]}`}
@@ -150,7 +121,7 @@ export const ConnectionScreen = (): JSX.Element => {
         </div>
 
         <button
-          className={`ConnectionScreen/formConnectionButton ${styles["formConnectionButton"]} ${styles["mdFormConnectionButton"]}`}
+          className={`ConnectionScreen/formConnectionButton ${styles["formConnectionButton"]}`}
         >
           Me connecter
         </button>
