@@ -56,7 +56,6 @@ const FindLocation: React.FC<FindVideoProps> & {
   };
 
   const toggleDiv = () => {
-      console.log('Toggle Div function called');
       setCurrentDiv(currentDiv === 'ListView' ? 'MapView' : 'ListView');
       if (currentDiv === 'ListView') {
           setButtonText('Voir la liste');
