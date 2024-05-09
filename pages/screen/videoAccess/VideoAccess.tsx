@@ -26,7 +26,6 @@ const VideoAccess = () => {
       setCity(city);
       setLocationText(location);
     }
-    console.log(name);
   }, [locationn.state]);
 
   return (

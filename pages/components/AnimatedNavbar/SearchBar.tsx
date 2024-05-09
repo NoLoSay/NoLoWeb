@@ -15,9 +15,6 @@ const SearchBar = () => {
     setIsInputFocused(true)
   }
 
-  function onTextChange(event: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>) {
-  }
-
   return (
     <TextField
       id="search-bar"

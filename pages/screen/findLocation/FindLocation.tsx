@@ -12,7 +12,7 @@ interface FindVideoProps {}
 const styles: { [key: string]: string } = {
   mainDiv:"flex justify-center items-center pt-4 ",
 
-  mapButton: "cursor-pointer pt-1.5 px-2.5 pb-[7px] bg-base-white rounded-3xs shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] flex flex-row items-center justify-start gap-[8px] whitespace-nowrap border-[1px] border-solid border-yellow-300 " +
+  mapButton: "cursor-pointer pt-1.5 px-2.5 pb-[7px] bg-base-white rounded-1.5lg shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] flex flex-row items-center justify-start gap-[8px] whitespace-nowrap border-[1px] border-solid border-yellow-300 " +
   "hover:bg-gainsboro hover:box-border hover:border-[1px] hover:border-solid hover:border-goldenrod",
   mapButtonText: "relative text-2xs tracking-[-0.08px] leading-[16px] font-poppins text-yellow-300 text-left",
   mapIcon: "h-[31px] w-[31px] relative overflow-hidden shrink-0",
@@ -48,12 +48,10 @@ const FindLocation: React.FC<FindVideoProps> & {
   }, []);
 
   const handleSearch = (query: string) => {
-    console.log("Recherche effectuée avec la query:", query);
     const queryLower = query.toLowerCase();
     const matchingPlaces = Places.filter(place =>
       place.name.toLowerCase().includes(queryLower) || place.location.toLowerCase().includes(queryLower) || place.city.toLowerCase().includes(queryLower)
     );
-    console.log("Lieux correspondants :", matchingPlaces);
     setSearchResults(matchingPlaces);
   };
 

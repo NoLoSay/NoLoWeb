@@ -38,7 +38,7 @@ function TitleCard({ title, description, website, location, imgPath, pagePath }:
         <h1 className="flex-grow flex justify-center pl-5  text-5xl text-white font-bold font-sans drop-shadow-xl">
           {title}
         </h1>
-        <div className="pt-4  relative w-full inline-block text-base-black rounded-3xs bg-base-white bg-opacity-70 shadow-[0px_4px_9px_rgba(0,_0,_0,_0.25)] flex flex-col items-start justify-center p-5 box-border">
+        <div className="pt-4  relative w-full inline-block text-base-black rounded-1.5lg bg-base-white bg-opacity-70 shadow-[0px_4px_9px_rgba(0,_0,_0,_0.25)] flex flex-col items-start justify-center p-5 box-border">
           <p className="text-bold text-lg font-bold">Descrition:</p>
           <p>{description}</p><br/>
           <div className="text-lg pt-2 font-bold">Website: </div><Link href={website}>{website}</Link><br/>

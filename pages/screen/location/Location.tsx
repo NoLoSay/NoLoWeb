@@ -51,7 +51,6 @@ const Location = () => {
       setCity(city);
       setLocationText(location);
     }
-    console.log(name);
   }, [locationn.state]);
 
 

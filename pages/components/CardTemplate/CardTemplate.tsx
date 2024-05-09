@@ -18,10 +18,10 @@ interface CardTemplateProps {
 }
 
 const styles: { [key: string]: string } = {
-  container: " h-[200px] flex-1 flex flex-col items-start justify-start min-w-[281px] max-w-[375px] text-left text-mini text-darkslategray font-poppins mq450:h-auto",
-  card: "rounded-3xs bg-base-white shadow-[0px_4px_9px_rgba(0,_0,_0,_0.25)] flex flex-col items-start justify-center p-5 box-border min-h-[203px] text-base-black",
+  container: "h-[200px] flex-1 flex flex-col items-start justify-start min-w-[281px] max-w-[375px] text-left text-mini text-darkslategray font-poppins mq450:h-auto",
+  card: "rounded-1.5lg bg-base-white shadow-[0px_4px_9px_rgba(0,_0,_0,_0.25)] flex flex-col items-start justify-center p-5 box-border min-h-[203px] text-base-black",
   cardContent: " flex flex-row items-center justify-start relative gap-[10px] mq450:flex-wrap",
-  cardImage: "t h-[115px] w-[113px] relative rounded-md object-cover mq450:flex-1",
+  cardImage: "h-[115px] w-[113px] relative rounded-md object-cover mq450:flex-1",
   cardDetails: "flex-1 flex flex-col items-start justify-center gap-[10px] min-w-[138px]",
   cardTitle: "self-stretch relative text-inherit leading-[19px] font-bold font-inherit text-base",
   cardDescription: "self-stretch relative text-xs tracking-[-0.08px] leading-[16px] text-base-black m-0",
