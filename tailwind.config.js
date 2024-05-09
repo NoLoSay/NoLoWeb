@@ -61,7 +61,6 @@ module.exports = {
         "1.5lg": "10px",
         "2.5xl": "20px",
         "15xl": "60px",
-        "3xs": "10px",
       },
     },
   },
