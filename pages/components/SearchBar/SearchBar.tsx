@@ -47,7 +47,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ children, userLocation, onSearch}
 
   const handleSearch = () => {
     onSearch(searchQuery);
-    console.log("Searching for:", searchQuery);
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {

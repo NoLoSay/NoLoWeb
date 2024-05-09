@@ -1,7 +1,4 @@
-import { Fragment } from "react";
 import { ButtonBase, Paper } from "@mui/material";
-import { title } from "process";
-import Link from "next/link";
 
 type VignetteInfos = {
   title: string;
