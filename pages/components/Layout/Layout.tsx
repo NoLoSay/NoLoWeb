@@ -17,7 +17,7 @@ const styles: { [key: string]: string } = {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className={styles["mainDiv"]}>
-      <AnimatedNavbar />
+      <AnimatedNavbar InApp={false}/>
       {children}
       <FooterContainer/>
     </div>

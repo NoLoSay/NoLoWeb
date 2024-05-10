@@ -1,7 +1,9 @@
 import { Logout, Man, Person, Settings } from "@mui/icons-material";
 import { Avatar, Menu, MenuItem, Icon, ButtonBase } from "@mui/material";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { UserContext, defaultUser } from "../../../contexts/UserProvider";
+import { useNavigate } from "react-router-dom";
 
 const ProfileButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -16,24 +18,29 @@ const ProfileButton = () => {
 
   const router = useRouter();
 
+  const { user, setUser } = useContext(UserContext);
+
+  const navigate = useNavigate();
+
+  const resetUser = () => {
+    setUser(defaultUser);
+    navigate("/home")
+  };
+
   return (
     <div>
       <ButtonBase disableRipple onClick={handleClick} sx={{ padding: 1, borderRadius: 2 }} className="flex flex-row items-center justify-between space-x-3">
-        <p>Username</p>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+        <p>Mon compte</p>
       </ButtonBase>
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={() => router.push("/account")}>
+        <MenuItem onClick={() => navigate("/account")}>
           <Person /> Profile
         </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Settings /> Paramètres
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={resetUser}>
           <Logout /> Déconnexion
         </MenuItem>
       </Menu>
