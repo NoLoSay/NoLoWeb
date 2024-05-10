@@ -1,6 +1,7 @@
 import React, { CSSProperties, Fragment, useEffect, useState } from "react";
 import { useNavigate } from "../../../../node_modules/react-router-dom/dist/index";
 import Layout from "../../../components/Layout/Layout";
+import SubscriptionController from "./SubscriptionController";
 
 const styles: { [key: string]: string } = {
   mainDiv:
@@ -64,70 +65,19 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
   getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showPasswordConfirmation, setShowPasswordConfirmation] =
-    useState<boolean>(false);
-  const [error, setError] = useState<string | undefined>(undefined);
-  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    userName: "",
-    email: "",
-    phoneNumber: "",
-    password: "",
-    confirmPassword: "",
-  });
-
-  const subscribeUser = async (event: React.FormEvent<HTMLFormElement>) => {
-    setError(undefined);
-
-    event.preventDefault();
-    if (emailRegex.test(formData.email) === false) {
-      setError("Veuillez rentrer un email valide");
-      return;
-    }
-    if (formData.password.length < 8) {
-      setError("Mot de passe trop court");
-      return;
-    }
-    if (formData.password !== formData.confirmPassword) {
-      setError("Mots de passe différents");
-      return;
-    }
-
-    try {
-      const response = await fetch("http://localhost:3001/register", {
-        method: "POST",
-        headers: {
-          Accept: "*/*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: formData.userName,
-          email: formData.email,
-          password: formData.password,
-          telNumber: formData.phoneNumber,
-        }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        // have to add userContext setting
-      } else {
-        throw new Error("Failed to create account");
-      }
-    } catch (e) {
-      console.error("API error: ", e);
-    }
-  };
-
-  const handleInputChange = (event: { target: { name: any; value: any } }) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
-  };
+  const {
+    setUsername,
+    setEmail,
+    setPassword,
+    setConfirmationPassword,
+    setTelNumber,
+    showPassword,
+    setShowPassword,
+    showConfirmationPassword,
+    setShowConfirmationPassword,
+    error,
+    register,
+  } = SubscriptionController({ navigate });
 
   return (
     <div
@@ -158,42 +108,28 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
       </div>
       <form
         className={`SubscriptionScreen/form ${styles["form"]}`}
-        onSubmit={subscribeUser}
+        onSubmit={register}
       >
-        <input
-          className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
-          type="text"
-          placeholder="Nom"
-          name="lastName"
-          onChange={handleInputChange}
-        />
-        <input
-          className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
-          type="text"
-          placeholder="Prénom"
-          name="firstName"
-          onChange={handleInputChange}
-        />
         <input
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="text"
           placeholder="Nom d'utilisateur"
           name="userName"
-          onChange={handleInputChange}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="email"
           placeholder="exemple@gmail.com"
           name="email"
-          onChange={handleInputChange}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="tel"
           placeholder="Téléphone"
           name="phoneNumber"
-          onChange={handleInputChange}
+          onChange={(e) => setTelNumber(e.target.value)}
         />
         <div
           className={`SubscriptionScreen/formPasswordDiv ${styles["formPasswordDiv"]}`}
@@ -203,7 +139,7 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
             type={showPassword ? "text" : "password"}
             placeholder="Mot de passe"
             name="password"
-            onChange={handleInputChange}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <input
             type="checkbox"
@@ -215,15 +151,15 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
         >
           <input
             className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
-            type={showPasswordConfirmation ? "text" : "password"}
+            type={showConfirmationPassword ? "text" : "password"}
             placeholder="Confirmer le mot de passe"
             name="confirmPassword"
-            onChange={handleInputChange}
+            onChange={(e) => setConfirmationPassword(e.target.value)}
           />
           <input
             type="checkbox"
             onChange={() =>
-              setShowPasswordConfirmation(!showPasswordConfirmation)
+              setShowConfirmationPassword(!showConfirmationPassword)
             }
           />
         </div>

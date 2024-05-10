@@ -55,11 +55,10 @@ export default function ConnectionController({
       createdAt: new Date(createdAt),
       accessToken: accessToken,
     });
-    navigate("/home");
+    navigate("/account");
   }
 
   const connectUser = async (event: React.FormEvent<HTMLFormElement>) => {
-    var data;
 
     event.preventDefault();
     try {
@@ -76,7 +75,7 @@ export default function ConnectionController({
       });
 
       if (response.ok) {
-        data = await response.json();
+        const data = await response.json();
         logUser({
           id: data.id,
           uuid: data.uuid,
