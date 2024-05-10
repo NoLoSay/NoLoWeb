@@ -14,8 +14,9 @@ import ArtworkToTranslateSelectionScreen from "./screen/creationSection/artworkT
 import About from "./screen/about/About";
 import ArtworksPage from "./screen/artworks/Artworks";
 import ExhibitionsPage from "./screen/exhibitions/Exhibitions";
-import VideoAccess from "./screen/videoAccess/VideoAccess";
+import FindLocation from "./screen/findLocation/FindLocation";
 import Location from "./screen/location/Location";
+import VideoAccess from "./screen/videoAccess/VideoAccess";
 import Account from "./screen/account/Account";
 import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
 import { UserProvider } from "../contexts/UserProvider";
@@ -51,6 +52,7 @@ const AppRouter = () => {
             <Route path="/location" element={<Location />} />
             <Route path="/account" element={<Account />} />
             <Route path="/record" element={<RecordVideo />} />
+            <Route path="/findlocation" element={<FindLocation />} />
           </Routes>
         </Layout>
       </Router>

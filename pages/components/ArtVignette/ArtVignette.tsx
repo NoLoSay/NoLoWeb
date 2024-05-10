@@ -1,6 +1,4 @@
-import { Fragment } from "react";
 import { ButtonBase, Paper } from "@mui/material";
-import { title } from "process";
 
 type VignetteInfos = {
   title: string;
@@ -10,7 +8,7 @@ type VignetteInfos = {
 
 function ArtVignette({ title, description, img }: VignetteInfos) {
   return (
-    <Paper className="m-5 flex flex-row items-center rounded-lg">
+    <Paper className="m-5 flex flex-row items-center rounded-1.5lg">
       <img src={img} className="h-40 w-40 p-5 object-cover" />
       <div className="flex flex-col">
         <p className="font-bold">{title}</p>

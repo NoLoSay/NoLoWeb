@@ -44,12 +44,9 @@ const NavbarButton: FC<NavbarButtonProps> = ({
       onMouseLeave={handleMouseLeave}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
-      style={{
-        cursor: "pointer",
-        color: isClicked ? colorClick : colorBase,
-        textDecoration: isHovered ? "underline" : "none",
-        fontSize: size,
-      }}
+      className={`cursor-pointer ${
+        isClicked ? `text-${colorClick}` : `text-${colorBase}`
+      } ${isHovered ? "underline" : "no-underline"} text-${size}`}
     >
       {children}
     </div>

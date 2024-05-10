@@ -19,7 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className={styles["mainDiv"]}>
       <AnimatedNavbar />
       {children}
-      <FooterContainer />
+      <FooterContainer/>
     </div>
   );
 };

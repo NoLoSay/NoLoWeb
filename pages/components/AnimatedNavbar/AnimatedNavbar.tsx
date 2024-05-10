@@ -1,4 +1,5 @@
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "./SearchBar";
+import NavbarLink from "../NavBarLink/NavBarLink";
 import { useState } from "react";
 import { useNavigate } from "../../../node_modules/react-router-dom/dist/index";
 import {
@@ -26,10 +27,8 @@ type NavbarProps = {
 
 const NavLinksItems = [
   { href: "/about", title: "Qui sommes-nous ?" },
-  { href: "/nolosay-app", title: "Nolosay app" },
-  { href: "/faq", title: "FAQ" },
-  { href: "/videoAccess", title: "VideoAccess" },
-  { href: "/location", title: "Location" },
+  { href: "/findlocation", title: "Trouver une video" },
+  { href: "/record", title: "Réaliser une video" },
   { href: "/account", title: "Mon compte" },
   { href: "/tickets", title: "Tickets" },
 ];
