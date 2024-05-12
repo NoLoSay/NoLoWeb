@@ -1,6 +1,8 @@
 {
-  "firstName": "Marc",
-  "lastName": "Dupont",
+  "fullName": "Marc Dupont",
+  "uid": "@ImAnUser",
+  "bio": "Je suis un utilisateur de la plateforme Nolosay.",
+  "website": "https://www.nolosay.fr",
   "phone": "06.46.93.11.99",
   "email" : "marc.dupont@outlook.com",
   "cityId": 1,

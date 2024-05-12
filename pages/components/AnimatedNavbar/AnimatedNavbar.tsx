@@ -14,9 +14,9 @@ import {
 import { Menu } from "../../../node_modules/@mui/material/index";
 import ProfileButton from "../ProfileButton/ProfileButton";
 
-type NavLinkProps = {
-  links: { href: string; title: string }[];
-  handleChangePage: (link: string) => void;
+export type NavLinkProps = {
+  links: { href: string; title: string,  props?: any }[];
+  handleChangePage: (link: string, props?: any) => void;
 };
 
 type NavbarProps = {
@@ -30,12 +30,12 @@ const NavLinksItems = [
   { href: "/faq", title: "FAQ" },
   { href: "/videoAccess", title: "VideoAccess" },
   { href: "/location", title: "Location" },
-  { href: "/account", title: "Mon compte" },
+  { href: "/account", title: "Mon compte", props: {isPlace: true} },
   { href: "/tickets", title: "Tickets" },
 ];
 
 interface logoButtonProps {
-  handleChangePage: (link: string) => void;
+  handleChangePage: (link: string, props?: any) => void;
 }
 const LogoButton = ({ handleChangePage }: logoButtonProps) => {
   return (
@@ -56,7 +56,7 @@ const NavLinks = ({ links, handleChangePage }: NavLinkProps) => {
     return links.map((link, index) => (
       <button
         key={index}
-        onClick={() => handleChangePage(link.href)}
+        onClick={() => handleChangePage(link.href, link.props)}
         className="text-zinc-500 hover:underline hover:cursor-pointer bg-transparent underline-offset-2"
       >
         {link.title}
@@ -132,8 +132,9 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
   const [isLogged, setIsLogged] = useState(LoginStatus);
   const navigate = useNavigate();
 
-  function handleChangePage(link: string) {
-    navigate(link);
+  function handleChangePage(link: string, props?: any) {
+    console.log(props)
+    navigate(link, { state: props });
   }
 
   return (
@@ -144,7 +145,7 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
             sx={{ paddingX: 2 }}
             onClick={() => setIsDrawerOpen(true)}
           >
-            <Menu />
+            {/* <Menu /> */}
           </IconButton>
           <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
             <LinkList

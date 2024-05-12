@@ -18,6 +18,7 @@ import VideoAccess from "./screen/videoAccess/VideoAccess";
 import Location from "./screen/location/Location";
 import Account from "./screen/account/Account";
 import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
+import AccountSettings from "./screen/accountSettings/AccountSettings";
 
 const AppRouter = () => {
   const [isClient, setIsClient] = useState(false);
@@ -48,6 +49,7 @@ const AppRouter = () => {
           <Route path="/videoAccess" element={<VideoAccess />} />
           <Route path="/location" element={<Location />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/accountSettings" element={<AccountSettings />} />
           <Route path="/record" element={<RecordVideo />} />
         </Routes>
       </Layout>
