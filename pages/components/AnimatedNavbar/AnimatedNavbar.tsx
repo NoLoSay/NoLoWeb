@@ -1,4 +1,5 @@
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "./SearchBar";
+import NavbarLink from "../NavBarLink/NavBarLink";
 import { useState } from "react";
 import { useNavigate } from "../../../node_modules/react-router-dom/dist/index";
 import {
@@ -26,11 +27,9 @@ type NavbarProps = {
 
 const NavLinksItems = [
   { href: "/about", title: "Qui sommes-nous ?" },
-  { href: "/nolosay-app", title: "Nolosay app" },
-  { href: "/faq", title: "FAQ" },
-  { href: "/videoAccess", title: "VideoAccess" },
-  { href: "/location", title: "Location" },
-  { href: "/account", title: "Mon compte", props: {isPlace: true} },
+  { href: "/findlocation", title: "Trouver une video" },
+  { href: "/record", title: "Réaliser une video" },
+  { href: "/account", title: "Mon compte", props: {isPlace: true}} ,
   { href: "/tickets", title: "Tickets" },
 ];
 
@@ -87,7 +86,7 @@ const LoginButton = ({ handleChangePage }: loginButtonProps) => {
         onClick={() => handleChangePage("/subscription")}
         className="rounded-full bg-gray-300 hover:cursor-pointer flex items-center justify-center py-2 px-6 gap-2 text-base-white font-semibold hover:underline"
       >
-        <div className="font-semibold">Je m'inscris :)</div>
+        <div className="font-semibold">{`Je m'inscris :)`}</div>
       </button>
     </div>
   );

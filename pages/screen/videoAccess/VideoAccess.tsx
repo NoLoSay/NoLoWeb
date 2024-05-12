@@ -1,23 +1,46 @@
-import { Fragment, ReactNode } from "react";
+import { Fragment, ReactNode, useEffect, useState } from "react";
 import Head from "next/head";
 import Layout from "../../components/Layout/Layout";
 import ArtCard from "../../components/ArtCard/ArtCard";
 import infosJson from "../../../stories/assets/testArtCard.json"
 import VideoVignette from "../../components/VideoVignette/VideoVignette";
+import { useLocation } from 'react-router-dom';
+
 
 const VideoAccess = () => {
+  const locationn = useLocation();  
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [imageSrc, setImageSrc] = useState("");
+  const [videoCountPlaceholder, setVideoCountPlaceholder] = useState("");
+  const [city, setCity] = useState("");
+  const [locationText, setLocationText] = useState("");
+
+  useEffect(() => {
+    if (locationn.state) {
+      const { name, description, imageSrc, videoCountPlaceholder, city, location } = locationn.state;
+      setName(name);
+      setDescription(description);
+      setImageSrc(imageSrc);
+      setVideoCountPlaceholder(videoCountPlaceholder);
+      setCity(city);
+      setLocationText(location);
+    }
+  }, [locationn.state]);
+
   return (
     <Fragment>
       <Head>
         <title>Nolosay</title>
       </Head>
       <div>
-        <ArtCard
-          title={infosJson.title}
-          videoPath={infosJson.videoPath}
-          artImage={infosJson.artImage}
-          description={infosJson.description}
-          spec={infosJson.spec}/>
+      <ArtCard
+          title={name}
+          artImage={imageSrc}
+          videoPath={"infosJson.videoPath"}
+          description={description}
+          spec={infosJson.spec}
+          pagePath=""/>
         <div className="w-4/5 mx-auto py-14">
           <p className="text-black">Découvrez d'autres oeuvres similaires :</p>
           <div className=" grid grid-cols-3 space-5">
