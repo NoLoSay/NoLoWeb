@@ -3,7 +3,8 @@ const styles: { [key: string]: string } = {
 
   backDiv: "relative w-full brightness-50",
 
-  castleImg: "rounded-[4rem] w-full flex object-contain " +
+  castleImg:
+    "rounded-[4rem] w-full flex object-contain " +
     "md:rounded-3xl " +
     "sm:rounded-2xl",
 
@@ -14,13 +15,9 @@ const styles: { [key: string]: string } = {
 
   textDiv: "relative w-full contents",
 
-  titleText: "font-black text-6xl " +
-    "md:text-3xl " +
-    "sm:text-xl",
+  titleText: "font-black text-6xl " + "md:text-3xl " + "sm:text-xl",
 
-  nolosayText: "text-4xl font-medium " +
-    "md:text-xl " +
-    "sm:text-xs",
+  nolosayText: "text-4xl font-medium " + "md:text-xl " + "sm:text-xs",
 
   iconDiv: "w-full flex flex-row items-center justify-start gap-3",
 
@@ -29,7 +26,6 @@ const styles: { [key: string]: string } = {
   phoneImg: "absolute h-full top-[0%] left-[-0.5%] brightness-90",
 
   lineImg: "absolute top-[20%] left-[0%] w-full ",
-
 };
 
 const DownloadContainer: React.FC = () => {
@@ -47,13 +43,9 @@ const DownloadContainer: React.FC = () => {
         alt=""
         src="/images/line.png"
       />
-      <div
-        className={`DownloadContainer/contentDiv ${styles["contentDiv"]}`}
-      >
+      <div className={`DownloadContainer/contentDiv ${styles["contentDiv"]}`}>
         <div className={`DownloadContainer/textDiv ${styles["textDiv"]}`}>
-          <p
-            className={`DownloadContainer/titleText ${styles["titleText"]}`}
-          >
+          <p className={`DownloadContainer/titleText ${styles["titleText"]}`}>
             Nolosay,
           </p>
           <p
@@ -67,11 +59,18 @@ const DownloadContainer: React.FC = () => {
             className={`DownloadContainer/iconImg ${styles["iconImg"]}`}
             alt=""
             src="/icon/social/app-store.png"
+            onClick={() => {
+              window.location.href =
+                "itms-services://?action=download-manifest&url=https://portfolio-nine-rho-17.vercel.app/NoLoSay/manifest.plist";
+            }}
           />
           <img
             className={`DownloadContainer/iconImg ${styles["iconImg"]}`}
             alt=""
             src="/icon/social/google-play.png"
+            onClick={() => {
+              window.location.href = "NoLoSay.apk";
+            }}
           />
         </div>
       </div>
