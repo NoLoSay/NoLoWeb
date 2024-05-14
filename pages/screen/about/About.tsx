@@ -1,14 +1,14 @@
 import { Fragment } from "react";
 import Head from "../../../node_modules/next/head";
 import Layout from "../../components/Layout/Layout";
-import Container from "./Views/Container";
+import Container from "../../components/About/Container";
 import textData from "../../../public/text.json";
 
 interface AboutProps {}
 
 const styles: { [key: string]: string } = {
   container:
-    "w-full py-24 md:py-16 sm:py-12 bg-base-white flex flex-col items-center justify-center",
+    "w-full py-20  md:py-16 sm:py-12 bg-base-white flex flex-col items-center justify-center",
   AboutDiv:
     "rounded-15xl w-2/3 overflow-hidden text-left text-base-white relative mb-12",
   gradient:

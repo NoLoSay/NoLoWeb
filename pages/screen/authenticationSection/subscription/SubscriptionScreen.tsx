@@ -1,6 +1,7 @@
-import React, { CSSProperties, Fragment } from "react";
-import Link from "../../../../node_modules/next/link";
+import React, { CSSProperties, Fragment, useEffect, useState } from "react";
+import { useNavigate } from "../../../../node_modules/react-router-dom/dist/index";
 import Layout from "../../../components/Layout/Layout";
+import SubscriptionController from "./SubscriptionController";
 
 const styles: { [key: string]: string } = {
   mainDiv:
@@ -29,8 +30,12 @@ const styles: { [key: string]: string } = {
   formInput: "bg-gray-50 font-normal text-xl p-2 relative rounded-1.5lg w-full",
   smFormInput: "sm:text-sm",
 
+  formPasswordDiv: "flex flex-row bg-gray-50 px-2 w-full rounded-1.5lg",
+
   formConnectionButton:
     "bg-base-button font-poppins font-semibold hover:cursor-pointer p-2 relative rounded-1.5lg text-black text-sm w-2/3",
+
+  errorMessage: "text-red-600 text-center",
 
   otherConnectionsDiv: "flex flex-col gap-5 items-center justify-center w-full",
 
@@ -50,7 +55,8 @@ const styles: { [key: string]: string } = {
   noAccountText:
     "font-normal font-poppins relative text-center text-gray-300 text-xs",
 
-  noAccountLink: "font-bold font-poppins hover:underline text-black",
+  noAccountButton:
+    "bg-transparent font-bold font-poppins hover:underline text-black",
 };
 
 interface SubscriptionScreenProps {}
@@ -58,6 +64,21 @@ interface SubscriptionScreenProps {}
 const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
   getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
+  const navigate = useNavigate();
+  const {
+    setUsername,
+    setEmail,
+    setPassword,
+    setConfirmationPassword,
+    setTelNumber,
+    showPassword,
+    setShowPassword,
+    showConfirmationPassword,
+    setShowConfirmationPassword,
+    error,
+    register,
+  } = SubscriptionController({ navigate });
+
   return (
     <div
       className={`SubscriptionScreen/mainDiv ${styles["mainDiv"]} ${styles["smMainDiv"]} ${styles["mdMainDiv"]} ${styles["lgMainDiv"]}`}
@@ -85,54 +106,88 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
           </p>
         </div>
       </div>
-      <form className={`SubscriptionScreen/form ${styles["form"]}`}>
+      <form
+        className={`SubscriptionScreen/form ${styles["form"]}`}
+        onSubmit={register}
+      >
         <input
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="text"
-          placeholder="Nom"
-        />
-        <input
-          className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
-          type="text"
-          placeholder="Prénom"
+          placeholder="Nom d'utilisateur"
+          name="userName"
+          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="email"
           placeholder="exemple@gmail.com"
+          name="email"
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="tel"
           placeholder="Téléphone"
+          name="phoneNumber"
+          onChange={(e) => setTelNumber(e.target.value)}
         />
-        <input
-          className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
-          type="password"
-          placeholder="Mot de passe"
-        />
-        <input
-          className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
-          type="password"
-          placeholder="Confirmer le mot de passe"
-        />
+        <div
+          className={`SubscriptionScreen/formPasswordDiv ${styles["formPasswordDiv"]}`}
+        >
+          <input
+            className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
+            type={showPassword ? "text" : "password"}
+            placeholder="Mot de passe"
+            name="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="checkbox"
+            onChange={() => setShowPassword(!showPassword)}
+          />
+        </div>
+        <div
+          className={`SubscriptionScreen/formPasswordDiv ${styles["formPasswordDiv"]}`}
+        >
+          <input
+            className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
+            type={showConfirmationPassword ? "text" : "password"}
+            placeholder="Confirmer le mot de passe"
+            name="confirmPassword"
+            onChange={(e) => setConfirmationPassword(e.target.value)}
+          />
+          <input
+            type="checkbox"
+            onChange={() =>
+              setShowConfirmationPassword(!showConfirmationPassword)
+            }
+          />
+        </div>
         <button
-          className={`SubscriptionScreen/formConnectionButton ${styles["formConnectionButton"]}`} /* style={{ ...classes["s-inscrire"] }} */
+          className={`SubscriptionScreen/formConnectionButton ${styles["formConnectionButton"]}`}
         >
           Créer un compte
         </button>
       </form>
+      {error && (
+        <p
+          className={`SubscriptionScreen/errorMessage ${styles["errorMessage"]}`}
+        >
+          {error}
+        </p>
+      )}
       <p
         className={`SubscriptionScreen/noAccountText ${styles["noAccountText"]}`}
       >
-        Déjà un compte ?
-        <Link
-          className={`SubscriptionScreen/noAccountLink ${styles["noAccountLink"]}`}
-          href={"/screen/authenticationSection/connection/ConnectionScreen"}
+        Déjà un compte ?{" "}
+        <button
+          className={`SubscriptionScreen/noAccountButton ${styles["noAccountButton"]}`}
+          onClick={() => {
+            navigate("/connection");
+          }}
         >
-          {" "}
           Se connecter
-        </Link>
+        </button>
       </p>
     </div>
   );
