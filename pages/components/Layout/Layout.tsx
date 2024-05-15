@@ -23,12 +23,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     const handleMediaQueryChange = (event: MediaQueryListEvent) => {
       setIsSmallScreen(event.matches);
     };
-
-    console.log(mediaQuery);
     setIsSmallScreen(mediaQuery.matches);
-
     mediaQuery.addEventListener('change', handleMediaQueryChange);
-
     return () => {
       mediaQuery.removeEventListener('change', handleMediaQueryChange);
     };
