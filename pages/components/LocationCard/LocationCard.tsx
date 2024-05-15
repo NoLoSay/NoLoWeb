@@ -2,6 +2,8 @@ import React from "react";
 import { NextPage } from "next";
 import { useNavigate } from 'react-router-dom';
 import { Box, ButtonBase, Modal, Typography } from "@mui/material";
+import LocationEditForm from "../LocationEditForm/LocationEditForm";
+import { SxProps, Theme } from "@mui/system";
 
 interface CardInfo {
   title: string;
@@ -30,6 +32,9 @@ const styles: { [key: string]: string } = {
   buttons: "flex p-3 rounded-lg shadow-lg bg-white items-center justify-center space-x-5 stroke-black h-full bg-yellow-100 w-20"
 };
 
+interface IntrinsicAttributes {
+  cardInfo?: CardInfo;
+}
 
 const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
 
@@ -57,9 +62,20 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
     });
   };
 
+  const buttonStyles: SxProps<Theme> = {
+    bgcolor: '#ff0000', // Custom background color
+    color: 'white', // Text color
+    '&:hover': {
+      bgcolor: '#cc0000', // Custom background color on hover
+    },
+  };
+
   const [open, setOpen] = React.useState(false);
+  const [openDelete, setOpenDelete] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleOpenDelete = () => setOpenDelete(true);
+  const handleCloseDelete = () => setOpenDelete(false);
 
   const style = {
     position: 'absolute' as 'absolute',
@@ -81,47 +97,66 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 bg-white border-2 border-black shadow-2xl p-4">
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/5 h-3/5 bg-white border-2 border-black shadow-2xl p-4 overflow-y-auto">
+          <LocationEditForm cardInfo={cardInfo} />
+        </div>
       </Modal>
-    <div className={`container ${styles.container}`}>
-      <div className={`card ${styles.card}`}>
-        <div className={`cardContent ${styles.cardContent}`}>
-          <img className={`cardImage ${styles.cardImage}`} loading="eager" alt="" src={`${cardInfo.imageSrc}`} />
-          <div className={`cardDetails ${styles.cardDetails}`}>
-            <div className={`cardTitle ${styles.cardTitle}`}>
-              <p>{title1}</p>
-              <p>{title2}</p>
-            </div>
-            <div className={`cardDescription ${styles.cardDescription}`}>{cardInfo.description}</div>
-            <input className={`videoCountInput ${styles.videoCountInput}`} placeholder={cardInfo.videoCountPlaceholder} type="text" />
+      <Modal
+        open={openDelete}
+        onClose={handleCloseDelete}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex-col space-y-5 bg-white border-2 border-black shadow-2xl p-4 overflow-y-auto">
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Do you really want to delete this location?
+          </Typography>
+          <div className="flex flex-row space-x-5">
+            <ButtonBase disableRipple onClick={handleCloseDelete}>
+              <div className={styles.buttons}>
+                Cancel
+              </div>
+            </ButtonBase>
+            <ButtonBase disableRipple onClick={handleCloseDelete}>
+              <div className={styles.buttons}>
+                Delete
+              </div>
+            </ButtonBase>
           </div>
         </div>
-        <div className="flex flex-row space-x-5 pt-5">
-          <ButtonBase disableRipple onClick={handleClick}>
-            <div className={styles.buttons}>
-              Voir
+      </Modal>
+      <div className={`container ${styles.container}`}>
+        <div className={`card ${styles.card}`}>
+          <div className={`cardContent ${styles.cardContent}`}>
+            <img className={`cardImage ${styles.cardImage}`} loading="eager" alt="" src={`${cardInfo.imageSrc}`} />
+            <div className={`cardDetails ${styles.cardDetails}`}>
+              <div className={`cardTitle ${styles.cardTitle}`}>
+                <p>{title1}</p>
+                <p>{title2}</p>
+              </div>
+              <div className={`cardDescription ${styles.cardDescription}`}>{cardInfo.description}</div>
+              <input className={`videoCountInput ${styles.videoCountInput}`} placeholder={cardInfo.videoCountPlaceholder} type="text" />
             </div>
-          </ButtonBase>
-          <ButtonBase disableRipple onClick={handleOpen}>
-            <div className={styles.buttons}>
-              Modifier
-            </div>
-          </ButtonBase>
-          <ButtonBase disableRipple onClick={handleClick} >
-            <div className={styles.buttons}>
-              Supprimer
-            </div>
-          </ButtonBase>
+          </div>
+          <div className="flex flex-row space-x-5 pt-5">
+            <ButtonBase disableRipple onClick={handleClick}>
+              <div className={styles.buttons}>
+                Voir
+              </div>
+            </ButtonBase>
+            <ButtonBase disableRipple onClick={handleOpen}>
+              <div className={styles.buttons}>
+                Modifier
+              </div>
+            </ButtonBase>
+            <ButtonBase disableRipple onClick={handleOpenDelete} >
+              <div className={styles.buttons}>
+                Supprimer
+              </div>
+            </ButtonBase>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
