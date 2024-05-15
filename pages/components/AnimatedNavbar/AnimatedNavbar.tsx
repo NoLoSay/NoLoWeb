@@ -1,7 +1,8 @@
 import SearchBar from "./SearchBar";
 import NavbarLink from "../NavBarLink/NavBarLink";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "../../../node_modules/react-router-dom/dist/index";
+import { UserContext } from "../../../contexts/UserProvider";
 import {
   Drawer,
   Box,
@@ -29,7 +30,6 @@ const NavLinksItems = [
   { href: "/about", title: "Qui sommes-nous ?" },
   { href: "/findlocation", title: "Trouver une video" },
   { href: "/record", title: "Réaliser une video" },
-  { href: "/account", title: "Mon compte", props: {isPlace: true}} ,
   { href: "/tickets", title: "Tickets" },
 ];
 
@@ -127,9 +127,16 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
   InApp,
   LoginStatus,
 }: NavbarProps) => {
+  const { user, setUser } = useContext(UserContext);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isLogged, setIsLogged] = useState(LoginStatus);
+  const [isLogged, setIsLogged] = useState(user.accessToken != "" ? true : false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      setIsLogged(user.accessToken !== ""); // Check if user is logged in
+    }
+  }, [user]);
 
   function handleChangePage(link: string, props?: any) {
     console.log(props)
@@ -167,7 +174,7 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
       <div className="flex flex-row items-center gap-8 text-gray-200">
         <Divider orientation="vertical" variant="middle" flexItem />
         {isLogged ? (
-          <ProfileButton />
+          <ProfileButton name={user.username} avatar={user.picture}/>
         ) : (
           <LoginButton handleChangePage={handleChangePage} />
         )}

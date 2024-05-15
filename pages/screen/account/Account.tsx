@@ -1,4 +1,4 @@
-import { Fragment, ReactNode } from "react";
+import { Fragment, ReactNode, useContext } from "react";
 import Head from "../../../node_modules/next/head";
 import Layout from "../../components/Layout/Layout";
 import GenericCard from "../../components/GenericCard/GenericCard";
@@ -10,6 +10,8 @@ import GraphCard from "../../components/GraphCard/GraphCard";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import AccountSelector from "../../components/AccountSelector/AccountSelector";
+import { UserContext } from "../../../contexts/UserProvider";
+//ajouter user context
 
 type BigButtonProps = {
   label: string;
@@ -32,6 +34,7 @@ const Account = () => {
   const location = useLocation();
   const { isPlace } = location.state || {};
   const navigate = useNavigate();
+  const { user, setUser } = useContext(UserContext);
 
   console.log(location.state)
 
@@ -72,7 +75,7 @@ const Account = () => {
         </div>
 
         <div>
-          <ProfileCard cityId={testProfile.cityId} email={testProfile.email} fullName={testProfile.fullName} phone={testProfile.phone} profilePicturePath={testProfile.profilePicturePath} />
+          <ProfileCard cityId={testProfile.cityId} email={user.email} fullName={user.username} phone={user.telNumber} profilePicturePath={testProfile.profilePicturePath} />
           <div className="space-y-3 m-5">
             <CategoryButton altColor description="Faire des changements sur mon compte" text="Mon compte" onClick={() => navigate("/accountSettings")} />
             <CategoryButton altColor description="Faire des changements sur mon compte" text="Biométrie" />

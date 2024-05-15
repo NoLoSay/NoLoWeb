@@ -13,7 +13,7 @@ const CategoryButton = ({ text, description, altColor, onClick }: CategoryProps)
   return (
 
     <ButtonBase disableRipple className="w-full h-full" onClick={onClick}>
-      <div className={`flex p-3 rounded-lg shadow-lg bg-white items-center justify-between space-x-5 stroke-black w-full h-full ${altColor ? "bg-yellow-100" : "bg-white"}`}>
+      <div className={`flex p-3 rounded-lg shadow-lg bg-white items-center justify-between space-x-5 stroke-black w-full h-full ${altColor ? "bg-yellow-100" : "bg-222222"}`}>
         <PersonIcon />
         <div>
           <p className="font-bold">{text}</p>
