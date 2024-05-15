@@ -19,11 +19,11 @@ import Location from "./screen/location/Location";
 import VideoAccess from "./screen/videoAccess/VideoAccess";
 import Account from "./screen/account/Account";
 import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
-<<<<<<< HEAD
 import ArtworkModificationPage from "./screen/artworkmodificationPage/ArtworkModificationPage";
-=======
 import { UserProvider } from "../contexts/UserProvider";
->>>>>>> main
+import PlacesPage from "./screen/place/Places";
+import Sites from "./screen/place/Places";
+import ExhibitionModificationPage from "./screen/exhibitionModificationPage/exhibitionModificationPage";
 
 const AppRouter = () => {
   const [isClient, setIsClient] = useState(false);
@@ -37,30 +37,6 @@ const AppRouter = () => {
   }
 
   return (
-<<<<<<< HEAD
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/connection" element={<ConnectionScreen />} />
-          <Route path="/subscription" element={<SubscriptionScreen />} />
-          <Route path="/exhibitions" element={<ExhibitionsPage />} />
-          <Route
-            path="/tickets"
-            element={<ArtworkToTranslateSelectionScreen />}
-          />
-          <Route path="/artworks" element={<ArtworksPage />} />
-          <Route path="/videoAccess" element={<VideoAccess />} />
-          <Route path="/location" element={<Location />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/record" element={<RecordVideo />} />
-          <Route path="/artworkmodifications" element={<ArtworkModificationPage />} />
-        </Routes>
-      </Layout>
-    </Router>
-=======
     <UserProvider>
       <Router>
         <Layout>
@@ -70,22 +46,31 @@ const AppRouter = () => {
             <Route path="/about" element={<About />} />
             <Route path="/connection" element={<ConnectionScreen />} />
             <Route path="/subscription" element={<SubscriptionScreen />} />
-            <Route path="/exhibitions" element={<ExhibitionsPage />} />
+
             <Route
               path="/tickets"
               element={<ArtworkToTranslateSelectionScreen />}
             />
+            <Route path="/artworkmodifications" element={<ArtworkModificationPage />} />
             <Route path="/artworks" element={<ArtworksPage />} />
             <Route path="/videoAccess" element={<VideoAccess />} />
             <Route path="/location" element={<Location />} />
             <Route path="/account" element={<Account />} />
+
+            <Route path="/places" element={<Sites />} />
+
+            <Route path="/places/exhibitions" element={<ExhibitionsPage />} />
+            <Route path="/places/exhibitions/exhibitionModification" element={<ExhibitionModificationPage/>} />
+
+            <Route path="/places/exhibitions/artworks" element={<ArtworksPage />} />
+            <Route path="/places/exhibitions/artworkModification" element={<ArtworkModificationPage />} />
+
             <Route path="/record" element={<RecordVideo />} />
             <Route path="/findlocation" element={<FindLocation />} />
           </Routes>
         </Layout>
       </Router>
     </UserProvider>
->>>>>>> main
   );
 };
 

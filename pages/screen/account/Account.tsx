@@ -1,4 +1,4 @@
-import { Fragment, ReactNode } from "react";
+import {Fragment, ReactNode, useContext} from "react";
 import Head from "../../../node_modules/next/head";
 import Layout from "../../components/Layout/Layout";
 import GenericCard from "../../components/GenericCard/GenericCard";
@@ -7,6 +7,7 @@ import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import testProfile from "../../../stories/assets/testProfile.json"
 import CategoryButton from "../../components/CategoryButton/CategoryButton";
 import GraphCard from "../../components/GraphCard/GraphCard";
+import {UserContext} from "../../../contexts/UserProvider";
 
 type BigButtonProps = {
   label: string;
@@ -24,6 +25,8 @@ const BigButton = ({ label, textSize }: BigButtonProps) => {
 }
 
 const Account = () => {
+  const { user, setUser } = useContext(UserContext);
+  console.log(user);
   return (
     <Fragment>
       <Head>
