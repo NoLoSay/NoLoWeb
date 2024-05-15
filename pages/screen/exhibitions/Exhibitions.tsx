@@ -2,7 +2,6 @@ import Layout from "../../components/Layout/Layout";
 import Home from "../home/Home";
 import { useNavigate } from 'react-router-dom';
 import { Fragment } from "react";
-import * as objectorarray from "objectorarray";
 
 
 interface ExhibitionsProps {}
@@ -21,10 +20,10 @@ const staticExhibitions = [
             "shortDescription": "Un chateau trop bien",
             "longDescription": "Je te jure! Tu as une superbe vue et je dis pas ca car c'est ma ville natale ! Non pas du tout !",
             "telNumber": "+33 2 41 86 48 77",
-            "email": null,
-            "website": null,
+            "email": "",
+            "website": "",
             "price": 9.5,
-            "picture": null,
+            "picture": "",
             "type": "MUSEUM",
             "tags": [
                 "DISABILITY_FRIENDLY",
@@ -58,23 +57,23 @@ const staticExhibitions = [
                 "id": 1,
                 "name": "La tete d'un Epoutanflus",
                 "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-                "picture": null,
+                "picture": "",
                 "relatedPerson": {
                     "id": 1,
                     "name": "Max Verstappen"
                 },
-                "itemType": null
+                "itemType": ""
             },
             {
                 "id": 2,
                 "name": "La tete d'un Epoutanflus",
                 "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-                "picture": null,
+                "picture": "",
                 "relatedPerson": {
                     "id": 1,
                     "name": "Max Verstappen"
                 },
-                "itemType": null
+                "itemType": ""
             }
         ]
     },
@@ -91,10 +90,10 @@ const staticExhibitions = [
             "shortDescription": "Un chateau trop bien",
             "longDescription": "Je te jure! Tu as une superbe vue et je dis pas ca car c'est ma ville natale ! Non pas du tout !",
             "telNumber": "+33 2 41 86 48 77",
-            "email": null,
-            "website": null,
+            "email": "",
+            "website": "",
             "price": 9.5,
-            "picture": null,
+            "picture": "",
             "type": "MUSEUM",
             "tags": [
                 "DISABILITY_FRIENDLY",
@@ -128,23 +127,23 @@ const staticExhibitions = [
                 "id": 1,
                 "name": "La tete d'un Epoutanflus",
                 "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-                "picture": null,
+                "picture": "",
                 "relatedPerson": {
                     "id": 1,
                     "name": "Max Verstappen"
                 },
-                "itemType": null
+                "itemType": ""
             },
             {
                 "id": 2,
                 "name": "La tete d'un Epoutanflus",
                 "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-                "picture": null,
+                "picture": "",
                 "relatedPerson": {
                     "id": 1,
                     "name": "Max Verstappen"
                 },
-                "itemType": null
+                "itemType": ""
             }
         ]
     }
@@ -225,7 +224,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
         console.log(`Le bouton ${buttonName} a été cliqué pour l'exhibition ${exhibitionId}! `);
     };
 
-    const handleGoToArtworks = (exhibition) => {
+    const handleGoToArtworks = (exhibition: any) => {
         // Naviguer vers la page Artworks et passer l'exposition complète en état
         console.log(`exxxxx = ${exhibition.items}`);
         navigate('/artworks',  { state: { items: exhibition.items } });

@@ -2,11 +2,14 @@ import { Fragment, ReactNode } from "react";
 import Head from "../../../node_modules/next/head";
 import Layout from "../../components/Layout/Layout";
 import GenericCard from "../../components/GenericCard/GenericCard";
-import { ButtonBase } from "@mui/material";
+import { ButtonBase, Divider } from "@mui/material";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import testProfile from "../../../stories/assets/testProfile.json"
 import CategoryButton from "../../components/CategoryButton/CategoryButton";
 import GraphCard from "../../components/GraphCard/GraphCard";
+import locationData from "../../components/LocationCard/example.json"
+import exhibitionTestData from "../../../tests/testExhib.json"
+import LocationCard from "../../components/LocationCard/LocationCard";
 
 type BigButtonProps = {
   label: string;
@@ -35,7 +38,7 @@ const Account = () => {
           <BigButton label="Recherche personnalisée" textSize="text-2xl" />
           <BigButton label="Villes" textSize="text-2xl" />
           <BigButton label="Lieux" textSize="text-2xl" />
-          <GraphCard title="Nombre de vues de la semaine" value="49327"/>
+          {/* <GraphCard title="Nombre de vues de la semaine" value="49327" /> */}
         </div>
         <div>
           <GenericCard title="Créer une vidéo" text="The Issues panel now warns you about the cookies that will be affected by the upcoming deprecation and phaseout of third-party cookies." imgPath="https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2023/07/shutterstock_pricing_plan_demystified_cover.jpg?resize=1250,1120" />
@@ -43,7 +46,7 @@ const Account = () => {
             <BigButton label="Mes vidéos" textSize="text-3xl" />
             <BigButton label="Mes enregistrements" textSize="text-3xl" />
           </div>
-          <GraphCard title="Profit du mois" value="20441"/>
+          {/* <GraphCard title="Profit du mois" value="20441" /> */}
 
         </div>
         <div>
@@ -58,6 +61,14 @@ const Account = () => {
             <CategoryButton text="Aide et support" />
             <CategoryButton text="A propos de l'app" />
             <CategoryButton text="Conditions Générales d'Utilisation" />
+          </div>
+        </div>
+        <div className="col-span-2 space-y-5 items-center -mt-96">
+          <h2>Lieux modérable</h2>
+          <div className="flex flex-col space-y-5">
+            <Divider/>
+          <LocationCard cardInfo={locationData[0]} />
+          <LocationCard cardInfo={locationData[1]} />
           </div>
         </div>
       </div>

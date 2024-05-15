@@ -15,7 +15,6 @@ module.exports = {
     extend: {
       backgroundImage: theme => ({
         'map': "url('../public/images/map.png')",
-        'miroir-d-eau-château-nantes_photo': "url('/images/artworkToTranslateSelectionScreen/miroir-d-eau-château-nantes_photo.png')",
       }),
       flex: {
         '2': '2 2 0%',
