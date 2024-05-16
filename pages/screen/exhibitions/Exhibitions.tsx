@@ -2,7 +2,6 @@ import Layout from "../../components/Layout/Layout";
 import Home from "../home/Home";
 import { useNavigate } from 'react-router-dom';
 import { Fragment } from "react";
-import * as objectorarray from "objectorarray";
 
 
 interface ExhibitionsProps {}
@@ -225,7 +224,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
         console.log(`Le bouton ${buttonName} a été cliqué pour l'exhibition ${exhibitionId}! `);
     };
 
-    const handleGoToArtworks = (exhibition) => {
+    const handleGoToArtworks = (exhibition: any) => {
         // Naviguer vers la page Artworks et passer l'exposition complète en état
         console.log(`exxxxx = ${exhibition.items}`);
         navigate('/artworks',  { state: { items: exhibition.items } });

@@ -1,5 +1,4 @@
 import Layout from "../../components/Layout/Layout";
-import Home from "../home/Home";
 import { Fragment } from "react";
 import { useLocation } from 'react-router-dom';
 
@@ -71,7 +70,7 @@ const styles: { [key: string]: string } = {
         "flex flex-col items-center justify-between flex-none",
 };
 
-const ArtworksPage: React.FC<HomeProps> & {
+const ArtworksPage: React.FC<ArtworksProps> & {
     getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
 
@@ -139,7 +138,7 @@ const ArtworksPage: React.FC<HomeProps> & {
                 </div>
                 <div className={`divBlockArtworkList ${styles["divBlockArtworkList"]}`}>
                     <div className={`divArtworkList ${styles["divArtworkList"]}`}>
-                        {artworks.map((artwork) => (
+                        {artworks.map((artwork: any) => (
 
                           /// TODO Move this code into Artwork Component
                           /// TODO Add image in each artworks
