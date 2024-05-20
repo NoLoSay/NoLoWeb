@@ -1,28 +1,20 @@
-import Layout from "../../components/Layout/Layout";
-import Home from "../home/Home";
-import {useLocation, useNavigate} from 'react-router-dom';
-import {Fragment, useState, useContext} from "react";
-import {UserContext} from "../../../contexts/UserProvider";
+import React, { Fragment, useState, useContext, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../../contexts/UserProvider';
+import Layout from '../../components/Layout/Layout';
 
-const styles: { [key: string]: string } = {
+const styles = {
   exhibitionModificationPage: "flex flex-col w-full pl-8 pr-8 sm:flex-col text-black",
   exhibitionCardModification: "shadow-xl rounded-lg flex flex-col w-full p-5",
-  divBlockGeneralInformations: "w-full flex flex-row " +
-    "sm:flex-col",
+  divBlockGeneralInformations: "w-full flex flex-row sm:flex-col",
   image22: "rounded-lg w-1/3 h-auto sm:w-full",
   divGeneralInformations: "w-full pb-0 pl-5 sm:pl-0",
   textName: "pt-5 pb-2.5",
-  artistName: "pt-5 pb-2.5",
-  createdAtText: "pt-5 pb-2.5",
   descriptionText: "pt-5 pb-2.5",
-  divBlockDescription: "w-full",
   divBlockButtonModification: "flex w-full justify-center items-center space-x-4",
-  divButtonDontSave: "bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700 cursor-pointer",
+  backButton: "bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-700 cursor-pointer",
   divButtonSave: "bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 cursor-pointer",
-  nameInput: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
-  descriptionInput: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
-  artistNameInput: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
-  dateInput: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+  inputStyle: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
 };
 
 const ExhibitionModificationPage = () => {
@@ -30,22 +22,36 @@ const ExhibitionModificationPage = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
-  const initialExhibition = location.state?.item || {
+  const defaultExhibition = {
+    id: null,
     name: '',
     shortDescription: '',
     longDescription: '',
-    startDate: new Date().toISOString(),
-    endDate: new Date().toISOString(),
-    siteId: 0, // Default or dynamic site ID needed
+    telNumber: '',
+    siteId: 0,
+    picture: 'https://cataas.com/cat',
+    description: '',
+    createdAt: new Date().toISOString().slice(0, 10),
+    endDate: new Date().toISOString().slice(0, 10),
   };
 
-  const [exhibition, setExhibition] = useState(initialExhibition);
+  const [exhibition, setExhibition] = useState(location.state?.item || defaultExhibition);
+  useEffect(() => {
+    if (location.state?.exhibition) {
+      setExhibition({
+        ...location.state.exhibition,
+        createdAt: location.state.exhibition.createdAt ? new Date(location.state.exhibition.createdAt).toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10),
+        endDate: location.state.exhibition.endDate ? new Date(location.state.exhibition.endDate).toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10),
+      });
+    }
+  }, [location.state]);
 
-  console.log('Exhibition:', exhibition);
+  console.log("exhibition = ", exhibition);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setExhibition({ ...exhibition, [name]: value });
+    setExhibition(prev => ({ ...prev, [name]: value }));
+
   };
 
   const handleSubmit = async () => {
@@ -54,18 +60,16 @@ const ExhibitionModificationPage = () => {
 
     try {
       const response = await fetch(url, {
-        method: method,
+        method,
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.accessToken}`
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.accessToken}`,
         },
         body: JSON.stringify({
-          name: exhibition.name,
-          shortDescription: exhibition.shortDescription,
-          longDescription: exhibition.longDescription,
-          startDate: exhibition.startDate,
-          endDate: exhibition.endDate,
-          siteId: exhibition.siteId
+          ...exhibition,
+          siteId: location.state.item,
+          createdAt: new Date(exhibition.createdAt).toISOString(),
+          endDate: new Date(exhibition.endDate).toISOString(),
         })
       });
 
@@ -75,122 +79,57 @@ const ExhibitionModificationPage = () => {
 
       const responseData = await response.json();
       console.log('Operation successful:', responseData);
-      navigate('/places'); // Redirect after successful operation
+      navigate('/places');
     } catch (error) {
       console.error('Failed to update exhibition:', error);
     }
   };
 
-  const resetFields = () => {
-    setExhibition({
-      name: '',
-      description: '',
-      longDescription: '',
-      shortDescription: '',
-      startDate: new Date().toISOString(), // Ensuring the date is always set to now
-      endDate: new Date().toISOString(),   // Assuming you might also have an end date
-      artistName: '',                      // Clearing the artist name
-      createdAt: new Date().toISOString(), // Resetting created at date to current time
-      secondaryInformation: '',
-      siteId: 0,                           // Assuming default siteId as 0, adjust as necessary
-      typeId: 0,                           // Resetting typeId to 0, or some other sensible default
-      picture: 'https://cataas.com/cat',   // Default picture URL
-      relatedPerson: {
-        id: '',
-        name: ''
-      },
-    });
-  };
   return (
-
     <Fragment>
-      <section className={`exhibitionModificationPage ${styles["exhibitionModificationPage"]}`}>
+      <section className={styles.exhibitionModificationPage}>
         <form onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
-        }} className={`exhibitionCardModification ${styles["exhibitionCardModification"]}`}>
+        }} className={styles.exhibitionCardModification}>
           <div className={styles.divBlockGeneralInformations}>
-            <img src={exhibition.picture ? exhibition.picture : 'https://cataas.com/cat'}
-                 loading="lazy" alt="Exhibition Image" className={styles.image22}/>
+            <img src={exhibition.picture || 'https://cataas.com/cat'}
+                 alt="Exhibition Image" className={styles.image22}/>
             <div className={styles.divGeneralInformations}>
-              <div className={styles.nameBlockInput}>
-                <div className={styles.textName}>Name :</div>
-                <input type="text" className={styles.nameInput}
-                       name="name"
-                       value={exhibition.name}
-                       onChange={(e) => handleInputChange(e)}
-                       placeholder="Enter exhibition name"/>
-              </div>
-
-              <div className={styles.artistBlockName}>
-                <div className={styles.artistName}>Artist Name :</div>
-                <input type="text" className={styles.artistNameInput}
-                       name="artistName"
-                       value={exhibition.artistName}
-                       onChange={(e) => handleInputChange(e)}
-                       placeholder="Enter artist name"/>
-              </div>
-
-              <div className={styles.dateOfCreationBlock}>
-                <div className={styles.createdAtText}>Created at :</div>
-                <input type="date" className={styles.dateInput}
-                       name="createdAt"
-                       value={exhibition.createdAt ? new Date(exhibition.createdAt).toISOString().substring(0, 10) : ''}
-                       onChange={(e) => handleInputChange(e)}
-                       placeholder="Select creation date"/>
-              </div>
+              <div className={styles.textName}>Name:</div>
+              <input type="text" name="name" value={exhibition.name} onChange={handleInputChange}
+                     className={styles.inputStyle} placeholder="Enter exhibition name"/>
+              <div className={styles.textName}>Telephone Number:</div>
+              <input type="text" name="telNumber" value={exhibition.telNumber} onChange={handleInputChange}
+                     className={styles.inputStyle} placeholder="Enter telephone number"/>
+              <div className={styles.descriptionText}>Short Description:</div>
+              <input type="text" name="shortDescription" value={exhibition.shortDescription}
+                     onChange={handleInputChange} className={styles.inputStyle} placeholder="Enter short description"/>
+              <div className={styles.descriptionText}>Long Description:</div>
+              <input type="text" name="longDescription" value={exhibition.longDescription} onChange={handleInputChange}
+                     className={styles.inputStyle} placeholder="Enter long description"/>
+              <div className={styles.textName}>Site ID:</div>
+              <input type="number" name="siteId" value={exhibition.siteId} onChange={handleInputChange}
+                     className={styles.inputStyle} placeholder="Enter site ID"/>
             </div>
           </div>
-          <div className={styles.divBlockDescription}>
-            <div className={styles.descriptionText}>Description :</div>
-            <input type="text" className={styles.descriptionInput}
-                   name="description"
-                   value={exhibition.description}
-                   onChange={(e) => handleInputChange(e)}
-                   placeholder="Enter exhibition description"/>
-            <div className={styles.descriptionText}>Long Description :</div>
-            <input type="text" className={styles.descriptionInput}
-                   name="longDescription"
-                   value={exhibition.longDescription}
-                   onChange={(e) => handleInputChange(e)}
-                   placeholder="Enter long exhibition description"/>
-            <div className={styles.descriptionText}>Short Description :</div>
-            <input type="text" className={styles.descriptionInput}
-                   name="shortDescription"
-                   value={exhibition.shortDescription}
-                   onChange={(e) => handleInputChange(e)}
-                   placeholder="Enter short exhibition description"/>
-          </div>
-
-          <div className={styles.divBlockSecondaryInformation}>
-            <div className={styles.secondaryInformation}>Secondary Information:</div>
-            <input type="text" className={styles.secondaryInfoInput}
-                   name="secondaryInformation"
-                   value={exhibition.secondaryInformation}
-                   onChange={(e) => handleInputChange(e)}
-                   placeholder="Enter secondary information"/>
-          </div>
-
-          <div className={styles.divBlockGeneralInformations}>
-            <div className={styles.textName}>Site ID:</div>
-            <input type="number" className={styles.nameInput}
-                   name="siteId"
-                   value={exhibition.siteId}
-                   onChange={(e) => handleInputChange(e)}
-                   placeholder="Enter Site ID"/>
-          </div>
-
-          <div className={`divBlockButtonModification ${styles["divBlockButtonModification"]}`}>
-            <button type="submit" className={`divButtonSave ${styles["divButtonSave"]}`}>Save</button>
+          <div className={styles.textName}>Creation Date:</div>
+          <input type="date" name="createdAt" value={exhibition.createdAt} onChange={handleInputChange}
+                 className={styles.inputStyle}/>
+          <div className={styles.textName}>End Date:</div>
+          <input type="date" name="endDate" value={exhibition.endDate} onChange={handleInputChange}
+                 className={styles.inputStyle}/>
+          <div className={styles.divBlockButtonModification}>
+            <button type="button" className={styles.backButton} onClick={() => navigate(-1)}>Back</button>
+            <button type="submit" className={styles.divButtonSave}>Save</button>
           </div>
         </form>
       </section>
     </Fragment>
-
   );
 };
 
-ExhibitionModificationPage.getLayout = function getLayout(page: React.ReactNode) {
+ExhibitionModificationPage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };
 

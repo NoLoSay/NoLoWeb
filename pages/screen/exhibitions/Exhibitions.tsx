@@ -1,9 +1,6 @@
 import Layout from "../../components/Layout/Layout";
-import Home from "../home/Home";
 import {useLocation, useNavigate} from 'react-router-dom';
-import {Fragment, useContext} from "react";
-import * as objectorarray from "objectorarray";
-import {exhibitions} from "../location/ExempleJSON";
+import {Fragment, useContext, useState} from "react";
 import {UserContext} from "../../../contexts/UserProvider";
 
 
@@ -83,23 +80,38 @@ const Exhibition: React.FC<ExhibitionsProps> & {
     const navigate = useNavigate();
 
     const location = useLocation();
-    console.log('Received state at ArtworksPage:', location.state);
-    let { items: exhibitions } = location.state || {};
-    console.log('Artworks:', exhibitions);
+
+    const [exhibitions, setExhibitions] = useState(location.state?.item || []);
     const { user, setUser } = useContext(UserContext);
-    console.log(user);
+
+
+    const handleDeleteExhibition = async (exhibitionId) => {
+        try {
+            const response = await fetch(`http://localhost:3001/exhibitions/${exhibitionId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${user.accessToken}`,
+                }
+            });
+
+            if (response.ok) {
+                const updatedExhibitions = exhibitions.filter(exhibition => exhibition.id !== exhibitionId);
+                setExhibitions(updatedExhibitions);
+                console.log('Exhibition deleted successfully');
+            } else {
+                throw new Error(`HTTP status ${response.status}: Failed to delete the exhibition`);
+            }
+        } catch (error) {
+            console.error('Failed to delete exhibition:', error);
+        }
+    };
+
 
     const handleAction = async (buttonName: string, exhibitionId) => {
-        console.log(`Le bouton ${buttonName} a été cliqué pour l'artwork ! `);
         switch (buttonName) {
-            case "returnToPreviousPageBtn":
-                console.log('go to previous page');
-                navigate('/places');
-                break;
             case 'handleGoToArtwork':
-                console.log(`Fetching exhibitions for site ${exhibitionId}`);
                 try {
-                    const url = `http://localhost:3001/exhibitions/${exhibitionId}/artworks`;
+                    const url = `http://localhost:3001/exhibitions/${exhibitionId}/items`;
                     const response = await fetch(url, {
                         method: 'GET',
                         headers: {
@@ -108,39 +120,44 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                         }
                     });
 
-                    if (!response.ok) {
-                        throw new Error(`HTTP status ${response.status}: Failed to fetch exhibitions`);
+                    let artworks = [];
+                    if (response.ok) {
+                        artworks = await response.json();
+                    } else {
+                        console.error(`HTTP status ${response.status}: Failed to fetch exhibitions`);
                     }
-                    const exhibitions = await response.json();
-                    navigate('/places/exhibitions/artworks', { state: { item: response } });
+                    navigate('/places/exhibitions/artworks', { state: { item: artworks, exhibitionId } });
                 } catch (error) {
                     console.error('Failed to fetch exhibition details:', error);
+                    navigate('/places/exhibitions/artworks', { state: { item: exhibitionId } });
                 }
+                break;
+            case 'deleteButton':
+                handleDeleteExhibition(exhibitionId);
+                break;
+            case 'changeButton':
+                const exhibition = exhibitions.find(exh => exh.id === exhibitionId);
+                changeExhibition(exhibition);
                 break;
         }
     };
 
+    const changeExhibition = (exhibitionsId) => {
+        navigate('/places/exhibitions/exhibitionModification', { state: { item: exhibitionsId } });
+    }
+
     const handleAddExhibition = () => {
-        navigate('/places/exhibitions/exhibitionModification');
+        navigate('/places/exhibitions/exhibitionModification', { state: { item: location.state?.item[0].siteId } });
     };
 
     if (!exhibitions || exhibitions.length === 0) {
-        // Handle case where no exhibitions are available
-        console.log('No exhibitions available to display.');
+       console.log('No exhibitions available to display.');
         return (
           <Fragment>
               <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
                   <div
-                    role="returnToPreviousPageBtn"
-                    tabIndex={0}
                     className={`returnToPreviousPageBtn ${styles["returnToPreviousPageBtn"]}`}
-                    onClick={() => handleAction('returnToPreviousPageBtn', 0)}
-                    onKeyDown={(event) => {
-                        if (event.key === 'Enter' || event.key === ' ') {
-                            handleAction('returnToPreviousPageBtn', 0);
-                            event.preventDefault();
-                        }
-                    }}
+                    onClick={() => navigate(-1)}
                   >
                       <img
                         src=""
@@ -181,16 +198,8 @@ const Exhibition: React.FC<ExhibitionsProps> & {
               <section className={`exhibitionsPage ${styles["exhibitionsPage"]}`}>
                   <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
                       <div
-                        role="returnToPreviousPageBtn"
-                        tabIndex={0}
                         className={`returnToPreviousPageBtn ${styles["returnToPreviousPageBtn"]}`}
-                        onClick={() => handleAction('returnToPreviousPageBtn', 0)}
-                        onKeyDown={(event) => {
-                            if (event.key === 'Enter' || event.key === ' ') {
-                                handleAction('returnToPreviousPageBtn', 0);
-                                event.preventDefault();
-                            }
-                        }}
+                        onClick={() => navigate(-1)}
                       >
                           <img
                             src=""

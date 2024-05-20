@@ -21,9 +21,10 @@ import Account from "./screen/account/Account";
 import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
 import ArtworkModificationPage from "./screen/artworkmodificationPage/ArtworkModificationPage";
 import { UserProvider } from "../contexts/UserProvider";
-import PlacesPage from "./screen/place/Places";
-import Sites from "./screen/place/Places";
+import PlacesPage from "./screen/site/Sites";
+import Sites from "./screen/site/Sites";
 import ExhibitionModificationPage from "./screen/exhibitionModificationPage/exhibitionModificationPage";
+import SiteModificationPage from "./screen/siteModificationPage/SiteModificationPage";
 
 const AppRouter = () => {
   const [isClient, setIsClient] = useState(false);
@@ -58,12 +59,13 @@ const AppRouter = () => {
             <Route path="/account" element={<Account />} />
 
             <Route path="/places" element={<Sites />} />
+            <Route path="/places/modificationPlace" element={<SiteModificationPage />} />
 
             <Route path="/places/exhibitions" element={<ExhibitionsPage />} />
             <Route path="/places/exhibitions/exhibitionModification" element={<ExhibitionModificationPage/>} />
 
             <Route path="/places/exhibitions/artworks" element={<ArtworksPage />} />
-            <Route path="/places/exhibitions/artworkModification" element={<ArtworkModificationPage />} />
+            <Route path="/places/exhibitions/artworks/artworkModification" element={<ArtworkModificationPage />} />
 
             <Route path="/record" element={<RecordVideo />} />
             <Route path="/findlocation" element={<FindLocation />} />
