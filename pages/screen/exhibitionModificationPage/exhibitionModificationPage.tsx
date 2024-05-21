@@ -59,6 +59,7 @@ const ExhibitionModificationPage = () => {
     const url = `http://localhost:3001/exhibitions${exhibition.id ? `/${exhibition.id}` : ''}`;
 
     try {
+      console.log("data = ", exhibition)
       const response = await fetch(url, {
         method,
         headers: {
@@ -72,11 +73,11 @@ const ExhibitionModificationPage = () => {
           endDate: new Date(exhibition.endDate).toISOString(),
         })
       });
-
+      console.log("data 2= ", exhibition)
       if (!response.ok) {
         throw new Error(`HTTP status ${response.status}`);
       }
-
+      console.log("data 3= ", exhibition)
       const responseData = await response.json();
       console.log('Operation successful:', responseData);
       navigate('/places');

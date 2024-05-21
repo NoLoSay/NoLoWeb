@@ -121,15 +121,18 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                     });
 
                     let artworks = [];
+
                     if (response.ok) {
                         artworks = await response.json();
+                        console.log("artworks ==", artworks)
                     } else {
                         console.error(`HTTP status ${response.status}: Failed to fetch exhibitions`);
                     }
-                    navigate('/places/exhibitions/artworks', { state: { item: artworks, exhibitionId } });
+                    console.log("pre exhib Id", exhibitionId)
+                    navigate('/places/exhibitions/artworks', { state: { item: artworks, exhibitionId: exhibitionId } });
                 } catch (error) {
                     console.error('Failed to fetch exhibition details:', error);
-                    navigate('/places/exhibitions/artworks', { state: { item: exhibitionId } });
+                    //navigate('/places/exhibitions/artworks', { state: { item: exhibitionId } });
                 }
                 break;
             case 'deleteButton':
@@ -320,10 +323,10 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                                               role="button"
                                               tabIndex={0}
                                               className={`divGoToArtworksBtn ${styles["divGoToArtworksBtn"]}`}
-                                              onClick={() => handleAction('handleGoToArtwork', 0)}
+                                              onClick={() => handleAction('handleGoToArtwork', exhibition.id)}
                                               onKeyDown={(event) => {
                                                   if (event.key === 'Enter' || event.key === ' ') {
-                                                      handleAction('handleGoToArtwork', 0);
+                                                      handleAction('handleGoToArtwork', exhibition.id);
                                                       event.preventDefault();
                                                   }
                                               }}
