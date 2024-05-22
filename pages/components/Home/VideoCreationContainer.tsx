@@ -2,11 +2,13 @@ const styles: { [key: string]: string } = {
   mainDiv:
     "w-full flex flex-col items-start justify-center text-left text-2xl text-black font-poppins gap-2",
 
-  title: "relative text-[2rem] font-semibold contents " +
+  title:
+    "relative text-[2rem] font-semibold contents " +
     "md:text-2xl " +
     "sm:text-xs",
 
-  contentDiv: "flex flex-col pl-10 gap-1 text-2xl lg:text-xl lg:pl-8" +
+  contentDiv:
+    "flex flex-col pl-10 gap-1 text-2xl lg:text-xl lg:pl-8" +
     "md:text-base md:pl-7 " +
     "sm:text-xs sm:pl-4",
 
@@ -21,9 +23,7 @@ const styles: { [key: string]: string } = {
 const VideoCreationContainer: React.FC = () => {
   return (
     <div className={`VideoCreationContainer/mainDiv ${styles["mainDiv"]}`}>
-      <p
-        className={`VideoCreationContainer/title ${styles["title"]}`}
-      >
+      <p className={`VideoCreationContainer/title ${styles["title"]}`}>
         Pour créer une vidéo, rien de plus simple !
       </p>
       <div
@@ -33,16 +33,16 @@ const VideoCreationContainer: React.FC = () => {
           <div
             className={`VideoCreationContainer/firstLineDiv ${styles["firstLineDiv"]}`}
           >
-            <li>Appuie sur</li>
+            <li>Appuies sur</li>
             <img
               className={`VideoCreationContainer/addImg ${styles["addImg"]}`}
               alt=""
               src="/icon/full/add.png"
             />
-            <p>puis sélectionne “Vidéo à créer”</p>
+            <p>puis sélectionnes “Vidéo à créer”</p>
           </div>
-          <li>Choisi une oeuvre à traduire</li>
-          <li>Te voila prêt à débuter ta création !</li>
+          <li>Choisis une œuvre à traduire</li>
+          <li>Te voilà prêt à débuter ta création !</li>
         </ol>
       </div>
       <button
