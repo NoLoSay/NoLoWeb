@@ -149,7 +149,7 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
 
 
   return (
-    <div className="flex flex-row items-center px-10 h-20 shadow-md">
+    <div className="flex flex-row items-center px-10 h-24 shadow-md">
       {InApp && (
         <div>
           <IconButton
