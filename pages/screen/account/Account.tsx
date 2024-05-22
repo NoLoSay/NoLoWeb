@@ -33,10 +33,6 @@ const Account = () => {
   const { isPlace } = location.state || {};
   const navigate = useNavigate();
 
-  console.log(location.state)
-
-  isPlace ? console.log("isPlace") : console.log("isNotPlace");
-
   return (
     <Fragment>
       <Head>
