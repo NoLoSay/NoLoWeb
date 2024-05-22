@@ -80,37 +80,37 @@ const FindLocation: React.FC<FindVideoProps> & {
   };
 
   return (
-      <div>
-        <div className={`mainDiv ${styles.mainDiv}`}>
-          <div>
-            <SearchBar userLocation={userPosition} places={places} onSearch={handleSearch}>
-              <div>
-                <button className={`mapButton ${styles.mapButton}`} onClick={toggleDiv}>
-                  <div className={`mapButtonText ${styles.mapButtonText}`}>
-                    {buttonText}
-                  </div>
-                  <img
-                    className={`mapIcon ${styles.mapIcon}`}
-                    alt=""
-                    src={buttonIcon}
-                  />
-                </button>
-              </div>
-            </SearchBar>
-            {currentDiv === 'ListView' && (
-              <div className={`listView ${styles.listView}`}>
-                <ImageSlider />
-                <PlaceList places={searchResults.length > 0 ? searchResults : places} />
-              </div>
-            )}
-            {currentDiv === 'MapView' && (
-              <div className={`mapView ${styles.mapView}`}>
-                <Map center={userPosition} places={searchResults.length > 0 ? searchResults : places} />
-              </div>
-            )}
+        <div>
+          <div className={`mainDiv ${styles.mainDiv}`}>
+            <div>
+              <SearchBar userLocation={userPosition} places={places} onSearch={handleSearch}>
+                <div>
+                  <button className={`mapButton ${styles.mapButton}`} onClick={toggleDiv}>
+                    <div className={`mapButtonText ${styles.mapButtonText}`}>
+                      {buttonText}
+                    </div>
+                    <img
+                      className={`mapIcon ${styles.mapIcon}`}
+                      alt=""
+                      src={buttonIcon}
+                    />
+                  </button>
+                </div>
+              </SearchBar>
+              {currentDiv === 'ListView' && (
+                <div className={`listView ${styles.listView}`}>
+                  <ImageSlider />
+                  <PlaceList places={searchResults.length > 0 ? searchResults : places} />
+                </div>
+              )}
+              {currentDiv === 'MapView' && (
+                <div className={`mapView ${styles.mapView}`}>
+                  <Map center={userPosition} places={searchResults.length > 0 ? searchResults : places} />
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
   );
 };
 
