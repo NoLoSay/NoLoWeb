@@ -50,7 +50,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "./build.sh",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.ts\"",
