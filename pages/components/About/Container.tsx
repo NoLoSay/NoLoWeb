@@ -1,4 +1,3 @@
-import { Description } from "@mui/icons-material";
 import type { NextPage } from "next";
 
 type Person = {

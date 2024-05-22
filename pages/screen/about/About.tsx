@@ -3,6 +3,7 @@ import Head from "../../../node_modules/next/head";
 import Layout from "../../components/Layout/Layout";
 import Container from "../../components/About/Container";
 import textData from "../../../public/text.json";
+import Timeline from "../../components/About/Timeline";
 
 interface AboutProps {}
 
@@ -61,6 +62,7 @@ const About: React.FC<AboutProps> & {
           />
         </div>
         <Container />
+        <Timeline />
       </div>
     </Fragment>
   );
