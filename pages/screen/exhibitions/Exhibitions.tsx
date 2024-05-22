@@ -110,6 +110,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
     const handleAction = async (buttonName: string, exhibitionId) => {
         switch (buttonName) {
             case 'handleGoToArtwork':
+                console.log("exhid = ", exhibitionId)
                 try {
                     const url = `http://localhost:3001/exhibitions/${exhibitionId}/items`;
                     const response = await fetch(url, {
@@ -119,9 +120,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                             'Content-Type': 'application/json'
                         }
                     });
-
                     let artworks = [];
-
                     if (response.ok) {
                         artworks = await response.json();
                         console.log("artworks ==", artworks)
@@ -129,6 +128,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                         console.error(`HTTP status ${response.status}: Failed to fetch exhibitions`);
                     }
                     console.log("pre exhib Id", exhibitionId)
+                    console.log("pre data Id", artworks)
                     navigate('/places/exhibitions/artworks', { state: { item: artworks, exhibitionId: exhibitionId } });
                 } catch (error) {
                     console.error('Failed to fetch exhibition details:', error);

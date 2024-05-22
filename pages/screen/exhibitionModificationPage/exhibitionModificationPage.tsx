@@ -20,7 +20,7 @@ const styles = {
 const ExhibitionModificationPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const {user} = useContext(UserContext);
 
   const defaultExhibition = {
     id: null,
@@ -49,35 +49,45 @@ const ExhibitionModificationPage = () => {
   console.log("exhibition = ", exhibition);
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setExhibition(prev => ({ ...prev, [name]: value }));
+    const {name, value} = event.target;
+    setExhibition(prev => ({...prev, [name]: value}));
 
   };
 
-  const handleSubmit = async () => {
-    const method = exhibition.id ? 'PUT' : 'POST';
-    const url = `http://localhost:3001/exhibitions${exhibition.id ? `/${exhibition.id}` : ''}`;
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setExhibition(prev => ({...prev, picture: e.target.result}));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
+  const handleSubmit = async () => {
+    const url = `http://localhost:3001/exhibitions/${exhibition.id}`;
     try {
-      console.log("data = ", exhibition)
       const response = await fetch(url, {
-        method,
+        method: 'PUT',
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user.accessToken}`,
         },
         body: JSON.stringify({
-          ...exhibition,
-          siteId: location.state.item,
-          createdAt: new Date(exhibition.createdAt).toISOString(),
-          endDate: new Date(exhibition.endDate).toISOString(),
+          name: exhibition.name,
+          shortDescription: exhibition.shortDescription,
+          longDescription: exhibition.longDescription,
+          startDate: exhibition.startDate,
+          endDate: exhibition.endDate,
+          siteId: exhibition.siteId
         })
       });
-      console.log("data 2= ", exhibition)
+
       if (!response.ok) {
         throw new Error(`HTTP status ${response.status}`);
       }
-      console.log("data 3= ", exhibition)
+
       const responseData = await response.json();
       console.log('Operation successful:', responseData);
       navigate('/places');
@@ -85,6 +95,10 @@ const ExhibitionModificationPage = () => {
       console.error('Failed to update exhibition:', error);
     }
   };
+
+  // TODO put this under exhibition image
+  // <input type="file" id="imageUpload" accept="image/*" className={styles.hiddenInput}
+  //                    onChange={handleImageChange}/>
 
   return (
     <Fragment>
@@ -95,7 +109,8 @@ const ExhibitionModificationPage = () => {
         }} className={styles.exhibitionCardModification}>
           <div className={styles.divBlockGeneralInformations}>
             <img src={exhibition.picture || 'https://cataas.com/cat'}
-                 alt="Exhibition Image" className={styles.image22}/>
+                 alt="Exhibition Image" className={styles.image22}
+                 onClick={() => document.getElementById('imageUpload').click()}/>
             <div className={styles.divGeneralInformations}>
               <div className={styles.textName}>Name:</div>
               <input type="text" name="name" value={exhibition.name} onChange={handleInputChange}

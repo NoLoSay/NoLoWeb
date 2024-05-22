@@ -15,9 +15,39 @@ const styles = {
     image17:
       "w-12 h-12 " +
       "sm:w-6 sm:h-6",
+    divArtwork:
+      "shadow-xl flex flex-row items-center justify-start p-5 rounded-lg w-full mb-10 " +
+      "md:flex-col md:items-center " +
+      "sm:flex-col sm:items-start ",
     divTitlePage: "justify-between items-center flex",
+    pageTitle: "justify-center items-center flex md:flex-row md:items-center md:justify-center sm:flex-col sm:items-center",
+    divBlockExhibitionList: "text-black w-full px-8 md:px-3 sm:px-5",
+    divExhibitionList: "flex flex-col w-full",
+     image16: "w-36 h-36 md:w-full sm:w-full",
+    divBlockExhibitionInfos: "flex-1 w-full sm:items-start pl-5 md:pl-5 sm:pl-0",
+    divExhibitionChangeBtn: "flex flex-row items-center justify-between mb-5 w-full sm:flex-row sm:items-center md:flex-row md:justify-between",
+    divModifyButtons: "flex flex-row",
+    heading13: "m-0 self-center sm:text-center",
+    changeBtnIcon: "h-10 w-10 sm:h-5 sm:w-5",
+    deleteBtnIcon: "h-10 w-10 sm:h-5 sm:w-5",
+    divBlockExhibitionInformations: "flex flex-row w-full items-center sm:flex-col md:flex-row md:justify-between",
+    divExhibitionInformations: "flex flex-col gap-x-2.5 gap-y-2.5 pr-5 w-full sm:items-start md:flex-col md:justify-between",
+    divGeneralInformation: "flex items-start justify-between w-full md:flex-col md:items-start md:justify-between sm:flex-col sm:items-start",
+    exhibitionDescription: "flex-[0_auto] pr-0 text-justify w-full sm:text-start",
+    divBlockGoToArtworksBtn: "flex flex-col items-center justify-between flex-none",
+    divBlockArtworkList:
+      "text-black w-full px-8 " +
+      "md:px-3 " +
+      "sm:px-5 ",
+    returnToPreviousPageBtn: "desired-css-properties-here",
+    addExhibitionBtn: "desired-css-properties-here",
+    divArtworksList: "flex flex-col w-full",
+    divExhibition:
+      "shadow-xl flex flex-row items-center justify-start p-5 rounded-lg w-full mb-10 " +
+      "md:flex-col md:items-center " +
+      "sm:flex-col sm:items-start ",
     artworkPage: "text-black flex flex-col w-full pl-8 pr-8 sm:flex-col text-black",
-    artworkCard: "shadow-xl rounded-lg flex flex-col w-full p-5",
+    artworkCard: "text-black shadow-xl rounded-lg flex flex-col w-full p-5",
     divBlockGeneralInformations: "w-full flex flex-row sm:flex-col",
     image22: "rounded-lg w-1/3 h-auto sm:w-full",
     divGeneralInformations: "w-full pb-0 pl-5 sm:pl-0",
@@ -29,16 +59,10 @@ const styles = {
     divBlockButtonModification: "flex w-full justify-center items-center space-x-4",
     divButtonDontSave: "bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700 cursor-pointer",
     divButtonSave: "bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 cursor-pointer",
-    image16: "w-36 h-36 md:w-full sm:w-full",
     divBlockArtworkInfos: "flex-1 w-full sm:items-start pl-5 md:pl-5 sm:pl-0",
     divArtworkChangeBtn: "flex flex-row items-center justify-between mb-5 w-full sm:flex-row sm:items-center md:flex-row md:justify-between",
-    divModifyButtons: "flex flex-row",
-    heading13: "m-0 self-center sm:text-center",
-    changeBtnIcon: "h-10 w-10 sm:h-5 sm:w-5",
-    deleteBtnIcon: "h-10 w-10 sm:h-5 sm:w-5",
     divBlockArtworkInformations: "flex flex-row w-full items-center sm:flex-col md:flex-row md:justify-between",
     divArtworkInformations: "flex flex-col gap-x-2.5 gap-y-2.5 pr-5 w-full sm:items-start md:flex-col md:justify-between",
-    divGeneralInformation: "flex items-start justify-between w-full md:flex-col md:items-start md:justify-between sm:flex-col sm:items-start",
     artworkDescription: "flex-[0_auto] pr-0 text-justify w-full sm:text-start",
 };
 
@@ -61,7 +85,7 @@ const ArtworkModificationPage = () => {
                 if (artwork) {
                     navigate('/places/exhibitions/artworks/artworkModification', { state: { item: artwork } });
                 } else {
-                    navigate('/places/exhibitions/artworks/artworkModification', { state: { item: null } });
+                    navigate('/places/exhibitions/artworks/artworkModification', { state: { item: null, exhibitionId: location.state?.exhibitionId } });
                 }
                 break;
             case 'deleteArtwork':
@@ -123,16 +147,16 @@ const ArtworkModificationPage = () => {
                       />
                   </div>
                   <div className={`divTitlePage ${styles["divTitlePage"]}`}>
-                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
+                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
                   </div>
                   <div
                     role="addExhibitionBtn"
                     tabIndex={0}
                     className={`addExhibitionBtn ${styles["addExhibitionBtn"]}`}
-                    onClick={() => handleAction("modificationArtwork", artwork.id)}
+                    onClick={() => handleAction("modificationArtwork", 0)}
                     onKeyDown={(event) => {
                         if (event.key === 'Enter' || event.key === ' ') {
-                            handleAction("modificationArtwork", artwork.id);
+                            handleAction("modificationArtwork", 0);
                             event.preventDefault();
                         }
                     }}
@@ -164,7 +188,7 @@ const ArtworkModificationPage = () => {
                       />
                   </div>
                   <div className={`divTitlePage ${styles["divTitlePage"]}`}>
-                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
+                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
                   </div>
                   <div
                     role="addExhibitionBtn"
@@ -186,20 +210,65 @@ const ArtworkModificationPage = () => {
                       />
                   </div>
               </div>
-              <section style={{padding: '20px'}}>
-                  {artworks.map(artwork => (
-                    <div key={artwork.id} style={{marginBottom: '10px', border: '1px solid gray', padding: '10px'}}>
-                        <img src={artwork.imageUrl} alt={artwork.name} style={{width: '100px', height: '100px'}}/>
-                        <div>
-                            <h1>{artwork.name}</h1>
-                            <p>{artwork.description}</p>
-                            <button onClick={() => handleAction('modificationArtwork', artwork.id)}>Modify</button>
-                            <button onClick={() => handleDeleteArtwork(artwork.id, location.state.exhibitionId)}>Delete Artwork
-                            </button>
-                        </div>
-                    </div>
-                  ))}
-              </section>
+
+              <div className={`divBlockArtworkList ${styles["divBlockArtworkList"]}`}>
+                      <div className={`divArtworksList ${styles["divArtworksList"]}`}>
+                          {artworks.map(artwork => (
+                            <div key={artwork.id} className={`divArtwork ${styles["divArtwork"]}`}>
+                                <img src={artwork.imageUrl} className={`image16 ${styles["image16"]}`}/>
+                                <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>
+                                    <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>
+                                        <h1 className={`heading13 ${styles["heading13"]}`}> {artwork.name} </h1>
+                                        <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
+                                            <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
+                                                <div
+                                                  role="deleteExhibitionBtn"
+                                                  tabIndex={0}
+                                                  className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
+                                                  onClick={() => handleDeleteArtwork(artwork.id, location.state.exhibitionId)}
+                                                  onKeyDown={(event) => {
+                                                      if (event.key === 'Enter' || event.key === ' ') {
+                                                          handleDeleteArtwork(artwork.id, location.state.exhibitionId);
+                                                          event.preventDefault();
+                                                      }
+                                                  }}
+                                                >
+                                                    <img
+                                                      src=""
+                                                      loading="lazy"
+                                                      alt=""
+                                                      className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                      className={`divBlockExhibitionInformations ${styles["divBlockExhibitionInformations"]}`}>
+                                        <p>{artwork.description}</p>
+                                    </div>
+                                    <div className={`divBlockGoToArtworksBtn ${styles["divBlockGoToArtworksBtn"]}`}>
+                                        <div
+                                          role="button"
+                                          tabIndex={0}
+                                          className={`divGoToArtworksBtn ${styles["divGoToArtworksBtn"]}`}
+                                          onClick={() => handleAction('modificationArtwork', artwork.id)}
+                                          onKeyDown={(event) => {
+                                              if (event.key === 'Enter' || event.key === ' ') {
+                                                  handleAction('modificationArtwork', artwork.id);
+                                                  event.preventDefault();
+                                              }
+                                          }}
+                                        >
+                                            <div className={`goToArtworksText ${styles["goToArtworksText"]}`}>
+                                                Voir ou modifier l'oeuvre
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>))}
+                      </div>
+              </div>
           </Fragment>
         );
     }

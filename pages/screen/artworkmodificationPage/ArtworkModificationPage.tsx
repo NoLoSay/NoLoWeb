@@ -1,6 +1,6 @@
 import Layout from "../../components/Layout/Layout";
 import { useLocation, useNavigate } from 'react-router-dom';
-import {Fragment, useState, useContext, useEffect} from "react";
+import React, {Fragment, useState, useContext, useEffect} from "react";
 import { UserContext } from "../../../contexts/UserProvider";
 
 const styles: { [key: string]: string } = {
@@ -26,7 +26,7 @@ const styles: { [key: string]: string } = {
 const ArtworkModificationPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const {user} = useContext(UserContext);
 
   const initialArtwork = location.state?.item || {
     name: '',
@@ -43,8 +43,8 @@ const ArtworkModificationPage = () => {
   console.log("artwork item = ", artwork)
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setArtwork({ ...artwork, [name]: value });
+    const {name, value} = event.target;
+    setArtwork({...artwork, [name]: value});
   };
 
   const handleSubmit = async () => {
@@ -87,7 +87,7 @@ const ArtworkModificationPage = () => {
               "Content-Type": "application/json",
               Authorization: `Bearer ${user.accessToken}`,
             },
-            body: JSON.stringify({ itemId: responseData.id })
+            body: JSON.stringify({itemId: responseData.id})
           });
 
           if (!addToExhibitionResponse.ok) {
@@ -129,6 +129,17 @@ const ArtworkModificationPage = () => {
     }
   };
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setArtwork(prev => ({...prev, picture: e.target.result}));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const resetFields = () => {
     setArtwork({
       name: '',
@@ -139,6 +150,10 @@ const ArtworkModificationPage = () => {
     });
   };
 
+  // Todo
+  // <input type="file" id="imageUpload" accept="image/*" className={styles.hiddenInput}
+  //  onChange={handleImageChange}/>
+
   return (
     <Fragment>
       <section className={`artworkModificationPage ${styles["artworkModificationPage"]}`}>
@@ -147,10 +162,12 @@ const ArtworkModificationPage = () => {
           handleSubmit();
         }} className={`artworkCardModification ${styles["artworkCardModification"]}`}>
           <div className={styles.divBlockGeneralInformations}>
-            <img src={artwork.picture} loading="lazy" alt="Artwork Image" className={styles.image22} />
+            <img src={artwork.picture || 'https://cataas.com/cat'}
+                 alt="Exhibition Image" className={styles.image22}
+                 onClick={() => document.getElementById('imageUpload').click()}/>
             <div className={styles.divGeneralInformations}>
               <div className={styles.nameBlockInput}>
-                <div className={styles.textName}>Name :</div>
+                <div className={styles.textName}> Name :</div>
                 <input type="text" className={styles.nameInput}
                        name="name"
                        value={artwork.name}
