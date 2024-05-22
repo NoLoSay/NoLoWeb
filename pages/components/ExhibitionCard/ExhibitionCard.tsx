@@ -1,136 +1,81 @@
 import Layout from "../../components/Layout/Layout";
 import { useNavigate } from 'react-router-dom';
 import { Fragment } from "react";
+import staticExhibitions from "../../../tests/testExhib.json";
 
 
-interface ExhibitionCardProps {
-  exhibition: {
-    id: number;
+interface Country {
+  id: number;
+  name: string;
+}
+
+interface Department {
+  id: number;
+  name: string;
+  Country: Country;
+}
+
+interface City {
+  id: number;
+  name: string;
+  zip: string;
+  Department: Department;
+}
+
+interface Address {
+  id: number;
+  houseNumber: string;
+  street: string;
+  zip: string;
+  City: City;
+  otherDetails: string;
+  longitude: number;
+  latitude: number;
+}
+
+interface Site {
+  id: number;
+  name: string;
+  shortDescription: string;
+  longDescription: string;
+  telNumber: string;
+  email: string;
+  website: string;
+  price: number;
+  picture: string;
+  type: string;
+  tags: string[];
+  address: Address;
+}
+
+interface RelatedPerson {
+  id: number;
+  name: string;
+}
+
+interface Item {
+  id: number;
+  name: string;
+  description: string;
+  picture: string;
+  relatedPerson: RelatedPerson;
+  itemType: string;
+}
+
+interface Exhibition {
+  id: number;
   name: string;
   shortDescription: string;
   longDescription: string;
   startDate: string;
   endDate: string;
-  site: {
-    id: number;
-    name: string;
-    shortDescription: string;
-    longDescription: string;
-    telNumber: string;
-    email: string;
-    website: string;
-    price: number;
-    picture: string;
-    type: string;
-    tags: string[];
-    address: {
-      id: number;
-      houseNumber: string;
-      street: string;
-      zip: string;
-      City: {
-        id: number;
-        name: string;
-        zip: string;
-        Department: {
-          id: number;
-          name: string;
-          Country: {
-            id: number;
-            name: string;
-          };
-        };
-      };
-      otherDetails: string;
-      longitude: number;
-      latitude: number;
-    };
-  };
-  items: {
-    id: number;
-    name: string;
-    description: string;
-    picture: string;
-    relatedPerson: {
-      id: number;
-      name: string;
-    };
-    itemType: string;
-  }[];
-  }
+  site: Site;
+  items: Item[];
 }
 
-const staticExhibitions =
-{
-  "id": 1,
-  "name": "Expo de Test",
-  "shortDescription": "Il faut bien une permière a tout",
-  "longDescription": "On sait bien qu'elle sera rété mais bon on s'accroche quand meme",
-  "startDate": "2024-01-15T00:00:00.000Z",
-  "endDate": "2024-01-15T00:00:00.000Z",
-  "site": {
-    "id": 1,
-    "name": "Château d'Angers",
-    "shortDescription": "Un chateau trop bien",
-    "longDescription": "Je te jure! Tu as une superbe vue et je dis pas ca car c'est ma ville natale ! Non pas du tout !",
-    "telNumber": "+33 2 41 86 48 77",
-    "email": null,
-    "website": null,
-    "price": 9.5,
-    "picture": null,
-    "type": "MUSEUM",
-    "tags": [
-      "DISABILITY_FRIENDLY",
-      "DEAF_FRIENDLY"
-    ],
-    "address": {
-      "id": 1,
-      "houseNumber": "2",
-      "street": " Prom. du Bout du Monde",
-      "zip": "49100",
-      "City": {
-        "id": 1,
-        "name": "Angers",
-        "zip": "49000",
-        "Department": {
-          "id": 1,
-          "name": "Maine et Loire",
-          "Country": {
-            "id": 1,
-            "name": "France"
-          }
-        }
-      },
-      "otherDetails": "",
-      "longitude": 491,
-      "latitude": 491
-    }
-  },
-  "items": [
-    {
-      "id": 1,
-      "name": "La tete d'un Epoutanflus",
-      "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-      "picture": null,
-      "relatedPerson": {
-        "id": 1,
-        "name": "Max Verstappen"
-      },
-      "itemType": null
-    },
-    {
-      "id": 2,
-      "name": "La tete d'un Epoutanflus",
-      "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-      "picture": null,
-      "relatedPerson": {
-        "id": 1,
-        "name": "Max Verstappen"
-      },
-      "itemType": null
-    }
-  ]
-};
+interface ExhibitionCardProps {
+  exhibition: Exhibition;
+}
 
 const styles: { [key: string]: string } = {
   divBlockTitlePage:
@@ -203,24 +148,7 @@ const ExhibitionCard: React.FC<ExhibitionCardProps> & {
 } = (props: ExhibitionCardProps) => {
   const navigate = useNavigate();
 
-  const handleAction = (buttonName: string, exhibitionId: number) => {
-    console.log(`Le bouton ${buttonName} a été cliqué pour l'exhibition ${exhibitionId}! `);
-  };
-
-  const handleGoToArtworks = (exhibition: ExhibitionCardProps) => {
-    // Naviguer vers la page Artworks et passer l'exposition complète en état
-    console.log(`exxxxx = ${props.exhibition.items}`);
-    navigate('/artworks', { state: { items: props.exhibition.items } });
-  };
-
-
-  const handleBack = () => {
-    console.log('go to previous page');
-  };
-
-  const handleAddExhibition = () => {
-    console.log('createExhibition');
-  };
+  const handleGoToArtworks = (exhibition: ExhibitionCardProps) => {    navigate('/artworks', { state: { items: props.exhibition.items } });  };
 
   return (
     <Fragment>
@@ -238,10 +166,8 @@ const ExhibitionCard: React.FC<ExhibitionCardProps> & {
                     role="goToChangeExhibitionPageBtn"
                     tabIndex={0}
                     className={`divChangeBtn ${styles.divChangeBtn}`}
-                    onClick={() => handleAction('changeButton', props.exhibition.id)}
                     onKeyDown={(event) => {
                       if (event.key === 'Enter' || event.key === ' ') {
-                        handleAction('changeButton', props.exhibition.id);
                         event.preventDefault();
                       }
                     }}
@@ -257,10 +183,8 @@ const ExhibitionCard: React.FC<ExhibitionCardProps> & {
                     role="deleteExhibitionBtn"
                     tabIndex={0}
                     className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
-                    onClick={() => handleAction('deleteButton', props.exhibition.id)}
                     onKeyDown={(event) => {
                       if (event.key === 'Enter' || event.key === ' ') {
-                        handleAction('deleteButton', props.exhibition.id);
                         event.preventDefault();
                       }
                     }}
@@ -324,7 +248,6 @@ const ExhibitionCard: React.FC<ExhibitionCardProps> & {
             </div>
           </div>
         </div>
-
       </section>
     </Fragment>
   );

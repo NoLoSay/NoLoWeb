@@ -6,6 +6,7 @@ import LocationEditForm from "../LocationEditForm/LocationEditForm";
 import { SxProps, Theme } from "@mui/system";
 
 interface CardInfo {
+  id: string;
   title: string;
   description: string;
   imageSrc: string;

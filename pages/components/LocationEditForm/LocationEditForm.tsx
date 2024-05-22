@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { NextPage } from "next";
 import { useNavigate } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import { Box, Button, ButtonBase, Divider, FormControl, Modal, TextField, Typography } from "@mui/material";
+import { UserContext } from "../../../contexts/UserProvider";
 
 interface CardInfo {
+  id: string;
   title: string;
   description: string;
   imageSrc: string;
@@ -19,14 +21,33 @@ interface LocationCardProps {
   cardInfo: CardInfo;
 }
 
-//faire un patch
-//fix les any
-
 const LocationEditForm = ({cardInfo}:any) => {
 
-  function handleModification({cardInfo}:any) {
+  const { user, setUser } = useContext(UserContext);
 
-  }
+  const handleModification = async ({cardInfo}:any) => {
+    try {
+      const response = await fetch("http://localhost:3001/sites/" + cardInfo.id , {
+        method: "PATCH",
+        headers: {
+          Accept: "*/*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          cardInfo
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(response)
+      } else {
+        throw new Error("Failed to create acccount");
+      }
+    } catch (e) {
+      console.error("API error: ", e);
+    }
+  };
 
   const [titleValue, setTitleValue] = useState(cardInfo.title);
   const [descriptionValue, setDescriptionValue] = useState(cardInfo.description);

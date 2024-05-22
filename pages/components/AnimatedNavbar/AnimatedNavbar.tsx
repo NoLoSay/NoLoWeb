@@ -1,7 +1,8 @@
 import SearchBar from "./SearchBar";
 import NavbarLink from "../NavBarLink/NavBarLink";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "../../../node_modules/react-router-dom/dist/index";
+import { UserContext } from "../../../contexts/UserProvider";
 import {
   Drawer,
   Box,
@@ -15,9 +16,9 @@ import {
 import { Menu } from "../../../node_modules/@mui/material/index";
 import ProfileButton from "../ProfileButton/ProfileButton";
 
-type NavLinkProps = {
-  links: { href: string; title: string }[];
-  handleChangePage: (link: string) => void;
+export type NavLinkProps = {
+  links: { href: string; title: string,  props?: any }[];
+  handleChangePage: (link: string, props?: any) => void;
 };
 
 type NavbarProps = {
@@ -29,12 +30,11 @@ const NavLinksItems = [
   { href: "/about", title: "Qui sommes-nous ?" },
   { href: "/findlocation", title: "Trouver une video" },
   { href: "/record", title: "Réaliser une video" },
-  { href: "/account", title: "Mon compte" },
   { href: "/tickets", title: "Tickets" },
 ];
 
 interface logoButtonProps {
-  handleChangePage: (link: string) => void;
+  handleChangePage: (link: string, props?: any) => void;
 }
 const LogoButton = ({ handleChangePage }: logoButtonProps) => {
   return (
@@ -55,7 +55,7 @@ const NavLinks = ({ links, handleChangePage }: NavLinkProps) => {
     return links.map((link, index) => (
       <button
         key={index}
-        onClick={() => handleChangePage(link.href)}
+        onClick={() => handleChangePage(link.href, link.props)}
         className="text-zinc-500 hover:underline hover:cursor-pointer bg-transparent underline-offset-2"
       >
         {link.title}
@@ -127,12 +127,20 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
   InApp,
   LoginStatus,
 }: NavbarProps) => {
+  const { user, setUser } = useContext(UserContext);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isLogged, setIsLogged] = useState(LoginStatus);
+  const [isLogged, setIsLogged] = useState(user.accessToken != "" ? true : false);
   const navigate = useNavigate();
 
-  function handleChangePage(link: string) {
-    navigate(link);
+  useEffect(() => {
+    if (user) {
+      setIsLogged(user.accessToken !== ""); // Check if user is logged in
+    }
+  }, [user]);
+
+  function handleChangePage(link: string, props?: any) {
+    console.log(props)
+    navigate(link, { state: props });
   }
 
   return (
@@ -143,7 +151,7 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
             sx={{ paddingX: 2 }}
             onClick={() => setIsDrawerOpen(true)}
           >
-            <Menu />
+            {/* <Menu /> */}
           </IconButton>
           <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
             <LinkList
@@ -166,7 +174,7 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
       <div className="flex flex-row items-center gap-8 text-gray-200">
         <Divider orientation="vertical" variant="middle" flexItem />
         {isLogged ? (
-          <ProfileButton />
+          <ProfileButton name={user.username} avatar={user.picture}/>
         ) : (
           <LoginButton handleChangePage={handleChangePage} />
         )}

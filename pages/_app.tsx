@@ -19,6 +19,7 @@ import Location from "./screen/location/Location";
 import VideoAccess from "./screen/videoAccess/VideoAccess";
 import Account from "./screen/account/Account";
 import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
+import AccountSettings from "./screen/accountSettings/AccountSettings";
 import { UserProvider } from "../contexts/UserProvider";
 
 const AppRouter = () => {
@@ -51,12 +52,13 @@ const AppRouter = () => {
             <Route path="/videoAccess" element={<VideoAccess />} />
             <Route path="/location" element={<Location />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/accountSettings" element={<AccountSettings />} />
             <Route path="/record" element={<RecordVideo />} />
             <Route path="/findlocation" element={<FindLocation />} />
           </Routes>
         </Layout>
-      </Router>
-    </UserProvider>
+      </Router >
+    </UserProvider >
   );
 };
 
