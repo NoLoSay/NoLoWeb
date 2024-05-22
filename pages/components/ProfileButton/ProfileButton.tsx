@@ -1,9 +1,9 @@
 import { Logout, Man, Person, Settings } from "@mui/icons-material";
 import { Avatar, Menu, MenuItem, Icon, ButtonBase } from "@mui/material";
 import { useRouter } from "next/router";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
+import { UserContext, defaultUser } from "../../../contexts/UserProvider";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../../contexts/UserProvider";
 
 type ProfileButtonProps = {
     name: string;
@@ -12,7 +12,6 @@ type ProfileButtonProps = {
 
 const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const { user, setUser } = useContext(UserContext);
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -22,7 +21,14 @@ const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
     setAnchorEl(null);
   };
 
+  const { user, setUser } = useContext(UserContext);
+
   const navigate = useNavigate();
+
+  const resetUser = () => {
+    setUser(defaultUser);
+    navigate("/home")
+  };
 
   return (
     <div>
@@ -41,7 +47,7 @@ const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
         <MenuItem onClick={() => navigate("/accountSettings")}>
           <Settings /> Paramètres
         </MenuItem>
-        <MenuItem onClick={() => setUser(null)}>
+        <MenuItem onClick={resetUser}>
           <Logout /> Déconnexion
         </MenuItem>
       </Menu>

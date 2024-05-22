@@ -1,8 +1,6 @@
-import SearchBar from "./SearchBar";
-import NavbarLink from "../NavBarLink/NavBarLink";
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "../../../node_modules/react-router-dom/dist/index";
-import { UserContext } from "../../../contexts/UserProvider";
+import { UserContext, defaultUser } from "../../../contexts/UserProvider";
 import {
   Drawer,
   Box,
@@ -13,8 +11,8 @@ import {
   Divider,
   IconButton,
 } from "../../../node_modules/@mui/material/index";
-import { Menu } from "../../../node_modules/@mui/material/index";
 import ProfileButton from "../ProfileButton/ProfileButton";
+import MenuIcon from '@mui/icons-material/Menu';
 
 export type NavLinkProps = {
   links: { href: string; title: string,  props?: any }[];
@@ -80,13 +78,13 @@ const LoginButton = ({ handleChangePage }: loginButtonProps) => {
         onClick={() => handleChangePage("/connection")}
         className="flex flex-row items-center gap-8 text-gray-200 bg-transparent hover:underline hover:cursor-pointer"
       >
-        <div className="font-medium">Je me connecte</div>
+        <div className="font-medium">Connexion</div>
       </button>
       <button
         onClick={() => handleChangePage("/subscription")}
         className="rounded-full bg-gray-300 hover:cursor-pointer flex items-center justify-center py-2 px-6 gap-2 text-base-white font-semibold hover:underline"
       >
-        <div className="font-semibold">{`Je m'inscris :)`}</div>
+        <div className="font-semibold">{`Inscription`}</div>
       </button>
     </div>
   );
@@ -133,15 +131,20 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
-      setIsLogged(user.accessToken !== ""); // Check if user is logged in
-    }
+    const func = async (): Promise<void> => {
+      if (user != defaultUser) {
+        setIsLogged(true);
+      } else {
+        setIsLogged(false);
+      }
+    };
+    func();
   }, [user]);
 
-  function handleChangePage(link: string, props?: any) {
-    console.log(props)
-    navigate(link, { state: props });
+  function handleChangePage(link: string) {
+    navigate(link);
   }
+
 
   return (
     <div className="flex flex-row items-center px-10 h-20 shadow-md">
@@ -151,34 +154,56 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
             sx={{ paddingX: 2 }}
             onClick={() => setIsDrawerOpen(true)}
           >
-            {/* <Menu /> */}
+            <MenuIcon style={{ color: "black" }} />
           </IconButton>
           <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-            <LinkList
-              links={[...NavLinksItems]}
-              handleChangePage={handleChangePage}
-            />
+          {isLogged ? (
+            <ListItem>
+              <ListItemButton >
+                <ProfileButton name={user.username}/>
+              </ListItemButton>
+            </ListItem>
+            ) : (
+          <List>
+            <ListItem>
+              <ListItemButton
+                onClick={() => handleChangePage("/connection")}
+                className="flex flex-row items-center gap-8 text-gray-200 bg-transparent hover:underline hover:cursor-pointer"
+              >
+               <ListItemText primary={"Connexion"}/>
+              </ListItemButton>
+              <ListItemButton
+                onClick={() => handleChangePage("/subscription")}
+                className="rounded-full bg-gray-300 hover:cursor-pointer flex items-center justify-center py-2 px-6 gap-2 text-base-white font-semibold hover:underline"
+              >
+                <ListItemText primary={`Inscription`} />
+              </ListItemButton>
+            </ListItem>
+          </List>
+          )}
           </Drawer>
         </div>
       )}
       <LogoButton handleChangePage={handleChangePage} />
-      {InApp ? (
-        <SearchBar />
-      ) : (
-        <NavLinks
-          links={[...NavLinksItems]}
-          handleChangePage={handleChangePage}
-        />
-      )}
-
-      <div className="flex flex-row items-center gap-8 text-gray-200">
-        <Divider orientation="vertical" variant="middle" flexItem />
-        {isLogged ? (
-          <ProfileButton name={user.username} avatar={user.picture}/>
+        {InApp ? (
+          <NavLinks
+            links={[...NavLinksItems]}
+            handleChangePage={handleChangePage}
+          />
         ) : (
-          <LoginButton handleChangePage={handleChangePage} />
+          <div className="flex flex-row justify-around w-full px-5 items-center gap-5 text-gray-200">
+            <NavLinks
+              links={[...NavLinksItems]}
+              handleChangePage={handleChangePage}
+            />
+            <Divider orientation="vertical" variant="middle" flexItem />
+            {isLogged ? (
+              <ProfileButton name={user.username}/>
+            ) : (
+              <LoginButton handleChangePage={handleChangePage} />
+            )}
+          </div>
         )}
-      </div>
     </div>
   );
 };
