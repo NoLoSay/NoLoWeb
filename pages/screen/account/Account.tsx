@@ -38,10 +38,6 @@ const Account = () => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
 
-  console.log(location.state)
-
-  isPlace ? console.log("isPlace") : console.log("isNotPlace");
-
   return (
     <Fragment>
       <Head>
