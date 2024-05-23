@@ -14,9 +14,9 @@ import ProfileButton from "../ProfileButton/ProfileButton";
 import { UserContext, defaultUser } from "../../../contexts/UserProvider";
 import MenuIcon from '@mui/icons-material/Menu';
 
-type NavLinkProps = {
-  links: { href: string; title: string }[];
-  handleChangePage: (link: string) => void;
+export type NavLinkProps = {
+  links: { href: string; title: string,  props?: any }[];
+  handleChangePage: (link: string, props?: any) => void;
 };
 
 type NavbarProps = {
@@ -33,7 +33,7 @@ const NavLinksItems = [
 ];
 
 interface logoButtonProps {
-  handleChangePage: (link: string) => void;
+  handleChangePage: (link: string, props?: any) => void;
 }
 const LogoButton = ({ handleChangePage }: logoButtonProps) => {
   return (
@@ -54,7 +54,7 @@ const NavLinks = ({ links, handleChangePage }: NavLinkProps) => {
     return links.map((link, index) => (
       <button
         key={index}
-        onClick={() => handleChangePage(link.href)}
+        onClick={() => handleChangePage(link.href, link.props)}
         className="text-zinc-500 hover:underline hover:cursor-pointer bg-transparent underline-offset-2"
       >
         {link.title}
