@@ -33,8 +33,7 @@ const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
   return (
     <div>
       <ButtonBase disableRipple onClick={handleClick} sx={{ padding: 1, borderRadius: 2 }} className="flex flex-row items-center justify-between space-x-3">
-        <p>{name}</p>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+        <p className="text-base">{name}</p>
       </ButtonBase>
       <Menu
         anchorEl={anchorEl}

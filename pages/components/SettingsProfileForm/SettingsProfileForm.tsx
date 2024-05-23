@@ -47,7 +47,7 @@ function SettingsProfileForm() {
             <TextField value={telNumberValue} size="small" fullWidth id="outlined-basic" label="Numéro de téléphone" variant="outlined" />
           </div>
           <Button className="absolute top-0 right-0 m-2" variant="contained">
-            Save
+            Sauvegarder
           </Button>
         </form>
         <div>

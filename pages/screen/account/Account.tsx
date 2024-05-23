@@ -11,7 +11,6 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import AccountSelector from "../../components/AccountSelector/AccountSelector";
 import { UserContext } from "../../../contexts/UserProvider";
-//ajouter user context
 
 type BigButtonProps = {
   label: string;
@@ -35,10 +34,6 @@ const Account = () => {
   const { isPlace } = location.state || {};
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
-
-  console.log(location.state)
-
-  isPlace ? console.log("isPlace") : console.log("isNotPlace");
 
   return (
     <Fragment>

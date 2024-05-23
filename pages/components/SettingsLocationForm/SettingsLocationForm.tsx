@@ -1,10 +1,4 @@
-import { Button, ButtonBase, Divider, FormControl, MenuItem, Paper, Select, TextField } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
-import testProfile from "../../../stories/assets/testProfile.json"
-
-function cardReverse() {
-return
-}
+import { Button, Divider, TextField } from "@mui/material";
 
 function SettingsLocationForm() {
   return (
@@ -20,7 +14,7 @@ function SettingsLocationForm() {
             <TextField size="small" fullWidth id="outlined-basic" label="Nom d'utilisateur" variant="outlined" />
           </div>
           <div>
-            <TextField size="small"  fullWidth id="outlined-basic" label="Bio" variant="outlined" />
+            <TextField size="small" fullWidth id="outlined-basic" label="Bio" variant="outlined" />
           </div>
           <div>
             <TextField size="small" fullWidth id="outlined-basic" label="Website" variant="outlined" />
@@ -29,7 +23,7 @@ function SettingsLocationForm() {
             <TextField size="small" fullWidth id="outlined-basic" label="Nom complet" variant="outlined" />
           </div>
           <Button className="absolute top-0 right-0 m-2" variant="contained">
-            Save
+            Sauvegarder
           </Button>
         </form>
       </div>

@@ -36,7 +36,7 @@ function SettingsNotificationsForm() {
           </div>
 
           <Button className="absolute top-0 right-0 m-2" variant="contained">
-            Save
+            Sauvegarder
           </Button>
         </form>
       </div>
