@@ -70,7 +70,7 @@ const Account = () => {
         </div>
 
         <div>
-          <ProfileCard cityId={testProfile.cityId} email={user.email} fullName={user.username} phone={user.telNumber} profilePicturePath={testProfile.profilePicturePath} />
+          <ProfileCard email={user.email} fullName={user.username} phone={user.telNumber} profilePicturePath={testProfile.profilePicturePath} />
           <div className="space-y-3 m-5">
             <CategoryButton altColor description="Faire des changements sur mon compte" text="Mon compte" onClick={() => navigate("/accountSettings")} />
             <CategoryButton altColor description="Faire des changements sur mon compte" text="Biométrie" />
