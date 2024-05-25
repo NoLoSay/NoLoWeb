@@ -66,10 +66,23 @@ const ExhibitionModificationPage = () => {
   };
 
   const handleSubmit = async () => {
-    const url = `http://localhost:3001/exhibitions/${exhibition.id}`;
+    const isNewExhibition = !exhibition.id;
+    const url = isNewExhibition ? `http://localhost:3001/exhibitions` : `http://localhost:3001/exhibitions/${exhibition.id}`;
+
+    const validStartDate = new Date(exhibition.startDate);
+    const validEndDate = new Date(exhibition.endDate);
+
+    console.log("Date1", validStartDate)
+    console.log("Date1", validEndDate)
+    if (!validStartDate || !validEndDate) {
+      console.error('Invalid date provided');
+      alert('Please provide valid dates.');
+      return; // Sortie anticipée de la fonction
+    }
+
     try {
       const response = await fetch(url, {
-        method: 'PUT',
+        method: isNewExhibition ? 'POST' : 'PUT',
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user.accessToken}`,
@@ -78,9 +91,9 @@ const ExhibitionModificationPage = () => {
           name: exhibition.name,
           shortDescription: exhibition.shortDescription,
           longDescription: exhibition.longDescription,
-          startDate: exhibition.startDate,
-          endDate: exhibition.endDate,
-          siteId: exhibition.siteId
+          startDate: validStartDate,
+          endDate: validEndDate,
+          siteId: parseInt(exhibition.siteId, 10)
         })
       });
 
