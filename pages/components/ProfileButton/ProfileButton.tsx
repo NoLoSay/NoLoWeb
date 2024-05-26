@@ -12,6 +12,7 @@ type ProfileButtonProps = {
 
 const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -23,8 +24,6 @@ const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
 
   const { user, setUser } = useContext(UserContext);
 
-  const navigate = useNavigate();
-
   const resetUser = () => {
     setUser(defaultUser);
     navigate("/home")
@@ -33,8 +32,7 @@ const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
   return (
     <div>
       <ButtonBase disableRipple onClick={handleClick} sx={{ padding: 1, borderRadius: 2 }} className="flex flex-row items-center justify-between space-x-3">
-        <p>{name}</p>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+        <p className="text-base">{name}</p>
       </ButtonBase>
       <Menu
         anchorEl={anchorEl}

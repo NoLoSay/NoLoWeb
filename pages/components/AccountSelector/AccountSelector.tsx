@@ -34,7 +34,7 @@ function SimpleDialog(props: SimpleDialogProps) {
 
   return (
     <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>Choose a profile</DialogTitle>
+      <DialogTitle>Choisir un profil :</DialogTitle>
       <List sx={{ pt: 0 }}>
         {props.accountsList.map((account) => (
           <ListItem disableGutters key={account}>

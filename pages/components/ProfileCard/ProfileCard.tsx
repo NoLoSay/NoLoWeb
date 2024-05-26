@@ -6,10 +6,9 @@ type ProfileProps = {
   fullName?:string;
   email?: string;
   phone?: string;
-  cityId?: number;
 };
 
-function ProfileCard({ profilePicturePath, fullName, email, phone, cityId }: ProfileProps) {
+function ProfileCard({ profilePicturePath, fullName, email, phone }: ProfileProps) {
   return (
     <Paper className="relative flex flex-row m-5 p-5 items-center justify-start">
       <img className="w-20 h-20 rounded-full" src={profilePicturePath} alt="Photo de profile"/>
@@ -18,16 +17,6 @@ function ProfileCard({ profilePicturePath, fullName, email, phone, cityId }: Pro
         <p className="text-lg font-bold my-2">{fullName}</p>
         <p>{email}</p>
         <p>{phone}</p>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={cityId}
-          label="Ville"
-          className="mt-3"
-        >
-          <MenuItem value={1}>Nantes, France</MenuItem>
-          <MenuItem value={2}>Paris, France</MenuItem>
-        </Select>
       </div>
       <ButtonBase className="absolute top-0 right-0 m-2">
         <EditIcon />

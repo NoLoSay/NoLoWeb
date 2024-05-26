@@ -140,11 +140,11 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
             </div>
           </div>
           <div className="flex flex-row space-x-5 pt-5">
-            <ButtonBase disableRipple onClick={handleClick}>
+            {/**<ButtonBase disableRipple onClick={handleClick}>
               <div className={styles.buttons}>
                 Voir
               </div>
-            </ButtonBase>
+            </ButtonBase>**/}
             <ButtonBase disableRipple onClick={handleOpen}>
               <div className={styles.buttons}>
                 Modifier
