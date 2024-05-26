@@ -126,11 +126,11 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
   InApp,
   LoginStatus,
 }: NavbarProps) => {
+  const { user, setUser } = useContext(UserContext);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isLogged, setIsLogged] = useState(LoginStatus);
+  const [isLogged, setIsLogged] = useState(user.accessToken != "" ? true : false);
   const navigate = useNavigate();
 
-  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     const func = async (): Promise<void> => {
@@ -162,7 +162,7 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
           {isLogged ? (
             <ListItem>
               <ListItemButton >
-                <ProfileButton />
+              <ProfileButton name={user.username}/>
               </ListItemButton>
             </ListItem>
             ) : (
@@ -193,14 +193,14 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
             handleChangePage={handleChangePage}
           />
         ) : (
-          <div className="flex flex-row justify-around items-center w-full px-5 items-center gap-5 text-gray-200">
+          <div className="flex flex-row justify-around w-full px-5 items-center gap-5 text-gray-200">
             <NavLinks
               links={[...NavLinksItems]}
               handleChangePage={handleChangePage}
             />
             <Divider orientation="vertical" variant="middle" flexItem />
             {isLogged ? (
-              <ProfileButton />
+              <ProfileButton name={user.username}/>
             ) : (
               <LoginButton handleChangePage={handleChangePage} />
             )}

@@ -23,7 +23,7 @@ function SettingsLocationForm() {
             <TextField size="small" fullWidth id="outlined-basic" label="Nom complet" variant="outlined" />
           </div>
           <Button className="absolute top-0 right-0 m-2" variant="contained">
-            Save
+            Sauvegarder
           </Button>
         </form>
       </div>
