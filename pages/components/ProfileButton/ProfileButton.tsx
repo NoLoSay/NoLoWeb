@@ -5,7 +5,12 @@ import { useState, useContext, useEffect } from "react";
 import { UserContext, defaultUser } from "../../../contexts/UserProvider";
 import { useNavigate } from "react-router-dom";
 
-const ProfileButton = () => {
+type ProfileButtonProps = {
+    name: string;
+    avatar?: string;
+};
+
+const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event: any) => {
@@ -16,11 +21,9 @@ const ProfileButton = () => {
     setAnchorEl(null);
   };
 
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const { user, setUser } = useContext(UserContext);
-
-  const navigate = useNavigate();
 
   const resetUser = () => {
     setUser(defaultUser);
@@ -30,7 +33,7 @@ const ProfileButton = () => {
   return (
     <div>
       <ButtonBase disableRipple onClick={handleClick} sx={{ padding: 1, borderRadius: 2 }} className="flex flex-row items-center justify-between space-x-3">
-        <p>Mon compte</p>
+        <p className="text-base">{name}</p>
       </ButtonBase>
       <Menu
         anchorEl={anchorEl}
@@ -39,6 +42,9 @@ const ProfileButton = () => {
       >
         <MenuItem onClick={() => navigate("/account")}>
           <Person /> Profile
+        </MenuItem>
+        <MenuItem onClick={() => navigate("/accountSettings")}>
+          <Settings /> Paramètres
         </MenuItem>
         <MenuItem onClick={resetUser}>
           <Logout /> Déconnexion

@@ -15,7 +15,8 @@ module.exports = {
     extend: {
       backgroundImage: theme => ({
         'map': "url('../public/images/map.png')",
-        'miroir-d-eau-château-nantes_photo': "url('/images/artworkToTranslateSelectionScreen/miroir-d-eau-château-nantes_photo.png')",
+        // i've put "public/" in the path because the old one was crashing storybook. needs to find a fix if this is not compatible
+        'miroir-d-eau-château-nantes_photo': "url('/public/images/artworkToTranslateSelectionScreen/miroir-d-eau-château-nantes_photo.png')",
       }),
       flex: {
         '2': '2 2 0%',

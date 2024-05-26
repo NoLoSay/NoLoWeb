@@ -20,6 +20,7 @@ import Location from "./screen/location/Location";
 import VideoAccess from "./screen/videoAccess/VideoAccess";
 import Account from "./screen/account/Account";
 import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
+import AccountSettings from "./screen/accountSettings/AccountSettings";
 import { UserProvider } from "../contexts/UserProvider";
 
 const AppRouter = () => {
@@ -38,30 +39,31 @@ const AppRouter = () => {
       <Head>
           <link rel="icon" href="/images/logo/nologo.png" />
       </Head>
-      <UserProvider>
-        <Router>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/connection" element={<ConnectionScreen />} />
-              <Route path="/subscription" element={<SubscriptionScreen />} />
-              <Route path="/exhibitions" element={<ExhibitionsPage />} />
-              <Route
-                path="/tickets"
-                element={<ArtworkToTranslateSelectionScreen />}
-              />
-              <Route path="/artworks" element={<ArtworksPage />} />
-              <Route path="/videoAccess" element={<VideoAccess />} />
-              <Route path="/location" element={<Location />} />
-              <Route path="/account" element={<Account />} />
-              <Route path="/record" element={<RecordVideo />} />
-              <Route path="/findlocation" element={<FindLocation />} />
-            </Routes>
-          </Layout>
-        </Router>
-      </UserProvider>
+    <UserProvider>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/connection" element={<ConnectionScreen />} />
+            <Route path="/subscription" element={<SubscriptionScreen />} />
+            <Route path="/exhibitions" element={<ExhibitionsPage />} />
+            <Route
+              path="/tickets"
+              element={<ArtworkToTranslateSelectionScreen />}
+            />
+            <Route path="/artworks" element={<ArtworksPage />} />
+            <Route path="/videoAccess" element={<VideoAccess />} />
+            <Route path="/location" element={<Location />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/accountSettings" element={<AccountSettings />} />
+            <Route path="/record" element={<RecordVideo />} />
+            <Route path="/findlocation" element={<FindLocation />} />
+          </Routes>
+        </Layout>
+      </Router >
+    </UserProvider >
     </div>
   );
 };
