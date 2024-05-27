@@ -46,8 +46,6 @@ const ExhibitionModificationPage = () => {
     }
   }, [location.state]);
 
-  console.log("exhibition = ", exhibition);
-
   const handleInputChange = (event) => {
     const {name, value} = event.target;
     setExhibition(prev => ({...prev, [name]: value}));
@@ -72,8 +70,6 @@ const ExhibitionModificationPage = () => {
     const validStartDate = new Date(exhibition.startDate);
     const validEndDate = new Date(exhibition.endDate);
 
-    console.log("Date1", validStartDate)
-    console.log("Date1", validEndDate)
     if (!validStartDate || !validEndDate) {
       console.error('Invalid date provided');
       alert('Please provide valid dates.');

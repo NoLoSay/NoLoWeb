@@ -49,9 +49,6 @@ const SiteModificationPage = () => {
   const [site, setSite] = useState(initialSite);
 
   useEffect(() => {
-    console.log("site.item = ", site.item);
-    console.log("site = ", site);
-    console.log("site.id = ", site.id);
     if (!site || !site.id) {
       navigate('/places');
     }

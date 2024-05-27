@@ -40,8 +40,6 @@ const ArtworkModificationPage = () => {
 
   const [artwork, setArtwork] = useState(initialArtwork);
 
-  console.log("artwork item = ", artwork)
-
   const handleInputChange = (event) => {
     const {name, value} = event.target;
     setArtwork({...artwork, [name]: value});
@@ -51,12 +49,8 @@ const ArtworkModificationPage = () => {
     const method = artwork.id ? 'PUT' : 'POST';
     const url = `http://localhost:3001/items${artwork.id ? `/${artwork.id}` : ''}`;
 
-    console.log("url = ", url);
-
     try {
       if (method === 'POST') {
-        console.log("firstdata = ", artwork);
-        console.log("url = ", url);
         const response = await fetch(url, {
           method: 'POST',
           headers: {
@@ -77,9 +71,6 @@ const ArtworkModificationPage = () => {
         }
 
         const responseData = await response.json();
-        console.log('Artwork created successfully:', responseData);
-        console.log("deuxdata = ", artwork);
-        console.log("eeeeefffffff = ", exhibitionId)
         if (exhibitionId) {
           const addToExhibitionResponse = await fetch(`http://localhost:3001/exhibitions/${exhibitionId}/items`, {
             method: 'POST',
@@ -93,12 +84,9 @@ const ArtworkModificationPage = () => {
           if (!addToExhibitionResponse.ok) {
             throw new Error(`HTTP status ${addToExhibitionResponse.status}`);
           }
-
-          console.log('Artwork added to exhibition successfully:', await addToExhibitionResponse.json());
-        }
+     }
 
       } else if (method === 'PUT') {
-        console.log("data put = ", artwork);
         const response = await fetch(url, {
           method: 'PUT',
           headers: {

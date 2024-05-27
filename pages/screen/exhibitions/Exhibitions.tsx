@@ -110,7 +110,6 @@ const Exhibition: React.FC<ExhibitionsProps> & {
     const handleAction = async (buttonName: string, exhibitionId) => {
         switch (buttonName) {
             case 'handleGoToArtwork':
-                console.log("exhid = ", exhibitionId)
                 try {
                     const url = `http://localhost:3001/exhibitions/${exhibitionId}/items`;
                     const response = await fetch(url, {
@@ -123,13 +122,10 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                     let artworks = [];
                     if (response.ok) {
                         artworks = await response.json();
-                        console.log("artworks ==", artworks)
                     } else {
                         console.error(`HTTP status ${response.status}: Failed to fetch exhibitions`);
                     }
-                    console.log("pre exhib Id", exhibitionId)
-                    console.log("pre data Id", artworks)
-                    navigate('/places/exhibitions/artworks', { state: { item: artworks, exhibitionId: exhibitionId } });
+                   navigate('/places/exhibitions/artworks', { state: { item: artworks, exhibitionId: exhibitionId } });
                 } catch (error) {
                     console.error('Failed to fetch exhibition details:', error);
                     //navigate('/places/exhibitions/artworks', { state: { item: exhibitionId } });
@@ -154,7 +150,6 @@ const Exhibition: React.FC<ExhibitionsProps> & {
     };
 
     if (!exhibitions || exhibitions.length === 0) {
-       console.log('No exhibitions available to display.');
         return (
           <Fragment>
               <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
