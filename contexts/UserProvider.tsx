@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 import { UserContextType, UserType } from "../models/User";
 
 export const defaultUser: UserType = {
@@ -22,7 +22,18 @@ interface UserProviderProps {
 }
 
 export function UserProvider({ children }: UserProviderProps): JSX.Element {
-  const [user, setUser] = useState<UserType>(defaultUser);
+  const [user, setUser] = useState<UserType>(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : defaultUser;
+  });
+
+  useEffect(() => {
+    if (user.id !== 0) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user");
+    }
+  }, [user]);
 
   const memorizedContextValue = useMemo(() => ({ user, setUser }), [user]);
 

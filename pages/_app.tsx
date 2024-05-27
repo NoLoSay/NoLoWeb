@@ -20,7 +20,12 @@ import VideoAccess from "./screen/videoAccess/VideoAccess";
 import Account from "./screen/account/Account";
 import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
 import AccountSettings from "./screen/accountSettings/AccountSettings";
+import ArtworkModificationPage from "./screen/artworkmodificationPage/ArtworkModificationPage";
 import { UserProvider } from "../contexts/UserProvider";
+import PlacesPage from "./screen/site/Sites";
+import Sites from "./screen/site/Sites";
+import ExhibitionModificationPage from "./screen/exhibitionModificationPage/exhibitionModificationPage";
+import SiteModificationPage from "./screen/siteModificationPage/SiteModificationPage";
 
 const AppRouter = () => {
   const [isClient, setIsClient] = useState(false);
@@ -43,15 +48,26 @@ const AppRouter = () => {
             <Route path="/about" element={<About />} />
             <Route path="/connection" element={<ConnectionScreen />} />
             <Route path="/subscription" element={<SubscriptionScreen />} />
-            <Route path="/exhibitions" element={<ExhibitionsPage />} />
+
             <Route
               path="/tickets"
               element={<ArtworkToTranslateSelectionScreen />}
             />
+            <Route path="/artworkmodifications" element={<ArtworkModificationPage />} />
             <Route path="/artworks" element={<ArtworksPage />} />
             <Route path="/videoAccess" element={<VideoAccess />} />
             <Route path="/location" element={<Location />} />
             <Route path="/account" element={<Account />} />
+
+            <Route path="/places" element={<Sites />} />
+            <Route path="/places/modificationPlace" element={<SiteModificationPage />} />
+
+            <Route path="/places/exhibitions" element={<ExhibitionsPage />} />
+            <Route path="/places/exhibitions/exhibitionModification" element={<ExhibitionModificationPage/>} />
+
+            <Route path="/places/exhibitions/artworks" element={<ArtworksPage />} />
+            <Route path="/places/exhibitions/artworks/artworkModification" element={<ArtworkModificationPage />} />
+
             <Route path="/accountSettings" element={<AccountSettings />} />
             <Route path="/record" element={<RecordVideo />} />
             <Route path="/findlocation" element={<FindLocation />} />
