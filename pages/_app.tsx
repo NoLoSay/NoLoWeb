@@ -19,6 +19,7 @@ import Location from "./screen/location/Location";
 import VideoAccess from "./screen/videoAccess/VideoAccess";
 import Account from "./screen/account/Account";
 import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
+import AccountSettings from "./screen/accountSettings/AccountSettings";
 import ArtworkModificationPage from "./screen/artworkmodificationPage/ArtworkModificationPage";
 import { UserProvider } from "../contexts/UserProvider";
 import PlacesPage from "./screen/site/Sites";
@@ -67,12 +68,13 @@ const AppRouter = () => {
             <Route path="/places/exhibitions/artworks" element={<ArtworksPage />} />
             <Route path="/places/exhibitions/artworks/artworkModification" element={<ArtworkModificationPage />} />
 
+            <Route path="/accountSettings" element={<AccountSettings />} />
             <Route path="/record" element={<RecordVideo />} />
             <Route path="/findlocation" element={<FindLocation />} />
           </Routes>
         </Layout>
-      </Router>
-    </UserProvider>
+      </Router >
+    </UserProvider >
   );
 };
 
