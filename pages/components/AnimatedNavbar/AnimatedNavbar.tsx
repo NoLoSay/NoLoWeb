@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "../../../node_modules/react-router-dom/dist/index";
+import { UserContext, defaultUser } from "../../../contexts/UserProvider";
 import {
   Drawer,
   Box,
@@ -11,7 +12,6 @@ import {
   IconButton,
 } from "../../../node_modules/@mui/material/index";
 import ProfileButton from "../ProfileButton/ProfileButton";
-import { UserContext, defaultUser } from "../../../contexts/UserProvider";
 import MenuIcon from '@mui/icons-material/Menu';
 
 export type NavLinkProps = {
@@ -26,7 +26,6 @@ type NavbarProps = {
 
 const NavLinksItems = [
   { href: "/about", title: "" },
-  { href: "/account", title: "" },
   { href: "/findlocation", title: "" },
   { href: "/record", title: "" },
   { href: "/tickets", title: "" },
@@ -131,7 +130,6 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
   const [isLogged, setIsLogged] = useState(user.accessToken != "" ? true : false);
   const navigate = useNavigate();
 
-
   useEffect(() => {
     const func = async (): Promise<void> => {
       if (user != defaultUser) {
@@ -162,7 +160,7 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({
           {isLogged ? (
             <ListItem>
               <ListItemButton >
-              <ProfileButton name={user.username}/>
+                <ProfileButton name={user.username}/>
               </ListItemButton>
             </ListItem>
             ) : (
