@@ -63,32 +63,12 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
     });
   };
 
-  const buttonStyles: SxProps<Theme> = {
-    bgcolor: '#ff0000', // Custom background color
-    color: 'white', // Text color
-    '&:hover': {
-      bgcolor: '#cc0000', // Custom background color on hover
-    },
-  };
-
   const [open, setOpen] = React.useState(false);
   const [openDelete, setOpenDelete] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleOpenDelete = () => setOpenDelete(true);
   const handleCloseDelete = () => setOpenDelete(false);
-
-  const style = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
 
   return (
     <div>

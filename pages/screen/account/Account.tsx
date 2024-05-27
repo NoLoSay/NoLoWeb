@@ -87,10 +87,10 @@ const Account = () => {
         </div>
         <div className="col-span-2 space-y-5 items-center -mt-96">
           <div className="flex flex-row justify-between ">
-          <h2>Lieux modérable</h2>
-          <Button onClick={() => navigate("/findLocation")} variant="contained">
+          <h2>Lieux modérables</h2>
+          {/**<Button onClick={() => navigate("/findLocation")} variant="contained">
             Voir tout
-          </Button>
+          </Button>**/}
           </div>
           <div className="flex flex-col space-y-5">
             <Divider/>
