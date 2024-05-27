@@ -213,7 +213,7 @@ export const RecordVideo = (): JSX.Element => {
             disabled={recordedChunks.length === 0}
             className="button"
           >
-            Save Video
+            Enregistrer Video
           </button>
         </div>
       </div>

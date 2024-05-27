@@ -2,11 +2,14 @@ import { Fragment, ReactNode, useContext } from "react";
 import Head from "../../../node_modules/next/head";
 import Layout from "../../components/Layout/Layout";
 import GenericCard from "../../components/GenericCard/GenericCard";
-import { ButtonBase } from "@mui/material";
+import { Button, ButtonBase, Divider } from "@mui/material";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import testProfile from "../../../stories/assets/testProfile.json"
 import CategoryButton from "../../components/CategoryButton/CategoryButton";
 import GraphCard from "../../components/GraphCard/GraphCard";
+import locationData from "../../components/LocationCard/example.json"
+import exhibitionTestData from "../../../tests/testExhib.json"
+import LocationCard from "../../components/LocationCard/LocationCard";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import AccountSelector from "../../components/AccountSelector/AccountSelector";
@@ -48,7 +51,6 @@ const Account = () => {
           <BigButton label="Recherche personnalisée" textSize="text-2xl" />
           <BigButton label="Villes" textSize="text-2xl" />
           <BigButton label="Lieux" textSize="text-2xl" />
-          <GraphCard title="Nombre de vues de la semaine" value="49327" />
         </div>
 
         <div>
@@ -66,7 +68,6 @@ const Account = () => {
               </>
             )}
           </div>
-          <GraphCard title="Profit du mois" value="20441" />
         </div>
 
         <div>
@@ -84,7 +85,19 @@ const Account = () => {
             <CategoryButton text="Conditions Générales d'Utilisation" />
           </div>
         </div>
-
+        <div className="col-span-2 space-y-5 items-center -mt-96">
+          <div className="flex flex-row justify-between ">
+          <h2>Lieux modérables</h2>
+          {/**<Button onClick={() => navigate("/findLocation")} variant="contained">
+            Voir tout
+          </Button>**/}
+          </div>
+          <div className="flex flex-col space-y-5">
+            <Divider/>
+          <LocationCard cardInfo={locationData[0]} />
+          <LocationCard cardInfo={locationData[1]} />
+          </div>
+        </div>
       </div>
 
     </Fragment>
