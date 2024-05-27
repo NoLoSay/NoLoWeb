@@ -12,6 +12,7 @@ type ProfileButtonProps = {
 
 const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -20,8 +21,6 @@ const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const navigate = useNavigate();
 
   const { user, setUser } = useContext(UserContext);
 

@@ -213,10 +213,8 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                         role="addExhibitionBtn"
                         tabIndex={0}
                         className={`addExhibitionBtn ${styles["addExhibitionBtn"]}`}
-                        onClick={() => handleAddExhibition()}
                         onKeyDown={(event) => {
                             if (event.key === 'Enter' || event.key === ' ') {
-                                handleAddExhibition();
                                 event.preventDefault();
                             }
                         }}
