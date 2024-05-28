@@ -20,7 +20,7 @@ if [ ! -d "./pages" ] && [ ! -d "./app" ]; then
 fi
 
 # Construire le projet Next.js
-npx next build
+next build
 
 # Restaurer les fichiers .stories.ts
 find $TEMP_STORIES_DIR -name "*.stories.ts" -type f -exec mv {} ./ \;
