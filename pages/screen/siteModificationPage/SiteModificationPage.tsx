@@ -54,7 +54,7 @@ const SiteModificationPage = () => {
     }
   }, [site, navigate]);
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event:any) => {
     const { name, value } = event.target;
     setSite({ ...site, [name]: value });
   };
@@ -163,7 +163,7 @@ const SiteModificationPage = () => {
   );
 };
 
-SiteModificationPage.getLayout = function getLayout(page) {
+SiteModificationPage.getLayout = function getLayout(page:any) {
   return <Layout>{page}</Layout>;
 };
 

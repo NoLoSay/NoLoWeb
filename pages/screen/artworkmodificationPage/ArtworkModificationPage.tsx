@@ -40,7 +40,7 @@ const ArtworkModificationPage = () => {
 
   const [artwork, setArtwork] = useState(initialArtwork);
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: any) => {
     const {name, value} = event.target;
     setArtwork({...artwork, [name]: value});
   };
@@ -117,12 +117,13 @@ const ArtworkModificationPage = () => {
     }
   };
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setArtwork(prev => ({...prev, picture: e.target.result}));
+        const result = e.target?.result as string;
+        setArtwork((prev: any) => ({ ...prev, picture: result }));
       };
       reader.readAsDataURL(file);
     }
@@ -152,7 +153,7 @@ const ArtworkModificationPage = () => {
           <div className={styles.divBlockGeneralInformations}>
             <img src={artwork.picture || 'https://cataas.com/cat'}
                  alt="Exhibition Image" className={styles.image22}
-                 onClick={() => document.getElementById('imageUpload').click()}/>
+                 onClick={() => document.getElementById('imageUpload')?.click()}/>
             <div className={styles.divGeneralInformations}>
               <div className={styles.nameBlockInput}>
                 <div className={styles.textName}> Name :</div>

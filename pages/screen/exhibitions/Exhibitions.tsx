@@ -85,7 +85,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
     const { user, setUser } = useContext(UserContext);
 
 
-    const handleDeleteExhibition = async (exhibitionId) => {
+    const handleDeleteExhibition = async (exhibitionId:any) => {
         try {
             const response = await fetch(`http://localhost:3001/exhibitions/${exhibitionId}`, {
                 method: 'DELETE',
@@ -95,7 +95,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
             });
 
             if (response.ok) {
-                const updatedExhibitions = exhibitions.filter(exhibition => exhibition.id !== exhibitionId);
+                const updatedExhibitions = exhibitions.filter((exhibition:any) => exhibition.id !== exhibitionId);
                 setExhibitions(updatedExhibitions);
                 console.log('Exhibition deleted successfully');
             } else {
@@ -107,7 +107,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
     };
 
 
-    const handleAction = async (buttonName: string, exhibitionId) => {
+    const handleAction = async (buttonName: string, exhibitionId:any) => {
         switch (buttonName) {
             case 'handleGoToArtwork':
                 try {
@@ -135,13 +135,13 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                 handleDeleteExhibition(exhibitionId);
                 break;
             case 'changeButton':
-                const exhibition = exhibitions.find(exh => exh.id === exhibitionId);
+                const exhibition = exhibitions.find((exh:any) => exh.id === exhibitionId);
                 changeExhibition(exhibition);
                 break;
         }
     };
 
-    const changeExhibition = (exhibitionsId) => {
+    const changeExhibition = (exhibitionsId:any) => {
         navigate('/places/exhibitions/exhibitionModification', { state: { item: exhibitionsId } });
     }
 
@@ -229,7 +229,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                   </div>
                   <div className={`divBlockExhibitionList ${styles["divBlockExhibitionList"]}`}>
                       <div className={`divExhibitionList ${styles["divExhibitionList"]}`}>
-                          {exhibitions.map((exhibition) => (
+                          {exhibitions.map((exhibition:any) => (
 
                             /// TODO Move this code into Exhibition Component
                             /// TODO Add image in each exhibitions
