@@ -158,7 +158,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                     onClick={() => navigate(-1)}
                   >
                       <img
-                        src=""
+                        src="/public/icon/arrow-left-dark.svg"
                         loading="lazy"
                         alt="Retour"
                         className={`image18 ${styles["image18"]}`}
@@ -200,7 +200,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                         onClick={() => navigate(-1)}
                       >
                           <img
-                            src=""
+                            src="/public/icon/arrow-left-dark.svg"
                             loading="lazy"
                             alt="Retour"
                             className={`image18 ${styles["image18"]}`}
@@ -213,14 +213,16 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                         role="addExhibitionBtn"
                         tabIndex={0}
                         className={`addExhibitionBtn ${styles["addExhibitionBtn"]}`}
+                        onClick={() => handleAddExhibition()}
                         onKeyDown={(event) => {
                             if (event.key === 'Enter' || event.key === ' ') {
+                                handleAddExhibition();
                                 event.preventDefault();
                             }
                         }}
                       >
                           <img
-                            src=""
+                            src="/public/icon/plus.svg"
                             loading="lazy"
                             alt="Ajouter une exposition"
                             className={`image17 ${styles["image17"]}`}
@@ -275,7 +277,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                                               }}
                                             >
                                                 <img
-                                                  src=""
+                                                  src="/public/icon/cancel.svg"
                                                   loading="lazy"
                                                   alt=""
                                                   className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}

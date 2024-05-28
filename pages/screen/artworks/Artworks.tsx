@@ -131,6 +131,36 @@ const ArtworkModificationPage = () => {
         }
     };
 
+
+    /* Button add after back modification
+
+    <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
+                                            <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
+                                                <div
+                                                  role="deleteExhibitionBtn"
+                                                  tabIndex={0}
+                                                  className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
+                                                  onClick={() => handleDeleteArtwork(artwork.id, location.state.exhibitionId)}
+                                                  onKeyDown={(event) => {
+                                                      if (event.key === 'Enter' || event.key === ' ') {
+                                                          handleDeleteArtwork(artwork.id, location.state.exhibitionId);
+                                                          event.preventDefault();
+                                                      }
+                                                  }}
+                                                >
+                                                    <img
+                                                      src=""
+                                                      loading="lazy"
+                                                      alt=""
+                                                      className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+     */
+
+
     if (artworks.length === 0) {
         return (
           <Fragment>
@@ -219,29 +249,6 @@ const ArtworkModificationPage = () => {
                                 <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>
                                     <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>
                                         <h1 className={`heading13 ${styles["heading13"]}`}> {artwork.name} </h1>
-                                        <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
-                                            <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
-                                                <div
-                                                  role="deleteExhibitionBtn"
-                                                  tabIndex={0}
-                                                  className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
-                                                  onClick={() => handleDeleteArtwork(artwork.id, location.state.exhibitionId)}
-                                                  onKeyDown={(event) => {
-                                                      if (event.key === 'Enter' || event.key === ' ') {
-                                                          handleDeleteArtwork(artwork.id, location.state.exhibitionId);
-                                                          event.preventDefault();
-                                                      }
-                                                  }}
-                                                >
-                                                    <img
-                                                      src=""
-                                                      loading="lazy"
-                                                      alt=""
-                                                      className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div
                                       className={`divBlockExhibitionInformations ${styles["divBlockExhibitionInformations"]}`}>

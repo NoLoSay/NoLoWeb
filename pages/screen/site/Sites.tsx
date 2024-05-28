@@ -57,10 +57,19 @@ const Sites: React.FC<SitesProps> = () => {
 
   const handleAction = async (buttonName: string, siteId) => {
    switch (buttonName) {
+     /*
+     <button
+        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300"
+        onClick={() => handleAction("goToModificationSite", site.id)}
+      >
+        Modify Site
+      </button>
+
       case "goToModificationSite":
         const place = places.filter(place => place.id === siteId);
         navigate('/places/modificationPlace', { state: { site: place }});
         break;
+        */
       case "returnToPreviousPageBtn":
        navigate('/account');
         break;
@@ -104,7 +113,7 @@ const Sites: React.FC<SitesProps> = () => {
           }}
         >
           <img
-            src=""
+            src="/public/icon/arrow-left-dark.svg"
             loading="lazy"
             alt="Retour"
             className={`image18 ${styles["image18"]}`}
@@ -142,12 +151,8 @@ const Sites: React.FC<SitesProps> = () => {
                 <span className="text-gray-600">{site.email}</span>
                 <span className="text-gray-600">{site.website}</span>
                 <span className="text-gray-600">{site.price}€ entry</span>
-                <button
-                  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300"
-                  onClick={() => handleAction("goToModificationSite", site.id)}
-                >
-                  Modify Site
-                </button>
+
+
                 <button onClick={() => handleAction("handleGoToExhibitions", site.id)}
                         className="mt-3 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">
                   Voir les expositions de ce site

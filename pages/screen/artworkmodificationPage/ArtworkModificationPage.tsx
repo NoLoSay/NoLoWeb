@@ -109,9 +109,7 @@ const ArtworkModificationPage = () => {
         const responseData = await response.json();
         console.log('Artwork updated successfully:', responseData);
       }
-
-      // Redirection après une opération réussie
-      navigate(-1);
+      navigate('/places');
     } catch (error) {
       console.error('Failed to update artwork:', error);
     }
