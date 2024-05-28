@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../../../components/Layout/Layout";
-import ArtworkCard from "./Views/ArtworkCard";
+import ArtworkCard from "../../../components/ArtworkCard/ArtworkCard";
 
 type artWork = {
   title: string;

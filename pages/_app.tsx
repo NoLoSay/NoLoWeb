@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/global.css";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
@@ -39,6 +40,10 @@ const AppRouter = () => {
   }
 
   return (
+    <div>
+      <Head>
+          <link rel="icon" href="/images/logo/nologo.png" />
+      </Head>
     <UserProvider>
       <Router>
         <Layout>
@@ -75,6 +80,7 @@ const AppRouter = () => {
         </Layout>
       </Router >
     </UserProvider >
+    </div>
   );
 };
 

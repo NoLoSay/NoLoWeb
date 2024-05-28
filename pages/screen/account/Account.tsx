@@ -8,7 +8,6 @@ import testProfile from "../../../stories/assets/testProfile.json"
 import CategoryButton from "../../components/CategoryButton/CategoryButton";
 import GraphCard from "../../components/GraphCard/GraphCard";
 import locationData from "../../components/LocationCard/example.json"
-import exhibitionTestData from "../../../tests/testExhib.json"
 import LocationCard from "../../components/LocationCard/LocationCard";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";

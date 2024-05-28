@@ -78,10 +78,10 @@ const ArtworkModificationPage = () => {
         }
     }, [location.state]);
 
-    const handleAction = (buttonName, artworkId) => {
+    const handleAction = (buttonName:any, artworkId:any) => {
         switch (buttonName) {
             case 'modificationArtwork':
-                const artwork = artworks.find(art => art.id === artworkId);
+                const artwork = artworks.find((art:any) => art.id === artworkId);
                 if (artwork) {
                     navigate('/places/exhibitions/artworks/artworkModification', { state: { item: artwork } });
                 } else {
@@ -96,7 +96,7 @@ const ArtworkModificationPage = () => {
         }
     };
 
-    const handleDeleteArtwork = async (artworkId, exhibitionId) => {
+    const handleDeleteArtwork = async (artworkId:any, exhibitionId?:any) => {
         try {
             // First, delete the artwork from the main items service
             const response = await fetch(`http://localhost:3001/items/${artworkId}`,
@@ -123,7 +123,7 @@ const ArtworkModificationPage = () => {
             }
 
             // Update the local state to remove the artwork
-            const updatedArtworks = artworks.filter(art => art.id !== artworkId);
+            const updatedArtworks = artworks.filter((art:any) => art.id !== artworkId);
             setArtworks(updatedArtworks);
             console.log('Artwork and its exhibition link deleted successfully');
         } catch (error) {
@@ -243,7 +243,7 @@ const ArtworkModificationPage = () => {
 
               <div className={`divBlockArtworkList ${styles["divBlockArtworkList"]}`}>
                       <div className={`divArtworksList ${styles["divArtworksList"]}`}>
-                          {artworks.map(artwork => (
+                          {artworks.map((artwork:any) => (
                             <div key={artwork.id} className={`divArtwork ${styles["divArtwork"]}`}>
                                 <img src={artwork.imageUrl} className={`image16 ${styles["image16"]}`}/>
                                 <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>
@@ -258,7 +258,7 @@ const ArtworkModificationPage = () => {
                                         <div
                                           role="button"
                                           tabIndex={0}
-                                          className={`divGoToArtworksBtn ${styles["divGoToArtworksBtn"]}`}
+                                          className={`divGoToArtworksBtn`}
                                           onClick={() => handleAction('modificationArtwork', artwork.id)}
                                           onKeyDown={(event) => {
                                               if (event.key === 'Enter' || event.key === ' ') {
@@ -267,7 +267,7 @@ const ArtworkModificationPage = () => {
                                               }
                                           }}
                                         >
-                                            <div className={`goToArtworksText ${styles["goToArtworksText"]}`}>
+                                            <div className={`goToArtworksText`}>
                                                 Voir ou modifier l'oeuvre
                                             </div>
                                         </div>

@@ -1,8 +1,7 @@
 // components/Layout.js
-import NavBar from "../NavBar/NavBar";
+
 import React, { ReactNode } from "react";
 import FooterContainer from "../FooterContainer/FooterContainer";
-import NewsletterField from "../NewsletterField/NewsletterField";
 import AnimatedNavbar from "../AnimatedNavbar/AnimatedNavbar";
 import { useState, useEffect, useContext } from "react";
 
