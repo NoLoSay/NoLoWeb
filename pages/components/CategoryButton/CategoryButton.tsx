@@ -1,6 +1,7 @@
 import { ButtonBase } from "@mui/material"
 import PersonIcon from '@mui/icons-material/Person';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import React from 'react';
 
 type CategoryProps = {
   text?: string;

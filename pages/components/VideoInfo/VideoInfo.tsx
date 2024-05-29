@@ -13,7 +13,7 @@ type VideoProps = {
 
 const Spec = ({ specInfos }: { specInfos: SpecInfos }) => {
   return (
-    <div className="flex flex-col space-y-5 font-bold">
+    <div className=" space-y-3 font-bold ml-10">
       {Object.entries(specInfos).map(([key, value]) => (
         <div key={key} className="text-line">
           <p>{value}</p>
@@ -25,9 +25,9 @@ const Spec = ({ specInfos }: { specInfos: SpecInfos }) => {
 
 const VideoInfo = ({artImage, spec = {}, description} : VideoProps) => {
   return (
-    <div className="flex flex-col space-y-5 max-w-lg my-5">
-      <div className="flex flex-row justify-between space-x-5">
-        <img src={artImage} alt="Image" className='flex h-60 rounded-lg shadow-lg'/>
+    <div className="space-y-5 max-w-lg my-5">
+      <div className="flex items-center justify-between ">
+        <img src={artImage} alt="Image" className='flex h-80 w-96 rounded-lg shadow-lg'/>
         <Spec specInfos={spec} />
       </div>
       <div>{description}</div>
