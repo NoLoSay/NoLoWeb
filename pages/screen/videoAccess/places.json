@@ -1,0 +1,82 @@
+[
+  {
+      "position": [47.2186371, -1.5541362],
+      "name": "Château des Ducs de Bretagne",
+      "city": "Nantes",
+      "location": "France",
+      "description": "Forteresse médiévale avec des expositions sur l'histoire locale",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "22 Vidéos",
+      "website": "https://www.chateaunantes.fr/"
+  },
+  {
+      "position": [47.21725, -1.55363],
+      "name": "Cathédrale Saint-Pierre",
+      "city": "Nantes",
+      "location": "France",
+      "description": "Monument gothique majeur abritant les tombeaux de François II et Marguerite de Foix",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "22 Vidéos",
+      "website": "https://www.cathedrale-nantes.fr/"
+  },
+  {
+      "position": [47.21386, -1.55952],
+      "name": "Place Royale",
+      "city": "Nantes",
+      "location": "France",
+      "description": "Place historique avec une fontaine monumentale et des cafés",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "22 Vidéos",
+      "website": "https://en.wikipedia.org/wiki/Place_Royale_(Nantes)"
+  },
+  {
+    "position": [47.21725, -1.55363],
+    "name": "Cathédrale Saint-Pierre",
+    "city": "Nantes",
+    "location": "France",
+    "description": "Monument gothique majeur abritant les tombeaux de François II et Marguerite de Foix",
+    "image": "/images/castle/castle-template-list.png",
+    "videocount": "22 Vidéos",
+    "website": "https://www.cathedrale-nantes.fr/"
+    },
+    {
+        "position": [47.21725, -1.55363],
+        "name": "Cathédrale Saint-Pierre",
+        "city": "Nantes",
+        "location": "France",
+        "description": "Monument gothique majeur abritant les tombeaux de François II et Marguerite de Foix",
+        "image": "/images/castle/castle-template-list.png",
+        "videocount": "22 Vidéos",
+        "website": "https://www.cathedrale-nantes.fr/"
+    },
+    {
+        "position": [47.2186371, -1.5541362],
+        "name": "Château des Ducs de Bretagne",
+        "city": "Nantes",
+        "location": "France",
+        "description": "Forteresse médiévale avec des expositions sur l'histoire locale",
+        "image": "/images/castle/castle-template-list.png",
+        "videocount": "22 Vidéos",
+        "website": "https://www.chateaunantes.fr/"
+    },
+    {
+        "position": [47.21725, -1.55363],
+        "name": "Cathédrale Saint-Pierre",
+        "city": "Nantes",
+        "location": "France",
+        "description": "Monument gothique majeur abritant les tombeaux de François II et Marguerite de Foix",
+        "image": "/images/castle/castle-template-list.png",
+        "videocount": "22 Vidéos",
+        "website": "https://www.cathedrale-nantes.fr/"
+    },
+    {
+        "position": [47.21386, -1.55952],
+        "name": "Place Royale",
+        "city": "Nantes",
+        "location": "France",
+        "description": "Place historique avec une fontaine monumentale et des cafés",
+        "image": "/images/castle/castle-template-list.png",
+        "videocount": "22 Vidéos",
+        "website": "https://en.wikipedia.org/wiki/Place_Royale_(Nantes)"
+    }
+]

@@ -25,10 +25,9 @@ type NavbarProps = {
 };
 
 const NavLinksItems = [
-  { href: "/about", title: "" },
-  { href: "/findlocation", title: "" },
-  { href: "/record", title: "" },
-  { href: "/tickets", title: "" },
+  { href: "/about", title: "À propos de nous" },
+  { href: "/findlocation", title: "Trouver une vidéo" },
+  { href: "/tickets", title: "Réaliser une vidéo" },
 ];
 
 interface logoButtonProps {
@@ -78,13 +77,13 @@ const LoginButton = ({ handleChangePage }: loginButtonProps) => {
         onClick={() => handleChangePage("/connection")}
         className="flex flex-row items-center gap-8 text-gray-200 bg-transparent hover:underline hover:cursor-pointer"
       >
-        <div className="font-medium">Connexion</div>
+        <div className="font-medium text-base">Connexion</div>
       </button>
       <button
         onClick={() => handleChangePage("/subscription")}
         className="rounded-full bg-gray-300 hover:cursor-pointer flex items-center justify-center py-2 px-6 gap-2 text-base-white font-semibold hover:underline"
       >
-        <div className="font-semibold">{`Inscription`}</div>
+        <div className="font-semibold text-base">{`Inscription`}</div>
       </button>
     </div>
   );
