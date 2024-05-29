@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NoLoSay.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>buildNumber</key>
+			<string>1</string>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>9DF4E5D450253A675448688D456C9F4123694CF5</string>
+				<key>dateExpires</key>
+				<string>18/02/2025</string>
+				<key>type</key>
+				<string>iOS Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>buildNumber</key>
+					<string>0.12.0</string>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>9DF4E5D450253A675448688D456C9F4123694CF5</string>
+						<key>dateExpires</key>
+						<string>18/02/2025</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>hermes.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>9478G9T3JY</string>
+						<key>name</key>
+						<string>Epitech (Innovation Hub)</string>
+					</dict>
+					<key>versionNumber</key>
+					<string>0.12.0</string>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>9478G9T3JY.com.nolosay.nolosayapp</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>9478G9T3JY</string>
+				<key>get-task-allow</key>
+				<true/>
+			</dict>
+			<key>name</key>
+			<string>NoLoSay.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>635fdb9b-cc71-4844-b6e2-e1c0df06082a</string>
+				<key>dateExpires</key>
+				<string>08/04/2025</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: *</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>9478G9T3JY</string>
+				<key>name</key>
+				<string>Epitech (Innovation Hub)</string>
+			</dict>
+			<key>versionNumber</key>
+			<string>0</string>
+		</dict>
+	</array>
+</dict>
+</plist>

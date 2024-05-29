@@ -1,9 +1,9 @@
 // components/Layout.js
-import NavBar from "../NavBar/NavBar";
+
 import React, { ReactNode } from "react";
 import FooterContainer from "../FooterContainer/FooterContainer";
-import NewsletterField from "../NewsletterField/NewsletterField";
 import AnimatedNavbar from "../AnimatedNavbar/AnimatedNavbar";
+import { useState, useEffect, useContext } from "react";
 
 interface LayoutProps {
   children: ReactNode;
@@ -15,9 +15,23 @@ const styles: { [key: string]: string } = {
 };
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const [isSmallScreen, setIsSmallScreen] = useState<boolean>(true);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
+      setIsSmallScreen(event.matches);
+    };
+    setIsSmallScreen(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
+    return () => {
+      mediaQuery.removeEventListener('change', handleMediaQueryChange);
+    };
+  }, []);
+
   return (
     <div className={styles["mainDiv"]}>
-      <AnimatedNavbar />
+      <AnimatedNavbar InApp={isSmallScreen}/>
       {children}
       <FooterContainer/>
     </div>

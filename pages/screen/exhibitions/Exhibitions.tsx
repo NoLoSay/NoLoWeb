@@ -1,160 +1,18 @@
 import Layout from "../../components/Layout/Layout";
-import Home from "../home/Home";
-import { useNavigate } from 'react-router-dom';
-import { Fragment } from "react";
-import * as objectorarray from "objectorarray";
+import {useLocation, useNavigate} from 'react-router-dom';
+import {Fragment, useContext, useState} from "react";
+import {UserContext} from "../../../contexts/UserProvider";
 
 
 interface ExhibitionsProps {}
-
-const staticExhibitions = [
-    {
-        "id": 1,
-        "name": "Expo de Test",
-        "shortDescription": "Il faut bien une permière a tout",
-        "longDescription": "On sait bien qu'elle sera rété mais bon on s'accroche quand meme",
-        "startDate": "2024-01-15T00:00:00.000Z",
-        "endDate": "2024-01-15T00:00:00.000Z",
-        "site": {
-            "id": 1,
-            "name": "Château d'Angers",
-            "shortDescription": "Un chateau trop bien",
-            "longDescription": "Je te jure! Tu as une superbe vue et je dis pas ca car c'est ma ville natale ! Non pas du tout !",
-            "telNumber": "+33 2 41 86 48 77",
-            "email": null,
-            "website": null,
-            "price": 9.5,
-            "picture": null,
-            "type": "MUSEUM",
-            "tags": [
-                "DISABILITY_FRIENDLY",
-                "DEAF_FRIENDLY"
-            ],
-            "address": {
-                "id": 1,
-                "houseNumber": "2",
-                "street": " Prom. du Bout du Monde",
-                "zip": "49100",
-                "City": {
-                    "id": 1,
-                    "name": "Angers",
-                    "zip": "49000",
-                    "Department": {
-                        "id": 1,
-                        "name": "Maine et Loire",
-                        "Country": {
-                            "id": 1,
-                            "name": "France"
-                        }
-                    }
-                },
-                "otherDetails": "",
-                "longitude": 491,
-                "latitude": 491
-            }
-        },
-        "items": [
-            {
-                "id": 1,
-                "name": "La tete d'un Epoutanflus",
-                "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-                "picture": null,
-                "relatedPerson": {
-                    "id": 1,
-                    "name": "Max Verstappen"
-                },
-                "itemType": null
-            },
-            {
-                "id": 2,
-                "name": "La tete d'un Epoutanflus",
-                "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-                "picture": null,
-                "relatedPerson": {
-                    "id": 1,
-                    "name": "Max Verstappen"
-                },
-                "itemType": null
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "name": "Expo de Test",
-        "shortDescription": "Il faut bien une permière a tout",
-        "longDescription": "On sait bien qu'elle sera rété mais bon on s'accroche quand meme",
-        "startDate": "2024-01-15T00:00:00.000Z",
-        "endDate": "2024-01-15T00:00:00.000Z",
-        "site": {
-            "id": 1,
-            "name": "Château d'Angers",
-            "shortDescription": "Un chateau trop bien",
-            "longDescription": "Je te jure! Tu as une superbe vue et je dis pas ca car c'est ma ville natale ! Non pas du tout !",
-            "telNumber": "+33 2 41 86 48 77",
-            "email": null,
-            "website": null,
-            "price": 9.5,
-            "picture": null,
-            "type": "MUSEUM",
-            "tags": [
-                "DISABILITY_FRIENDLY",
-                "DEAF_FRIENDLY"
-            ],
-            "address": {
-                "id": 1,
-                "houseNumber": "2",
-                "street": " Prom. du Bout du Monde",
-                "zip": "49100",
-                "City": {
-                    "id": 1,
-                    "name": "Angers",
-                    "zip": "49000",
-                    "Department": {
-                        "id": 1,
-                        "name": "Maine et Loire",
-                        "Country": {
-                            "id": 1,
-                            "name": "France"
-                        }
-                    }
-                },
-                "otherDetails": "",
-                "longitude": 491,
-                "latitude": 491
-            }
-        },
-        "items": [
-            {
-                "id": 1,
-                "name": "La tete d'un Epoutanflus",
-                "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-                "picture": null,
-                "relatedPerson": {
-                    "id": 1,
-                    "name": "Max Verstappen"
-                },
-                "itemType": null
-            },
-            {
-                "id": 2,
-                "name": "La tete d'un Epoutanflus",
-                "description": "Une relique datant de l'age epoustanflesque decouverte par Verstappen en attendant que ses concurents finissent la course...",
-                "picture": null,
-                "relatedPerson": {
-                    "id": 1,
-                    "name": "Max Verstappen"
-                },
-                "itemType": null
-            }
-        ]
-    }
-];
 
 const styles: { [key: string]: string } = {
     divBlockTitlePage:
         "text-black justify-between items-center flex mb-12 px-8 " +
         "md:flex-row md:items-center md:justify-between md:px-3 " +
         "sm:items-center",
+    noExhibitions:
+        "text-black",
     image18:
         "w-12 h-12 " +
         "sm:w-6 sm:h-6",
@@ -221,74 +79,157 @@ const Exhibition: React.FC<ExhibitionsProps> & {
 } = () => {
     const navigate = useNavigate();
 
-    const handleAction = (buttonName: string, exhibitionId: number) => {
-        console.log(`Le bouton ${buttonName} a été cliqué pour l'exhibition ${exhibitionId}! `);
-    };
+    const location = useLocation();
 
-    const handleGoToArtworks = (exhibition) => {
-        // Naviguer vers la page Artworks et passer l'exposition complète en état
-        console.log(`exxxxx = ${exhibition.items}`);
-        navigate('/artworks',  { state: { items: exhibition.items } });
-    };
+    const [exhibitions, setExhibitions] = useState(location.state?.item || []);
+    const { user, setUser } = useContext(UserContext);
 
 
-    const handleBack = () => {
-        console.log('go to previous page');
+    const handleDeleteExhibition = async (exhibitionId:any) => {
+        try {
+            const response = await fetch(`http://localhost:3001/exhibitions/${exhibitionId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${user.accessToken}`,
+                }
+            });
+
+            if (response.ok) {
+                const updatedExhibitions = exhibitions.filter((exhibition:any) => exhibition.id !== exhibitionId);
+                setExhibitions(updatedExhibitions);
+                console.log('Exhibition deleted successfully');
+            } else {
+                throw new Error(`HTTP status ${response.status}: Failed to delete the exhibition`);
+            }
+        } catch (error) {
+            console.error('Failed to delete exhibition:', error);
+        }
     };
+
+
+    const handleAction = async (buttonName: string, exhibitionId:any) => {
+        switch (buttonName) {
+            case 'handleGoToArtwork':
+                try {
+                    const url = `http://localhost:3001/exhibitions/${exhibitionId}/items`;
+                    const response = await fetch(url, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${user.accessToken}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    let artworks = [];
+                    if (response.ok) {
+                        artworks = await response.json();
+                    } else {
+                        console.error(`HTTP status ${response.status}: Failed to fetch exhibitions`);
+                    }
+                   navigate('/places/exhibitions/artworks', { state: { item: artworks, exhibitionId: exhibitionId } });
+                } catch (error) {
+                    console.error('Failed to fetch exhibition details:', error);
+                    //navigate('/places/exhibitions/artworks', { state: { item: exhibitionId } });
+                }
+                break;
+            case 'deleteButton':
+                handleDeleteExhibition(exhibitionId);
+                break;
+            case 'changeButton':
+                const exhibition = exhibitions.find((exh:any) => exh.id === exhibitionId);
+                changeExhibition(exhibition);
+                break;
+        }
+    };
+
+    const changeExhibition = (exhibitionsId:any) => {
+        navigate('/places/exhibitions/exhibitionModification', { state: { item: exhibitionsId } });
+    }
 
     const handleAddExhibition = () => {
-        console.log('createExhibition');
+        navigate('/places/exhibitions/exhibitionModification', { state: { item: location.state?.item[0].siteId } });
     };
 
-    return (
-        <Fragment>
-            <section className={`exhibitionsPage ${styles["exhibitionsPage"]}`}>
-                <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
-                    <div
-                        role="returnToPreviousPageBtn"
-                        tabIndex={0}
+    if (!exhibitions || exhibitions.length === 0) {
+        return (
+          <Fragment>
+              <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
+                  <div
+                    className={`returnToPreviousPageBtn ${styles["returnToPreviousPageBtn"]}`}
+                    onClick={() => navigate(-1)}
+                  >
+                      <img
+                        src=""
+                        loading="lazy"
+                        alt="Retour"
+                        className={`image18 ${styles["image18"]}`}
+                      />
+                  </div>
+                  <div className={`divTitlePage ${styles["divTitlePage"]}`}>
+                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
+                  </div>
+                  <div
+                    role="addExhibitionBtn"
+                    tabIndex={0}
+                    className={`addExhibitionBtn ${styles["addExhibitionBtn"]}`}
+                    onClick={() => handleAddExhibition()}
+                    onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                            handleAddExhibition();
+                            event.preventDefault();
+                        }
+                    }}
+                  >
+                      <img
+                        src=""
+                        loading="lazy"
+                        alt="Ajouter une exposition"
+                        className={`image17 ${styles["image17"]}`}
+                      />
+                  </div>
+              </div>
+              <div className={`noExhibitions ${styles["noExhibitions"]}`}>Aucune exposition disponible.</div>
+          </Fragment>
+        );
+    } else
+        return (
+          <Fragment>
+              <section className={`exhibitionsPage ${styles["exhibitionsPage"]}`}>
+                  <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
+                      <div
                         className={`returnToPreviousPageBtn ${styles["returnToPreviousPageBtn"]}`}
-                        onClick={() => handleBack()}
-                        onKeyDown={(event) => {
-                            if (event.key === 'Enter' || event.key === ' ') {
-                                handleBack();
-                                event.preventDefault();
-                            }
-                        }}
-                    >
-                        <img
+                        onClick={() => navigate(-1)}
+                      >
+                          <img
                             src=""
                             loading="lazy"
                             alt="Retour"
                             className={`image18 ${styles["image18"]}`}
-                        />
-                    </div>
-                    <div className={`divTitlePage ${styles["divTitlePage"]}`}>
-                        <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
-                    </div>
-                    <div
+                          />
+                      </div>
+                      <div className={`divTitlePage ${styles["divTitlePage"]}`}>
+                          <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
+                      </div>
+                      <div
                         role="addExhibitionBtn"
                         tabIndex={0}
                         className={`addExhibitionBtn ${styles["addExhibitionBtn"]}`}
-                        onClick={() => handleAddExhibition()}
                         onKeyDown={(event) => {
                             if (event.key === 'Enter' || event.key === ' ') {
-                                handleAddExhibition();
                                 event.preventDefault();
                             }
                         }}
-                    >
-                        <img
+                      >
+                          <img
                             src=""
                             loading="lazy"
                             alt="Ajouter une exposition"
                             className={`image17 ${styles["image17"]}`}
-                        />
-                    </div>
-                </div>
-                <div className={`divBlockExhibitionList ${styles["divBlockExhibitionList"]}`}>
-                    <div className={`divExhibitionList ${styles["divExhibitionList"]}`}>
-                        {staticExhibitions.map((exhibition) => (
+                          />
+                      </div>
+                  </div>
+                  <div className={`divBlockExhibitionList ${styles["divBlockExhibitionList"]}`}>
+                      <div className={`divExhibitionList ${styles["divExhibitionList"]}`}>
+                          {exhibitions.map((exhibition:any) => (
 
                             /// TODO Move this code into Exhibition Component
                             /// TODO Add image in each exhibitions
@@ -296,56 +237,56 @@ const Exhibition: React.FC<ExhibitionsProps> & {
 
                             <div key={exhibition.id} className={`divExhibition ${styles["divExhibition"]}`}>
                                 <img
-                                    src=""
-                                    loading="lazy" alt="" className={`image16 ${styles["image16"]}`}/>
+                                  src=""
+                                  loading="lazy" alt="" className={`image16 ${styles["image16"]}`}/>
                                 <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>
                                     <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>
                                         <h1 className={`heading13 ${styles["heading13"]}`}> {exhibition.name} </h1>
                                         <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
                                             <div
-                                                role="goToChangeExhibitionPageBtn"
-                                                tabIndex={0}
-                                                className={`divChangeBtn ${styles.divChangeBtn}`}
-                                                onClick={() => handleAction('changeButton', exhibition.id)}
-                                                onKeyDown={(event) => {
-                                                    if (event.key === 'Enter' || event.key === ' ') {
-                                                        handleAction('changeButton', exhibition.id);
-                                                        event.preventDefault();
-                                                    }
-                                                }}
+                                              role="goToChangeExhibitionPageBtn"
+                                              tabIndex={0}
+                                              className={`divChangeBtn ${styles.divChangeBtn}`}
+                                              onClick={() => handleAction('changeButton', exhibition.id)}
+                                              onKeyDown={(event) => {
+                                                  if (event.key === 'Enter' || event.key === ' ') {
+                                                      handleAction('changeButton', exhibition.id);
+                                                      event.preventDefault();
+                                                  }
+                                              }}
                                             >
                                                 <img
-                                                    src=""
-                                                    loading="lazy"
-                                                    alt=""
-                                                    className={`changeBtnIcon ${styles.changeBtnIcon}`}
+                                                  src=""
+                                                  loading="lazy"
+                                                  alt=""
+                                                  className={`changeBtnIcon ${styles.changeBtnIcon}`}
                                                 />
                                             </div>
                                             <div
-                                                role="deleteExhibitionBtn"
-                                                tabIndex={0}
-                                                className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
-                                                onClick={() => handleAction('deleteButton', exhibition.id)}
-                                                onKeyDown={(event) => {
-                                                    if (event.key === 'Enter' || event.key === ' ') {
-                                                        handleAction('deleteButton', exhibition.id);
-                                                        event.preventDefault();
-                                                    }
-                                                }}
+                                              role="deleteExhibitionBtn"
+                                              tabIndex={0}
+                                              className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
+                                              onClick={() => handleAction('deleteButton', exhibition.id)}
+                                              onKeyDown={(event) => {
+                                                  if (event.key === 'Enter' || event.key === ' ') {
+                                                      handleAction('deleteButton', exhibition.id);
+                                                      event.preventDefault();
+                                                  }
+                                              }}
                                             >
                                                 <img
-                                                    src=""
-                                                    loading="lazy"
-                                                    alt=""
-                                                    className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}
+                                                  src=""
+                                                  loading="lazy"
+                                                  alt=""
+                                                  className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}
                                                 />
                                             </div>
                                         </div>
                                     </div>
                                     <div
-                                        className={`divBlockExhibitionInformations ${styles["divBlockExhibitionInformations"]}`}>
+                                      className={`divBlockExhibitionInformations ${styles["divBlockExhibitionInformations"]}`}>
                                         <div
-                                            className={`divExhibitionInformations ${styles["divExhibitionInformations"]}`}>
+                                          className={`divExhibitionInformations ${styles["divExhibitionInformations"]}`}>
                                             <div className={`divGeneralInformation ${styles["divGeneralInformation"]}`}>
                                                 <div className={`placeText ${styles["placeText"]}`}>
                                                     {exhibition.site.address.street}, {exhibition.site.address.zip}
@@ -357,7 +298,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                                                     Du {new Date(exhibition.startDate).toLocaleDateString()} <br/> Au {new Date(exhibition.endDate).toLocaleDateString()}
                                                 </div>
                                                 <div
-                                                    className={`priceText ${styles["priceText"]}`}>{exhibition.site.price}€
+                                                  className={`priceText ${styles["priceText"]}`}>{exhibition.site.price}€
                                                     l'entrée
                                                 </div>
                                                 <div className={`artworkNbText ${styles["artworkNbText"]}`}>nb oeuvres
@@ -372,16 +313,16 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                                         </div>
                                         <div className={`divBlockGoToArtworksBtn ${styles["divBlockGoToArtworksBtn"]}`}>
                                             <div
-                                                role="button"
-                                                tabIndex={0}
-                                                className={`divGoToArtworksBtn ${styles["divGoToArtworksBtn"]}`}
-                                                onClick={() => handleGoToArtworks(exhibition)}
-                                                onKeyDown={(event) => {
-                                                    if (event.key === 'Enter' || event.key === ' ') {
-                                                        handleGoToArtworks(exhibition);
-                                                        event.preventDefault();
-                                                    }
-                                                }}
+                                              role="button"
+                                              tabIndex={0}
+                                              className={`divGoToArtworksBtn ${styles["divGoToArtworksBtn"]}`}
+                                              onClick={() => handleAction('handleGoToArtwork', exhibition.id)}
+                                              onKeyDown={(event) => {
+                                                  if (event.key === 'Enter' || event.key === ' ') {
+                                                      handleAction('handleGoToArtwork', exhibition.id);
+                                                      event.preventDefault();
+                                                  }
+                                              }}
                                             >
                                                 <div className={`goToArtworksText ${styles["goToArtworksText"]}`}>
                                                     Voir les oeuvres
@@ -393,12 +334,12 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                             </div>
 
 
-                        ))}
-                    </div>
-                </div>
-            </section>
-        </Fragment>
-    );
+                          ))}
+                      </div>
+                  </div>
+              </section>
+          </Fragment>
+        );
 };
 
 Exhibition.getLayout = function getLayout(page: React.ReactNode) {
