@@ -91,7 +91,7 @@ const Sites: React.FC<SitesProps> = () => {
           }
           const exhibitions = await response.json();
           const filteredExhibitions = exhibitions.filter((exhibition:any) => exhibition.site.id === siteId);
-          navigate('/places/exhibitions', { state: { item: filteredExhibitions } });
+          navigate('/places/exhibitions', { state: { item: filteredExhibitions , siteId: siteId} });
         } catch (error) {
           console.error('Failed to fetch exhibition details:', error);
         }
