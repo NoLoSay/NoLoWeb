@@ -84,6 +84,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
     const location = useLocation();
 
     const [exhibitions, setExhibitions] = useState(location.state?.item || []);
+    const siteId = location.state?.siteId;
     const { user, setUser } = useContext(UserContext);
 
 
@@ -147,8 +148,8 @@ const Exhibition: React.FC<ExhibitionsProps> & {
         navigate('/places/exhibitions/exhibitionModification', { state: { item: exhibitionsId } });
     }
 
-    const handleAddExhibition = () => {
-        navigate('/places/exhibitions/exhibitionModification', { state: { item: location.state?.item[0].siteId } });
+    const handleAddExhibition = (siteId:any) => {
+        navigate('/places/exhibitions/exhibitionModification', { state: { item: siteId } });
     };
 
     if (!exhibitions || exhibitions.length === 0) {
@@ -163,7 +164,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                   <div className={`divTitlePage ${styles["divTitlePage"]}`}>
                       <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
                   </div>
-                  <ButtonBase disableRipple onClick={() => handleAddExhibition()}>
+                  <ButtonBase disableRipple onClick={() => handleAddExhibition(siteId)}>
                       <div className={styles.buttons}>
                           Ajouter une exposition
                       </div>
@@ -185,7 +186,12 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                       <div className={`divTitlePage ${styles["divTitlePage"]}`}>
                           <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
                       </div>
-                      <ButtonBase disableRipple onClick={() => handleAddExhibition()}>
+
+
+
+
+
+                      <ButtonBase disableRipple onClick={() => handleAddExhibition(siteId)}>
                           <div className={styles.buttons}>
                               Ajouter une exposition
                           </div>
