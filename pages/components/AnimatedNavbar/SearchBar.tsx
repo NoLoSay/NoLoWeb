@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { TextField, IconButton, InputLabel } from "@mui/material";
+import { TextField, IconButton } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
-import { ChangeEventHandler } from "react";
 
 const SearchBar = () => {
   const [isInputFocused, setIsInputFocused] = useState(false);

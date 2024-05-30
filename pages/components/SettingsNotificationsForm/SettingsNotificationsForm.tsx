@@ -1,6 +1,4 @@
-import { Button, ButtonBase, Checkbox, Divider, FormControl, FormControlLabel, FormGroup, MenuItem, Paper, Select, TextField } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
-import testProfile from "../../../stories/assets/testProfile.json"
+import { Button, Checkbox, Divider, FormControlLabel, FormGroup} from "@mui/material";
 import SettingsUICard from "../SettingsUICard/SettingsUICard";
 
 const styles: { [key: string]: string } = {

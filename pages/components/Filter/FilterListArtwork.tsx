@@ -22,11 +22,6 @@ import React, { useState } from 'react';
   
   const FilterListArtwork: React.FC<FilterPageProps> = ({ handleArtworkTypeChange }) => {
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    
-    const toggleMenu = () => {
-      setIsMenuOpen(!isMenuOpen);
-    };
 
     return (
         <div className={`backgroundDiv ${styles.backgroundDiv}`}>

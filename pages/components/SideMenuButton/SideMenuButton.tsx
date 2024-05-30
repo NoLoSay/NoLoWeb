@@ -1,6 +1,4 @@
-import { ButtonBase } from '@mui/material';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 interface SideMenuButtonProps {
   title: string;

@@ -2,10 +2,7 @@ import { Fragment, ReactNode, useEffect, useState } from "react";
 import Head from "next/head";
 import Layout from "../../components/Layout/Layout";
 import ArtCard from "../../components/ArtCard/ArtCard";
-import infosJson from "../../../stories/assets/testArtCard.json"
-import VideoVignette from "../../components/VideoVignette/VideoVignette";
 import { useLocation } from 'react-router-dom';
-import PlaceList from '../findLocation/PlaceList';
 import { Place } from "@mui/icons-material";
 import placesData from "./places.json";
 import CardTemplate from "../../components/CardTemplate/CardTemplate";
@@ -44,7 +41,6 @@ const VideoAccess = () => {
   const [videoCountPlaceholder, setVideoCountPlaceholder] = useState("");
   const [city, setCity] = useState("");
   const [locationText, setLocationText] = useState("");
-  const [searchResults, setSearchResults] = useState<Place[]>([]);
 
   useEffect(() => {
     if (locationn.state) {

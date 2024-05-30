@@ -20,12 +20,7 @@ const styles: { [key: string]: string } = {
   }
   
   const FilterListExhibitions: React.FC<FilterListPlaceProps> = ({ handlePerPageChange }) => {
-
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
     
-    const toggleMenu = () => {
-      setIsMenuOpen(!isMenuOpen);
-    };
 
     return (
       <div className={`backgroundDiv ${styles.backgroundDiv}`}>

@@ -24,7 +24,6 @@ import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
 import AccountSettings from "./screen/accountSettings/AccountSettings";
 import ArtworkModificationPage from "./screen/artworkmodificationPage/ArtworkModificationPage";
 import { UserProvider } from "../contexts/UserProvider";
-import PlacesPage from "./screen/site/Sites";
 import Sites from "./screen/site/Sites";
 import ExhibitionModificationPage from "./screen/exhibitionModificationPage/exhibitionModificationPage";
 import SiteModificationPage from "./screen/siteModificationPage/SiteModificationPage";

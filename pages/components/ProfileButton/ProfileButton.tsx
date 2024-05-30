@@ -1,7 +1,6 @@
-import { Logout, Man, Person, Settings } from "@mui/icons-material";
-import { Avatar, Menu, MenuItem, Icon, ButtonBase } from "@mui/material";
-import { useRouter } from "next/router";
-import { useState, useContext, useEffect } from "react";
+import { Logout, Person, Settings } from "@mui/icons-material";
+import { Menu, MenuItem, ButtonBase } from "@mui/material";
+import { useState, useContext } from "react";
 import { UserContext, defaultUser } from "../../../contexts/UserProvider";
 import { useNavigate } from "react-router-dom";
 

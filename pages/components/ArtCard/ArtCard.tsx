@@ -57,7 +57,7 @@ type Infos = {
   pagePath: string;
 };
 
-function ArtCard({ title, artImage, description, pagePath } : Infos) {
+function ArtCard({ title, artImage, description } : Infos) {
   const [videos, setVideos] = useState<VideoDetails[]>([]);
 
   useEffect(() => {

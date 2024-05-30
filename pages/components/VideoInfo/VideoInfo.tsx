@@ -1,5 +1,4 @@
 import React from 'react';
-import imageArt from '../../../stories/assets/oeuvre1.jpg';
 
 const styles: { [key: string]: string } = {
   container_0: " space-y-3 font-bold ml-10",

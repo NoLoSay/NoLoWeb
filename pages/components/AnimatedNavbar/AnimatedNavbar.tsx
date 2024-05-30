@@ -141,7 +141,6 @@ export function LinkList({ links, handleChangePage }: NavLinkProps) {
 
 const AnimatedNavbar: React.FC<NavbarProps> = ({
   InApp,
-  LoginStatus,
 }: NavbarProps) => {
   const { user, setUser } = useContext(UserContext);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);

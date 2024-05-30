@@ -1,9 +1,8 @@
 import React from "react";
 import { NextPage } from "next";
 import { useNavigate } from 'react-router-dom';
-import { Box, ButtonBase, Modal, Typography } from "@mui/material";
+import { ButtonBase, Modal, Typography } from "@mui/material";
 import LocationEditForm from "../LocationEditForm/LocationEditForm";
-import { SxProps, Theme } from "@mui/system";
 
 interface CardInfo {
   id: string;
@@ -37,9 +36,6 @@ const styles: { [key: string]: string } = {
   container_3: "flex flex-row space-x-5 pt-5"
 };
 
-interface IntrinsicAttributes {
-  cardInfo?: CardInfo;
-}
 
 const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
 
@@ -52,20 +48,6 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
   };
 
   const [title1, title2] = splitTitle(cardInfo.title);
-
-  const handleClick = () => {
-    navigate(cardInfo.pathname, {
-      state: {
-        name: title1 + ' ' + title2,
-        description: cardInfo.description,
-        imageSrc: cardInfo.imageSrc,
-        videoCountPlaceholder: cardInfo.videoCountPlaceholder,
-        ...(cardInfo.website && { website: cardInfo.website }),
-        ...(cardInfo.city && { city: cardInfo.city }),
-        ...(cardInfo.location && { location: cardInfo.location }),
-      }
-    });
-  };
 
   const [open, setOpen] = React.useState(false);
   const [openDelete, setOpenDelete] = React.useState(false);

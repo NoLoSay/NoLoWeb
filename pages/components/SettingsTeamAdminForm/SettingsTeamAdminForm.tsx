@@ -1,6 +1,4 @@
-import { Button, ButtonBase, Divider, FormControl, MenuItem, Paper, Select, TextField } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
-import testProfile from "../../../stories/assets/testProfile.json"
+import { Button, Divider, TextField } from "@mui/material";
 
 const styles: { [key: string]: string } = {
   container_0: " py-5",

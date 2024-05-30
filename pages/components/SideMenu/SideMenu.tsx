@@ -1,4 +1,4 @@
-import { ButtonBase, Divider } from '@mui/material';
+import { Divider } from '@mui/material';
 import SideMenuButton from '../SideMenuButton/SideMenuButton';
 import { useNavigate } from 'react-router-dom';
 

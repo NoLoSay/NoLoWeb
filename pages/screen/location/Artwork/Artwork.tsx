@@ -1,12 +1,10 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Paper } from "@mui/material";
 import { useLocation } from 'react-router-dom';
-import FilterListArtwork from "../../../components/Filter/FilterListArtwork";
 import CardTemplate from "../../../components/CardTemplate/CardTemplate";
 import exhibitionsData from '../exhibitions.json';
 import { ButtonBase } from "@mui/material";
 import { ArrowBackIosNewRounded } from "@mui/icons-material";
-import Link from "next/link";
 import { useNavigate } from 'react-router-dom';
 import FilterListExhibitions from '../../../components/Filter/FilterListExhibitions';
 
@@ -80,13 +78,7 @@ const ShowArtwork = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [placesPerPage, setPlacesPerPage] = useState(12); 
 
-  const indexOfLastPlace = currentPage * placesPerPage;
-  const indexOfFirstPlace = indexOfLastPlace - placesPerPage;
-  const currentPlaces = exhibitions.slice(indexOfFirstPlace, indexOfLastPlace);
 
-  const onPageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
 
   const handlePerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setPlacesPerPage(parseInt(event.target.value));

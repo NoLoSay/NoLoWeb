@@ -23,7 +23,7 @@ type TitleProps = {
   pagePath: string;
 };
 
-function TitleCard({ title, description, website, location, imgPath, pagePath }: TitleProps) {
+function TitleCard({ title, description, website, location, pagePath }: TitleProps) {
 
   const navigate = useNavigate();
 

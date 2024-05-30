@@ -10,10 +10,6 @@ import SettingsTeamAdminForm from "../../components/SettingsTeamAdminForm/Settin
 import SettingsNotificationsForm from "../../components/SettingsNotificationsForm/SettingsNotificationsForm";
 import { UserContext } from "../../../contexts/UserProvider";
 
-type BigButtonProps = {
-  label: string;
-  textSize: string;
-};
 
 const FormTab = [
   <SettingsProfileForm />,
@@ -29,8 +25,6 @@ const styles: { [key: string]: string } = {
 };
 
 const AccountSettigns = () => {
-  const location = useLocation();
-  const { isPlace } = location.state || {};
   const [currentForm, setCurrentForm] = useState(0)
   const { user, setUser } = useContext(UserContext);
 

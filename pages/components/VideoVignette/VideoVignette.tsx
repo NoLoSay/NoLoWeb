@@ -1,6 +1,4 @@
-import { Fragment } from "react";
 import { Paper } from "@mui/material";
-import { title } from "process";
 
 type VideoVignetteProps = {
   title?: string;

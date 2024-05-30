@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import ImageSlider from "../../components/ImageSlider/ImageSlider";
 import PlaceList from './PlaceList';
 import Map from '../../components/Map/Map';
-import FilterPage from "../../components/Filter/FilterListPlace";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import placesData from "./places.json";
 

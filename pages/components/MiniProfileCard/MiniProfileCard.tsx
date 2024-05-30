@@ -1,4 +1,3 @@
-import { Paper } from "@mui/material";
 import testProfile from "../../../stories/assets/testProfile.json"
 
 const styles: { [key: string]: string } = {

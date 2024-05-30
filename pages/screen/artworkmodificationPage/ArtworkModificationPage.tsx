@@ -1,6 +1,6 @@
 import Layout from "../../components/Layout/Layout";
 import { useLocation, useNavigate } from 'react-router-dom';
-import React, {Fragment, useState, useContext, useEffect} from "react";
+import React, {Fragment, useState, useContext} from "react";
 import { UserContext } from "../../../contexts/UserProvider";
 
 const styles: { [key: string]: string } = {

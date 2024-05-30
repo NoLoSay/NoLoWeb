@@ -1,8 +1,5 @@
 import React, { useState, useContext } from "react";
-import { NextPage } from "next";
-import { useNavigate } from 'react-router-dom';
-import EditIcon from '@mui/icons-material/Edit';
-import { Box, Button, ButtonBase, Divider, FormControl, Modal, TextField, Typography } from "@mui/material";
+import { Button, Divider, TextField } from "@mui/material";
 import { UserContext } from "../../../contexts/UserProvider";
 
 const styles: { [key: string]: string } = {
@@ -24,9 +21,6 @@ interface CardInfo {
   pathname: string;
 }
 
-interface LocationCardProps {
-  cardInfo: CardInfo;
-}
 
 const LocationEditForm = ({cardInfo}:any) => {
 
