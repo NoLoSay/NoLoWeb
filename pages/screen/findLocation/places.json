@@ -6,7 +6,7 @@
       "location": "France",
       "description": "Forteresse médiévale avec des expositions sur l'histoire locale",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "3 Expositions",
       "website": "https://www.chateaunantes.fr/"
   },
   {
@@ -16,7 +16,7 @@
       "location": "France",
       "description": "Monument gothique majeur abritant les tombeaux de François II et Marguerite de Foix",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "2 Expositions",
       "website": "https://www.cathedrale-nantes.fr/"
   },
   {
@@ -26,7 +26,7 @@
       "location": "France",
       "description": "Place historique avec une fontaine monumentale et des cafés",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "8 Expositions",
       "website": "https://en.wikipedia.org/wiki/Place_Royale_(Nantes)"
   },
   {
@@ -36,7 +36,7 @@
       "location": "France",
       "description": "Jardin japonais artificiel sur une île de la Loire",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "7 Expositions",
       "website": "https://fr.wikipedia.org/wiki/Jardin_des_plantes_de_Nantes"
   },
   {
@@ -46,7 +46,7 @@
       "location": "Ireland",
       "description": "Université du 16ème siècle avec le célèbre Livre de Kells",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "4 Expositions",
       "website": "https://www.tcd.ie/"
   },
   {
@@ -56,7 +56,7 @@
       "location": "Ireland",
       "description": "Ancien siège du gouvernement irlandais avec des visites guidées et des expositions",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "1 Expositions",
       "website": "https://www.dublincastle.ie/"
   },
   {
@@ -66,7 +66,7 @@
       "location": "Ireland",
       "description": "Musée interactif de la bière Guinness avec vue panoramique sur la ville",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "3 Expositions",
       "website": "https://www.guinness-storehouse.com/"
   },
   {
@@ -76,7 +76,7 @@
       "location": "Ireland",
       "description": "Musée national avec des collections d'archéologie, d'art et d'histoire naturelle",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "3 Expositions",
       "website": "https://www.museum.ie/"
   },
   {
@@ -86,7 +86,7 @@
       "location": "Ireland",
       "description": "Cathédrale médiévale nationale de l'Église d'Irlande",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "6 Expositions",
       "website": "https://www.stpatrickscathedral.ie/"
   },
   {
@@ -96,7 +96,7 @@
       "location": "Ireland",
       "description": "Parc urbain étendu avec des cerfs, des jardins formels et des attractions touristiques",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "3 Expositions",
       "website": "https://www.phoenixpark.ie/"
   },
   {
@@ -106,7 +106,7 @@
       "location": "Ireland",
       "description": "Zoo fondé en 1830 avec des espèces animales du monde entier",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "5 Expositions",
       "website": "https://www.dublinzoo.ie/"
   },
   {
@@ -116,7 +116,7 @@
       "location": "Ireland",
       "description": "Ancienne prison historique avec des visites guidées populaires",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "4 Expositions",
       "website": "https://www.kilmainhamgaolmuseum.ie/"
   },
   {
@@ -126,7 +126,7 @@
       "location": "Ireland",
       "description": "Quartier animé avec des pubs traditionnels, des boutiques d'artisanat et des galeries d'art",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "3 Expositions",
       "website": "https://www.templebar.ie/"
   },
   {
@@ -136,7 +136,7 @@
       "location": "Ireland",
       "description": "Musée dédié aux grands écrivains irlandais et à leur patrimoine littéraire",
       "image": "/images/castle/castle-template-list.png",
-      "videocount": "22 Vidéos",
+      "videocount": "3 Expositions",
       "website": "https://www.writersmuseum.com/"
   }
 ]
