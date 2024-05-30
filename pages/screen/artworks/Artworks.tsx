@@ -1,8 +1,10 @@
 import React, { Fragment, useState, useContext, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../contexts/UserProvider';
+import {ButtonBase} from "@mui/material";
 
 const styles = {
+    buttons: 'flex p-3 w-full rounded-lg bg-white items-center justify-center space-x-5 stroke-black h-full bg-yellow-100 w-20',
     divBlockTitlePage:
       "text-black justify-between items-center flex mb-12 px-8 " +
       "md:flex-row md:items-center md:justify-between md:px-3 " +
@@ -131,100 +133,15 @@ const ArtworkModificationPage = () => {
         }
     };
 
-    if (artworks.length === 0) {
-        return (
-          <Fragment>
-              <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
-                  <div
-                    className={`returnToPreviousPageBtn ${styles["returnToPreviousPageBtn"]}`}
-                    onClick={() => navigate(-1)}
-                  >
-                      <img
-                        src=""
-                        loading="lazy"
-                        alt="Retour"
-                        className={`image18 ${styles["image18"]}`}
-                      />
-                  </div>
-                  <div className={`divTitlePage ${styles["divTitlePage"]}`}>
-                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
-                  </div>
-                  <div
-                    role="addExhibitionBtn"
-                    tabIndex={0}
-                    className={`addExhibitionBtn ${styles["addExhibitionBtn"]}`}
-                    onClick={() => handleAction("modificationArtwork", 0)}
-                    onKeyDown={(event) => {
-                        if (event.key === 'Enter' || event.key === ' ') {
-                            handleAction("modificationArtwork", 0);
-                            event.preventDefault();
-                        }
-                    }}
-                  >
-                      <img
-                        src=""
-                        loading="lazy"
-                        alt="Ajouter une exposition"
-                        className={`image17 ${styles["image17"]}`}
-                      />
-                  </div>
-              </div>
-              <div style={{textAlign: 'center'}}>No artworks available.</div>
-          </Fragment>
-        );
-    } else {
-        return (
-          <Fragment>
-              <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
-                  <div
-                    className={`returnToPreviousPageBtn ${styles["returnToPreviousPageBtn"]}`}
-                    onClick={() => navigate(-1)}
-                  >
-                      <img
-                        src=""
-                        loading="lazy"
-                        alt="Retour"
-                        className={`image18 ${styles["image18"]}`}
-                      />
-                  </div>
-                  <div className={`divTitlePage ${styles["divTitlePage"]}`}>
-                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
-                  </div>
-                  <div
-                    role="addExhibitionBtn"
-                    tabIndex={0}
-                    className={`addExhibitionBtn ${styles["addExhibitionBtn"]}`}
-                    onClick={() => handleAction("modificationArtwork", 0)}
-                    onKeyDown={(event) => {
-                        if (event.key === 'Enter' || event.key === ' ') {
-                            handleAction("modificationArtwork", 0);
-                            event.preventDefault();
-                        }
-                    }}
-                  >
-                      <img
-                        src=""
-                        loading="lazy"
-                        alt="Ajouter une exposition"
-                        className={`image17 ${styles["image17"]}`}
-                      />
-                  </div>
-              </div>
 
-              <div className={`divBlockArtworkList ${styles["divBlockArtworkList"]}`}>
-                      <div className={`divArtworksList ${styles["divArtworksList"]}`}>
-                          {artworks.map((artwork:any) => (
-                            <div key={artwork.id} className={`divArtwork ${styles["divArtwork"]}`}>
-                                <img src={artwork.imageUrl} className={`image16 ${styles["image16"]}`}/>
-                                <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>
-                                    <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>
-                                        <h1 className={`heading13 ${styles["heading13"]}`}> {artwork.name} </h1>
-                                        <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
+    /* Button add after back modification
+
+    <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
                                             <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
                                                 <div
                                                   role="deleteExhibitionBtn"
                                                   tabIndex={0}
-                                                  className={`divDeleteBtn`}
+                                                  className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
                                                   onClick={() => handleDeleteArtwork(artwork.id, location.state.exhibitionId)}
                                                   onKeyDown={(event) => {
                                                       if (event.key === 'Enter' || event.key === ' ') {
@@ -242,28 +159,64 @@ const ArtworkModificationPage = () => {
                                                 </div>
                                             </div>
                                         </div>
+
+     */
+
+
+    if (artworks.length === 0) {
+        return (
+          <Fragment>
+              <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
+                  <ButtonBase disableRipple onClick={() => navigate(-1)}>
+                      <div className={styles.buttons}>
+                          Retour
+                      </div>
+                  </ButtonBase>
+                  <div className={`divTitlePage ${styles["divTitlePage"]}`}>
+                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
+                  </div>
+              </div>
+              <div style={{textAlign: 'center'}}>No artworks available.</div>
+          </Fragment>
+        );
+    } else {
+        return (
+          <Fragment>
+              <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
+                  <ButtonBase disableRipple onClick={() => navigate(-1)}>
+                      <div className={styles.buttons}>
+                          Retour
+                      </div>
+                  </ButtonBase>
+                  <div className={`divTitlePage ${styles["divTitlePage"]}`}>
+                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
+                  </div>
+                  <ButtonBase disableRipple onClick={() => handleAction("modificationArtwork", 0)}>
+                      <div className={styles.buttons}>
+                          Ajouter une oeuvre
+                      </div>
+                  </ButtonBase>
+              </div>
+
+              <div className={`divBlockArtworkList ${styles["divBlockArtworkList"]}`}>
+                      <div className={`divArtworksList ${styles["divArtworksList"]}`}>
+                          {artworks.map((artwork:any) => (
+                            <div key={artwork.id} className={`divArtwork ${styles["divArtwork"]}`}>
+                                <img src={artwork.imageUrl} className={`image16 ${styles["image16"]}`}/>
+                                <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>
+                                    <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>
+                                        <h1 className={`heading13 ${styles["heading13"]}`}> {artwork.name} </h1>
                                     </div>
                                     <div
                                       className={`divBlockExhibitionInformations ${styles["divBlockExhibitionInformations"]}`}>
                                         <p>{artwork.description}</p>
                                     </div>
                                     <div className={`divBlockGoToArtworksBtn ${styles["divBlockGoToArtworksBtn"]}`}>
-                                        <div
-                                          role="button"
-                                          tabIndex={0}
-                                          className={`divGoToArtworksBtn`}
-                                          onClick={() => handleAction('modificationArtwork', artwork.id)}
-                                          onKeyDown={(event) => {
-                                              if (event.key === 'Enter' || event.key === ' ') {
-                                                  handleAction('modificationArtwork', artwork.id);
-                                                  event.preventDefault();
-                                              }
-                                          }}
-                                        >
-                                            <div className={`goToArtworksText`}>
-                                                Voir ou modifier l'oeuvre
+                                        <ButtonBase disableRipple onClick={() => handleAction('modificationArtwork', artwork.id)}>
+                                            <div className={styles.buttons}>
+                                                Modifier l'oeuvre
                                             </div>
-                                        </div>
+                                        </ButtonBase>
                                     </div>
                                 </div>
                             </div>))}

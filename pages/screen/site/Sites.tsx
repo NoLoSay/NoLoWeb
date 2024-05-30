@@ -1,9 +1,11 @@
 import React, {Fragment, useContext, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import {UserContext} from "../../../contexts/UserProvider";
+import {ButtonBase} from "@mui/material";
 interface SitesProps {}
 
 const styles: { [key: string]: string } = {
+  buttons: 'flex p-3 w-full rounded-lg bg-white items-center justify-center space-x-5 stroke-black h-full bg-yellow-100 w-20',
   divBlockTitlePage:
     "text-black justify-between items-center flex mb-12 px-8 " +
     "md:flex-row md:items-center md:justify-between md:px-3 " +
@@ -57,10 +59,19 @@ const Sites: React.FC<SitesProps> = () => {
 
   const handleAction = async (buttonName: string, siteId:any) => {
    switch (buttonName) {
+     /*
+     <button
+        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300"
+        onClick={() => handleAction("goToModificationSite", site.id)}
+      >
+        Modify Site
+      </button>
+
       case "goToModificationSite":
         const place = places.filter((place: any) => place.id === siteId);        
         navigate('/places/modificationPlace', { state: { site: place }});
         break;
+        */
       case "returnToPreviousPageBtn":
        navigate('/account');
         break;
@@ -91,25 +102,11 @@ const Sites: React.FC<SitesProps> = () => {
   return (
     <Fragment>
       <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
-        <div
-          role="returnToPreviousPageBtn"
-          tabIndex={0}
-          className={`returnToPreviousPageBtn ${styles["returnToPreviousPageBtn"]}`}
-          onClick={() => handleAction('returnToPreviousPageBtn', 0)}
-          onKeyDown={(event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-              handleAction('returnToPreviousPageBtn', 0);
-              event.preventDefault();
-            }
-          }}
-        >
-          <img
-            src=""
-            loading="lazy"
-            alt="Retour"
-            className={`image18 ${styles["image18"]}`}
-          />
-        </div>
+        <ButtonBase disableRipple onClick={() => handleAction('returnToPreviousPageBtn', 0)}>
+          <div className={styles.buttons}>
+            Retour
+          </div>
+        </ButtonBase>
         <div className={`divTitlePage ${styles["divTitlePage"]}`}>
           <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes sites d'expositions</h1>
         </div>
@@ -142,16 +139,12 @@ const Sites: React.FC<SitesProps> = () => {
                 <span className="text-gray-600">{site.email}</span>
                 <span className="text-gray-600">{site.website}</span>
                 <span className="text-gray-600">{site.price}€ entry</span>
-                <button
-                  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300"
-                  onClick={() => handleAction("goToModificationSite", site.id)}
-                >
-                  Modify Site
-                </button>
-                <button onClick={() => handleAction("handleGoToExhibitions", site.id)}
-                        className="mt-3 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">
-                  Voir les expositions de ce site
-                </button>
+
+                <ButtonBase disableRipple onClick={() => handleAction("handleGoToExhibitions", site.id)}>
+                  <div className={styles.buttons}>
+                    Voir les expositions de ce site
+                  </div>
+                </ButtonBase>
               </div>
             </div>
           </div>
