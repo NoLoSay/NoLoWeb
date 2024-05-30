@@ -165,7 +165,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                   </div>
                   <ButtonBase disableRipple onClick={() => handleAddExhibition()}>
                       <div className={styles.buttons}>
-                          Retour
+                          Ajouter une exposition
                       </div>
                   </ButtonBase>
               </div>
