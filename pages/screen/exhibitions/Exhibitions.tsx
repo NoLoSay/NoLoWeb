@@ -1,12 +1,14 @@
 import Layout from "../../components/Layout/Layout";
 import {useLocation, useNavigate} from 'react-router-dom';
-import {Fragment, useContext, useState} from "react";
+import React, {Fragment, useContext, useState} from "react";
 import {UserContext} from "../../../contexts/UserProvider";
+import {ButtonBase} from "@mui/material";
 
 
 interface ExhibitionsProps {}
 
 const styles: { [key: string]: string } = {
+    buttons: 'flex p-3 w-full rounded-lg bg-white items-center justify-center space-x-5 stroke-black h-full bg-yellow-100 w-20',
     divBlockTitlePage:
         "text-black justify-between items-center flex mb-12 px-8 " +
         "md:flex-row md:items-center md:justify-between md:px-3 " +
@@ -82,6 +84,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
     const location = useLocation();
 
     const [exhibitions, setExhibitions] = useState(location.state?.item || []);
+    const siteId = location.state?.siteId;
     const { user, setUser } = useContext(UserContext);
 
 
@@ -145,47 +148,27 @@ const Exhibition: React.FC<ExhibitionsProps> & {
         navigate('/places/exhibitions/exhibitionModification', { state: { item: exhibitionsId } });
     }
 
-    const handleAddExhibition = () => {
-        navigate('/places/exhibitions/exhibitionModification', { state: { item: location.state?.item[0].siteId } });
+    const handleAddExhibition = (siteId:any) => {
+        navigate('/places/exhibitions/exhibitionModification', { state: { item: siteId } });
     };
 
     if (!exhibitions || exhibitions.length === 0) {
         return (
           <Fragment>
               <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
-                  <div
-                    className={`returnToPreviousPageBtn ${styles["returnToPreviousPageBtn"]}`}
-                    onClick={() => navigate(-1)}
-                  >
-                      <img
-                        src=""
-                        loading="lazy"
-                        alt="Retour"
-                        className={`image18 ${styles["image18"]}`}
-                      />
-                  </div>
+                  <ButtonBase disableRipple onClick={() => navigate(-1)}>
+                      <div className={styles.buttons}>
+                          Retour
+                      </div>
+                  </ButtonBase>
                   <div className={`divTitlePage ${styles["divTitlePage"]}`}>
                       <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
                   </div>
-                  <div
-                    role="addExhibitionBtn"
-                    tabIndex={0}
-                    className={`addExhibitionBtn ${styles["addExhibitionBtn"]}`}
-                    onClick={() => handleAddExhibition()}
-                    onKeyDown={(event) => {
-                        if (event.key === 'Enter' || event.key === ' ') {
-                            handleAddExhibition();
-                            event.preventDefault();
-                        }
-                    }}
-                  >
-                      <img
-                        src=""
-                        loading="lazy"
-                        alt="Ajouter une exposition"
-                        className={`image17 ${styles["image17"]}`}
-                      />
-                  </div>
+                  <ButtonBase disableRipple onClick={() => handleAddExhibition(siteId)}>
+                      <div className={styles.buttons}>
+                          Ajouter une exposition
+                      </div>
+                  </ButtonBase>
               </div>
               <div className={`noExhibitions ${styles["noExhibitions"]}`}>Aucune exposition disponible.</div>
           </Fragment>
@@ -195,37 +178,24 @@ const Exhibition: React.FC<ExhibitionsProps> & {
           <Fragment>
               <section className={`exhibitionsPage ${styles["exhibitionsPage"]}`}>
                   <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
-                      <div
-                        className={`returnToPreviousPageBtn ${styles["returnToPreviousPageBtn"]}`}
-                        onClick={() => navigate(-1)}
-                      >
-                          <img
-                            src=""
-                            loading="lazy"
-                            alt="Retour"
-                            className={`image18 ${styles["image18"]}`}
-                          />
-                      </div>
+                      <ButtonBase disableRipple onClick={() => navigate(-1)}>
+                          <div className={styles.buttons}>
+                              Retour
+                          </div>
+                      </ButtonBase>
                       <div className={`divTitlePage ${styles["divTitlePage"]}`}>
                           <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
                       </div>
-                      <div
-                        role="addExhibitionBtn"
-                        tabIndex={0}
-                        className={`addExhibitionBtn ${styles["addExhibitionBtn"]}`}
-                        onKeyDown={(event) => {
-                            if (event.key === 'Enter' || event.key === ' ') {
-                                event.preventDefault();
-                            }
-                        }}
-                      >
-                          <img
-                            src=""
-                            loading="lazy"
-                            alt="Ajouter une exposition"
-                            className={`image17 ${styles["image17"]}`}
-                          />
-                      </div>
+
+
+
+
+
+                      <ButtonBase disableRipple onClick={() => handleAddExhibition(siteId)}>
+                          <div className={styles.buttons}>
+                              Ajouter une exposition
+                          </div>
+                      </ButtonBase>
                   </div>
                   <div className={`divBlockExhibitionList ${styles["divBlockExhibitionList"]}`}>
                       <div className={`divExhibitionList ${styles["divExhibitionList"]}`}>
@@ -243,44 +213,16 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                                     <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>
                                         <h1 className={`heading13 ${styles["heading13"]}`}> {exhibition.name} </h1>
                                         <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
-                                            <div
-                                              role="goToChangeExhibitionPageBtn"
-                                              tabIndex={0}
-                                              className={`divChangeBtn ${styles.divChangeBtn}`}
-                                              onClick={() => handleAction('changeButton', exhibition.id)}
-                                              onKeyDown={(event) => {
-                                                  if (event.key === 'Enter' || event.key === ' ') {
-                                                      handleAction('changeButton', exhibition.id);
-                                                      event.preventDefault();
-                                                  }
-                                              }}
-                                            >
-                                                <img
-                                                  src=""
-                                                  loading="lazy"
-                                                  alt=""
-                                                  className={`changeBtnIcon ${styles.changeBtnIcon}`}
-                                                />
-                                            </div>
-                                            <div
-                                              role="deleteExhibitionBtn"
-                                              tabIndex={0}
-                                              className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
-                                              onClick={() => handleAction('deleteButton', exhibition.id)}
-                                              onKeyDown={(event) => {
-                                                  if (event.key === 'Enter' || event.key === ' ') {
-                                                      handleAction('deleteButton', exhibition.id);
-                                                      event.preventDefault();
-                                                  }
-                                              }}
-                                            >
-                                                <img
-                                                  src=""
-                                                  loading="lazy"
-                                                  alt=""
-                                                  className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}
-                                                />
-                                            </div>
+                                            <ButtonBase disableRipple onClick={() => handleAction('changeButton', exhibition.id)}>
+                                                <div className={styles.buttons}>
+                                                    Modifier
+                                                </div>
+                                            </ButtonBase>
+                                            <ButtonBase disableRipple onClick={() => handleAction('deleteButton', exhibition.id)}>
+                                                <div className={styles.buttons}>
+                                                    Supprimer
+                                                </div>
+                                            </ButtonBase>
                                         </div>
                                     </div>
                                     <div
@@ -312,22 +254,11 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                                             </div>
                                         </div>
                                         <div className={`divBlockGoToArtworksBtn ${styles["divBlockGoToArtworksBtn"]}`}>
-                                            <div
-                                              role="button"
-                                              tabIndex={0}
-                                              className={`divGoToArtworksBtn ${styles["divGoToArtworksBtn"]}`}
-                                              onClick={() => handleAction('handleGoToArtwork', exhibition.id)}
-                                              onKeyDown={(event) => {
-                                                  if (event.key === 'Enter' || event.key === ' ') {
-                                                      handleAction('handleGoToArtwork', exhibition.id);
-                                                      event.preventDefault();
-                                                  }
-                                              }}
-                                            >
-                                                <div className={`goToArtworksText ${styles["goToArtworksText"]}`}>
+                                            <ButtonBase disableRipple onClick={() => handleAction('handleGoToArtwork', exhibition.id)}>
+                                                <div className={styles.buttons}>
                                                     Voir les oeuvres
                                                 </div>
-                                            </div>
+                                            </ButtonBase>
                                         </div>
                                     </div>
                                 </div>

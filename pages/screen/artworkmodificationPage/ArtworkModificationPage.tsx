@@ -4,23 +4,23 @@ import React, {Fragment, useState, useContext, useEffect} from "react";
 import { UserContext } from "../../../contexts/UserProvider";
 
 const styles: { [key: string]: string } = {
-  artworkModificationPage: "flex flex-col w-full pl-8 pr-8 sm:flex-col text-black",
+  artworkModificationPage: "font-black flex flex-col w-full pl-8 pr-8 sm:flex-col text-black",
   artworkCardModification: "shadow-xl rounded-lg flex flex-col w-full p-5",
   divBlockGeneralInformations: "w-full flex flex-row sm:flex-col",
   image22: "rounded-lg w-1/3 h-auto sm:w-full",
   divGeneralInformations: "w-full pb-0 pl-5 sm:pl-0",
-  textName: "pt-5 pb-2.5",
-  artistName: "pt-5 pb-2.5",
-  createdAtText: "pt-5 pb-2.5",
-  descriptionText: "pt-5 pb-2.5",
+  textName: "font-black pt-5 pb-2.5",
+  artistName: "font-black pt-5 pb-2.5",
+  createdAtText: "font-black pt-5 pb-2.5",
+  descriptionText: "font-black pt-5 pb-2.5",
   divBlockDescription: "w-full",
   divBlockButtonModification: "flex w-full justify-center items-center space-x-4",
   divButtonDontSave: "bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700 cursor-pointer",
   divButtonSave: "bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 cursor-pointer",
-  nameInput: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
-  descriptionInput: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
-  artistNameInput: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
-  dateInput: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+  nameInput: "font-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+  descriptionInput: "font-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+  artistNameInput: "font-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+  dateInput: "font-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
 };
 
 const ArtworkModificationPage = () => {
@@ -109,9 +109,7 @@ const ArtworkModificationPage = () => {
         const responseData = await response.json();
         console.log('Artwork updated successfully:', responseData);
       }
-
-      // Redirection après une opération réussie
-      navigate(-1);
+      navigate('/places');
     } catch (error) {
       console.error('Failed to update artwork:', error);
     }

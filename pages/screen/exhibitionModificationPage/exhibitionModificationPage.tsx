@@ -21,14 +21,14 @@ const ExhibitionModificationPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const {user} = useContext(UserContext);
-
+  const siteId = location.state?.siteId;
   const defaultExhibition = {
     id: null,
     name: '',
     shortDescription: '',
     longDescription: '',
     telNumber: '',
-    siteId: 0,
+    siteId: siteId,
     picture: 'https://cataas.com/cat',
     description: '',
     createdAt: new Date().toISOString().slice(0, 10),

@@ -85,7 +85,7 @@ const SiteModificationPage = () => {
         otherDetails: site.address.otherDetails,
         longitude: parseFloat(site.address.longitude),
         latitude: parseFloat(site.address.latitude),
-        cityId: parseInt(site.address.City.id, 10)
+        cityId: parseInt(site.address.city.id, 10)
       }
     };
 
