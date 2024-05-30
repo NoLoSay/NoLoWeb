@@ -165,7 +165,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                   </div>
                   <ButtonBase disableRipple onClick={() => handleAddExhibition()}>
                       <div className={styles.buttons}>
-                          Retour
+                          Ajouter une exposition
                       </div>
                   </ButtonBase>
               </div>
@@ -212,7 +212,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                                                     Modifier
                                                 </div>
                                             </ButtonBase>
-                                            <ButtonBase disableRipple onClick={() => handleAction('changeButton', exhibition.id)}>
+                                            <ButtonBase disableRipple onClick={() => handleAction('deleteButton', exhibition.id)}>
                                                 <div className={styles.buttons}>
                                                     Supprimer
                                                 </div>
