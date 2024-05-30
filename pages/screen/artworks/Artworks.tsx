@@ -175,6 +175,11 @@ const ArtworkModificationPage = () => {
                   <div className={`divTitlePage ${styles["divTitlePage"]}`}>
                       <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
                   </div>
+                  <ButtonBase disableRipple onClick={() => handleAction("modificationArtwork", 0)}>
+                      <div className={styles.buttons}>
+                          Ajouter une oeuvre
+                      </div>
+                  </ButtonBase>
               </div>
               <div style={{textAlign: 'center'}}>No artworks available.</div>
           </Fragment>
