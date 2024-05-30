@@ -10,23 +10,23 @@ interface HomeProps {}
 
 const styles: { [key: string]: string } = {
   mainDiv:
-    "relative py-16 w-full flex flex-col items-center justify-center gap-y-5",
+    "flex flex-col items-center justify-center gap-y-16 pb-10 pt-3",
 
   videoCreationDiv:
     "w-3/4 flex flex-row justify-start gap-2 " +
     "md:flex-col md:w-3/4 " +
     "sm:flex-col sm:w-3/4",
 
-  videoCreationImage: "relative w-3/4 self-center",
+  videoCreationImage: "relative w-3/4 self-center rounded-xl",
 
   descriptionDiv:
-    "relative rounded-xl bg-gray-300 bg-cover bg-map w-4/5 justify-start " +
+    "relative w-4/5 rounded-xl  p-10 bg-gray-300 bg-cover bg-[url(/images/map.png)] justify-start " +
     "lg:h-1/4 lg:w-6/7 " +
     "md:h-1/4 md:w-6/7 " +
     "sm:h-1/4 sm:w-9/10 sm:rounded-md",
 
   descriptionDivTextDiv:
-    "relative w-full flex flex-col items-start self-center justify-start gap-5 py-20 px-20 " +
+    "relative w-full flex flex-col items-start self-center justify-start gap-5 py-20 px-10" +
     "lg:py-3 lg:px-16 lg:gap-2 " +
     "md:py-2 md:px-14 md:gap-2 " +
     "sm:py-2 sm:px-2 sm:gap-1",
@@ -79,7 +79,7 @@ const Home: React.FC<HomeProps> & {
           <img
             className={`Home/videoCreationImage ${styles["videoCreationImage"]}`}
             alt="Video Creation Image"
-            src="/images/launch-video.png"
+            src="/images/SignImage.jpg"
           />
         </div>
         <div className={`Home/descriptionDiv ${styles["descriptionDiv"]}`}>

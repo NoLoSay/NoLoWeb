@@ -57,7 +57,7 @@ const Sites: React.FC<SitesProps> = () => {
   }, [user]);
 
 
-  const handleAction = async (buttonName: string, siteId) => {
+  const handleAction = async (buttonName: string, siteId:any) => {
    switch (buttonName) {
      /*
      <button
@@ -68,7 +68,7 @@ const Sites: React.FC<SitesProps> = () => {
       </button>
 
       case "goToModificationSite":
-        const place = places.filter(place => place.id === siteId);
+        const place = places.filter((place: any) => place.id === siteId);        
         navigate('/places/modificationPlace', { state: { site: place }});
         break;
         */
@@ -90,7 +90,7 @@ const Sites: React.FC<SitesProps> = () => {
             throw new Error(`HTTP status ${response.status}: Failed to fetch exhibitions`);
           }
           const exhibitions = await response.json();
-          const filteredExhibitions = exhibitions.filter(exhibition => exhibition.site.id === siteId);
+          const filteredExhibitions = exhibitions.filter((exhibition:any) => exhibition.site.id === siteId);
           navigate('/places/exhibitions', { state: { item: filteredExhibitions } });
         } catch (error) {
           console.error('Failed to fetch exhibition details:', error);
@@ -126,7 +126,7 @@ const Sites: React.FC<SitesProps> = () => {
       </div>
 
       <section className="flex flex-col w-full text-black">
-        {places.map((site) => (
+        {places.map((site:any) => (
           <div key={site.id} className="flex flex-row items-center justify-start p-5 shadow-xl rounded-lg mb-10">
             <img src={site.picture} alt={site.name} className="w-36 h-36 md:w-full sm:w-full object-cover"/>
 

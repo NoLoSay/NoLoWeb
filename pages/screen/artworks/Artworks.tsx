@@ -80,10 +80,10 @@ const ArtworkModificationPage = () => {
         }
     }, [location.state]);
 
-    const handleAction = (buttonName, artworkId) => {
+    const handleAction = (buttonName:any, artworkId:any) => {
         switch (buttonName) {
             case 'modificationArtwork':
-                const artwork = artworks.find(art => art.id === artworkId);
+                const artwork = artworks.find((art:any) => art.id === artworkId);
                 if (artwork) {
                     navigate('/places/exhibitions/artworks/artworkModification', { state: { item: artwork } });
                 } else {
@@ -98,7 +98,7 @@ const ArtworkModificationPage = () => {
         }
     };
 
-    const handleDeleteArtwork = async (artworkId, exhibitionId) => {
+    const handleDeleteArtwork = async (artworkId:any, exhibitionId?:any) => {
         try {
             // First, delete the artwork from the main items service
             const response = await fetch(`http://localhost:3001/items/${artworkId}`,
@@ -175,11 +175,6 @@ const ArtworkModificationPage = () => {
                   <div className={`divTitlePage ${styles["divTitlePage"]}`}>
                       <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
                   </div>
-                  <ButtonBase disableRipple onClick={() => handleAction("modificationArtwork", 0)}>
-                      <div className={styles.buttons}>
-                          Ajouter une oeuvre
-                      </div>
-                  </ButtonBase>
               </div>
               <div style={{textAlign: 'center'}}>No artworks available.</div>
           </Fragment>
@@ -205,7 +200,7 @@ const ArtworkModificationPage = () => {
 
               <div className={`divBlockArtworkList ${styles["divBlockArtworkList"]}`}>
                       <div className={`divArtworksList ${styles["divArtworksList"]}`}>
-                          {artworks.map(artwork => (
+                          {artworks.map((artwork:any) => (
                             <div key={artwork.id} className={`divArtwork ${styles["divArtwork"]}`}>
                                 <img src={artwork.imageUrl} className={`image16 ${styles["image16"]}`}/>
                                 <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>

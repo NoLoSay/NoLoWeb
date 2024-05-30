@@ -28,7 +28,7 @@ const styles: { [key: string]: string } = {
   contactLink: "text-white",
 
   aboutLink:
-    "text-blue-400 hover:underline hover:cursor-pointer bg-transparent",
+    "text-base text-blue-400 hover:underline hover:cursor-pointer bg-transparent",
 };
 
 const FooterContainer: React.FC = () => {
@@ -102,7 +102,7 @@ const FooterContainer: React.FC = () => {
           }}
           className={styles["aboutLink"]}
         >
-          About
+          À propos de nous
         </button>
       </div>
     </div>

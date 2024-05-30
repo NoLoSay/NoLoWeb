@@ -46,18 +46,19 @@ const ExhibitionModificationPage = () => {
     }
   }, [location.state]);
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event:any) => {
     const {name, value} = event.target;
-    setExhibition(prev => ({...prev, [name]: value}));
+    setExhibition((prev:any) => ({...prev, [name]: value}));
 
   };
 
-  const handleImageChange = (event) => {
+  const handleImageChange = (event:any) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setExhibition(prev => ({...prev, picture: e.target.result}));
+        const result = e.target?.result as string;
+        setExhibition((prev: any) => ({ ...prev, picture: result }));
       };
       reader.readAsDataURL(file);
     }
@@ -119,7 +120,7 @@ const ExhibitionModificationPage = () => {
           <div className={styles.divBlockGeneralInformations}>
             <img src={exhibition.picture || 'https://cataas.com/cat'}
                  alt="Exhibition Image" className={styles.image22}
-                 onClick={() => document.getElementById('imageUpload').click()}/>
+                 onClick={() => document.getElementById('imageUpload')?.click()}/>
             <div className={styles.divGeneralInformations}>
               <div className={styles.textName}>Name:</div>
               <input type="text" name="name" value={exhibition.name} onChange={handleInputChange}
@@ -154,7 +155,7 @@ const ExhibitionModificationPage = () => {
   );
 };
 
-ExhibitionModificationPage.getLayout = function getLayout(page) {
+ExhibitionModificationPage.getLayout = function getLayout(page:any) {
   return <Layout>{page}</Layout>;
 };
 

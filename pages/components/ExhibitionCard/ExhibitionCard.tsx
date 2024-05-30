@@ -1,7 +1,6 @@
 import Layout from "../../components/Layout/Layout";
 import { useNavigate } from 'react-router-dom';
 import { Fragment } from "react";
-import staticExhibitions from "../../../tests/testExhib.json";
 
 
 interface Country {
