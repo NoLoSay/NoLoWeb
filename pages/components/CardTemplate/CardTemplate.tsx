@@ -24,8 +24,8 @@ const styles: { [key: string]: string } = {
   cardContent: " flex flex-row items-center justify-start relative gap-[10px] mq450:flex-wrap",
   cardImage: "h-[115px] w-[113px] relative rounded-md object-cover mq450:flex-1",
   cardDetails: "flex-1 flex flex-col items-start justify-center gap-[10px] min-w-[138px]",
-  cardTitle: "self-stretch relative text-inherit leading-[19px] font-bold font-inherit text-base",
-  cardDescription: "self-stretch relative text-xs tracking-[-0.08px] leading-[16px] text-base-black m-0",
+  cardTitle: "self-stretch relative text-inherit leading-[19px] font-bold font-inherit text-lg",
+  cardDescription: "self-stretch relative tracking-[-0.08px] leading-[16px] text-base-black m-0 text-sm",
   videoCountInput: "w-full [border:none] [outline:none] bg-lightyellow self-stretch h-6 rounded-8xs flex flex-row items-start justify-center py-1 px-2.5 box-border font-poppins font-semibold text-2xs text-base-black min-w-[127px]",
 };
 

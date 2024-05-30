@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import NoVideoPlaceholder from "../NoVideoPlaceholder/NoVideoPlaceholder";
-
+import { ButtonBase } from "@mui/material";
+import { ArrowBackIosNewRounded } from "@mui/icons-material";
 import { Paper } from "@mui/material";
 import videoData from './videos.json';
+import { useNavigate } from 'react-router-dom';
+
 
 type VideoDetails = {
   videoId: string;
@@ -26,14 +29,21 @@ function ArtCard({ title, artImage, description, pagePath } : Infos) {
     setVideos(videoData);
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <div className="
       flex flex-col space-y-5 m-5 
       w-4/5 mx-auto
     ">
-      <Paper className="flex p-5 flex-col space-x-5 w-full items-center justify-around">
+      <Paper className="flex p-5 flex-col space-x-5 w-full items-center justify-around border border-solid border-4 border-yellow-300">
         <div className="flex flex-col">
           <div className='flex flex-row ml-2 mr-7 p-2'>
+              <div className='mt-36 ' onClick={() => navigate(-1)}>
+                  <ButtonBase className="flex-shrink-0 pr-10">
+                    <ArrowBackIosNewRounded sx={{ color: "Grey-300" }} />
+                  </ButtonBase>
+              </div>
                 <div className="w-1/3 mr-2 pl-4">
                   <img src={artImage} alt="Image" className='flex h-80 w-96 rounded-lg shadow-lg'/>
                 </div>

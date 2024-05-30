@@ -66,7 +66,7 @@ const VideoAccess = () => {
           pagePath=""/>
         <div className="w-4/5 mx-auto py-14">
           <div className="flex justify-center items-center">
-          <p className="text-center text-black text-xl font-bold">Découvrez d'autres oeuvres similaires :</p>
+            <p className="text-center text-black text-xl font-bold">Découvrez d'autres oeuvres similaires :</p>
           </div>
           <div className={`container ${styles.container}`}>
               <Carousel

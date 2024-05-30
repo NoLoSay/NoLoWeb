@@ -53,7 +53,7 @@ const NavLinks = ({ links, handleChangePage }: NavLinkProps) => {
       <button
         key={index}
         onClick={() => handleChangePage(link.href, link.props)}
-        className="text-zinc-500 hover:underline hover:cursor-pointer bg-transparent underline-offset-2"
+        className="text-zinc-500 hover:underline hover:cursor-pointer bg-transparent underline-offset-2 text-base"
       >
         {link.title}
       </button>

@@ -89,7 +89,7 @@ const Location = () => {
         description: exhibition.description,
         imageSrc: exhibition.image,
         videoCountPlaceholder: `${exhibition.artworks.length} oeuvres`,
-        pathname: "/videoaccess",
+        pathname: "/showartwork",
       };
     }
   }
