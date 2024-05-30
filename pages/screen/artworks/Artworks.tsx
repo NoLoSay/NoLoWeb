@@ -125,7 +125,7 @@ const ArtworkModificationPage = () => {
             }
 
             // Update the local state to remove the artwork
-            const updatedArtworks = artworks.filter(art => art.id !== artworkId);
+            const updatedArtworks = artworks.filter((art:any) => art.id !== artworkId);
             setArtworks(updatedArtworks);
             console.log('Artwork and its exhibition link deleted successfully');
         } catch (error) {

@@ -87,7 +87,7 @@ const Account = () => {
         <div className="col-span-2 space-y-5 items-center -mt-96">
           <div className="flex flex-row justify-between ">
           <h2>Lieux modérables</h2>
-            <ButtonBase disableRipple onClick={() => navigate("/places")} variant="contained">
+            <ButtonBase disableRipple onClick={() => navigate("/places")}>
               <div className="flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100 w-20">
                 Voir tout
               </div>
