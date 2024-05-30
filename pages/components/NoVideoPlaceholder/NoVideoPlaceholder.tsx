@@ -2,20 +2,28 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 import { ButtonBase } from '@mui/material';
 
+const styles: { [key: string]: string } = {
+  container_0: "flex flex-row text-black max-w-lg",
+  container_1: "flex flex-col space-y-5 justify-center",
+  container_2: "font-sans text-2xl",
+  container_3: "font-sans text-2xl",
+  container_4: "flex flex-col justify-evenly px-10"
+};
+
 const NoVideoPlaceholder = () => {
   return (
-    <div className="flex flex-row text-black max-w-lg">
-      <div className='flex flex-col space-y-5 justify-center'>
+    <div className={`container_0 ${styles.container_0}`}>
+      <div className={`container_1 ${styles.container_1}`}>
         <div>
-          <p className='font-sans text-2xl'>Créer une vidéo</p>
+          <p className={`container_2 ${styles.container_2}`}>Créer une vidéo</p>
           <p>Of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
         </div>
         <div>
-          <p className='font-sans text-2xl'>Demander une traduction</p>
+          <p className={`container_3 ${styles.container_3}`}>Demander une traduction</p>
           <p>Of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
         </div>
       </div>
-      <div className='flex flex-col justify-evenly px-10'>
+      <div className={`container_4 ${styles.container_4}`}>
         <ButtonBase disableRipple><AddBoxOutlinedIcon sx={{ fontSize: 60, color: "#f5d442" }} /></ButtonBase>
         <ButtonBase disableRipple><StarBorderRoundedIcon sx={{ fontSize: 60, color: "#f5d442" }} /></ButtonBase>
       </div>

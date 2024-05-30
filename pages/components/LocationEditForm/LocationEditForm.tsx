@@ -5,6 +5,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Box, Button, ButtonBase, Divider, FormControl, Modal, TextField, Typography } from "@mui/material";
 import { UserContext } from "../../../contexts/UserProvider";
 
+const styles: { [key: string]: string } = {
+  container_0: "py-5",
+  container_1: "grid grid-cols-4",
+  container_2: "pt-5 col-span-3 space-y-3 p-3",
+  container_3: "absolute top-0 right-0 m-2"
+};
+
 interface CardInfo {
   id: string;
   title: string;
@@ -57,10 +64,10 @@ const LocationEditForm = ({cardInfo}:any) => {
 
   return (
     <div className="">
-      <h1 className="py-5">Profile</h1>
+      <h1 className={`container_0 ${styles.container_0}`}>Profile</h1>
       <Divider />
-      <div className="grid grid-cols-4">
-        <form className="pt-5 col-span-3 space-y-3 p-3">
+      <div className={`container_1 ${styles.container_1}`}>
+        <form className={`container_2 ${styles.container_2}`}>
           <div>
             <TextField
               value={titleValue}
@@ -117,7 +124,7 @@ const LocationEditForm = ({cardInfo}:any) => {
             />
           </div>
           <Button
-            className="absolute top-0 right-0 m-2"
+            className={`container_3 ${styles.container_3}`}
             variant="contained"
             disableRipple
             onClick={() =>

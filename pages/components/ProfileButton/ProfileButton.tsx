@@ -10,6 +10,12 @@ type ProfileButtonProps = {
     avatar?: string;
 };
 
+const styles: { [key: string]: string } = {
+  container_0: "flex flex-row items-center justify-between space-x-3",
+  container_1: "text-base"
+};
+
+
 const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
@@ -31,8 +37,8 @@ const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
 
   return (
     <div>
-      <ButtonBase disableRipple onClick={handleClick} sx={{ padding: 1, borderRadius: 2 }} className="flex flex-row items-center justify-between space-x-3">
-        <p className="text-base">{name}</p>
+      <ButtonBase disableRipple onClick={handleClick} sx={{ padding: 1, borderRadius: 2 }} className={`container_0 ${styles.container_0}`}>
+        <p className={`container_1 ${styles.container_1}`}>{name}</p>
       </ButtonBase>
       <Menu
         anchorEl={anchorEl}

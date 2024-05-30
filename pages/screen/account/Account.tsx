@@ -14,6 +14,19 @@ import { useNavigate } from "react-router-dom";
 import AccountSelector from "../../components/AccountSelector/AccountSelector";
 import { UserContext } from "../../../contexts/UserProvider";
 
+const styles: { [key: string]: string } = {
+  container_0: "grid grid-cols-3 gap-4 text-black w-4/5 mx-auto my-10",
+  container_1: "flex flex-col space-y-5 items-center p-5",
+  container_2: "flex flex-ro space-x-5 my-10 px-5",
+  container_3: "space-y-3 m-5",
+  container_4: "space-y-3 m-5",
+  container_5: "font-bold text-xs",
+  container_6: "col-span-2 space-y-5 items-center -mt-96",
+  container_7: "flex flex-row justify-between ",
+  container_8: "flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100 w-20",
+  container_9: "flex flex-col space-y-5"
+};
+
 type BigButtonProps = {
   label: string;
   textSize: string;
@@ -43,9 +56,9 @@ const Account = () => {
         <title>Nolosay</title>
       </Head>
 
-      <div className="grid grid-cols-3 gap-4 text-black w-4/5 mx-auto my-10">
+      <div className={`container_0 ${styles.container_0}`}>
 
-        <div className="flex flex-col space-y-5 items-center p-5">
+        <div className={`container_1 ${styles.container_1}`}>
           <h2>Rechercher des oeuvres par :</h2>
           <BigButton label="Recherche personnalisée" textSize="text-2xl" />
           <BigButton label="Villes" textSize="text-2xl" />
@@ -54,7 +67,7 @@ const Account = () => {
 
         <div>
           <GenericCard title="Créer une vidéo" text="The Issues panel now warns you about the cookies that will be affected by the upcoming deprecation and phaseout of third-party cookies." imgPath="https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2023/07/shutterstock_pricing_plan_demystified_cover.jpg?resize=1250,1120" />
-          <div className="flex flex-ro space-x-5 my-10 px-5">
+          <div className={`container_2 ${styles.container_2}`}>
             {isPlace ? (
               <>
                 <BigButton label="Mes expositions" textSize="text-3xl"  onClick={() => navigate("/exhibitions")}/>
@@ -71,29 +84,29 @@ const Account = () => {
 
         <div>
           <ProfileCard email={user.email} fullName={user.username} phone={user.telNumber} profilePicturePath={testProfile.profilePicturePath} />
-          <div className="space-y-3 m-5">
+          <div className={`container_3 ${styles.container_3}`}>
             <CategoryButton altColor description="Faire des changements sur mon compte" text="Mon compte" onClick={() => navigate("/accountSettings")} />
             <CategoryButton altColor description="Faire des changements sur mon compte" text="Biométrie" />
             <AccountSelector accountsList={["mail1@gmail.com", "mail2@hotmail.fr", "mail3@Aol.us"]}/>
             <CategoryButton altColor text="Se déconnecter" />
           </div>
-          <div className="space-y-3 m-5">
-            <p className="font-bold text-xs">Plus d'information</p>
+          <div className={`container_4 ${styles.container_4}`}>
+            <p className={`container_5 ${styles.container_5}`}>Plus d'information</p>
             <CategoryButton text="Aide et support" />
             <CategoryButton text="A propos de l'app" onClick={() => navigate("/about")}/>
             <CategoryButton text="Conditions Générales d'Utilisation" />
           </div>
         </div>
-        <div className="col-span-2 space-y-5 items-center -mt-96">
-          <div className="flex flex-row justify-between ">
+        <div className={`container_6 ${styles.container_6}`}>
+          <div className={`container_7 ${styles.container_7}`}>
           <h2>Lieux modérables</h2>
             <ButtonBase disableRipple onClick={() => navigate("/places")}>
-              <div className="flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100 w-20">
+              <div className={`container_8 ${styles.container_8}`}>
                 Voir tout
               </div>
             </ButtonBase>
           </div>
-          <div className="flex flex-col space-y-5">
+          <div className={`container_9 ${styles.container_9}`}>
             <Divider/>
           <LocationCard cardInfo={locationData[0]} />
           <LocationCard cardInfo={locationData[1]} />

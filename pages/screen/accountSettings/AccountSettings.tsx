@@ -22,7 +22,11 @@ const FormTab = [
   <SettingsNotificationsForm />
 ]
 
-
+const styles: { [key: string]: string } = {
+  container_0: "flex w-4/6  mx-auto my-3",
+  container_1: "grid grid-cols-4 gap-4 text-black w-4/6 mx-auto my-10",
+  container_2: "col-span-3"
+};
 
 const AccountSettigns = () => {
   const location = useLocation();
@@ -39,12 +43,12 @@ const AccountSettigns = () => {
       <Head>
         <title>Nolosay</title>
       </Head>
-      <div className="flex w-4/6  mx-auto my-3">
+      <div className={`container_0 ${styles.container_0}`}>
         <MiniProfileCard name="John Doe" userId={user.username} />
       </div>
-      <div className="grid grid-cols-4 gap-4 text-black w-4/6 mx-auto my-10">
+      <div className={`container_1 ${styles.container_1}`}>
         <SideMenu handleChangeForm={handleFormChange}/>
-        <div className="col-span-3">
+        <div className={`container_2 ${styles.container_2}`}>
           {FormTab[currentForm]}
         </div>
       </div>

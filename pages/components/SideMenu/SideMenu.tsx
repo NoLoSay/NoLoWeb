@@ -2,6 +2,11 @@ import { ButtonBase, Divider } from '@mui/material';
 import SideMenuButton from '../SideMenuButton/SideMenuButton';
 import { useNavigate } from 'react-router-dom';
 
+const styles: { [key: string]: string } = {
+  container_0: "flex flex-col col-span-1 text-black max-w-lg",
+  container_1: "flex flex-col space-y-2"
+};
+
 export const NavLinksItems = [
   { href: "/AccountSettings/profile", title: "Profile", id: 0 },
   { href: "/AccountSettings/profile", title: "Gestion du lieu", id: 1},
@@ -19,8 +24,8 @@ const SideMenu = ({ handleChangeForm }: { handleChangeForm: (index: number) => v
   };
 
   return (
-    <div className="flex flex-col col-span-1 text-black max-w-lg">
-      <div className="flex flex-col space-y-2">
+    <div className={`container_0 ${styles.container_0}`}>
+      <div className={`container_1 ${styles.container_1}`}>
         {renderButtons()}
         <Divider />
         <SideMenuButton title="Retour au profile" onClick={() => navigate("/account")} color=''/>

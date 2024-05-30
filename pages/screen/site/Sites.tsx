@@ -22,6 +22,19 @@ const styles: { [key: string]: string } = {
     "shadow-xl flex flex-row items-center justify-start p-5 rounded-lg w-full mb-10 " +
     "md:flex-col md:items-center " +
     "sm:flex-col sm:items-start ",
+    container_0: "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300",
+    container_1: "flex flex-col w-full text-black",
+    container_2: "flex flex-row items-center justify-start p-5 shadow-xl rounded-lg mb-10",
+    container_3: "w-36 h-36 md:w-full sm:w-full object-cover",
+    container_4: "flex-1 pl-5",
+    container_5: "text-xl font-bold",
+    container_6: "text-justify",
+    container_7: "flex flex-col mt-4",
+    container_8: "text-gray-600",
+    container_9: "text-gray-600",
+    container_10: "text-gray-600",
+    container_11: "text-gray-600",
+    container_12: "text-gray-600"
 };
 
 const Sites: React.FC<SitesProps> = () => {
@@ -61,7 +74,7 @@ const Sites: React.FC<SitesProps> = () => {
    switch (buttonName) {
      /*
      <button
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300"
+        className={`container_0 ${styles.container_0}`}
         onClick={() => handleAction("goToModificationSite", site.id)}
       >
         Modify Site
@@ -125,20 +138,20 @@ const Sites: React.FC<SitesProps> = () => {
         </div>
       </div>
 
-      <section className="flex flex-col w-full text-black">
+      <section className={`container_1 ${styles.container_1}`}>
         {places.map((site:any) => (
-          <div key={site.id} className="flex flex-row items-center justify-start p-5 shadow-xl rounded-lg mb-10">
-            <img src={site.picture} alt={site.name} className="w-36 h-36 md:w-full sm:w-full object-cover"/>
+          <div key={site.id} className={`container_2 ${styles.container_2}`}>
+            <img src={site.picture} alt={site.name} className={`container_3 ${styles.container_3}`}/>
 
-            <div className="flex-1 pl-5">
-              <h1 className="text-xl font-bold">{site.name}</h1>
-              <p className="text-justify">{site.longDescription}</p>
-              <div className="flex flex-col mt-4">
-                <span className="text-gray-600">{site.address.street}, {site.address.zip}</span>
-                <span className="text-gray-600">{site.telNumber}</span>
-                <span className="text-gray-600">{site.email}</span>
-                <span className="text-gray-600">{site.website}</span>
-                <span className="text-gray-600">{site.price}€ entry</span>
+            <div className={`container_4 ${styles.container_4}`}>
+              <h1 className={`container_5 ${styles.container_5}`}>{site.name}</h1>
+              <p className={`container_6 ${styles.container_6}`}>{site.longDescription}</p>
+              <div className={`container_7 ${styles.container_7}`}>
+                <span className={`container_8 ${styles.container_8}`}>{site.address.street}, {site.address.zip}</span>
+                <span className={`container_9 ${styles.container_9}`}>{site.telNumber}</span>
+                <span className={`container_10 ${styles.container_10}`}>{site.email}</span>
+                <span className={`container_11 ${styles.container_11}`}>{site.website}</span>
+                <span className={`container_12 ${styles.container_12}`}>{site.price}€ entry</span>
 
                 <ButtonBase disableRipple onClick={() => handleAction("handleGoToExhibitions", site.id)}>
                   <div className={styles.buttons}>

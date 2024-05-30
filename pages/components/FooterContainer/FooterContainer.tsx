@@ -29,6 +29,9 @@ const styles: { [key: string]: string } = {
 
   aboutLink:
     "text-base text-blue-400 hover:underline hover:cursor-pointer bg-transparent",
+  container_0: "w-32",
+  container_1: "w-4 h-4",
+  container_2: "w-4 h-4"
 };
 
 const FooterContainer: React.FC = () => {
@@ -69,12 +72,12 @@ const FooterContainer: React.FC = () => {
         className={`informationsDiv ${styles["informationsDiv"]} ${styles["smInformationsDiv"]}`}
       >
         <b>Informations</b>
-        <p className="w-32">Mentions légales</p>
+        <p className={`container_0 ${styles.container_0}`}>Mentions légales</p>
         <div
           className={`informationsContentDivs ${styles["informationsContentDivs"]}`}
         >
           <img
-            className="w-4 h-4"
+            className={`container_1 ${styles.container_1}`}
             alt="phone logo"
             src="/icon/full/communication--phone.png"
           />
@@ -88,7 +91,7 @@ const FooterContainer: React.FC = () => {
           className={`informationsContentDivs ${styles["informationsContentDivs"]}`}
         >
           <img
-            className="w-4 h-4"
+            className={`container_2 ${styles.container_2}`}
             alt="mail logo"
             src="/icon/full/communication--mail.png"
           />

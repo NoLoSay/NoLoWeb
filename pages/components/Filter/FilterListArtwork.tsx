@@ -15,6 +15,9 @@ import React, { useState } from 'react';
       "focus:ring-yellow-300 " +
       "focus:border-yellow-300 " +
       "h-10 pl-3 pr-7 rounded-lg",
+    container_0: "flex items-center",
+    container_1: "sr-only",
+    container_2: "sr-only"
   };
   
   const FilterListArtwork: React.FC<FilterPageProps> = ({ handleArtworkTypeChange }) => {
@@ -32,10 +35,10 @@ import React, { useState } from 'react';
             <span>Expostions / Oeuvres</span>
               <div className={`lineDiv ${styles.lineDiv}`}></div>
             </div>
-            <div className="flex items-center">
+            <div className={`container_0 ${styles.container_0}`}>
               <div className={`blockfilterDiv ${styles.blockfilterDiv}`}>
                 <div>
-                  <label htmlFor="perPageSelect" className="sr-only">Nombre d'éléments par page</label>
+                  <label htmlFor="perPageSelect" className={`container_1 ${styles.container_1}`}>Nombre d'éléments par page</label>
                   <select
                     id="perPageSelect"
                     name="perPageSelect"
@@ -49,7 +52,7 @@ import React, { useState } from 'react';
               </div>
               <div className={`blockfilterDiv ${styles.blockfilterDiv}`}>
                 <div>
-                  <label htmlFor="sortSelect" className="sr-only">Sort</label>
+                  <label htmlFor="sortSelect" className={`container_2 ${styles.container_2}`}>Sort</label>
                   <select
                     id="sortSelect"
                     name="sortSelect"

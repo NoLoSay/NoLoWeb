@@ -45,6 +45,7 @@ const styles: { [key: string]: string } = {
 
   descriptionDivText:
     "text-2xl " + "lg:text-base " + "md:text-xs " + "sm:text-[0.35rem] ",
+  container_0: "font-poppins",
 };
 
 const Home: React.FC<HomeProps> & {
@@ -66,7 +67,7 @@ const Home: React.FC<HomeProps> & {
   return (
     <Fragment>
       <Head>
-        <title className="font-poppins">Nolosay</title>
+        <title className={`container_0 ${styles.container_0}`}>Nolosay</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"

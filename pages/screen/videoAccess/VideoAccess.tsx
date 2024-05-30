@@ -30,6 +30,10 @@ const styles: { [key: string]: string } = {
   container: "w-[1280px] mt-8 items-center gap-[35px] max-w-full ml-30",
   CardsDiv: " flex  items-center gap-[77px] max-w-full z-[1] text-mini text-darkslategray ",
   customButtonGroup: "custom-button-group",
+  container_0: "w-4/5 mx-auto py-14",
+  container_1: "flex justify-center items-center",
+  container_2: "text-center text-black text-xl font-bold",
+  container_3: "h-[300px]",
 };
 
 const VideoAccess = () => {
@@ -64,13 +68,13 @@ const VideoAccess = () => {
           artImage={imageSrc}
           description={description}
           pagePath=""/>
-        <div className="w-4/5 mx-auto py-14">
-          <div className="flex justify-center items-center">
-            <p className="text-center text-black text-xl font-bold">Découvrez d'autres oeuvres similaires :</p>
+        <div className={`container_0 ${styles.container_0}`}>
+          <div className={`container_1 ${styles.container_1}`}>
+            <p className={`container_2 ${styles.container_2}`}>Découvrez d'autres oeuvres similaires :</p>
           </div>
           <div className={`container ${styles.container}`}>
               <Carousel
-                  className="h-[300px]"
+                  className={`container_3 ${styles.container_3}`}
                   responsive={{
                     desktop: {
                       breakpoint: { max: 3000, min: 1024 },
