@@ -9,8 +9,8 @@ import {
 } from "../node_modules/react-router-dom/dist/index";
 import Layout from "./components/Layout/Layout";
 import Home from "./screen/home/Home";
-import ConnectionScreen from "./screen/authenticationSection/connection/ConnectionScreen";
-import SubscriptionScreen from "./screen/authenticationSection/subscription/SubscriptionScreen";
+import ConnectionScreen from "./screen/authentificationSection/connection/ConnectionScreen";
+import SubscriptionScreen from "./screen/authentificationSection/subscription/SubscriptionScreen";
 import ArtworkToTranslateSelectionScreen from "./screen/creationSection/artworkToTranslateSelectionSection/ArtworkToTranslateSelectionScreen";
 import About from "./screen/about/About";
 import ArtworksPage from "./screen/artworks/Artworks";
