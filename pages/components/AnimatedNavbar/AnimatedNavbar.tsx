@@ -25,9 +25,9 @@ type NavbarProps = {
 };
 
 const NavLinksItems = [
-  { href: "/about", title: "À propos de nous" },
-  { href: "/findlocation", title: "Trouver une vidéo" },
-  { href: "/tickets", title: "Réaliser une vidéo" },
+  { href: "/about", title: "" },
+  { href: "/findlocation", title: "" },
+  { href: "/tickets", title: "" },
 ];
 
 interface logoButtonProps {
