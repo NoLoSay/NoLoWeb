@@ -1,19 +1,45 @@
 {
   "page": {
-    "global": {
+    "components": {
       "footer": {
         "footerText": "Nolosay est un groupe composé d'étudiants passionnés et déterminés à créer un changement positif dans la vie quotidienne des personnes sourdes ou malentendantes. Leur objectif est clair : rendre l'information et la communication accessibles à tous, en brisant les barrières linguistiques."
       }
     },
-    "home": {
-      "descriptionDiv" : {
+    "screen" : {
+      "about": {
+        "description" : "NoLoSay est un projet étudiant de 8 personnes en 4ème année du Programme Grande École à EPITECH. Le projet se déroule sur 3 ans et nous souhaitons répandre la langue des signes en mettant à disposition des vidéos pour la communauté réalisées par la communauté.",
+        "team" : "L’équipe NOLOSAY !"
+      },
+      "artworks" : {
+        "back": "Retour",
+        "add":  "Ajouter une oeuvre",
+        "modification": "Modifier l'oeuvre",
+        "artworks": "Oeuvres de l'exposition",
+        "noavaible": "No artworks available."
+      },
+      "authentificationSection" : {
+        "connection" : {
+          "connecty": "Se connecter",
+          "connectyou": "Connecte-toi pour continuer",
+          "connectme": "Me connecter",
+          "or" : "ou avec",
+          "noaccount" :"Pas de compte ?",
+          "create" : "Créer un compte"
+        },
+        "subscription" : {
+          "create" : "Créer un compte",
+          "connecty": "Se connecter",
+          "already" : "Déjà un compte ?",
+          "information" : "Renseigne tes informations personnelles"
+        }
+
+      },
+
+      "home": {
         "title": "5,5 millions de personnes utilisent déjà Nolosay au quotidien.",
         "subtitle": "Accèdez à +1000 vidéos traduites en langue des signes",
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor."
       }
-    },
-    "about": {
-      "description" : "NoLoSay est un projet étudiant de 8 personnes en 4ème année du Programme Grande École à EPITECH. Le projet se déroule sur 3 ans et nous souhaitons répandre la langue des signes en mettant à disposition des vidéos pour la communauté réalisées par la communauté."
     }
   }
 }

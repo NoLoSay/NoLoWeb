@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "../../../../node_modules/react-router-dom/dist/index";
 import Layout from "../../../components/Layout/Layout";
 import SubscriptionController from "./SubscriptionController";
+import textData from "../../../../public/text.json";
 
 const styles: { [key: string]: string } = {
   mainDiv:
@@ -97,12 +98,12 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
           <p
             className={`SubscriptionScreen/titleDivTextDivTitle ${styles["titleDivTextDivTitle"]} ${styles["smTitleDivTextDivTitle"]}`}
           >
-            Créer un compte
+            {textData.page.screen.authentificationSection.subscription.create}
           </p>
           <p
             className={`SubscriptionScreen/titleDivTextDivSubtitle ${styles["titleDivTextDivSubtitle"]} ${styles["smTitleDivTextDivSubtitle"]}`}
           >
-            Renseigne tes informations personnelles
+            {textData.page.screen.authentificationSection.subscription.information}
           </p>
         </div>
       </div>
@@ -166,7 +167,7 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
         <button
           className={`SubscriptionScreen/formConnectionButton ${styles["formConnectionButton"]}`}
         >
-          Créer un compte
+            {textData.page.screen.authentificationSection.subscription.create}
         </button>
       </form>
       {error && (
@@ -179,14 +180,14 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
       <p
         className={`SubscriptionScreen/noAccountText ${styles["noAccountText"]}`}
       >
-        Déjà un compte ?{" "}
+        {textData.page.screen.authentificationSection.subscription.already}{" "}
         <button
           className={`SubscriptionScreen/noAccountButton ${styles["noAccountButton"]}`}
           onClick={() => {
             navigate("/connection");
           }}
         >
-          Se connecter
+            {textData.page.screen.authentificationSection.subscription.connecty}
         </button>
       </p>
     </div>

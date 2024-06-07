@@ -51,19 +51,13 @@ const Account = () => {
 
   return (
     <Fragment>
-      <Head>
-        <title>Nolosay</title>
-      </Head>
-
       <div className={`container_0 ${styles.container_0}`}>
-
         <div className={`container_1 ${styles.container_1}`}>
           <h2>Rechercher des oeuvres par :</h2>
           <BigButton label="Recherche personnalisée" textSize="text-2xl" />
           <BigButton label="Villes" textSize="text-2xl" />
           <BigButton label="Lieux" textSize="text-2xl" />
         </div>
-
         <div>
           <GenericCard title="Créer une vidéo" text="The Issues panel now warns you about the cookies that will be affected by the upcoming deprecation and phaseout of third-party cookies." imgPath="https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2023/07/shutterstock_pricing_plan_demystified_cover.jpg?resize=1250,1120" />
           <div className={`container_2 ${styles.container_2}`}>
@@ -80,7 +74,6 @@ const Account = () => {
             )}
           </div>
         </div>
-
         <div>
           <ProfileCard email={user.email} fullName={user.username} phone={user.telNumber} profilePicturePath={testProfile.profilePicturePath} />
           <div className={`container_3 ${styles.container_3}`}>

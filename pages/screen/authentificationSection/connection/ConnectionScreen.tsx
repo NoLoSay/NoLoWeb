@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "../../../../node_modules/react-router-dom/dist/index";
 import Layout from "../../../components/Layout/Layout";
 import ConnectionController from "./ConnectionController";
+import textData from "../../../../public/text.json";
 
 const styles: { [key: string]: string } = {
   mainDiv:
@@ -84,12 +85,12 @@ export const ConnectionScreen = (): JSX.Element => {
           <p
             className={`ConnectionScreen/titleDivTextDivTitle ${styles["titleDivTextDivTitle"]}`}
           >
-            Se connecter
+            {textData.page.screen.authentificationSection.connection.connecty}
           </p>
           <p
             className={`ConnectionScreen/titleDivTextDivSubtitle ${styles["titleDivTextDivSubtitle"]}`}
           >
-            Connecte-toi pour continuer
+            {textData.page.screen.authentificationSection.connection.connectyou}
           </p>
         </div>
       </div>
@@ -123,7 +124,7 @@ export const ConnectionScreen = (): JSX.Element => {
         <button
           className={`ConnectionScreen/formConnectionButton ${styles["formConnectionButton"]}`}
         >
-          Me connecter
+          {textData.page.screen.authentificationSection.connection.connectme}
         </button>
       </form>
       {error && (
@@ -145,7 +146,7 @@ export const ConnectionScreen = (): JSX.Element => {
           <p
             className={`ConnectionScreen/otherConnectionsDivSeperationDivText ${styles["otherConnectionsDivSeperationDivText"]}`}
           >
-            ou avec
+            {textData.page.screen.authentificationSection.connection.or}
           </p>
           <hr
             className={`ConnectionScreen/otherConnectionsDivSeperationDivLine ${styles["otherConnectionsDivSeperationDivLine"]}`}
@@ -171,7 +172,7 @@ export const ConnectionScreen = (): JSX.Element => {
       <p
         className={`ConnectionScreen/noAccountText ${styles["noAccountText"]}`}
       >
-        Pas de compte ?
+        {textData.page.screen.authentificationSection.connection.noaccount}
         <button
           className={`ConnectionScreen/noAccountButton ${styles["noAccountButton"]}`}
           onClick={() => {
@@ -179,7 +180,7 @@ export const ConnectionScreen = (): JSX.Element => {
           }}
         >
           {" "}
-          Créer un compte
+          {textData.page.screen.authentificationSection.connection.create}
         </button>
       </p>
     </div>

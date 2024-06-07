@@ -62,7 +62,7 @@ const FooterContainer: React.FC = () => {
           style={{}}
           className={`descriptionText ${styles["descriptionText"]}`}
         >
-          {textData.page.global.footer.footerText}
+          {textData.page.components.footer.footerText}
         </p>
         <p>
           © 2022 - {new Date().getFullYear()} NOLOSAY. Tous droits réservés.

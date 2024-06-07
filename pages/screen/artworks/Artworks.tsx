@@ -2,6 +2,7 @@ import React, { Fragment, useState, useContext, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../contexts/UserProvider';
 import {ButtonBase} from "@mui/material";
+import textData from "../../../public/text.json";
 
 const styles = {
     buttons: 'flex p-3 w-full rounded-lg bg-white items-center justify-center space-x-5 stroke-black h-full bg-yellow-100 w-20',
@@ -169,19 +170,19 @@ const ArtworkModificationPage = () => {
               <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
                   <ButtonBase disableRipple onClick={() => navigate(-1)}>
                       <div className={styles.buttons}>
-                          Retour
+                        {textData.page.screen.artworks.back}
                       </div>
                   </ButtonBase>
                   <div className={`divTitlePage ${styles["divTitlePage"]}`}>
-                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
+                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>{textData.page.screen.artworks.artworks}</h1>
                   </div>
                   <ButtonBase disableRipple onClick={() => handleAction("modificationArtwork", 0)}>
                       <div className={styles.buttons}>
-                          Ajouter une oeuvre
+                        {textData.page.screen.artworks.add}
                       </div>
                   </ButtonBase>
               </div>
-              <div style={{textAlign: 'center'}}>No artworks available.</div>
+              <div style={{textAlign: 'center'}}>{textData.page.screen.artworks.noavaible}</div>
           </Fragment>
         );
     } else {
@@ -190,15 +191,15 @@ const ArtworkModificationPage = () => {
               <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
                   <ButtonBase disableRipple onClick={() => navigate(-1)}>
                       <div className={styles.buttons}>
-                          Retour
+                        {textData.page.screen.artworks.back}
                       </div>
                   </ButtonBase>
                   <div className={`divTitlePage ${styles["divTitlePage"]}`}>
-                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
+                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>{textData.page.screen.artworks.artworks}</h1>
                   </div>
                   <ButtonBase disableRipple onClick={() => handleAction("modificationArtwork", 0)}>
                       <div className={styles.buttons}>
-                          Ajouter une oeuvre
+                        {textData.page.screen.artworks.add}
                       </div>
                   </ButtonBase>
               </div>
@@ -219,7 +220,7 @@ const ArtworkModificationPage = () => {
                                     <div className={`divBlockGoToArtworksBtn ${styles["divBlockGoToArtworksBtn"]}`}>
                                         <ButtonBase disableRipple onClick={() => handleAction('modificationArtwork', artwork.id)}>
                                             <div className={styles.buttons}>
-                                                Modifier l'oeuvre
+                                                {textData.page.screen.artworks.modification}
                                             </div>
                                         </ButtonBase>
                                     </div>
