@@ -19,12 +19,13 @@ interface CardTemplateProps {
 
 const styles: { [key: string]: string } = {
   container: "h-[200px] flex-1 flex flex-col items-start justify-start min-w-[281px] max-w-[375px] text-left text-mini text-darkslategray font-poppins mq450:h-auto",
-  card: "rounded-1.5lg bg-base-white shadow-[0px_4px_9px_rgba(0,_0,_0,_0.25)] flex flex-col items-start justify-center p-5 box-border min-h-[203px] text-base-black",
+  card: "rounded-1.5lg bg-base-white shadow-[0px_4px_9px_rgba(0,_0,_0,_0.25)] flex flex-col items-start justify-center p-5 box-border min-h-[203px] text-base-black border-solid border-2 border-base-white\
+  hover:border-yellow-300 rounded-1.5lg",
   cardContent: " flex flex-row items-center justify-start relative gap-[10px] mq450:flex-wrap",
   cardImage: "h-[115px] w-[113px] relative rounded-md object-cover mq450:flex-1",
   cardDetails: "flex-1 flex flex-col items-start justify-center gap-[10px] min-w-[138px]",
-  cardTitle: "self-stretch relative text-inherit leading-[19px] font-bold font-inherit text-base",
-  cardDescription: "self-stretch relative text-xs tracking-[-0.08px] leading-[16px] text-base-black m-0",
+  cardTitle: "self-stretch relative text-inherit leading-[19px] font-bold font-inherit text-lg",
+  cardDescription: "self-stretch relative tracking-[-0.08px] leading-[16px] text-base-black m-0 text-sm",
   videoCountInput: "w-full [border:none] [outline:none] bg-lightyellow self-stretch h-6 rounded-8xs flex flex-row items-start justify-center py-1 px-2.5 box-border font-poppins font-semibold text-2xs text-base-black min-w-[127px]",
 };
 
