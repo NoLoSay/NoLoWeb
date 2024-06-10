@@ -2,6 +2,8 @@ import Layout from "../../components/Layout/Layout";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { Fragment, useState, useContext } from "react";
 import { UserContext } from "../../../contexts/UserProvider";
+import textData from "../../../public/text.json";
+
 
 const styles: { [key: string]: string } = {
   artworkModificationPage:
@@ -174,31 +176,31 @@ const ArtworkModificationPage = () => {
             />
             <div className={styles.divGeneralInformations}>
               <div className={styles.nameBlockInput}>
-                <div className={styles.textName}> Name :</div>
+                <div className={styles.textName}> {textData.page.screen.artworkmodificationPage.name}</div>
                 <input
                   type="text"
                   className={styles.nameInput}
                   name="name"
                   value={artwork.name}
                   onChange={handleInputChange}
-                  placeholder="Enter artwork name"
+                  placeholder={textData.page.screen.artworkmodificationPage.pname}
                 />
               </div>
 
               <div className={styles.artistBlockName}>
-                <div className={styles.artistName}>Artist ID :</div>
+                <div className={styles.artistName}>{textData.page.screen.artworkmodificationPage.artistid}</div>
                 <input
                   type="number"
                   className={styles.artistNameInput}
                   name="relatedPersonId"
                   value={artwork.relatedPersonId}
                   onChange={handleInputChange}
-                  placeholder="Enter artist ID"
+                  placeholder={textData.page.screen.artworkmodificationPage.partistid}
                 />
               </div>
 
               <div className={styles.dateOfCreationBlock}>
-                <div className={styles.createdAtText}>Creation Date:</div>
+                <div className={styles.createdAtText}>{textData.page.screen.artworkmodificationPage.createdate}</div>
                 <input
                   type="date"
                   className={styles.dateInput}
@@ -211,20 +213,20 @@ const ArtworkModificationPage = () => {
                       : ""
                   }
                   onChange={handleInputChange}
-                  placeholder="Select creation date"
+                  placeholder={textData.page.screen.artworkmodificationPage.pcreatedate}
                 />
               </div>
             </div>
           </div>
           <div className={styles.divBlockDescription}>
-            <div className={styles.descriptionText}>Description :</div>
+            <div className={styles.descriptionText}>{textData.page.screen.artworkmodificationPage.description}</div>
             <input
               type="text"
               className={styles.descriptionInput}
               name="description"
               value={artwork.description}
               onChange={handleInputChange}
-              placeholder="Enter artwork description"
+              placeholder={textData.page.screen.artworkmodificationPage.pdescription}
             />
           </div>
 
@@ -234,10 +236,10 @@ const ArtworkModificationPage = () => {
               className={styles.backButton}
               onClick={() => navigate(-1)}
             >
-              Back
+             {textData.page.screen.artworkmodificationPage.back}
             </button>
             <button type="submit" className={styles.divButtonSave}>
-              Save
+            {textData.page.screen.artworkmodificationPage.save}
             </button>
           </div>
         </form>

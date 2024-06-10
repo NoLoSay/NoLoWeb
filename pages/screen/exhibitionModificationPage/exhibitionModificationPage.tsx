@@ -154,7 +154,7 @@ const ExhibitionModificationPage = () => {
                 value={exhibition.name}
                 onChange={handleInputChange}
                 className={styles.inputStyle}
-                placeholder="Enter exhibition name"
+                placeholder={textData.page.screen.exhibitionModificationPage.pname}
               />
               <div className={styles.textName}>
                 {textData.page.screen.exhibitionModificationPage.phone}
@@ -165,7 +165,7 @@ const ExhibitionModificationPage = () => {
                 value={exhibition.telNumber}
                 onChange={handleInputChange}
                 className={styles.inputStyle}
-                placeholder="Enter telephone number"
+                placeholder={textData.page.screen.exhibitionModificationPage.pphone}
               />
               <div className={styles.descriptionText}>
                 {
@@ -179,7 +179,7 @@ const ExhibitionModificationPage = () => {
                 value={exhibition.shortDescription}
                 onChange={handleInputChange}
                 className={styles.inputStyle}
-                placeholder="Enter short description"
+                placeholder={textData.page.screen.exhibitionModificationPage.pshortdescription}
               />
               <div className={styles.descriptionText}>
                 {
@@ -193,7 +193,7 @@ const ExhibitionModificationPage = () => {
                 value={exhibition.longDescription}
                 onChange={handleInputChange}
                 className={styles.inputStyle}
-                placeholder="Enter long description"
+                placeholder={textData.page.screen.exhibitionModificationPage.plongdescription}
               />
               <div className={styles.textName}>
                 {textData.page.screen.exhibitionModificationPage.id}
@@ -204,7 +204,7 @@ const ExhibitionModificationPage = () => {
                 value={exhibition.siteId}
                 onChange={handleInputChange}
                 className={styles.inputStyle}
-                placeholder="Enter site ID"
+                placeholder={textData.page.screen.exhibitionModificationPage.pid}
               />
             </div>
           </div>
@@ -237,7 +237,7 @@ const ExhibitionModificationPage = () => {
               {textData.page.screen.exhibitionModificationPage.back}
             </button>
             <button type="submit" className={styles.divButtonSave}>
-              Save
+            {textData.page.screen.exhibitionModificationPage.save}
             </button>
           </div>
         </form>

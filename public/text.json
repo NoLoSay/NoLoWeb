@@ -1,6 +1,51 @@
 {
   "page": {
     "components": {
+      "artCard" : {
+        "description" : "Description:",
+        "autor" : "Auteur:",
+        "createdate" : "Date de création:",
+        "place" : "Lieux:",
+        "creator" : "Créateur;",
+        "duration" : "Durée:",
+        "language" : "Langue:"
+      },
+      "artworkcard" : {
+        "clicktosee" : "Cliquer pour voir l'oeuvre"
+      },
+      "filter" : {
+        "filterListArtwork" : {
+          "exhibitions": "Expostions / Oeuvres",
+          "nbelements" : "Nombre d'éléments par page",
+          "seeexhibitions" : "Afficher les expositions",
+          "seeartworks" : "Afficher les oeuvres",
+          "sort" : "Trier",
+          "mostpopular" : "Plus Populaire",
+          "new" : "Nouveauté",
+          "atoz" : "De A à Z",
+          "ztoa" : "De Z à A"
+        },
+        "filterListExhibitions" : {
+          "artworks" : "Oeuvres",
+          "twelelements" : "12 éléments par page",
+          "twentelements" : "24 éléments par page",
+          "thirtelements" : "36 éléments par page",
+          "sort" : "Trier",
+          "mostpopular" : "Plus Populaire",
+          "new" : "Nouveauté"
+        },
+        "filterListPlace" : {
+          "place" : "Lieux",
+          "twelelements" : "12 éléments par page",
+          "twentelements" : "24 éléments par page",
+          "thirtelements" : "36 éléments par page",
+          "sort" : "Trier",
+          "mostpopular" : "Plus Populaire",
+          "new" : "Nouveauté",
+          "distance" : "Distance: Du + au - Proche"
+        }
+
+      },
       "footer": {
         "footerText": "Nolosay est un groupe composé d'étudiants passionnés et déterminés à créer un changement positif dans la vie quotidienne des personnes sourdes ou malentendantes. Leur objectif est clair : rendre l'information et la communication accessibles à tous, en brisant les barrières linguistiques."
       }
@@ -9,6 +54,18 @@
       "about": {
         "description" : "NoLoSay est un projet étudiant de 8 personnes en 4ème année du Programme Grande École à EPITECH. Le projet se déroule sur 3 ans et nous souhaitons répandre la langue des signes en mettant à disposition des vidéos pour la communauté réalisées par la communauté.",
         "team" : "L’équipe NOLOSAY !"
+      },
+      "artworkmodificationPage" : {
+        "name" : "Name :",
+        "pname" : "Enter artwork name",
+        "artistid" : "Artist ID :",
+        "partistid" : "Enter artist ID",
+        "createdate" : "Creation Date:",
+        "pcreatedate" : "Select creation date",
+        "description" : "Description:",
+        "pdescription" : "Enter description",
+        "back" : "Back",
+        "save" : "Save"
       },
       "artworks" : {
         "back": "Retour",
@@ -21,7 +78,9 @@
         "connection" : {
           "connecty": "Se connecter",
           "connectyou": "Connecte-toi pour continuer",
-          "connectme": "Me connecter",
+          "pusername" : "Nom d'utilisateur",
+          "ppassword" : "Mot de passe",
+          "connectme" : "Me connecter",
           "or" : "ou avec",
           "noaccount" :"Pas de compte ?",
           "create" : "Créer un compte"
@@ -30,7 +89,12 @@
           "create" : "Créer un compte",
           "connecty": "Se connecter",
           "already" : "Déjà un compte ?",
-          "information" : "Renseigne tes informations personnelles"
+          "information" : "Renseigne tes informations personnelles",
+          "pusername" : "Nom d'utilisateur",
+          "pmail" : "exemple@gmail.com",
+          "pphone" : "Téléphone",
+          "ppassword" : "Mot de passe",
+          "pconfirmpassword" : "Confirmer le mot de passe"
         }
 
       },
@@ -42,14 +106,20 @@
         }
       },
       "exhibitionModificationPage" : {
-        "name" : "Name:",
+        "name" : "Name :",
+        "pname" : "Enter exhibition name",
         "phone" : "Telephone Number:",
+        "pphone" : "Enter telephone number",
         "shortdescription" : "Short Description:",
+        "pshortdescription" : "Enter short description",
         "longdescription" : "Long Description:",
+        "plongdescription" : "Enter long description",
         "id" : "Site ID:",
+        "pid" : "Enter site ID",
         "createdate" : "Creation Date:",
         "enddate" : "End Date:",
-        "back" : "Back"
+        "back" : "Back",
+        "save" : "Save"
       },
       "exhibitions" : {
           "back" : "Retour",
@@ -77,14 +147,23 @@
       },
       "siteModificationPage" : {
         "name" : "Name:",
+        "pname" : "Enter site name:",
         "phone" : "Telephone Number:",
+        "pphone" : "Enter telephone number",
         "email" : "Email:",
+        "pemail" : "Enter email",
         "website" : "Website:",
+        "pwebsite" : "Enter website URL",
         "price" : "Price:",
+        "pprice" : "Enter price",
         "details" : "Other Details:",
+        "pdetails" : "Enter other details",
         "street" : "Street:",
+        "pstreet" : "Enter street",
         "numberStreet" : "House Number:",
+        "pnumberStreet" : "Enter house number",
         "cityCode" : "City Zip Code:",
+        "pcityCode" : "Enter zip code",
         "save" : "Save",
         "back" : "Back"
       },

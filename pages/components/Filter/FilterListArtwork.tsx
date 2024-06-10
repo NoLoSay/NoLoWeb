@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import textData from "../../../public/text.json";
+
 
 interface FilterPageProps {
   handleArtworkTypeChange: (
@@ -18,8 +20,6 @@ const styles: { [key: string]: string } = {
     "focus:border-yellow-300 " +
     "h-10 pl-3 pr-7 rounded-lg",
   container_0: "flex items-center",
-  container_1: "sr-only",
-  container_2: "sr-only",
 };
 
 const FilterListArtwork: React.FC<FilterPageProps> = ({
@@ -29,48 +29,35 @@ const FilterListArtwork: React.FC<FilterPageProps> = ({
     <div className={`backgroundDiv ${styles.backgroundDiv}`}>
       <main className={`main ${styles.main}`}>
         <div className={`textDiv ${styles.textDiv}`}>
-          <span>Expostions / Oeuvres</span>
+          <span>{textData.page.components.filter.filterListArtwork.exhibitions}</span>
           <div className={`lineDiv ${styles.lineDiv}`}></div>
         </div>
         <div className={`container_0 ${styles.container_0}`}>
           <div className={`blockfilterDiv ${styles.blockfilterDiv}`}>
             <div>
-              <label
-                htmlFor="perPageSelect"
-                className={`container_1 ${styles.container_1}`}
-              >
-                Nombre d'éléments par page
-              </label>
               <select
                 id="perPageSelect"
                 name="perPageSelect"
                 className={`boderDiv ${styles.borderDiv} `}
                 onChange={handleArtworkTypeChange}
               >
-                <option value="exhibitions">Afficher les expositions</option>
-                <option value="artworks">Afficher les oeuvres</option>
+                <option value="exhibitions">{textData.page.components.filter.filterListArtwork.seeexhibitions}</option>
+                <option value="artworks">{textData.page.components.filter.filterListArtwork.seeartworks}</option>
               </select>
             </div>
           </div>
           <div className={`blockfilterDiv ${styles.blockfilterDiv}`}>
             <div>
-              <label
-                htmlFor="sortSelect"
-                className={`container_2 ${styles.container_2}`}
-              >
-                Sort
-              </label>
               <select
                 id="sortSelect"
                 name="sortSelect"
                 className={`borderDiv ${styles.borderDiv}`}
               >
-                <option value="">Trier</option>
-                <option value="">Plus Populaire</option>
-                <option value="">Meilleur Note</option>
-                <option value="">Nouveauté</option>
-                <option value="">De A à Z</option>
-                <option value="">De Z à A</option>
+                <option value="">{textData.page.components.filter.filterListArtwork.sort}</option>
+                <option value="">{textData.page.components.filter.filterListArtwork.mostpopular}</option>
+                <option value="">{textData.page.components.filter.filterListArtwork.new}</option>
+                <option value="">{textData.page.components.filter.filterListArtwork.atoz}</option>
+                <option value="">{textData.page.components.filter.filterListArtwork.ztoa}</option>
               </select>
             </div>
           </div>

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import textData from "../../../public/text.json";
+
 
 const styles: { [key: string]: string } = {
   backgroundDiv: "bg-white",
@@ -12,8 +14,6 @@ const styles: { [key: string]: string } = {
     "focus:border-yellow-300 " +
     "h-10 pl-3 pr-7 rounded-lg",
   container_0: "flex items-center",
-  container_1: "sr-only",
-  container_2: "sr-only",
 };
 
 interface FilterListPlaceProps {
@@ -27,48 +27,35 @@ const FilterListPlace: React.FC<FilterListPlaceProps> = ({
     <div className={`backgroundDiv ${styles.backgroundDiv}`}>
       <main className={`main ${styles.main}`}>
         <div className={`textDiv ${styles.textDiv}`}>
-          <span>Lieux</span>
+          <span>{textData.page.components.filter.filterListPlace.place}</span>
           <div className={`lineDiv ${styles.lineDiv}`}></div>
         </div>
         <div className={`container_0 ${styles.container_0}`}>
           <div className={`blockfilterDiv ${styles.blockfilterDiv}`}>
             <div>
-              <label
-                htmlFor="perPageSelect"
-                className={`container_1 ${styles.container_1}`}
-              >
-                Nombre d'éléments par page
-              </label>
               <select
                 id="perPageSelect"
                 name="perPageSelect"
                 className={`boderDiv ${styles.borderDiv} `}
                 onChange={handlePerPageChange}
               >
-                <option value="12">12 éléments par page</option>
-                <option value="24">24 éléments par page</option>
-                <option value="36">36 éléments par page</option>
+                <option value="12">{textData.page.components.filter.filterListPlace.twelelements}</option>
+                <option value="24">{textData.page.components.filter.filterListPlace.twentelements}</option>
+                <option value="36">{textData.page.components.filter.filterListPlace.thirtelements}</option>
               </select>
             </div>
           </div>
           <div className={`blockfilterDiv ${styles.blockfilterDiv}`}>
             <div>
-              <label
-                htmlFor="sortSelect"
-                className={`container_2 ${styles.container_2}`}
-              >
-                Sort
-              </label>
               <select
                 id="sortSelect"
                 name="sortSelect"
                 className={`borderDiv ${styles.borderDiv}`}
               >
-                <option value="">Trier</option>
-                <option value="">Plus Populaire</option>
-                <option value="">Meilleur Note</option>
-                <option value="">Nouveauté</option>
-                <option value="">Distance: Du + au - Proche</option>
+                <option value="">{textData.page.components.filter.filterListPlace.sort}</option>
+                <option value="">{textData.page.components.filter.filterListPlace.mostpopular}</option>
+                <option value="">{textData.page.components.filter.filterListPlace.new}</option>
+                <option value="">{textData.page.components.filter.filterListPlace.distance}</option>
               </select>
             </div>
           </div>

@@ -5,6 +5,8 @@ import { ArrowBackIosNewRounded } from "@mui/icons-material";
 import { Paper } from "@mui/material";
 import videoData from "../../../tests/videos.json";
 import { useNavigate } from "react-router-dom";
+import textData from "../../../public/text.json";
+
 
 const styles: { [key: string]: string } = {
   container_0:
@@ -97,25 +99,25 @@ function ArtCard({ title, artImage, description }: Infos) {
                   </p>
                   <div className={`container_11 ${styles.container_11}`}>
                     <p className={`container_12 ${styles.container_12}`}>
-                      Description:
+                    {textData.page.components.artCard.description}
                     </p>
                     <p>{description}</p>
                   </div>
                   <div className={`container_13 ${styles.container_13}`}>
                     <p className={`container_14 ${styles.container_14}`}>
-                      Auteur:
+                    {textData.page.components.artCard.autor}
                     </p>
                     <p>{`Creator name`}</p>
                   </div>
                   <div className={`container_15 ${styles.container_15}`}>
                     <p className={`container_16 ${styles.container_16}`}>
-                      Date de création:
+                    {textData.page.components.artCard.createdate}
                     </p>
                     <p>{`1986`}</p>
                   </div>
                   <div className={`container_17 ${styles.container_17}`}>
                     <p className={`container_18 ${styles.container_18}`}>
-                      Lieu:
+                    {textData.page.components.artCard.place}
                     </p>
                     <p>{`Nantes`}</p>
                   </div>
@@ -158,7 +160,7 @@ function ArtCard({ title, artImage, description }: Infos) {
                             <p
                               className={`container_27 ${styles.container_27}`}
                             >
-                              Créateur:&nbsp;
+                              {textData.page.components.artCard.creator}&nbsp;
                             </p>
                             <p>{video.creator}</p>
                           </div>
@@ -168,7 +170,7 @@ function ArtCard({ title, artImage, description }: Infos) {
                             <p
                               className={`container_29 ${styles.container_29}`}
                             >
-                              Durée:&nbsp;
+                              {textData.page.components.artCard.duration}&nbsp;
                             </p>
                             <p>{video.duration}</p>
                           </div>
@@ -178,7 +180,7 @@ function ArtCard({ title, artImage, description }: Infos) {
                             <p
                               className={`container_31 ${styles.container_31}`}
                             >
-                              Langue:&nbsp;
+                              {textData.page.components.artCard.language}&nbsp;
                             </p>
                             <p>{video.language}</p>
                           </div>

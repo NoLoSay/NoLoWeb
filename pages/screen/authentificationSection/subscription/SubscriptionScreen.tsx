@@ -117,21 +117,21 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
         <input
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="text"
-          placeholder="Nom d'utilisateur"
+          placeholder={textData.page.screen.authentificationSection.subscription.pusername}
           name="userName"
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="email"
-          placeholder="exemple@gmail.com"
+          placeholder={textData.page.screen.authentificationSection.subscription.pmail}
           name="email"
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
           type="tel"
-          placeholder="Téléphone"
+          placeholder={textData.page.screen.authentificationSection.subscription.pphone}
           name="phoneNumber"
           onChange={(e) => setTelNumber(e.target.value)}
         />
@@ -141,7 +141,7 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
           <input
             className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
             type={showPassword ? "text" : "password"}
-            placeholder="Mot de passe"
+            placeholder={textData.page.screen.authentificationSection.subscription.ppassword}
             name="password"
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -156,7 +156,7 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
           <input
             className={`SubscriptionScreen/formInput ${styles["formInput"]} ${styles["smFormInput"]}`}
             type={showConfirmationPassword ? "text" : "password"}
-            placeholder="Confirmer le mot de passe"
+            placeholder={textData.page.screen.authentificationSection.subscription.pconfirmpassword}
             name="confirmPassword"
             onChange={(e) => setConfirmationPassword(e.target.value)}
           />

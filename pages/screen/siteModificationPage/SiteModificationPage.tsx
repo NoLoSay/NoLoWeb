@@ -142,7 +142,7 @@ const SiteModificationPage = () => {
                 name="name"
                 value={site.name}
                 onChange={handleInputChange}
-                placeholder="Enter site name"
+                placeholder={textData.page.screen.siteModificationPage.pname}
               />
               <div className={styles.textName}>
                 {textData.page.screen.siteModificationPage.phone}
@@ -153,7 +153,7 @@ const SiteModificationPage = () => {
                 name="telNumber"
                 value={site.telNumber}
                 onChange={handleInputChange}
-                placeholder="Enter telephone number"
+                placeholder={textData.page.screen.siteModificationPage.pphone}
               />
               <div className={styles.textName}>
                 {textData.page.screen.siteModificationPage.email}
@@ -164,7 +164,7 @@ const SiteModificationPage = () => {
                 name="email"
                 value={site.email}
                 onChange={handleInputChange}
-                placeholder="Enter email"
+                placeholder={textData.page.screen.siteModificationPage.pemail}
               />
               <div className={styles.textName}>
                 {textData.page.screen.siteModificationPage.website}
@@ -175,7 +175,7 @@ const SiteModificationPage = () => {
                 name="website"
                 value={site.website}
                 onChange={handleInputChange}
-                placeholder="Enter website URL"
+                placeholder={textData.page.screen.siteModificationPage.pwebsite}
               />
             </div>
           </div>
@@ -189,7 +189,7 @@ const SiteModificationPage = () => {
               name="price"
               value={site.price}
               onChange={handleInputChange}
-              placeholder="Enter price"
+              placeholder={textData.page.screen.siteModificationPage.pprice}
             />
             <div className={styles.textName}>
               {textData.page.screen.siteModificationPage.details}
@@ -200,7 +200,7 @@ const SiteModificationPage = () => {
               name="address.otherDetails"
               value={site.address.otherDetails}
               onChange={handleInputChange}
-              placeholder="Enter other details"
+              placeholder={textData.page.screen.siteModificationPage.pdetails}
             />
           </div>
           <div className={styles.divBlockGeneralInformations}>
@@ -213,7 +213,7 @@ const SiteModificationPage = () => {
               name="address.street"
               value={site.address.street}
               onChange={handleInputChange}
-              placeholder="Enter street"
+              placeholder={textData.page.screen.siteModificationPage.pstreet}
             />
             <div className={styles.textName}>
               {textData.page.screen.siteModificationPage.numberStreet}
@@ -224,7 +224,7 @@ const SiteModificationPage = () => {
               name="address.houseNumber"
               value={site.address.houseNumber}
               onChange={handleInputChange}
-              placeholder="Enter house number"
+              placeholder={textData.page.screen.siteModificationPage.pnumberStreet}
             />
             <div className={styles.textName}>
               {textData.page.screen.siteModificationPage.cityCode}
@@ -235,7 +235,7 @@ const SiteModificationPage = () => {
               name="address.zip"
               value={site.address.zip}
               onChange={handleInputChange}
-              placeholder="Enter zip code"
+              placeholder={textData.page.screen.siteModificationPage.pcityCode}
             />
           </div>
           <div className={styles.divBlockButtonModification}>

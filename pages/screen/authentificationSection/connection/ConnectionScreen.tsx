@@ -101,7 +101,7 @@ export const ConnectionScreen = (): JSX.Element => {
         <input
           className={`ConnectionScreen/formInput ${styles["formInput"]}`}
           type="text"
-          placeholder="Nom d'utilisateur"
+          placeholder={textData.page.screen.authentificationSection.connection.pusername}
           name="username"
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -111,7 +111,7 @@ export const ConnectionScreen = (): JSX.Element => {
           <input
             className={`ConnectionScreen/formInput ${styles["formInput"]}`}
             type={showPassword ? "text" : "password"}
-            placeholder="Mot de passe"
+            placeholder={textData.page.screen.authentificationSection.connection.ppassword}
             name="password"
             onChange={(e) => setPassword(e.target.value)}
           />

@@ -1,3 +1,5 @@
+import textData from "../../../public/text.json";
+
 const styles: { [key: string]: string } = {
   mainDiv:
     "shadow-cardShadow items-center relative rounded-2.5xl p-5 border-solid border-2 border-base-white\
@@ -65,7 +67,7 @@ const ArtworkCard = ({
           <button
             className={`ArtworkCard/contentDivTextDivButton ${styles["contentDivTextDivButton"]}`}
           >
-            Cliquer pour voir l'oeuvre
+            {textData.page.components.artworkcard.clicktosee}
           </button>
         </div>
       </div>
