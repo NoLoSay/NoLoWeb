@@ -4,7 +4,8 @@ import ImageSlider from "../../components/ImageSlider/ImageSlider";
 import PlaceList from './PlaceList';
 import Map from '../../components/Map/Map';
 import SearchBar from "../../components/SearchBar/SearchBar";
-import placesData from "./places.json";
+import placesData from "../../../tests/places.json";
+
 
 type Place = {
   position: [number, number];

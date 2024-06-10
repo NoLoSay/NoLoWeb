@@ -1,7 +1,7 @@
 import { Logout, Person, Settings } from "@mui/icons-material";
 import { Menu, MenuItem, ButtonBase } from "@mui/material";
 import { useState, useContext } from "react";
-import { UserContext, defaultUser } from "../../../contexts/UserProvider";
+import { UserContext, defaultUser } from "../../../../contexts/UserProvider";
 import { useNavigate } from "react-router-dom";
 
 type ProfileButtonProps = {

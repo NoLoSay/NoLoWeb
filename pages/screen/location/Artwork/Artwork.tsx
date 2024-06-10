@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Paper } from "@mui/material";
 import { useLocation } from 'react-router-dom';
 import CardTemplate from "../../../components/CardTemplate/CardTemplate";
-import exhibitionsData from '../exhibitions.json';
+import exhibitionsData from '../../../../tests/exhibitions.json';
 import { ButtonBase } from "@mui/material";
 import { ArrowBackIosNewRounded } from "@mui/icons-material";
 import { useNavigate } from 'react-router-dom';

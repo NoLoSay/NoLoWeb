@@ -4,7 +4,7 @@ import Layout from "../../components/Layout/Layout";
 import ArtCard from "../../components/ArtCard/ArtCard";
 import { useLocation } from 'react-router-dom';
 import { Place } from "@mui/icons-material";
-import placesData from "./places.json";
+import placesData from "../../../tests/places.json";
 import CardTemplate from "../../components/CardTemplate/CardTemplate";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css"; 

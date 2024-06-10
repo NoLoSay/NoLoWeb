@@ -1,8 +1,8 @@
 import { Button, ButtonBase, Divider, TextField } from "@mui/material";
 import { useContext, useState } from "react";
 import EditIcon from '@mui/icons-material/Edit';
-import testProfile from "../../../stories/assets/testProfile.json"
-import { UserContext } from "../../../contexts/UserProvider";
+import testProfile from "../../../../stories/assets/testProfile.json"
+import { UserContext } from "../../../../contexts/UserProvider";
 
 const styles: { [key: string]: string } = {
   container_0: " py-5",

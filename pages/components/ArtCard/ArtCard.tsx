@@ -3,7 +3,7 @@ import NoVideoPlaceholder from "../NoVideoPlaceholder/NoVideoPlaceholder";
 import { ButtonBase } from "@mui/material";
 import { ArrowBackIosNewRounded } from "@mui/icons-material";
 import { Paper } from "@mui/material";
-import videoData from './videos.json';
+import videoData from '../../../tests/videos.json';
 import { useNavigate } from 'react-router-dom';
 
 const styles: { [key: string]: string } = {

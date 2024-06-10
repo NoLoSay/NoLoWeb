@@ -2,6 +2,8 @@ import React, { Fragment, useState, useContext, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../contexts/UserProvider';
 import Layout from '../../components/Layout/Layout';
+import textData from "../../../public/text.json";
+
 
 const styles = {
   exhibitionModificationPage: "flex flex-col w-full pl-8 pr-8 sm:flex-col text-black",
@@ -122,31 +124,31 @@ const ExhibitionModificationPage = () => {
                  alt="Exhibition Image" className={styles.image22}
                  onClick={() => document.getElementById('imageUpload')?.click()}/>
             <div className={styles.divGeneralInformations}>
-              <div className={styles.textName}>Name:</div>
+              <div className={styles.textName}>{textData.page.screen.exhibitionModificationPage.name}</div>
               <input type="text" name="name" value={exhibition.name} onChange={handleInputChange}
                      className={styles.inputStyle} placeholder="Enter exhibition name"/>
-              <div className={styles.textName}>Telephone Number:</div>
+              <div className={styles.textName}>{textData.page.screen.exhibitionModificationPage.phone}</div>
               <input type="text" name="telNumber" value={exhibition.telNumber} onChange={handleInputChange}
                      className={styles.inputStyle} placeholder="Enter telephone number"/>
-              <div className={styles.descriptionText}>Short Description:</div>
+              <div className={styles.descriptionText}>{textData.page.screen.exhibitionModificationPage.shortdescription}</div>
               <input type="text" name="shortDescription" value={exhibition.shortDescription}
                      onChange={handleInputChange} className={styles.inputStyle} placeholder="Enter short description"/>
-              <div className={styles.descriptionText}>Long Description:</div>
+              <div className={styles.descriptionText}>{textData.page.screen.exhibitionModificationPage.longdescription}</div>
               <input type="text" name="longDescription" value={exhibition.longDescription} onChange={handleInputChange}
                      className={styles.inputStyle} placeholder="Enter long description"/>
-              <div className={styles.textName}>Site ID:</div>
+              <div className={styles.textName}>{textData.page.screen.exhibitionModificationPage.id}</div>
               <input type="number" name="siteId" value={exhibition.siteId} onChange={handleInputChange}
                      className={styles.inputStyle} placeholder="Enter site ID"/>
             </div>
           </div>
-          <div className={styles.textName}>Creation Date:</div>
+          <div className={styles.textName}>{textData.page.screen.exhibitionModificationPage.createdate}</div>
           <input type="date" name="createdAt" value={exhibition.createdAt} onChange={handleInputChange}
                  className={styles.inputStyle}/>
-          <div className={styles.textName}>End Date:</div>
+          <div className={styles.textName}>{textData.page.screen.exhibitionModificationPage.enddate}</div>
           <input type="date" name="endDate" value={exhibition.endDate} onChange={handleInputChange}
                  className={styles.inputStyle}/>
           <div className={styles.divBlockButtonModification}>
-            <button type="button" className={styles.backButton} onClick={() => navigate(-1)}>Back</button>
+            <button type="button" className={styles.backButton} onClick={() => navigate(-1)}>{textData.page.screen.exhibitionModificationPage.back}</button>
             <button type="submit" className={styles.divButtonSave}>Save</button>
           </div>
         </form>

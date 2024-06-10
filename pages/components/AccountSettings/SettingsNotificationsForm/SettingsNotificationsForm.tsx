@@ -1,5 +1,5 @@
 import { Button, Checkbox, Divider, FormControlLabel, FormGroup} from "@mui/material";
-import SettingsUICard from "../SettingsUICard/SettingsUICard";
+import SettingsUICard from "./SettingsUICard/SettingsUICard";
 
 const styles: { [key: string]: string } = {
   container_0: " py-5",

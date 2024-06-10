@@ -2,6 +2,8 @@ import React, {Fragment, useContext, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import {UserContext} from "../../../contexts/UserProvider";
 import {ButtonBase} from "@mui/material";
+import textData from "../../../public/text.json";
+
 interface SitesProps {}
 
 const styles: { [key: string]: string } = {
@@ -117,11 +119,11 @@ const Sites: React.FC<SitesProps> = () => {
       <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
         <ButtonBase disableRipple onClick={() => handleAction('returnToPreviousPageBtn', 0)}>
           <div className={styles.buttons}>
-            Retour
+          {textData.page.screen.site.back}
           </div>
         </ButtonBase>
         <div className={`divTitlePage ${styles["divTitlePage"]}`}>
-          <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes sites d'expositions</h1>
+          <h1 className={`pageTitle ${styles["pageTitle"]}`}>{textData.page.screen.site.allArtwork}</h1>
         </div>
         <div
           role="addSiteBtn"
@@ -151,11 +153,11 @@ const Sites: React.FC<SitesProps> = () => {
                 <span className={`container_9 ${styles.container_9}`}>{site.telNumber}</span>
                 <span className={`container_10 ${styles.container_10}`}>{site.email}</span>
                 <span className={`container_11 ${styles.container_11}`}>{site.website}</span>
-                <span className={`container_12 ${styles.container_12}`}>{site.price}€ entry</span>
+                <span className={`container_12 ${styles.container_12}`}>{site.price}{textData.page.screen.site.euro}</span>
 
                 <ButtonBase disableRipple onClick={() => handleAction("handleGoToExhibitions", site.id)}>
                   <div className={styles.buttons}>
-                    Voir les expositions de ce site
+                  {textData.page.screen.site.allArtwork}
                   </div>
                 </ButtonBase>
               </div>

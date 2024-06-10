@@ -3,6 +3,8 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import React, {Fragment, useContext, useState} from "react";
 import {UserContext} from "../../../contexts/UserProvider";
 import {ButtonBase} from "@mui/material";
+import textData from "../../../public/text.json";
+
 
 
 interface ExhibitionsProps {}
@@ -158,19 +160,19 @@ const Exhibition: React.FC<ExhibitionsProps> & {
               <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
                   <ButtonBase disableRipple onClick={() => navigate(-1)}>
                       <div className={styles.buttons}>
-                          Retour
+                      {textData.page.screen.exhibitions.back}
                       </div>
                   </ButtonBase>
                   <div className={`divTitlePage ${styles["divTitlePage"]}`}>
-                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
+                      <h1 className={`pageTitle ${styles["pageTitle"]}`}>{textData.page.screen.exhibitions.myExhibition}</h1>
                   </div>
                   <ButtonBase disableRipple onClick={() => handleAddExhibition(siteId)}>
                       <div className={styles.buttons}>
-                          Ajouter une exposition
+                      {textData.page.screen.exhibitions.addExhibition}
                       </div>
                   </ButtonBase>
               </div>
-              <div className={`noExhibitions ${styles["noExhibitions"]}`}>Aucune exposition disponible.</div>
+              <div className={`noExhibitions ${styles["noExhibitions"]}`}>{textData.page.screen.exhibitions.noAvaible}</div>
           </Fragment>
         );
     } else
@@ -180,11 +182,11 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                   <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
                       <ButtonBase disableRipple onClick={() => navigate(-1)}>
                           <div className={styles.buttons}>
-                              Retour
+                          {textData.page.screen.exhibitions.back}
                           </div>
                       </ButtonBase>
                       <div className={`divTitlePage ${styles["divTitlePage"]}`}>
-                          <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
+                          <h1 className={`pageTitle ${styles["pageTitle"]}`}>{textData.page.screen.exhibitions.myExhibition}</h1>
                       </div>
 
 
@@ -193,7 +195,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
 
                       <ButtonBase disableRipple onClick={() => handleAddExhibition(siteId)}>
                           <div className={styles.buttons}>
-                              Ajouter une exposition
+                          {textData.page.screen.exhibitions.addExhibition}
                           </div>
                       </ButtonBase>
                   </div>
@@ -215,12 +217,12 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                                         <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
                                             <ButtonBase disableRipple onClick={() => handleAction('changeButton', exhibition.id)}>
                                                 <div className={styles.buttons}>
-                                                    Modifier
+                                                {textData.page.screen.exhibitions.modification}
                                                 </div>
                                             </ButtonBase>
                                             <ButtonBase disableRipple onClick={() => handleAction('deleteButton', exhibition.id)}>
                                                 <div className={styles.buttons}>
-                                                    Supprimer
+                                                {textData.page.screen.exhibitions.remove}
                                                 </div>
                                             </ButtonBase>
                                         </div>
@@ -237,13 +239,12 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                                                     {exhibition.site.address.City && exhibition.site.address.City.Department && exhibition.site.address.City.Department.Country ? `, ${exhibition.site.address.City.Department.Country.name}` : ''}
                                                 </div>
                                                 <div className={`dateText ${styles["dateText"]}`}>
-                                                    Du {new Date(exhibition.startDate).toLocaleDateString()} <br/> Au {new Date(exhibition.endDate).toLocaleDateString()}
+                                                {textData.page.screen.exhibitions.from} {new Date(exhibition.startDate).toLocaleDateString()} <br/> {textData.page.screen.exhibitions.to} {new Date(exhibition.endDate).toLocaleDateString()}
                                                 </div>
                                                 <div
-                                                  className={`priceText ${styles["priceText"]}`}>{exhibition.site.price}€
-                                                    l'entrée
+                                                  className={`priceText ${styles["priceText"]}`}>{exhibition.site.price} {textData.page.screen.exhibitions.euro}
                                                 </div>
-                                                <div className={`artworkNbText ${styles["artworkNbText"]}`}>nb oeuvres
+                                                <div className={`artworkNbText ${styles["artworkNbText"]}`}> {textData.page.screen.exhibitions.nbArtwork}
                                                 </div>
                                             </div>
                                             <div className={`exhibitionDescription ${styles["exhibitionDescription"]}`}>
@@ -256,7 +257,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                                         <div className={`divBlockGoToArtworksBtn ${styles["divBlockGoToArtworksBtn"]}`}>
                                             <ButtonBase disableRipple onClick={() => handleAction('handleGoToArtwork', exhibition.id)}>
                                                 <div className={styles.buttons}>
-                                                    Voir les oeuvres
+                                                {textData.page.screen.exhibitions.allArtworks}
                                                 </div>
                                             </ButtonBase>
                                         </div>

@@ -1,6 +1,8 @@
 import React from "react";
 import Layout from "../../../components/Layout/Layout";
 import ArtworkCard from "../../../components/ArtworkCard/ArtworkCard";
+import textData from "../../../../public/text.json";
+
 
 type artWork = {
   title: string;
@@ -101,7 +103,7 @@ const ArtworkToTranslateSelectionScreen = (): JSX.Element => {
         <p
           className={`ArtworkToTranslateSelectionScreen/titleDivText ${styles["titleDivText"]} ${styles["smTitleDivText"]} ${styles["mdTitleDivText"]}`}
         >
-          Oeuvres à traduire
+          {textData.page.screen.creationSection.artworkToTranslateSelectionSection.artworkToTranslateSelectionSection.totranslate}
         </p>
       </div>
       <div className={`ArtworkToTranslateSelectionScreen/artworkList ${styles["artworkList"]} ${styles["smArtworkList"]} ${styles["mdArtworkList"]} ${styles["lgArtworkList"]}`}>

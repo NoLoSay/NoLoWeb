@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
+import textData from "../../../public/text.json";
+
 
 const toto: string = "bg-yellow-300 text-base-white";
 const tata: string = "bg-base-black text-yellow-300";
@@ -174,7 +176,7 @@ export const RecordVideo = (): JSX.Element => {
               !isRecording ? toto : tata
             }`}
           >
-            Start Recording
+            {textData.page.screen.videoCaptureSection.start}
           </button>
         </div>
         <div
@@ -198,7 +200,7 @@ export const RecordVideo = (): JSX.Element => {
             disabled={!isRecording}
             className={`container_5 ${styles.container_5}`}
           >
-            Stop Recording
+            {textData.page.screen.videoCaptureSection.stop}
           </button>
         </div>
         <div
@@ -224,7 +226,7 @@ export const RecordVideo = (): JSX.Element => {
             disabled={recordedChunks.length === 0}
             className={`container_7 ${styles.container_7}`}
           >
-            Enregistrer Video
+            {textData.page.screen.videoCaptureSection.save}
           </button>
         </div>
       </div>

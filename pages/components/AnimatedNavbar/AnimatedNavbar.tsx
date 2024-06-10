@@ -11,7 +11,7 @@ import {
   Divider,
   IconButton,
 } from "../../../node_modules/@mui/material/index";
-import ProfileButton from "../ProfileButton/ProfileButton";
+import ProfileButton from "./ProfileButton/ProfileButton";
 import MenuIcon from '@mui/icons-material/Menu';
 
 const styles: { [key: string]: string } = {

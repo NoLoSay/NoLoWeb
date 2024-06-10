@@ -2,6 +2,8 @@ import Layout from "../../components/Layout/Layout";
 import { useLocation, useNavigate } from 'react-router-dom';
 import {Fragment, useState, useContext, useEffect} from "react";
 import { UserContext } from "../../../contexts/UserProvider";
+import textData from "../../../public/text.json";
+
 
 const styles = {
   siteModificationPage: "flex flex-col w-full pl-8 pr-8 sm:flex-col text-black",
@@ -120,42 +122,42 @@ const SiteModificationPage = () => {
             <img src={site.picture || 'https://cataas.com/cat'}
                  loading="lazy" alt="Site Image" className={styles.image22}/>
             <div className={styles.divGeneralInformations}>
-              <div className={styles.textName}>Name :</div>
+              <div className={styles.textName}>{textData.page.screen.siteModificationPage.name}</div>
               <input type="text" className={styles.textInput} name="name" value={site.name} onChange={handleInputChange}
                      placeholder="Enter site name"/>
-              <div className={styles.textName}>Telephone Number:</div>
+              <div className={styles.textName}>{textData.page.screen.siteModificationPage.phone}</div>
               <input type="text" className={styles.textInput} name="telNumber" value={site.telNumber}
                      onChange={handleInputChange} placeholder="Enter telephone number"/>
-              <div className={styles.textName}>Email:</div>
+              <div className={styles.textName}>{textData.page.screen.siteModificationPage.email}</div>
               <input type="email" className={styles.textInput} name="email" value={site.email}
                      onChange={handleInputChange} placeholder="Enter email"/>
-              <div className={styles.textName}>Website:</div>
+              <div className={styles.textName}>{textData.page.screen.siteModificationPage.website}</div>
               <input type="url" className={styles.textInput} name="website" value={site.website}
                      onChange={handleInputChange} placeholder="Enter website URL"/>
             </div>
           </div>
           <div className={styles.divBlockGeneralInformations}>
-            <div className={styles.textName}>Price:</div>
+            <div className={styles.textName}>{textData.page.screen.siteModificationPage.price}</div>
             <input type="number" className={styles.textInput} name="price" value={site.price}
                    onChange={handleInputChange} placeholder="Enter price"/>
-            <div className={styles.textName}>Other Details:</div>
+            <div className={styles.textName}>{textData.page.screen.siteModificationPage.details}</div>
             <input type="text" className={styles.textInput} name="address.otherDetails"
                    value={site.address.otherDetails} onChange={handleInputChange} placeholder="Enter other details"/>
           </div>
           <div className={styles.divBlockGeneralInformations}>
-            <div className={styles.textName}>Street:</div>
+            <div className={styles.textName}>{textData.page.screen.siteModificationPage.street}</div>
             <input type="text" className={styles.textInput} name="address.street" value={site.address.street}
                    onChange={handleInputChange} placeholder="Enter street"/>
-            <div className={styles.textName}>House Number:</div>
+            <div className={styles.textName}>{textData.page.screen.siteModificationPage.numberStreet}</div>
             <input type="text" className={styles.textInput} name="address.houseNumber" value={site.address.houseNumber}
                    onChange={handleInputChange} placeholder="Enter house number"/>
-            <div className={styles.textName}>City Zip Code:</div>
+            <div className={styles.textName}>{textData.page.screen.siteModificationPage.cityCode}</div>
             <input type="text" className={styles.textInput} name="address.zip" value={site.address.zip}
                    onChange={handleInputChange} placeholder="Enter zip code"/>
           </div>
           <div className={styles.divBlockButtonModification}>
-            <button type="submit" className={styles.divButtonSave}>Save</button>
-            <button type="button" className={styles.backButton} onClick={() => navigate(-1)}>Back</button>
+            <button type="submit" className={styles.divButtonSave}>{textData.page.screen.siteModificationPage.save}</button>
+            <button type="button" className={styles.backButton} onClick={() => navigate(-1)}>{textData.page.screen.siteModificationPage.back}</button>
           </div>
         </form>
       </section>

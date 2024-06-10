@@ -1,5 +1,5 @@
 import { Divider } from '@mui/material';
-import SideMenuButton from '../SideMenuButton/SideMenuButton';
+import SideMenuButton from './SideMenuButton/SideMenuButton';
 import { useNavigate } from 'react-router-dom';
 
 const styles: { [key: string]: string } = {
