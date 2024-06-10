@@ -6,7 +6,7 @@ const styles: { [key: string]: string } = {
   container_0: "py-5",
   container_1: "grid grid-cols-4",
   container_2: "pt-5 col-span-3 space-y-3 p-3",
-  container_3: "absolute top-0 right-0 m-2"
+  container_3: "absolute top-0 right-0 m-2",
 };
 
 interface CardInfo {
@@ -21,27 +21,28 @@ interface CardInfo {
   pathname: string;
 }
 
-
-const LocationEditForm = ({cardInfo}:any) => {
-
+const LocationEditForm = ({ cardInfo }: any) => {
   const { user, setUser } = useContext(UserContext);
 
-  const handleModification = async ({cardInfo}:any) => {
+  const handleModification = async ({ cardInfo }: any) => {
     try {
-      const response = await fetch("http://localhost:3001/sites/" + cardInfo.id , {
-        method: "PATCH",
-        headers: {
-          Accept: "*/*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          cardInfo
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:3001/sites/" + cardInfo.id,
+        {
+          method: "PATCH",
+          headers: {
+            Accept: "*/*",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            cardInfo,
+          }),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
-        console.log(response)
+        console.log(response);
       } else {
         throw new Error("Failed to create acccount");
       }
@@ -51,7 +52,9 @@ const LocationEditForm = ({cardInfo}:any) => {
   };
 
   const [titleValue, setTitleValue] = useState(cardInfo.title);
-  const [descriptionValue, setDescriptionValue] = useState(cardInfo.description);
+  const [descriptionValue, setDescriptionValue] = useState(
+    cardInfo.description
+  );
   const [websiteValue, setWebsiteValue] = useState(cardInfo.website);
   const [cityValue, setCityValue] = useState(cardInfo.city);
   const [locationValue, setLocationValue] = useState(cardInfo.location);

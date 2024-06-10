@@ -18,22 +18,22 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(true);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
     const handleMediaQueryChange = (event: MediaQueryListEvent) => {
       setIsSmallScreen(event.matches);
     };
     setIsSmallScreen(mediaQuery.matches);
-    mediaQuery.addEventListener('change', handleMediaQueryChange);
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
     return () => {
-      mediaQuery.removeEventListener('change', handleMediaQueryChange);
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
   }, []);
 
   return (
     <div className={styles["mainDiv"]}>
-      <AnimatedNavbar InApp={isSmallScreen}/>
+      <AnimatedNavbar InApp={isSmallScreen} />
       {children}
-      <FooterContainer/>
+      <FooterContainer />
     </div>
   );
 };

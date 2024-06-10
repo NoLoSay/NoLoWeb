@@ -1,17 +1,17 @@
-import * as React from 'react';
-import { useState } from 'react';
-import Avatar from '@mui/material/Avatar';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Dialog from '@mui/material/Dialog';
-import PersonIcon from '@mui/icons-material/Person';
-import AddIcon from '@mui/icons-material/Add';
-import { blue } from '@mui/material/colors';
-import CategoryButton from '../CategoryButton/CategoryButton';
+import * as React from "react";
+import { useState } from "react";
+import Avatar from "@mui/material/Avatar";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Dialog from "@mui/material/Dialog";
+import PersonIcon from "@mui/icons-material/Person";
+import AddIcon from "@mui/icons-material/Add";
+import { blue } from "@mui/material/colors";
+import CategoryButton from "../CategoryButton/CategoryButton";
 
 export interface SimpleDialogProps {
   open: boolean;
@@ -50,7 +50,7 @@ function SimpleDialog(props: SimpleDialogProps) {
         <ListItem disableGutters>
           <ListItemButton
             autoFocus
-            onClick={() => handleListItemClick('addAccount')}
+            onClick={() => handleListItemClick("addAccount")}
           >
             <ListItemAvatar>
               <Avatar>
@@ -65,9 +65,13 @@ function SimpleDialog(props: SimpleDialogProps) {
   );
 }
 
-export default function AccountSelector({ accountsList }: { accountsList: string[] }) {
+export default function AccountSelector({
+  accountsList,
+}: {
+  accountsList: string[];
+}) {
   const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(accountsList[1] || '');
+  const [selectedValue, setSelectedValue] = useState(accountsList[1] || "");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -80,7 +84,12 @@ export default function AccountSelector({ accountsList }: { accountsList: string
 
   return (
     <div>
-      <CategoryButton altColor description="Choisir un profile parmi la liste" text="Changer de profile" onClick={handleClickOpen} />
+      <CategoryButton
+        altColor
+        description="Choisir un profile parmi la liste"
+        text="Changer de profile"
+        onClick={handleClickOpen}
+      />
       <SimpleDialog
         selectedValue={selectedValue}
         open={open}

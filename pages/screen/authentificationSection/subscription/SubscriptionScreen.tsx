@@ -103,7 +103,10 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
           <p
             className={`SubscriptionScreen/titleDivTextDivSubtitle ${styles["titleDivTextDivSubtitle"]} ${styles["smTitleDivTextDivSubtitle"]}`}
           >
-            {textData.page.screen.authentificationSection.subscription.information}
+            {
+              textData.page.screen.authentificationSection.subscription
+                .information
+            }
           </p>
         </div>
       </div>
@@ -167,7 +170,7 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
         <button
           className={`SubscriptionScreen/formConnectionButton ${styles["formConnectionButton"]}`}
         >
-            {textData.page.screen.authentificationSection.subscription.create}
+          {textData.page.screen.authentificationSection.subscription.create}
         </button>
       </form>
       {error && (
@@ -187,7 +190,7 @@ const SubscriptionScreen: React.FC<SubscriptionScreenProps> & {
             navigate("/connection");
           }}
         >
-            {textData.page.screen.authentificationSection.subscription.connecty}
+          {textData.page.screen.authentificationSection.subscription.connecty}
         </button>
       </p>
     </div>

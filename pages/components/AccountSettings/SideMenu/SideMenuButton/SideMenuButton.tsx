@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface SideMenuButtonProps {
   title: string;
@@ -6,7 +6,7 @@ interface SideMenuButtonProps {
   onClick?: () => void;
 }
 
-const SideMenuButton = ({title ,onClick, color}: SideMenuButtonProps) => {
+const SideMenuButton = ({ title, onClick, color }: SideMenuButtonProps) => {
   return (
     <button
       className={`items-center w-full text-md hover:bg-slate-100 bg-opacity-80 py-2`}
@@ -18,4 +18,4 @@ const SideMenuButton = ({title ,onClick, color}: SideMenuButtonProps) => {
   );
 };
 
-export default SideMenuButton
+export default SideMenuButton;

@@ -5,17 +5,16 @@ import { UserContext, defaultUser } from "../../../../contexts/UserProvider";
 import { useNavigate } from "react-router-dom";
 
 type ProfileButtonProps = {
-    name: string;
-    avatar?: string;
+  name: string;
+  avatar?: string;
 };
 
 const styles: { [key: string]: string } = {
   container_0: "flex flex-row items-center justify-between space-x-3",
-  container_1: "text-base"
+  container_1: "text-base",
 };
 
-
-const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
+const ProfileButton = ({ name, avatar }: ProfileButtonProps) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
 
@@ -31,19 +30,20 @@ const ProfileButton = ({name, avatar}: ProfileButtonProps) => {
 
   const resetUser = () => {
     setUser(defaultUser);
-    navigate("/home")
+    navigate("/home");
   };
 
   return (
     <div>
-      <ButtonBase disableRipple onClick={handleClick} sx={{ padding: 1, borderRadius: 2 }} className={`container_0 ${styles.container_0}`}>
+      <ButtonBase
+        disableRipple
+        onClick={handleClick}
+        sx={{ padding: 1, borderRadius: 2 }}
+        className={`container_0 ${styles.container_0}`}
+      >
         <p className={`container_1 ${styles.container_1}`}>{name}</p>
       </ButtonBase>
-      <Menu
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
+      <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
         <MenuItem onClick={() => navigate("/account")}>
           <Person /> Profile
         </MenuItem>

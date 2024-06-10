@@ -31,7 +31,7 @@ const styles: { [key: string]: string } = {
     "text-base text-blue-400 hover:underline hover:cursor-pointer bg-transparent",
   container_0: "w-32",
   container_1: "w-4 h-4",
-  container_2: "w-4 h-4"
+  container_2: "w-4 h-4",
 };
 
 const FooterContainer: React.FC = () => {

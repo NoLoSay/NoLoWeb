@@ -4,7 +4,7 @@ const styles: { [key: string]: string } = {
   container_00: "flex flex-col items-center p-3 space-y-5 m-5",
   container_0: "font-sans text-2xl",
   container_1: "flex flex-row space-x-5 items-center",
-  container_2: "w-12 h-12"
+  container_2: "w-12 h-12",
 };
 
 type CardProps = {
@@ -19,7 +19,11 @@ function GenericCard({ title, text, imgPath }: CardProps) {
       <h1 className={`container_0 ${styles.container_0}`}>{title}</h1>
       <div className={`container_1 ${styles.container_1}`}>
         <p>{text}</p>
-        {imgPath ? <img src={imgPath} className={`container_2 ${styles.container_2}`}/> : false}
+        {imgPath ? (
+          <img src={imgPath} className={`container_2 ${styles.container_2}`} />
+        ) : (
+          false
+        )}
       </div>
     </Paper>
   );

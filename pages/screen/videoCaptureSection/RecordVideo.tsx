@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
 import textData from "../../../public/text.json";
 
-
 const toto: string = "bg-yellow-300 text-base-white";
 const tata: string = "bg-base-black text-yellow-300";
 
@@ -53,7 +52,7 @@ const classes: { [key: string]: React.CSSProperties } = {
     marginTop: "-1px",
     position: "relative",
     textAlign: "center",
-  }
+  },
 };
 
 const styles: { [key: string]: string } = {
@@ -64,7 +63,7 @@ const styles: { [key: string]: string } = {
   container_4: "buttonBox",
   container_5: "button",
   container_6: "buttonBox",
-  container_7: "button"
+  container_7: "button",
 };
 
 export const RecordVideo = (): JSX.Element => {
@@ -137,8 +136,14 @@ export const RecordVideo = (): JSX.Element => {
   };
 
   return (
-    <div style={{ ...classes["mainDiv"] }} className={`container_0 ${styles.container_0}`}>
-      <div style={{ ...classes["videoContainer"] }} className={`container_1 ${styles.container_1}`}>
+    <div
+      style={{ ...classes["mainDiv"] }}
+      className={`container_0 ${styles.container_0}`}
+    >
+      <div
+        style={{ ...classes["videoContainer"] }}
+        className={`container_1 ${styles.container_1}`}
+      >
         <video
           style={{ ...classes["video"] }}
           ref={videoRef}
@@ -150,7 +155,10 @@ export const RecordVideo = (): JSX.Element => {
           className={`container_2 ${styles.container_2}`}
         />
       </div>
-      <div style={{ ...classes["buttonsDiv"] }} className={`container_3 ${styles.container_3}`}>
+      <div
+        style={{ ...classes["buttonsDiv"] }}
+        className={`container_3 ${styles.container_3}`}
+      >
         <div
           style={{
             ...classes["buttonBox"],
@@ -158,9 +166,7 @@ export const RecordVideo = (): JSX.Element => {
             //   ? "var(--colors-base-button)"
             //   : "var(--colors-button-disabled)",
           }}
-          className={`buttonBox ${
-            !isRecording ? toto : tata
-          }`}
+          className={`buttonBox ${!isRecording ? toto : tata}`}
         >
           <button
             style={{
@@ -172,9 +178,7 @@ export const RecordVideo = (): JSX.Element => {
             }}
             onClick={startCapture}
             disabled={isRecording}
-            className={`button ${
-              !isRecording ? toto : tata
-            }`}
+            className={`button ${!isRecording ? toto : tata}`}
           >
             {textData.page.screen.videoCaptureSection.start}
           </button>
