@@ -3,7 +3,7 @@ import Head from "../../../node_modules/next/head";
 import Layout from "../../components/Layout/Layout";
 import GenericCard from "../../components/Account/GenericCard/GenericCard";
 import { ButtonBase, Divider } from "@mui/material";
-import ProfileCard from "../../components/ProfileCard/ProfileCard";
+import ProfileCard from "../../components/Account/ProfileCard/ProfileCard";
 import testProfile from "../../../stories/assets/testProfile.json";
 import CategoryButton from "../../components/Account/CategoryButton/CategoryButton";
 import locationData from "../../components/Account/LocationCard/example.json";

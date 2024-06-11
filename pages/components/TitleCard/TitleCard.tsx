@@ -2,6 +2,7 @@ import { ButtonBase } from "@mui/material";
 import { ArrowBackIosNewRounded } from "@mui/icons-material";
 import Link from "next/link";
 import { useNavigate } from "react-router-dom";
+import textData from "../../../public/text.json";
 
 const styles: { [key: string]: string } = {
   container_0: "relative w-full",
@@ -57,13 +58,19 @@ function TitleCard({
         </div>
         <h1 className={`container_3 ${styles.container_3}`}>{title}</h1>
         <div className={`container_4 ${styles.container_4}`}>
-          <p className={`container_5 ${styles.container_5}`}>Descrition:</p>
+          <p className={`container_5 ${styles.container_5}`}>
+            {textData.page.components.titleCard.description}
+          </p>
           <p>{description}</p>
           <br />
-          <div className={`container_6 ${styles.container_6}`}>Website: </div>
+          <div className={`container_6 ${styles.container_6}`}>
+            {textData.page.components.titleCard.website}
+          </div>
           <Link href={website}>{website}</Link>
           <br />
-          <p className={`container_7 ${styles.container_7}`}>Location: </p>
+          <p className={`container_7 ${styles.container_7}`}>
+            {textData.page.components.titleCard.location}
+          </p>
           <p> {location}</p>
           <br />
         </div>

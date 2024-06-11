@@ -1,7 +1,6 @@
 import React from "react";
 import textData from "../../../public/text.json";
 
-
 const styles: { [key: string]: string } = {
   backgroundDiv: "bg-white",
   main: "mx-auto max-w-full flex items-baseline justify-between border-b border-gray-200 pb-6 pt-14 px-4 sm:px-6 lg:px-8",
@@ -39,9 +38,21 @@ const FilterListPlace: React.FC<FilterListPlaceProps> = ({
                 className={`boderDiv ${styles.borderDiv} `}
                 onChange={handlePerPageChange}
               >
-                <option value="12">{textData.page.components.filter.filterListPlace.twelelements}</option>
-                <option value="24">{textData.page.components.filter.filterListPlace.twentelements}</option>
-                <option value="36">{textData.page.components.filter.filterListPlace.thirtelements}</option>
+                <option value="12">
+                  {textData.page.components.filter.filterListPlace.twelelements}
+                </option>
+                <option value="24">
+                  {
+                    textData.page.components.filter.filterListPlace
+                      .twentelements
+                  }
+                </option>
+                <option value="36">
+                  {
+                    textData.page.components.filter.filterListPlace
+                      .thirtelements
+                  }
+                </option>
               </select>
             </div>
           </div>
@@ -52,10 +63,18 @@ const FilterListPlace: React.FC<FilterListPlaceProps> = ({
                 name="sortSelect"
                 className={`borderDiv ${styles.borderDiv}`}
               >
-                <option value="">{textData.page.components.filter.filterListPlace.sort}</option>
-                <option value="">{textData.page.components.filter.filterListPlace.mostpopular}</option>
-                <option value="">{textData.page.components.filter.filterListPlace.new}</option>
-                <option value="">{textData.page.components.filter.filterListPlace.distance}</option>
+                <option value="">
+                  {textData.page.components.filter.filterListPlace.sort}
+                </option>
+                <option value="">
+                  {textData.page.components.filter.filterListPlace.mostpopular}
+                </option>
+                <option value="">
+                  {textData.page.components.filter.filterListPlace.new}
+                </option>
+                <option value="">
+                  {textData.page.components.filter.filterListPlace.distance}
+                </option>
               </select>
             </div>
           </div>

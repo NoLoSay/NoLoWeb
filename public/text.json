@@ -44,10 +44,30 @@
           "new" : "Nouveauté",
           "distance" : "Distance: Du + au - Proche"
         }
-
       },
       "footer": {
-        "footerText": "Nolosay est un groupe composé d'étudiants passionnés et déterminés à créer un changement positif dans la vie quotidienne des personnes sourdes ou malentendantes. Leur objectif est clair : rendre l'information et la communication accessibles à tous, en brisant les barrières linguistiques."
+        "footerText": "Nolosay est un groupe composé d'étudiants passionnés et déterminés à créer un changement positif dans la vie quotidienne des personnes sourdes ou malentendantes. Leur objectif est clair : rendre l'information et la communication accessibles à tous, en brisant les barrières linguistiques.",
+        "date" : "© 2024 - ",
+        "right" : " NOLOSAY. Tous droits réservés.",
+        "info" : "Informations",
+        "mention" : "Mentions légales",
+        "nb" : "+33 02.97.67.80.87",
+        "email" : "contact@nolosay.fr",
+        "AboutUs" : "À propos de nous"
+      },
+      "map" : {
+        "description": "Description:",
+        "website" : "Website:",
+        "loading" : "Loading..."
+      },
+      "newsletter" : {
+        "subscribeNews" : "S'insicrire à la newslettre et découvrir les dernières nouveautés",
+        "sub" : "S'abonner"
+      },
+      "titleCard" : {
+         "description": "Description:",
+         "website" : "Website:",
+         "location" : "Location:"
       }
     },
     "screen" : {

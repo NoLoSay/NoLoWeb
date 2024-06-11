@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import "leaflet/dist/leaflet.css";
+import textData from "../../../public/text.json";
+
 interface MapProps {
   center: [number, number];
   places?: {
@@ -106,9 +108,13 @@ const Map: React.FC<MapProps> = (props) => {
                     <p>
                       {place.city}, {place.location}
                     </p>
-                    <p>Description: {place.description}</p>
                     <p>
-                      Website: <Link href={place.website}>{place.website}</Link>
+                      {textData.page.components.map.description}{" "}
+                      {place.description}
+                    </p>
+                    <p>
+                      {textData.page.components.map.website}{" "}
+                      <Link href={place.website}>{place.website}</Link>
                     </p>
                   </div>
                 </Leaflet.Popup>
@@ -117,7 +123,9 @@ const Map: React.FC<MapProps> = (props) => {
           </Leaflet.MapContainer>
         </div>
       ) : (
-        <div className={`LoadingText ${styles["LoadingText"]}`}>Loading...</div>
+        <div className={`LoadingText ${styles["LoadingText"]}`}>
+          {textData.page.components.map.loading}
+        </div>
       )}
     </div>
   );

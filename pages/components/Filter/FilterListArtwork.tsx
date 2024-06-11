@@ -1,7 +1,6 @@
 import React from "react";
 import textData from "../../../public/text.json";
 
-
 interface FilterPageProps {
   handleArtworkTypeChange: (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -29,7 +28,9 @@ const FilterListArtwork: React.FC<FilterPageProps> = ({
     <div className={`backgroundDiv ${styles.backgroundDiv}`}>
       <main className={`main ${styles.main}`}>
         <div className={`textDiv ${styles.textDiv}`}>
-          <span>{textData.page.components.filter.filterListArtwork.exhibitions}</span>
+          <span>
+            {textData.page.components.filter.filterListArtwork.exhibitions}
+          </span>
           <div className={`lineDiv ${styles.lineDiv}`}></div>
         </div>
         <div className={`container_0 ${styles.container_0}`}>
@@ -41,8 +42,18 @@ const FilterListArtwork: React.FC<FilterPageProps> = ({
                 className={`boderDiv ${styles.borderDiv} `}
                 onChange={handleArtworkTypeChange}
               >
-                <option value="exhibitions">{textData.page.components.filter.filterListArtwork.seeexhibitions}</option>
-                <option value="artworks">{textData.page.components.filter.filterListArtwork.seeartworks}</option>
+                <option value="exhibitions">
+                  {
+                    textData.page.components.filter.filterListArtwork
+                      .seeexhibitions
+                  }
+                </option>
+                <option value="artworks">
+                  {
+                    textData.page.components.filter.filterListArtwork
+                      .seeartworks
+                  }
+                </option>
               </select>
             </div>
           </div>
@@ -53,11 +64,24 @@ const FilterListArtwork: React.FC<FilterPageProps> = ({
                 name="sortSelect"
                 className={`borderDiv ${styles.borderDiv}`}
               >
-                <option value="">{textData.page.components.filter.filterListArtwork.sort}</option>
-                <option value="">{textData.page.components.filter.filterListArtwork.mostpopular}</option>
-                <option value="">{textData.page.components.filter.filterListArtwork.new}</option>
-                <option value="">{textData.page.components.filter.filterListArtwork.atoz}</option>
-                <option value="">{textData.page.components.filter.filterListArtwork.ztoa}</option>
+                <option value="">
+                  {textData.page.components.filter.filterListArtwork.sort}
+                </option>
+                <option value="">
+                  {
+                    textData.page.components.filter.filterListArtwork
+                      .mostpopular
+                  }
+                </option>
+                <option value="">
+                  {textData.page.components.filter.filterListArtwork.new}
+                </option>
+                <option value="">
+                  {textData.page.components.filter.filterListArtwork.atoz}
+                </option>
+                <option value="">
+                  {textData.page.components.filter.filterListArtwork.ztoa}
+                </option>
               </select>
             </div>
           </div>

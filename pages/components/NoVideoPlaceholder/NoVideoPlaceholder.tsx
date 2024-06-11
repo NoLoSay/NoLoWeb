@@ -15,22 +15,10 @@ const NoVideoPlaceholder = () => {
     <div className={`container_0 ${styles.container_0}`}>
       <div className={`container_1 ${styles.container_1}`}>
         <div>
-          <p className={`container_2 ${styles.container_2}`}>Créer une vidéo</p>
-          <p>
-            Of type and scrambled it to make a type specimen book. It has
-            survived not only five centuries, but also the leap into electronic
-            typesetting
-          </p>
+          <p className={`container_2 ${styles.container_2}`}></p>
         </div>
         <div>
-          <p className={`container_3 ${styles.container_3}`}>
-            Demander une traduction
-          </p>
-          <p>
-            Of type and scrambled it to make a type specimen book. It has
-            survived not only five centuries, but also the leap into electronic
-            typesetting
-          </p>
+          <p className={`container_3 ${styles.container_3}`}></p>
         </div>
       </div>
       <div className={`container_4 ${styles.container_4}`}>

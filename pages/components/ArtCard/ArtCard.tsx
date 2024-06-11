@@ -7,7 +7,6 @@ import videoData from "../../../tests/videos.json";
 import { useNavigate } from "react-router-dom";
 import textData from "../../../public/text.json";
 
-
 const styles: { [key: string]: string } = {
   container_0:
     "\n      flex flex-col space-y-5 m-5 \n      w-4/5 mx-auto\n    ",
@@ -99,25 +98,25 @@ function ArtCard({ title, artImage, description }: Infos) {
                   </p>
                   <div className={`container_11 ${styles.container_11}`}>
                     <p className={`container_12 ${styles.container_12}`}>
-                    {textData.page.components.artCard.description}
+                      {textData.page.components.artCard.description}
                     </p>
                     <p>{description}</p>
                   </div>
                   <div className={`container_13 ${styles.container_13}`}>
                     <p className={`container_14 ${styles.container_14}`}>
-                    {textData.page.components.artCard.autor}
+                      {textData.page.components.artCard.autor}
                     </p>
                     <p>{`Creator name`}</p>
                   </div>
                   <div className={`container_15 ${styles.container_15}`}>
                     <p className={`container_16 ${styles.container_16}`}>
-                    {textData.page.components.artCard.createdate}
+                      {textData.page.components.artCard.createdate}
                     </p>
                     <p>{`1986`}</p>
                   </div>
                   <div className={`container_17 ${styles.container_17}`}>
                     <p className={`container_18 ${styles.container_18}`}>
-                    {textData.page.components.artCard.place}
+                      {textData.page.components.artCard.place}
                     </p>
                     <p>{`Nantes`}</p>
                   </div>

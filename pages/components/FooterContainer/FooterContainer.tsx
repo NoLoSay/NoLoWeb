@@ -65,14 +65,18 @@ const FooterContainer: React.FC = () => {
           {textData.page.components.footer.footerText}
         </p>
         <p>
-          © 2022 - {new Date().getFullYear()} NOLOSAY. Tous droits réservés.
+          {textData.page.components.footer.date}
+          {new Date().getFullYear()}
+          {textData.page.components.footer.right}
         </p>
       </div>
       <div
         className={`informationsDiv ${styles["informationsDiv"]} ${styles["smInformationsDiv"]}`}
       >
-        <b>Informations</b>
-        <p className={`container_0 ${styles.container_0}`}>Mentions légales</p>
+        <b>{textData.page.components.footer.info}</b>
+        <p className={`container_0 ${styles.container_0}`}>
+          {textData.page.components.footer.mention}
+        </p>
         <div
           className={`informationsContentDivs ${styles["informationsContentDivs"]}`}
         >
@@ -83,7 +87,7 @@ const FooterContainer: React.FC = () => {
           />
           <p>
             <Link href="tel:+330297678087" className={styles["contactLink"]}>
-              +33 02.97.67.80.87
+              {textData.page.components.footer.nb}
             </Link>
           </p>
         </div>
@@ -96,7 +100,7 @@ const FooterContainer: React.FC = () => {
             src="/icon/full/communication--mail.png"
           />
           <Link href="to:contact@nolosay.fr" className={styles["contactLink"]}>
-            contact@nolosay.fr
+            {textData.page.components.footer.email}
           </Link>
         </div>
         <button
@@ -105,7 +109,7 @@ const FooterContainer: React.FC = () => {
           }}
           className={styles["aboutLink"]}
         >
-          À propos de nous
+          {textData.page.components.footer.AboutUs}
         </button>
       </div>
     </div>

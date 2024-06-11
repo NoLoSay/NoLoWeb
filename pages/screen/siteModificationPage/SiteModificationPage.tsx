@@ -224,7 +224,9 @@ const SiteModificationPage = () => {
               name="address.houseNumber"
               value={site.address.houseNumber}
               onChange={handleInputChange}
-              placeholder={textData.page.screen.siteModificationPage.pnumberStreet}
+              placeholder={
+                textData.page.screen.siteModificationPage.pnumberStreet
+              }
             />
             <div className={styles.textName}>
               {textData.page.screen.siteModificationPage.cityCode}
