@@ -1,7 +1,7 @@
-import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 interface FindVideoProps {}
 
@@ -24,7 +24,8 @@ const ImageSlider: React.FC<FindVideoProps> & {} = () => {
   ];
 
   const styles = {
-    container: 'max-w-[1280px] max-h-[250px] border rounded-lg overflow-hidden p-0 relative',
+    container:
+      "max-w-[1280px] max-h-[250px] border rounded-lg overflow-hidden p-0 relative",
   };
 
   return (

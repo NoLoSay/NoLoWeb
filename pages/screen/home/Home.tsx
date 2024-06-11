@@ -1,16 +1,13 @@
-import { Fragment, useContext, useEffect } from "react";
-import Head from "../../../node_modules/next/head";
+import { Fragment } from "react";
 import DownloadContainer from "../../components/Home/DownloadContainer";
 import VideoCreationContainer from "../../components/Home/VideoCreationContainer";
 import Layout from "../../components/Layout/Layout";
 import textData from "../../../public/text.json";
-import { UserContext } from "../../../contexts/UserProvider";
 
 interface HomeProps {}
 
 const styles: { [key: string]: string } = {
-  mainDiv:
-    "flex flex-col items-center justify-center gap-y-16 pb-10 pt-3",
+  mainDiv: "flex flex-col items-center justify-center gap-y-16 pb-10 pt-3",
 
   videoCreationDiv:
     "w-3/4 flex flex-row justify-start gap-2 " +
@@ -45,33 +42,14 @@ const styles: { [key: string]: string } = {
 
   descriptionDivText:
     "text-2xl " + "lg:text-base " + "md:text-xs " + "sm:text-[0.35rem] ",
+  container_0: "font-poppins",
 };
 
 const Home: React.FC<HomeProps> & {
   getLayout: (page: React.ReactNode) => React.ReactNode;
 } = () => {
-  /* Start of the example to access user data */
-
-  const { user, setUser } = useContext(UserContext);
-
-  useEffect(() => {
-    const func = async (): Promise<void> => {
-      console.log(user);
-    };
-    func();
-  }, [user]);
-
-  /* End of the example */
-
   return (
     <Fragment>
-      <Head>
-        <title className="font-poppins">Nolosay</title>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
-        />
-      </Head>
       <div className={`mainDiv ${styles["mainDiv"]}`}>
         <DownloadContainer />
         <div className={`videoCreationDiv ${styles["videoCreationDiv"]} `}>
@@ -89,17 +67,17 @@ const Home: React.FC<HomeProps> & {
             <p
               className={`Home/descriptionDivTitleText ${styles["descriptionDivTitleText"]}`}
             >
-              {textData.page.home.descriptionDiv.title}
+              {textData.page.screen.home.title}
             </p>
             <p
               className={`Home/descriptionDivSubtitleText ${styles["descriptionDivSubtitleText"]}`}
             >
-              {textData.page.home.descriptionDiv.subtitle}
+              {textData.page.screen.home.subtitle}
             </p>
             <p
               className={`Home/descriptionDivText ${styles["descriptionDivText"]}`}
             >
-              {textData.page.home.descriptionDiv.text}
+              {textData.page.screen.home.text}
             </p>
           </div>
         </div>

@@ -4,9 +4,9 @@ import Layout from "../../components/Layout/Layout";
 import TitleCard from "../../components/TitleCard/TitleCard";
 import CardTemplate from "../../components/CardTemplate/CardTemplate";
 import { ReactNode } from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import FilterListArtwork from "../../components/Filter/FilterListArtwork";
-import exhibitionsData from './exhibitions.json';
+import exhibitionsData from "../../../tests/exhibitions.json";
 
 interface Artwork {
   name: string;
@@ -28,9 +28,11 @@ const exhibitions: Exhibition[] = exhibitionsData.exhibitions;
 const styles: { [key: string]: string } = {
   mainDiv: "flex flex-col space-y-5 m-5 justify-center w-3/4 mx-auto",
   listDiv: "flex flex-col",
-  cardlistDiv: "w-[1280px] mt-8 flex flex-col items-start justify-start gap-[35px] min-h-[493px] max-w-full text-left text-3xl text-base-black font-poppins",
-  nbcardlistDiv: "self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray mq450:gap-[19px] mq750:gap-[38px]",
-}
+  cardlistDiv:
+    "w-[1280px] mt-8 flex flex-col items-start justify-start gap-[35px] min-h-[493px] max-w-full text-left text-3xl text-base-black font-poppins",
+  nbcardlistDiv:
+    "self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray mq450:gap-[19px] mq750:gap-[38px]",
+};
 
 const Location = () => {
   const locationn = useLocation();
@@ -44,7 +46,15 @@ const Location = () => {
 
   useEffect(() => {
     if (locationn.state) {
-      const { name, description, imageSrc, videoCountPlaceholder, website, city, location } = locationn.state;
+      const {
+        name,
+        description,
+        imageSrc,
+        videoCountPlaceholder,
+        website,
+        city,
+        location,
+      } = locationn.state;
       setName(name);
       setDescription(description);
       setImageSrc(imageSrc);
@@ -56,7 +66,8 @@ const Location = () => {
   }, [locationn.state]);
 
   type FilteredItems = Artwork[] | Exhibition[];
-  const [filteredItems, setFilteredItems] = useState<FilteredItems>(exhibitions);
+  const [filteredItems, setFilteredItems] =
+    useState<FilteredItems>(exhibitions);
   const [selectedType, setSelectedType] = useState<string>("");
 
   const handleArtworkTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -65,7 +76,9 @@ const Location = () => {
     if (type === "exhibitions") {
       setFilteredItems(exhibitions);
     } else if (type === "artworks") {
-      const allArtworks = exhibitions.flatMap(exhibition => exhibition.artworks);
+      const allArtworks = exhibitions.flatMap(
+        (exhibition) => exhibition.artworks
+      );
       setFilteredItems(allArtworks);
     }
   };
@@ -92,7 +105,7 @@ const Location = () => {
         pathname: "/showartwork",
       };
     }
-  }
+  };
 
   return (
     <Fragment>
@@ -109,14 +122,13 @@ const Location = () => {
           pagePath="/findlocation/"
         />
         <div className={`listDiv ${styles["listDiv"]}`}>
-          <FilterListArtwork handleArtworkTypeChange={handleArtworkTypeChange} />
+          <FilterListArtwork
+            handleArtworkTypeChange={handleArtworkTypeChange}
+          />
           <div className={`cardlistDiv ${styles["cardlistDiv"]}`}>
             <div className={`nbcardlistDiv ${styles["nbcardlistDiv"]}`}>
               {filteredItems.map((item, index) => (
-                <CardTemplate
-                  key={index}
-                  cardInfo={renderCardInfo(item)}
-                />
+                <CardTemplate key={index} cardInfo={renderCardInfo(item)} />
               ))}
             </div>
           </div>

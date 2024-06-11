@@ -41,12 +41,14 @@ const About: React.FC<AboutProps> & {
             src="/images/people/nologroup.png"
           />
           <div className={styles.TeamTextDiv}>
-            <div className={styles.TeamText}>L’équipe NOLOSAY !</div>
+            <div className={styles.TeamText}>
+              {textData.page.screen.about.team}
+            </div>
           </div>
         </div>
         <div className={styles.ContentDiv}>
           <span className={styles.ContentText}>
-            {textData.page.about.description}
+            {textData.page.screen.about.description}
           </span>
         </div>
         <Container />

@@ -55,7 +55,7 @@
     "build": "./build.sh",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.ts\"",
+    "format": "npx prettier --write \"pages/**/*.tsx\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   }
