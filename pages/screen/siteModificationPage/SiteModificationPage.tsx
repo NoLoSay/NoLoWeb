@@ -121,49 +121,60 @@ const SiteModificationPage = () => {
                  loading="lazy" alt="Site Image" className={styles.image22}/>
             <div className={styles.divGeneralInformations}>
               <div className={styles.textName}>Name :</div>
-              <input type="text" className={styles.textInput} name="name" value={site.name} onChange={handleInputChange}
+              <input type="text" style={{maxHeight: '30px'}} className={styles.textInput} name="name" value={site.name}
+                     onChange={handleInputChange}
                      placeholder="Enter site name"/>
               <div className={styles.textName}>Telephone Number:</div>
-              <input type="text" className={styles.textInput} name="telNumber" value={site.telNumber}
+              <input type="text" style={{maxHeight: '30px'}} className={styles.textInput} name="telNumber"
+                     value={site.telNumber}
                      onChange={handleInputChange} placeholder="Enter telephone number"/>
               <div className={styles.textName}>Email:</div>
-              <input type="email" className={styles.textInput} name="email" value={site.email}
+              <input type="email" style={{maxHeight: '30px'}} className={styles.textInput} name="email"
+                     value={site.email}
                      onChange={handleInputChange} placeholder="Enter email"/>
               <div className={styles.textName}>Website:</div>
-              <input type="url" className={styles.textInput} name="website" value={site.website}
+              <input type="url" style={{maxHeight: '30px'}} className={styles.textInput} name="website"
+                     value={site.website}
                      onChange={handleInputChange} placeholder="Enter website URL"/>
             </div>
           </div>
           <div className={styles.divBlockGeneralInformations}>
             <div className={styles.textName}>Price:</div>
-            <input type="number" className={styles.textInput} name="price" value={site.price}
+            <input type="number" style={{maxHeight: '30px'}} className={styles.textInput} name="price"
+                   value={site.price}
                    onChange={handleInputChange} placeholder="Enter price"/>
             <div className={styles.textName}>Other Details:</div>
-            <input type="text" className={styles.textInput} name="address.otherDetails"
+            <input type="text" style={{maxHeight: '30px'}} className={styles.textInput} name="address.otherDetails"
                    value={site.address.otherDetails} onChange={handleInputChange} placeholder="Enter other details"/>
           </div>
           <div className={styles.divBlockGeneralInformations}>
-            <div className={styles.textName}>Street:</div>
-            <input type="text" className={styles.textInput} name="address.street" value={site.address.street}
-                   onChange={handleInputChange} placeholder="Enter street"/>
+
             <div className={styles.textName}>House Number:</div>
-            <input type="text" className={styles.textInput} name="address.houseNumber" value={site.address.houseNumber}
+            <input type="text" style={{maxHeight: '30px'}} className={styles.textInput} name="address.houseNumber"
+                   value={site.address.houseNumber}
                    onChange={handleInputChange} placeholder="Enter house number"/>
             <div className={styles.textName}>City Zip Code:</div>
-            <input type="text" className={styles.textInput} name="address.zip" value={site.address.zip}
+            <input type="text" style={{maxHeight: '30px'}} className={styles.textInput} name="address.zip"
+                   value={site.address.zip}
                    onChange={handleInputChange} placeholder="Enter zip code"/>
           </div>
-          <div className={styles.divBlockButtonModification}>
-            <button type="submit" className={styles.divButtonSave}>Save</button>
-            <button type="button" className={styles.backButton} onClick={() => navigate(-1)}>Back</button>
+          <div className={styles.divBlockGeneralInformations}>
+            <div className={styles.textName}>Street:</div>
+            <input type="text" style={{maxHeight: '30px'}} className={styles.textInput} name="address.street"
+                   value={site.address.street}
+                   onChange={handleInputChange} placeholder="Enter street"/>
           </div>
+            <div className={styles.divBlockButtonModification}>
+              <button type="submit" className={styles.divButtonSave}>Save</button>
+              <button type="button" className={styles.backButton} onClick={() => navigate(-1)}>Back</button>
+            </div>
         </form>
       </section>
     </Fragment>
-  );
+);
 };
 
-SiteModificationPage.getLayout = function getLayout(page:any) {
+SiteModificationPage.getLayout = function getLayout(page: any) {
   return <Layout>{page}</Layout>;
 };
 
