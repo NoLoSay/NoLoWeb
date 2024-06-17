@@ -77,6 +77,9 @@ const ArtworkModificationPage = () => {
     useEffect(() => {
         if (location.state?.from === 'accountArtworks') {
             fetchAllArtworks();
+        } else if (location.state?.from === 'siteArtworks'){
+            console.log("test2")
+            setArtworks(location.state.item);
         } else if (location.state?.item) {
             console.log("test")
             setArtworks(location.state.item);

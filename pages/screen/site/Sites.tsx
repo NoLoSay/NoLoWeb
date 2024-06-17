@@ -75,27 +75,67 @@ const Sites: React.FC<SitesProps> = () => {
       case "returnToPreviousPageBtn":
        navigate('/account');
         break;
-      case 'handleGoToExhibitions':
-         try {
-          const url = 'http://localhost:3001/exhibitions';
-          const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-              'Authorization': `Bearer ${user.accessToken}`,
-              'Content-Type': 'application/json'
-            }
-          });
+     case 'handleGoToAllArtworks':
+       try {
+         const url = 'http://localhost:3001/exhibitions';
+         const response = await fetch(url, {
+           method: 'GET',
+           headers: {
+             'Authorization': `Bearer ${user.accessToken}`,
+             'Content-Type': 'application/json'
+           }
+         });
 
-          if (!response.ok) {
-            throw new Error(`HTTP status ${response.status}: Failed to fetch exhibitions`);
+         if (!response.ok) {
+           throw new Error(`HTTP status ${response.status}: Failed to fetch exhibitions`);
+         }
+         const exhibitions = await response.json();
+         const exhibitionIds = exhibitions.map((exhibition) => exhibition.id);
+
+         // Fetch all artworks for each exhibition
+         let allArtworks = [];
+         for (const id of exhibitionIds) {
+           const artworksUrl = `http://localhost:3001/exhibitions/${id}/items`;
+           const artworksResponse = await fetch(artworksUrl, {
+             method: 'GET',
+             headers: {
+               'Authorization': `Bearer ${user.accessToken}`,
+               'Content-Type': 'application/json'
+             }
+           });
+
+           if (artworksResponse.ok) {
+             const artworks = await artworksResponse.json();
+             allArtworks = [...allArtworks, ...artworks];
+           }
+         }
+
+         navigate('/places/artworks', { state: { item: allArtworks, from: 'siteArtworks', siteId: siteId } });
+       } catch (error) {
+         console.error('Failed to fetch exhibition details:', error);
+       }
+       break;
+     case 'handleGoToExhibitions':
+       try {
+        const url = 'http://localhost:3001/exhibitions';
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${user.accessToken}`,
+            'Content-Type': 'application/json'
           }
-          const exhibitions = await response.json();
-          const filteredExhibitions = exhibitions.filter((exhibition:any) => exhibition.site.id === siteId);
-          navigate('/places/exhibitions', { state: { item: filteredExhibitions , siteId: siteId} });
-        } catch (error) {
-          console.error('Failed to fetch exhibition details:', error);
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP status ${response.status}: Failed to fetch exhibitions`);
         }
-        break;
+        const exhibitions = await response.json();
+        const filteredExhibitions = exhibitions.filter((exhibition:any) => exhibition.site.id === siteId);
+        navigate('/places/exhibitions', { state: { item: filteredExhibitions , siteId: siteId} });
+      } catch (error) {
+        console.error('Failed to fetch exhibition details:', error);
+      }
+      break;
     }
   };
 
@@ -143,6 +183,11 @@ const Sites: React.FC<SitesProps> = () => {
                 <ButtonBase disableRipple onClick={() => handleAction("handleGoToExhibitions", site.id)}>
                   <div className={styles.buttons}>
                     Voir les expositions de ce site
+                  </div>
+                </ButtonBase>
+                <ButtonBase disableRipple onClick={() => handleAction("handleGoToAllArtworks", site.id)}>
+                  <div className="flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100 w-20">
+                    Voir toutes les oeuvres
                   </div>
                 </ButtonBase>
               </div>
