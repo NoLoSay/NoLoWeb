@@ -75,10 +75,31 @@ const ArtworkModificationPage = () => {
     const [artworks, setArtworks] = useState(location.state?.items || []);
 
     useEffect(() => {
-        if (location.state?.item) {
+        if (location.state?.from === 'accountArtworks') {
+            fetchAllArtworks();
+        } else if (location.state?.item) {
+            console.log("test")
             setArtworks(location.state.item);
         }
     }, [location.state]);
+
+    const fetchAllArtworks = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/items', {
+                headers: {
+                    'Authorization': `Bearer ${user.accessToken}`,
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch artworks');
+            }
+            const artworks = await response.json();
+            setArtworks(artworks);
+        } catch (error) {
+            console.error('Error fetching artworks:', error);
+            console.log(error.message);
+        }
+    };
 
     const handleAction = (buttonName:any, artworkId:any) => {
         switch (buttonName) {

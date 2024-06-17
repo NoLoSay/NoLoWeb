@@ -62,7 +62,9 @@ const AppRouter = () => {
             <Route path="/artworks" element={<ArtworksPage />} />
             <Route path="/videoAccess" element={<VideoAccess />} />
             <Route path="/location" element={<Location />} />
+
             <Route path="/account" element={<Account />} />
+            <Route path="/account/artworks" element={<ArtworksPage />} />
 
             <Route path="/places" element={<Sites />} />
             <Route path="/places/modificationPlace" element={<SiteModificationPage />} />

@@ -92,6 +92,11 @@ const Account = () => {
                 Voir tout
               </div>
             </ButtonBase>
+            <ButtonBase disableRipple onClick={() => navigate("/account/artworks", { state: { from: 'accountArtworks' } })}>
+              <div className="flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100 w-20">
+                Voir toutes les oeuvres
+              </div>
+            </ButtonBase>
           </div>
           <div className="flex flex-col space-y-5">
             <Divider/>
