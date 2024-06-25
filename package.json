@@ -44,7 +44,7 @@
     "eslint-plugin-storybook": "^0.6.15",
     "postcss": "^8",
     "postcss-loader": "^7.3.4",
-    "storybook": "^7.6.19",
+    "storybook": "^8.1.8",
     "style-loader": "^3.3.4",
     "tailwindcss": "^3.3.0",
     "typedoc": "^0.25.4",
