@@ -9,21 +9,21 @@ import {
 } from "../node_modules/react-router-dom/dist/index";
 import Layout from "./components/Layout/Layout";
 import Home from "./screen/home/Home";
-import ConnectionScreen from "./screen/authenticationSection/connection/ConnectionScreen";
-import SubscriptionScreen from "./screen/authenticationSection/subscription/SubscriptionScreen";
+import ConnectionScreen from "./screen/authentificationSection/connection/ConnectionScreen";
+import SubscriptionScreen from "./screen/authentificationSection/subscription/SubscriptionScreen";
 import ArtworkToTranslateSelectionScreen from "./screen/creationSection/artworkToTranslateSelectionSection/ArtworkToTranslateSelectionScreen";
 import About from "./screen/about/About";
 import ArtworksPage from "./screen/artworks/Artworks";
 import ExhibitionsPage from "./screen/exhibitions/Exhibitions";
 import FindLocation from "./screen/findLocation/FindLocation";
 import Location from "./screen/location/Location";
+import ShowArtwork from "./screen/location/Artwork/Artwork";
 import VideoAccess from "./screen/videoAccess/VideoAccess";
 import Account from "./screen/account/Account";
 import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
 import AccountSettings from "./screen/accountSettings/AccountSettings";
 import ArtworkModificationPage from "./screen/artworkmodificationPage/ArtworkModificationPage";
 import { UserProvider } from "../contexts/UserProvider";
-import PlacesPage from "./screen/site/Sites";
 import Sites from "./screen/site/Sites";
 import ExhibitionModificationPage from "./screen/exhibitionModificationPage/exhibitionModificationPage";
 import SiteModificationPage from "./screen/siteModificationPage/SiteModificationPage";
@@ -81,13 +81,14 @@ const AppRouter = () => {
             <Route path="/places/exhibitions/artworks" element={<ArtworksPage />} />
             <Route path="/places/exhibitions/artworks/artwork-modification-page" element={<ArtworkModificationPage />} />
 
-            <Route path="/accountSettings" element={<AccountSettings />} />
-            <Route path="/record" element={<RecordVideo />} />
-            <Route path="/findlocation" element={<FindLocation />} />
-          </Routes>
-        </Layout>
-      </Router >
-    </UserProvider >
+              <Route path="/accountSettings" element={<AccountSettings />} />
+              <Route path="/record" element={<RecordVideo />} />
+              <Route path="/findlocation" element={<FindLocation />} />
+              <Route path="/showartwork" element={<ShowArtwork />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </UserProvider>
     </div>
   );
 };

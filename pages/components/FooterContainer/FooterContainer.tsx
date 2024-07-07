@@ -29,6 +29,9 @@ const styles: { [key: string]: string } = {
 
   aboutLink:
     "text-base text-blue-400 hover:underline hover:cursor-pointer bg-transparent",
+  container_0: "w-32",
+  container_1: "w-4 h-4",
+  container_2: "w-4 h-4",
 };
 
 const FooterContainer: React.FC = () => {
@@ -59,28 +62,32 @@ const FooterContainer: React.FC = () => {
           style={{}}
           className={`descriptionText ${styles["descriptionText"]}`}
         >
-          {textData.page.global.footer.footerText}
+          {textData.page.components.footer.footerText}
         </p>
         <p>
-          © 2022 - {new Date().getFullYear()} NOLOSAY. Tous droits réservés.
+          {textData.page.components.footer.date}
+          {new Date().getFullYear()}
+          {textData.page.components.footer.right}
         </p>
       </div>
       <div
         className={`informationsDiv ${styles["informationsDiv"]} ${styles["smInformationsDiv"]}`}
       >
-        <b>Informations</b>
-        <p className="w-32">Mentions légales</p>
+        <b>{textData.page.components.footer.info}</b>
+        <p className={`container_0 ${styles.container_0}`}>
+          {textData.page.components.footer.mention}
+        </p>
         <div
           className={`informationsContentDivs ${styles["informationsContentDivs"]}`}
         >
           <img
-            className="w-4 h-4"
+            className={`container_1 ${styles.container_1}`}
             alt="phone logo"
             src="/icon/full/communication--phone.png"
           />
           <p>
             <Link href="tel:+330297678087" className={styles["contactLink"]}>
-              +33 02.97.67.80.87
+              {textData.page.components.footer.nb}
             </Link>
           </p>
         </div>
@@ -88,12 +95,12 @@ const FooterContainer: React.FC = () => {
           className={`informationsContentDivs ${styles["informationsContentDivs"]}`}
         >
           <img
-            className="w-4 h-4"
+            className={`container_2 ${styles.container_2}`}
             alt="mail logo"
             src="/icon/full/communication--mail.png"
           />
           <Link href="to:contact@nolosay.fr" className={styles["contactLink"]}>
-            contact@nolosay.fr
+            {textData.page.components.footer.email}
           </Link>
         </div>
         <button
@@ -102,7 +109,7 @@ const FooterContainer: React.FC = () => {
           }}
           className={styles["aboutLink"]}
         >
-          À propos de nous
+          {textData.page.components.footer.AboutUs}
         </button>
       </div>
     </div>

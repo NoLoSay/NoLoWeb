@@ -1,3 +1,5 @@
+import textData from "../../../public/text.json";
+
 const styles: { [key: string]: string } = {
   mainDiv:
     "shadow-cardShadow items-center relative rounded-2.5xl p-5 border-solid border-2 border-base-white\
@@ -14,7 +16,8 @@ const styles: { [key: string]: string } = {
   contentDivTextDiv: "flex flex-col w-1/2 self-center gap-2",
   smContentDivTextDiv: "sm:w-3/4",
 
-  contentDivTextDivTitle: "text-gray-300 font-poppins font-bold text-base text-center",
+  contentDivTextDivTitle:
+    "text-gray-300 font-poppins font-bold text-base text-center",
   smContentDivTextDivTitle: "sm:text-sm",
 
   contentDivTextDivText: "text-black font-poppins font-normal text-xs",
@@ -37,8 +40,12 @@ const ArtworkCard = ({
   description,
 }: ArtworkCardProps): JSX.Element => {
   return (
-    <div className={`ArtworkCard/mainDiv ${styles["mainDiv"]} ${styles["smMainDiv"]}`}>
-      <div className={`ArtworkCard/contentDiv ${styles["contentDiv"]} ${styles["smContentDiv"]}`}>
+    <div
+      className={`ArtworkCard/mainDiv ${styles["mainDiv"]} ${styles["smMainDiv"]}`}
+    >
+      <div
+        className={`ArtworkCard/contentDiv ${styles["contentDiv"]} ${styles["smContentDiv"]}`}
+      >
         <img
           className={`ArtworkCard/contentDivImage ${styles["contentDivImage"]} ${styles["smContentDivImage"]} ${styles["mdContentDivImage"]}`}
           src={imageSrc}
@@ -60,7 +67,7 @@ const ArtworkCard = ({
           <button
             className={`ArtworkCard/contentDivTextDivButton ${styles["contentDivTextDivButton"]}`}
           >
-            Cliquer pour voir l'oeuvre
+            {textData.page.components.artworkcard.clicktosee}
           </button>
         </div>
       </div>

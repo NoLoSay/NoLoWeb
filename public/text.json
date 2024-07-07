@@ -1,19 +1,197 @@
 {
   "page": {
-    "global": {
+    "components": {
+      "artCard" : {
+        "description" : "Description:",
+        "autor" : "Auteur:",
+        "createdate" : "Date de création:",
+        "place" : "Lieux:",
+        "creator" : "Créateur;",
+        "duration" : "Durée:",
+        "language" : "Langue:"
+      },
+      "artworkcard" : {
+        "clicktosee" : "Cliquer pour voir l'oeuvre"
+      },
+      "filter" : {
+        "filterListArtwork" : {
+          "exhibitions": "Expostions / Oeuvres",
+          "nbelements" : "Nombre d'éléments par page",
+          "seeexhibitions" : "Afficher les expositions",
+          "seeartworks" : "Afficher les oeuvres",
+          "sort" : "Trier",
+          "mostpopular" : "Plus Populaire",
+          "new" : "Nouveauté",
+          "atoz" : "De A à Z",
+          "ztoa" : "De Z à A"
+        },
+        "filterListExhibitions" : {
+          "artworks" : "Oeuvres",
+          "twelelements" : "12 éléments par page",
+          "twentelements" : "24 éléments par page",
+          "thirtelements" : "36 éléments par page",
+          "sort" : "Trier",
+          "mostpopular" : "Plus Populaire",
+          "new" : "Nouveauté"
+        },
+        "filterListPlace" : {
+          "place" : "Lieux",
+          "twelelements" : "12 éléments par page",
+          "twentelements" : "24 éléments par page",
+          "thirtelements" : "36 éléments par page",
+          "sort" : "Trier",
+          "mostpopular" : "Plus Populaire",
+          "new" : "Nouveauté",
+          "distance" : "Distance: Du + au - Proche"
+        }
+      },
       "footer": {
-        "footerText": "Nolosay est un groupe composé d'étudiants passionnés et déterminés à créer un changement positif dans la vie quotidienne des personnes sourdes ou malentendantes. Leur objectif est clair : rendre l'information et la communication accessibles à tous, en brisant les barrières linguistiques."
+        "footerText": "Nolosay est un groupe composé d'étudiants passionnés et déterminés à créer un changement positif dans la vie quotidienne des personnes sourdes ou malentendantes. Leur objectif est clair : rendre l'information et la communication accessibles à tous, en brisant les barrières linguistiques.",
+        "date" : "© 2024 - ",
+        "right" : " NOLOSAY. Tous droits réservés.",
+        "info" : "Informations",
+        "mention" : "Mentions légales",
+        "nb" : "+33 02.97.67.80.87",
+        "email" : "contact@nolosay.fr",
+        "AboutUs" : "À propos de nous"
+      },
+      "map" : {
+        "description": "Description:",
+        "website" : "Website:",
+        "loading" : "Loading..."
+      },
+      "newsletter" : {
+        "subscribeNews" : "S'insicrire à la newslettre et découvrir les dernières nouveautés",
+        "sub" : "S'abonner"
+      },
+      "titleCard" : {
+         "description": "Description:",
+         "website" : "Website:",
+         "location" : "Location:"
       }
     },
-    "home": {
-      "descriptionDiv" : {
+    "screen" : {
+      "about": {
+        "description" : "NoLoSay est un projet étudiant de 8 personnes en 4ème année du Programme Grande École à EPITECH. Le projet se déroule sur 3 ans et nous souhaitons répandre la langue des signes en mettant à disposition des vidéos pour la communauté réalisées par la communauté.",
+        "team" : "L’équipe NOLOSAY !"
+      },
+      "artworkmodificationPage" : {
+        "name" : "Name :",
+        "pname" : "Enter artwork name",
+        "artistid" : "Artist ID :",
+        "partistid" : "Enter artist ID",
+        "createdate" : "Creation Date:",
+        "pcreatedate" : "Select creation date",
+        "description" : "Description:",
+        "pdescription" : "Enter description",
+        "back" : "Back",
+        "save" : "Save"
+      },
+      "artworks" : {
+        "back": "Retour",
+        "add":  "Ajouter une oeuvre",
+        "modification": "Modifier l'oeuvre",
+        "artworks": "Oeuvres de l'exposition",
+        "noavaible": "No artworks available."
+      },
+      "authentificationSection" : {
+        "connection" : {
+          "connecty": "Se connecter",
+          "connectyou": "Connecte-toi pour continuer",
+          "pusername" : "Nom d'utilisateur",
+          "ppassword" : "Mot de passe",
+          "connectme" : "Me connecter",
+          "or" : "ou avec",
+          "noaccount" :"Pas de compte ?",
+          "create" : "Créer un compte"
+        },
+        "subscription" : {
+          "create" : "Créer un compte",
+          "connecty": "Se connecter",
+          "already" : "Déjà un compte ?",
+          "information" : "Renseigne tes informations personnelles",
+          "pusername" : "Nom d'utilisateur",
+          "pmail" : "exemple@gmail.com",
+          "pphone" : "Téléphone",
+          "ppassword" : "Mot de passe",
+          "pconfirmpassword" : "Confirmer le mot de passe"
+        }
+
+      },
+      "creationSection" : {
+        "artworkToTranslateSelectionSection" : {
+          "artworkToTranslateSelectionSection" : {
+            "totranslate" : "Oeuvres à traduire"
+          }
+        }
+      },
+      "exhibitionModificationPage" : {
+        "name" : "Name :",
+        "pname" : "Enter exhibition name",
+        "phone" : "Telephone Number:",
+        "pphone" : "Enter telephone number",
+        "shortdescription" : "Short Description:",
+        "pshortdescription" : "Enter short description",
+        "longdescription" : "Long Description:",
+        "plongdescription" : "Enter long description",
+        "id" : "Site ID:",
+        "pid" : "Enter site ID",
+        "createdate" : "Creation Date:",
+        "enddate" : "End Date:",
+        "back" : "Back",
+        "save" : "Save"
+      },
+      "exhibitions" : {
+          "back" : "Retour",
+          "myExhibition" : "Mes exposition",
+          "addExhibition" : "Ajouter une exposition",
+          "noAvaible" : "Aucune exposition disponible.",
+          "modification" : "Modifier",
+          "remove" : "Supprimer",
+          "from" : "Du",
+          "to" : "Au",
+          "euro" : "€ l'entrée",
+          "nbArtwork" : "nb oeuvres",
+          "allArtworks" : "Voir les oeuvres"
+      },
+      "home": {
         "title": "5,5 millions de personnes utilisent déjà Nolosay au quotidien.",
         "subtitle": "Accèdez à +1000 vidéos traduites en langue des signes",
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor."
+      },
+      "site" : {
+        "back" : "Retour",
+        "mySite" : "Mes sites d'expositions",
+        "euro" : "€ entry",
+        "allArtwork" : "Voir les expositions de ce site"
+      },
+      "siteModificationPage" : {
+        "name" : "Name:",
+        "pname" : "Enter site name:",
+        "phone" : "Telephone Number:",
+        "pphone" : "Enter telephone number",
+        "email" : "Email:",
+        "pemail" : "Enter email",
+        "website" : "Website:",
+        "pwebsite" : "Enter website URL",
+        "price" : "Price:",
+        "pprice" : "Enter price",
+        "details" : "Other Details:",
+        "pdetails" : "Enter other details",
+        "street" : "Street:",
+        "pstreet" : "Enter street",
+        "numberStreet" : "House Number:",
+        "pnumberStreet" : "Enter house number",
+        "cityCode" : "City Zip Code:",
+        "pcityCode" : "Enter zip code",
+        "save" : "Save",
+        "back" : "Back"
+      },
+      "videoCaptureSection" : {
+        "start": "Start Recording",
+        "stop" : "Stop Recording",
+        "save" : "Enregistrer Video"
       }
-    },
-    "about": {
-      "description" : "NoLoSay est un projet étudiant de 8 personnes en 4ème année du Programme Grande École à EPITECH. Le projet se déroule sur 3 ans et nous souhaitons répandre la langue des signes en mettant à disposition des vidéos pour la communauté réalisées par la communauté."
     }
   }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "../../../components/Layout/Layout";
 import ArtworkCard from "../../../components/ArtworkCard/ArtworkCard";
+import textData from "../../../../public/text.json";
 
 type artWork = {
   title: string;
@@ -51,8 +52,8 @@ const artworkList: artWork[] = [
 const styles: { [key: string]: string } = {
   mainDiv:
     "bg-white flex flex-col gap-10 items-center justify-center mt-8 relative w-full",
-    smMainDiv: "sm:gap-0",
-    mdMainDiv: "md:gap-5",
+  smMainDiv: "sm:gap-0",
+  mdMainDiv: "md:gap-5",
 
   leftLine: "absolute flex flex-start self-start",
   smLeftLine: "sm:hidden",
@@ -101,10 +102,16 @@ const ArtworkToTranslateSelectionScreen = (): JSX.Element => {
         <p
           className={`ArtworkToTranslateSelectionScreen/titleDivText ${styles["titleDivText"]} ${styles["smTitleDivText"]} ${styles["mdTitleDivText"]}`}
         >
-          Oeuvres à traduire
+          {
+            textData.page.screen.creationSection
+              .artworkToTranslateSelectionSection
+              .artworkToTranslateSelectionSection.totranslate
+          }
         </p>
       </div>
-      <div className={`ArtworkToTranslateSelectionScreen/artworkList ${styles["artworkList"]} ${styles["smArtworkList"]} ${styles["mdArtworkList"]} ${styles["lgArtworkList"]}`}>
+      <div
+        className={`ArtworkToTranslateSelectionScreen/artworkList ${styles["artworkList"]} ${styles["smArtworkList"]} ${styles["mdArtworkList"]} ${styles["lgArtworkList"]}`}
+      >
         {artworkList.map(
           ({ title, imageSrc, imageAlt, description }, index) => (
             <ArtworkCard

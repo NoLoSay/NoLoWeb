@@ -9,16 +9,23 @@
 	<key>manifest</key>
 	<dict>
 		<key>appURL</key>
-		<string>https://johan-uqac.github.io/nolosay.ipa</string>
+		<string>https://nolosay.fr/NoLoSay/Apps/NoLoSay.ipa</string>
 		<key>displayImageURL</key>
-		<string>https://avatars.githubusercontent.com/u/117668974?s=200&amp;v=4</string>
+		<string>https://avatars.githubusercontent.com/u/117668974?s=200&amp;amp;v=4</string>
 		<key>fullSizeImageURL</key>
-		<string>https://avatars.githubusercontent.com/u/117668974?s=200&amp;v=4</string>
+		<string>https://avatars.githubusercontent.com/u/117668974?s=200&amp;amp;v=4</string>
 	</dict>
 	<key>method</key>
 	<string>debugging</string>
+	<key>provisioningProfiles</key>
+	<dict>
+		<key>com.nolosay.nolosayapp</key>
+		<string>2025 Nolosay</string>
+	</dict>
+	<key>signingCertificate</key>
+	<string>Apple Development</string>
 	<key>signingStyle</key>
-	<string>automatic</string>
+	<string>manual</string>
 	<key>stripSwiftSymbols</key>
 	<true/>
 	<key>teamID</key>

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
+import textData from "../../../public/text.json";
 
 const toto: string = "bg-yellow-300 text-base-white";
 const tata: string = "bg-base-black text-yellow-300";
@@ -51,7 +52,18 @@ const classes: { [key: string]: React.CSSProperties } = {
     marginTop: "-1px",
     position: "relative",
     textAlign: "center",
-  }
+  },
+};
+
+const styles: { [key: string]: string } = {
+  container_0: "mainDiv",
+  container_1: "videoContainer",
+  container_2: "video",
+  container_3: "buttonsDiv",
+  container_4: "buttonBox",
+  container_5: "button",
+  container_6: "buttonBox",
+  container_7: "button",
 };
 
 export const RecordVideo = (): JSX.Element => {
@@ -124,8 +136,14 @@ export const RecordVideo = (): JSX.Element => {
   };
 
   return (
-    <div style={{ ...classes["mainDiv"] }} className="mainDiv">
-      <div style={{ ...classes["videoContainer"] }} className="videoContainer">
+    <div
+      style={{ ...classes["mainDiv"] }}
+      className={`container_0 ${styles.container_0}`}
+    >
+      <div
+        style={{ ...classes["videoContainer"] }}
+        className={`container_1 ${styles.container_1}`}
+      >
         <video
           style={{ ...classes["video"] }}
           ref={videoRef}
@@ -134,10 +152,13 @@ export const RecordVideo = (): JSX.Element => {
           autoPlay
           playsInline
           muted
-          className="video"
+          className={`container_2 ${styles.container_2}`}
         />
       </div>
-      <div style={{ ...classes["buttonsDiv"] }} className="buttonsDiv">
+      <div
+        style={{ ...classes["buttonsDiv"] }}
+        className={`container_3 ${styles.container_3}`}
+      >
         <div
           style={{
             ...classes["buttonBox"],
@@ -145,9 +166,7 @@ export const RecordVideo = (): JSX.Element => {
             //   ? "var(--colors-base-button)"
             //   : "var(--colors-button-disabled)",
           }}
-          className={`buttonBox ${
-            !isRecording ? toto : tata
-          }`}
+          className={`buttonBox ${!isRecording ? toto : tata}`}
         >
           <button
             style={{
@@ -159,11 +178,9 @@ export const RecordVideo = (): JSX.Element => {
             }}
             onClick={startCapture}
             disabled={isRecording}
-            className={`button ${
-              !isRecording ? toto : tata
-            }`}
+            className={`button ${!isRecording ? toto : tata}`}
           >
-            Start Recording
+            {textData.page.screen.videoCaptureSection.start}
           </button>
         </div>
         <div
@@ -173,7 +190,7 @@ export const RecordVideo = (): JSX.Element => {
               ? "var(--colors-base-button)"
               : "var(--colors-button-disabled)",
           }}
-          className="buttonBox"
+          className={`container_4 ${styles.container_4}`}
         >
           <button
             style={{
@@ -185,9 +202,9 @@ export const RecordVideo = (): JSX.Element => {
             }}
             onClick={stopCapture}
             disabled={!isRecording}
-            className="button"
+            className={`container_5 ${styles.container_5}`}
           >
-            Stop Recording
+            {textData.page.screen.videoCaptureSection.stop}
           </button>
         </div>
         <div
@@ -198,7 +215,7 @@ export const RecordVideo = (): JSX.Element => {
                 ? "var(--colors-base-button)"
                 : "var(--colors-button-disabled)",
           }}
-          className="buttonBox"
+          className={`container_6 ${styles.container_6}`}
         >
           <button
             style={{
@@ -211,9 +228,9 @@ export const RecordVideo = (): JSX.Element => {
             }}
             onClick={saveVideo}
             disabled={recordedChunks.length === 0}
-            className="button"
+            className={`container_7 ${styles.container_7}`}
           >
-            Enregistrer Video
+            {textData.page.screen.videoCaptureSection.save}
           </button>
         </div>
       </div>
