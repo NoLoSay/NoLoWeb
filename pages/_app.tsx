@@ -27,6 +27,8 @@ import PlacesPage from "./screen/site/Sites";
 import Sites from "./screen/site/Sites";
 import ExhibitionModificationPage from "./screen/exhibitionModificationPage/exhibitionModificationPage";
 import SiteModificationPage from "./screen/siteModificationPage/SiteModificationPage";
+import ArtistPage from "./screen/artist/Artist";
+import ArtistModificationPage from "./screen/artistModificationPage/ArtistModificationPage";
 
 const AppRouter = () => {
   const [isClient, setIsClient] = useState(false);
@@ -66,15 +68,18 @@ const AppRouter = () => {
             <Route path="/account" element={<Account />} />
             <Route path="/account/artworks" element={<ArtworksPage />} />
 
+            <Route path="/artists" element={<ArtistPage />} />
+            <Route path="/artists/artists-modification-page" element={<ArtistModificationPage />} />
+
             <Route path="/places" element={<Sites />} />
-            <Route path="/places/modificationPlace" element={<SiteModificationPage />} />
+            <Route path="/places/place-modifiaction-page" element={<SiteModificationPage />} />
             <Route path="/places/artworks" element={<ArtworksPage />} />
 
             <Route path="/places/exhibitions" element={<ExhibitionsPage />} />
-            <Route path="/places/exhibitions/exhibitionModification" element={<ExhibitionModificationPage/>} />
+            <Route path="/places/exhibitions/exhibition-modification-page" element={<ExhibitionModificationPage/>} />
 
             <Route path="/places/exhibitions/artworks" element={<ArtworksPage />} />
-            <Route path="/places/exhibitions/artworks/artworkModification" element={<ArtworkModificationPage />} />
+            <Route path="/places/exhibitions/artworks/artwork-modification-page" element={<ArtworkModificationPage />} />
 
             <Route path="/accountSettings" element={<AccountSettings />} />
             <Route path="/record" element={<RecordVideo />} />

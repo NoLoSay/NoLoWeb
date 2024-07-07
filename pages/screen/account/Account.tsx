@@ -37,6 +37,8 @@ const Account = () => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
 
+  console.log("user = ", user)
+
   return (
     <Fragment>
       <Head>
@@ -95,6 +97,11 @@ const Account = () => {
             <ButtonBase disableRipple onClick={() => navigate("/account/artworks", { state: { from: 'accountArtworks' } })}>
               <div className="flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100 w-20">
                 Voir toutes les oeuvres
+              </div>
+            </ButtonBase>
+            <ButtonBase disableRipple onClick={() => navigate("/artists")}>
+              <div className="flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100 w-20">
+                Voir tous les artistes
               </div>
             </ButtonBase>
           </div>

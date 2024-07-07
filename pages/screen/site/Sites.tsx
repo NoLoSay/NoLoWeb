@@ -185,8 +185,9 @@ const Sites: React.FC<SitesProps> = () => {
                     Voir les expositions de ce site
                   </div>
                 </ButtonBase>
+                _
                 <ButtonBase disableRipple onClick={() => handleAction("handleGoToAllArtworks", site.id)}>
-                  <div className="flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100 w-20">
+                  <div className={styles.buttons} >
                     Voir toutes les oeuvres
                   </div>
                 </ButtonBase>

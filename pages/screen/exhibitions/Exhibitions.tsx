@@ -145,11 +145,11 @@ const Exhibition: React.FC<ExhibitionsProps> & {
     };
 
     const changeExhibition = (exhibitionsId:any) => {
-        navigate('/places/exhibitions/exhibitionModification', { state: { item: exhibitionsId } });
+        navigate('/places/exhibitions/exhibition-modification-page', { state: { item: exhibitionsId } });
     }
 
     const handleAddExhibition = (siteId:any) => {
-        navigate('/places/exhibitions/exhibitionModification', { state: { item: siteId } });
+        navigate('/places/exhibitions/exhibition-modification-page', { state: { item: siteId } });
     };
 
     if (!exhibitions || exhibitions.length === 0) {

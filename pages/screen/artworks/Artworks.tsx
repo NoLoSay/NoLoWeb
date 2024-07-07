@@ -109,9 +109,9 @@ const ArtworkModificationPage = () => {
             case 'modificationArtwork':
                 const artwork = artworks.find((art:any) => art.id === artworkId);
                 if (artwork) {
-                    navigate('/places/exhibitions/artworks/artworkModification', { state: { item: artwork } });
+                    navigate('/places/exhibitions/artworks/artwork-modification-page', { state: { item: artwork } });
                 } else {
-                    navigate('/places/exhibitions/artworks/artworkModification', { state: { item: null, exhibitionId: location.state?.exhibitionId } });
+                    navigate('/places/exhibitions/artworks/artwork-modification-page', { state: { item: null, exhibitionId: location.state?.exhibitionId } });
                 }
                 break;
             case 'deleteArtwork':
