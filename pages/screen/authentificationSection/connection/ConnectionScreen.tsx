@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "../../../../node_modules/react-router-dom/dist/index";
+import { useNavigate } from "react-router-dom";
 import Layout from "../../../components/Layout/Layout";
 import ConnectionController from "./ConnectionController";
 import textData from "../../../../public/text.json";
