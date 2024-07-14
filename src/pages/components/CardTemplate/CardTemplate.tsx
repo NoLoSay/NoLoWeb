@@ -36,7 +36,7 @@ const styles: { [key: string]: string } = {
     "w-full [border:none] [outline:none] bg-lightyellow self-stretch h-6 rounded-8xs flex flex-row items-start justify-center py-1 px-2.5 box-border font-poppins font-semibold text-2xs text-base-black min-w-[127px]",
 };
 
-const CardTemplate: NextPage<CardTemplateProps> = (cardInfo: CardInfo) => {
+const CardTemplate: NextPage<CardTemplateProps> = ({ cardInfo }) => {
   const navigate = useNavigate();
 
   const splitTitle = (title: string): [string, string] => {

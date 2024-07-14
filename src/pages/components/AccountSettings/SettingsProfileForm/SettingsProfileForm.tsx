@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import testProfile from "../../../../../stories/assets/testProfile.json";
 import { UserContext } from "../../../../global/contexts/UserProvider";
+import { NULL } from "sass";
 
 const styles: { [key: string]: string } = {
   container_0: " py-5",
@@ -31,7 +32,7 @@ function SettingsProfileForm() {
   const [usernameValue, setUsernameValue] = useState(user.username);
   const [bioValue, setBioValue] = useState(testProfile.bio);
   const [websiteValue, setWebsiteValue] = useState(testProfile.website);
-  const [telNumberValue, setTelNumberValue] = useState(user.telNumber);
+  const [telNumberValue, setTelNumberValue] = useState(user.telNumber || "");
 
   return (
     <div>
