@@ -8,13 +8,13 @@ interface FilterPageProps {
 }
 
 const styles: { [key: string]: string } = {
-  backgroundDiv: "bg-white",
-  main: "mx-auto max-w-full flex items-baseline justify-between border-b border-gray-200 pb-6 pt-14 px-4 sm:px-6 lg:px-8",
+  backgroundDiv: "bg-white flex max-w-full  gap-10 items-center justify-center mt-8 ",
+  main: "flex items-baseline justify-between",
   textDiv: "text-2xl font-bold tracking-tight text-base-black",
-  lineDiv: "border-b-4 border-solid border-yellow-300 w-[860px] mt-2",
+  lineDiv: "border-b-8 rounded-lg border-solid border-yellow-300 w-[800px] mt-2",
   blockfilterDiv: "relative inline-block text-left ml-4",
   borderDiv:
-    "border-gray-300 " +
+    "border-gray-300 text-md " +
     "focus:ring-yellow-300 " +
     "focus:border-yellow-300 " +
     "h-10 pl-3 pr-7 rounded-lg",

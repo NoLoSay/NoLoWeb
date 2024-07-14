@@ -8,18 +8,18 @@ interface PaginationProps {
 
 const styles: { [key: string]: string } = {
   mainDiv:
-    "flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 pt-10",
+    "bg-white flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 pt-10",
   adjustSizeWindowDiv:
     "sm:hidden lg:visible sm:flex sm:flex-1 sm:items-center sm:justify-between",
   navDiv: "isolate inline-flex -space-x-px rounded-md shadow-sm",
   buttonDiv:
-    "relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-yellow-300 focus:z-20 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-600",
+    "bg-white relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 hover:bg-yellow-300 focus:z-20 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-600",
   arrowprevDiv: "h-5 w-5",
   pagenbDiv: "relative inline-flex items-center",
   pagenbDiv2:
-    "px-4 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300",
+    "bg-white px-4 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300",
   butttonNextDiv:
-    "relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-yellow-300 focus:z-20 focus:outline-offset-0",
+    "bg-white relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 hover:bg-yellow-300 focus:z-20 focus:outline-offset-0",
   arrownextDiv: "h-5 w-5",
 };
 
@@ -64,8 +64,8 @@ const Pagination: React.FC<PaginationProps> = ({
                 onClick={() => onPageChange(pageNumber)}
                 className={`pagenbDiv ${styles["pagenbDiv"]} ${
                   pageNumber === currentPage
-                    ? "bg-yellow-300 text-white"
-                    : "text-base-black ring-1 ring-inset ring-gray-300 hover:bg-yellow-300 focus:z-20 focus:outline-offset-0"
+                    ? "bg-yellow-300 text-white lg:text-lg"
+                    : "text-base-black lg:text-lg hover:bg-yellow-300 focus:z-20 focus:outline-offset-0"
                 } ${styles["pagenbDiv2"]}`}
               >
                 {pageNumber}

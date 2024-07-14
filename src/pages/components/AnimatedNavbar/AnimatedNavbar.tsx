@@ -21,26 +21,25 @@ const styles: { [key: string]: string } = {
   container_3: "w-32 h-8",
   container_4:
     "text-zinc-500 hover:underline hover:cursor-pointer bg-transparent underline-offset-2 text-base",
-  container_5: "flex flex-row justify-around items-center w-full px-5 ",
-  container_6: "flex flex-row justify-between items-center space-x-4",
+  container_5: "flex flex-row justify-around items-center w-full pl-32 pr-32 ",
+  container_6: "flex flex-row justify-between items-center space-x-10 pl-10",
   container_7:
-    "flex flex-row items-center gap-8 text-gray-200 bg-transparent hover:underline hover:cursor-pointer",
-  container_8: "font-medium text-base",
+    "flex flex-row items-center  text-gray-200 bg-transparent hover:underline hover:cursor-pointer",
   container_9:
-    "rounded-full bg-gray-300 hover:cursor-pointer flex items-center justify-center py-2 px-6 gap-2 text-base-white font-semibold hover:underline",
+    "flex flex-row items-center gap-8 rounded-full bg-gray-300 text-base hover:cursor-pointer flex items-center justify-center py-2 px-6 gap-8 text-base-white font-semibold hover:underline",
   container_10: "font-semibold text-base",
   container_11: "p-3",
   container_12: "flex flex-row items-center px-10 h-24 shadow-md",
   container_13:
-    "flex flex-row items-center gap-8 text-gray-200 bg-transparent hover:underline hover:cursor-pointer",
+    "flex flex-row items-center gap-8 text-gray-200 text-lg bg-transparent hover:underline hover:cursor-pointer",
   container_14:
     "rounded-full bg-gray-300 hover:cursor-pointer flex items-center justify-center py-2 px-6 gap-2 text-base-white font-semibold hover:underline",
   container_15:
-    "flex flex-row justify-around w-full px-5 items-center gap-5 text-gray-200",
+    "flex flex-row justify-around w-full items-center text-gray-200",
 };
 
 export type NavLinkProps = {
-  links: { href: string; title: string; props?: any }[];
+  links: { href: string; title: string; image:string; props?: any }[];
   handleChangePage: (link: string, props?: any) => void;
 };
 
@@ -50,9 +49,9 @@ type NavbarProps = {
 };
 
 const NavLinksItems = [
-  { href: "/about", title: "" },
-  { href: "/findlocation", title: "" },
-  { href: "/tickets", title: "" },
+  { href: "/findlocation", title: "Rechercher", image: "/icon/search.png" },
+  { href: "/tickets", title: "Créer", image: "/icon/create.png" },
+  { href: "/about", title: "Mes Vidéos", image: "/icon/video.png"},
 ];
 
 interface logoButtonProps {
@@ -83,19 +82,21 @@ const LogoButton = ({ handleChangePage }: logoButtonProps) => {
 const NavLinks = ({ links, handleChangePage }: NavLinkProps) => {
   const renderLinks = () => {
     return links.map((link, index) => (
-      <button
-        key={index}
+      <button key={index} 
         onClick={() => handleChangePage(link.href, link.props)}
-        className={`container_4 ${styles.container_4}`}
-      >
-        {link.title}
+        className="shadow-none bg-white flex items-center space-x-4 text-left text-sm font-medium margin-8 px-7 py-2 border-2 rounded-md border-transparent  hover:cursor-pointer hover:border-yellow-300 focus:outline-none">
+        <img
+          src={link.image}
+          className="w-10 h-10"
+        />
+        <div className="text-lg font-bold">
+          {link.title}
+        </div>
       </button>
     ));
   };
 
-  return (
-    <div className={`container_5 ${styles.container_5}`}>{renderLinks()}</div>
-  );
+  return <div className={`container_5 ${styles.container_5}`}>{renderLinks()}</div>;
 };
 
 interface loginButtonProps {
@@ -106,17 +107,9 @@ const LoginButton = ({ handleChangePage }: loginButtonProps) => {
     <div className={`container_6 ${styles.container_6}`}>
       <button
         onClick={() => handleChangePage("/connection")}
-        className={`container_7 ${styles.container_7}`}
+        className={`container_9 ${styles.container_7}`}
       >
-        <div className={`container_8 ${styles.container_8}`}>Connexion</div>
-      </button>
-      <button
-        onClick={() => handleChangePage("/subscription")}
-        className={`container_9 ${styles.container_9}`}
-      >
-        <div
-          className={`container_10 ${styles.container_10}`}
-        >{`Inscription`}</div>
+        <div className={`container_10 ${styles.container_9}`}>Connexion</div>
       </button>
     </div>
   );
@@ -201,12 +194,6 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({ InApp }: NavbarProps) => {
                     className={`container_13 ${styles.container_13}`}
                   >
                     <ListItemText primary={"Connexion"} />
-                  </ListItemButton>
-                  <ListItemButton
-                    onClick={() => handleChangePage("/subscription")}
-                    className={`container_14 ${styles.container_14}`}
-                  >
-                    <ListItemText primary={`Inscription`} />
                   </ListItemButton>
                 </ListItem>
               </List>

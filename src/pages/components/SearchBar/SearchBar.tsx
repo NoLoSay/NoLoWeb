@@ -9,10 +9,10 @@ interface SearchBarProps {
 
 const styles: { [key: string]: string } = {
   container:
-    "relative flex flex-row items-center justify-start gap-[20px] max-w-full",
+    "flex flex-row items-center gap-[20px] lg:pt-4 lg:px-96 lg:max-w-full md:max-w-[750px]",
 
   searchBar:
-    "flex-1 rounded-1.5lg bg-base-white shadow-[0px_4px_9px_rgba(0,_0,_0,_0.25)] box-border flex flex-row items-center justify-start py-[9px] pr-4 pl-[11px] gap-[57px] max-w-full border-[1px] border-solid border-gray-100 mq450:gap-[28px]",
+    "flex-1 rounded-1.5lg bg-base-white shadow-[0px_4px_9px_rgba(0,_0,_0,_0.25)] box-border flex flex-row items-center justify-start py-[9px] pr-4 pl-[11px] max-w-full border-[1px] border-solid border-gray-100",
   lgsearchBar: "py-[9px] pr-4 pl-[11px] gap-[57px]",
 
   locationInputContainer:
@@ -24,7 +24,7 @@ const styles: { [key: string]: string } = {
   searchInput:
     "flex-1 relative tracking-[-0.41px] leading-[22px] font-medium text-base-black whitespace-nowrap",
 
-  searchIcon: "h-[13.9px] w-3 relative",
+  searchIcon: "w-3 relative",
 };
 
 const SearchBar: React.FC<SearchBarProps> = ({

@@ -25,7 +25,7 @@ const ImageSlider: React.FC<FindVideoProps> & {} = () => {
 
   const styles = {
     container:
-      "max-w-[1280px] max-h-[250px] border rounded-lg overflow-hidden p-0 relative",
+      "ml-56 lg:max-w-[1280px] lg:max-h-[250px] border rounded-lg overflow-hidden p-0 relative ",
   };
 
   return (
