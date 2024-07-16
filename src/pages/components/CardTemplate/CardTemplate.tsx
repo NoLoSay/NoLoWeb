@@ -11,6 +11,7 @@ interface CardInfo {
   city?: string;
   location?: string;
   pathname: string;
+  exhibition: any[];
 }
 
 interface CardTemplateProps {

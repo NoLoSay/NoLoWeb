@@ -104,7 +104,7 @@ const NavLinks = ({ links, handleChangePage }: NavLinkProps) => {
         onMouseUp={() => handleMouseUpOrLeave(index)}
         onMouseLeave={() => handleMouseUpOrLeave(index)}
         onClick={() => handleChangePage(link.href, link.props)}
-        className="shadow-none bg-white flex items-center space-x-4 text-left text-sm font-medium margin-8 px-7 py-2 border-2 rounded-md border-transparent border-solid hover:cursor-pointer hover:border-yellow-300 focus:outline-none active:text-yellow-300"
+        className="shadow-none bg-white flex items-center space-x-4 text-left text-sm font-medium margin-8 px-7 py-2 border-2 rounded-md border-transparent border-solid hover:cursor-pointer hover:border-yellow-300 focus:outline-none text-black active:text-yellow-300"
       >
         <img
           src={activeImages[index] || link.image}

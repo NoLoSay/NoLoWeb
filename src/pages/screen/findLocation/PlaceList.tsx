@@ -4,12 +4,17 @@ import Pagination from "../../components/Pagination/Pagination";
 import FilterListPlace from "../../components/Filter/FilterListPlace";
 interface Place {
   name: string;
-  description: string;
-  image: string;
+  shortDescription: string;
+  picture: string;
   videocount: string;
   website: string;
   city: string;
   location: string;
+  exhibition: any[];
+  adresse: {
+    longitude: number;
+    latitude: number;
+  };
 }
 
 interface PlaceListProps {
@@ -21,7 +26,7 @@ const PlaceList: React.FC<PlaceListProps> = ({ places }) => {
     container:
       "max-w-full mt-8 flex flex-col items-start justify-start gap-[35px] min-h-[493px] max-w-full text-left text-3xl text-base-black font-poppins",
     CardsDiv:
-      "flex flex-row gap-10 items-center justify-center mt-8 relative w-full self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray mq450:gap-[19px] mq750:gap-[38px]",
+      "flex flex-row gap-10 items-start justify-start mt-8 relative w-full self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray mq450:gap-[19px] mq750:gap-[38px]",
     pagDiv: "flex justify-center items-center pt-4",
     leftLine: "absolute flex flex-start self-start ",
     smLeftLine: "sm:hidden",
@@ -51,16 +56,6 @@ const PlaceList: React.FC<PlaceListProps> = ({ places }) => {
     <div>
       <FilterListPlace handlePerPageChange={handlePerPageChange} />
       <div className={`container ${styles.container}`}>
-          <img
-            className={`ArtworkToTranslateSelectionScreen/leftLine ${styles["leftLine"]} ${styles["smLeftLine"]}`}
-            src="/images/findLocation/Vector 61.png"
-            alt="Vector"
-          />
-          <img
-            className={`ArtworkToTranslateSelectionScreen/rightLine ${styles["rightLine"]} ${styles["smRightLine"]} ${styles["mdRightLine"]}`}
-            src="/images/findLocation/Vector 62.png"
-            alt="Vector"
-          />
         <div className={`CardsDiv ${styles.CardsDiv}`}>
           {currentPlaces.map((place, index) => {
             return (
@@ -68,12 +63,13 @@ const PlaceList: React.FC<PlaceListProps> = ({ places }) => {
                 key={index}
                 cardInfo={{
                   title: place.name,
-                  description: place.description,
-                  imageSrc: place.image,
+                  description: place.shortDescription,
+                  imageSrc: place.picture,
                   videoCountPlaceholder: place.videocount,
                   website: place.website,
                   city: place.city,
                   location: place.location,
+                  exhibition: place.exhibition,
                   pathname: "/location",
                 }}
               />

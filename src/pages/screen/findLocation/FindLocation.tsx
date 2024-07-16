@@ -1,5 +1,6 @@
 import Layout from "../../components/Layout/Layout";
-import React, { useState, useEffect } from "react";
+import React, {useContext, useState, useEffect } from "react";
+import { UserContext } from "../../../global/contexts/UserProvider";
 import ImageSlider from "../../components/ImageSlider/ImageSlider";
 import PlaceList from "./PlaceList";
 import Map from "../../components/Map/Map";
@@ -11,15 +12,19 @@ type Place = {
   name: string;
   city: string;
   location: string;
-  description: string;
-  image: string;
+  shortDescription: string;
+  picture: string;
   videocount: string;
   website: string;
+  exhibition: any[];
+  adresse: {
+    longitude: number;
+    latitude: number;
+  };
 };
 
 interface FindVideoProps {}
 
-const places: Place[] = placesData as Place[];
 
 const styles: { [key: string]: string } = {
   mainDiv: "flex justify-center items-center pt-4 ",
@@ -87,6 +92,53 @@ const FindLocation: React.FC<FindVideoProps> & {
       setButtonIcon("/icon/search/MapIcon.png");
     }
   };
+
+  const { user, setUser } = useContext(UserContext);
+  const [places, setPlaces] = useState<Place[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchPlaces = async () => {
+      try {
+        setLoading(true);
+        const url = `http://localhost:3001/sites`;
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${user.accessToken}`,
+              "Content-Type": "application/json",
+            },
+          });
+        if (!response.ok) {
+          throw new Error("Failed to fetch places");
+        }
+        const data = await response.json();
+        const transformedData = data.map((place: Place) => ({
+          ...place,
+          videocount: place.exhibition.length.toString() + " exposition",
+          //position: [place.adresse.latitude, place.adresse.longitude],
+        }));
+        setPlaces(transformedData);
+        console.log("Places:", transformedData);
+        setSearchResults(transformedData);
+      } catch (error) {
+          console.error("Failed to fetch exhibition details:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPlaces();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div>

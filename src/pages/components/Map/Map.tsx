@@ -8,11 +8,11 @@ interface MapProps {
   places?: {
     position: [number, number];
     name: string;
-    description: string;
+    shortDescription: string;
     location: string;
     city: string;
     website: string;
-    image: string;
+    picture: string;
   }[];
 }
 
@@ -104,7 +104,7 @@ const Map: React.FC<MapProps> = (props) => {
                       className={`Img ${styles["Img"]}`}
                       loading="eager"
                       alt=""
-                      src={place.image}
+                      src={place.picture}
                     />
                     <div className="flex-1 flex flex-col py-4 pl-2  gap-[13px] min-w-[138px] p-[10px]">
                       <div className=" items-center justify-center text-inherit leading-[19px] font-bold font-inherit text-lg">{place.name}</div>
@@ -113,7 +113,7 @@ const Map: React.FC<MapProps> = (props) => {
                       </div>
                       <div>
                         {textData.page.components.map.description}{" "}
-                        {place.description}
+                        {place.shortDescription}
                       </div>
                       <div>
                         {textData.page.components.map.website}{" "}
