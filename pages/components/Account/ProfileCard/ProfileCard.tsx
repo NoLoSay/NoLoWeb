@@ -1,44 +1,159 @@
-import { ButtonBase, Paper } from "@mui/material";
+import { Button, ButtonBase, IconButton, Modal, Paper, TextField, Box } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import { useContext, useState } from "react";
+import { UserContext } from "../../../../contexts/UserProvider";
 
 const styles: { [key: string]: string } = {
-  container_0: "relative flex flex-row m-5 p-5 items-center justify-start",
-  container_1: "w-20 h-20 rounded-full",
-  container_2: "flex flex-col flex-grow mx-5 space-y-2",
-  container_3: "text-sky-600",
-  container_4: "text-lg font-bold my-2",
-  container_5: "absolute top-0 right-0 m-2",
-};
-
-type ProfileProps = {
-  profilePicturePath?: string;
-  fullName?: string;
-  email?: string;
-  phone?: string;
+  row: "flex flex-row w-full justify-between",
 };
 
 function ProfileCard({
-  profilePicturePath,
-  fullName,
-  email,
-  phone,
-}: ProfileProps) {
+                       profilePicturePath,
+                       fullName,
+                       email,
+                       phone,
+                     }) {
+  const { user, setUser } = useContext(UserContext);
+  const [editMode, setEditMode] = useState('');  // Controls which field is being edited
+  const [newName, setNewName] = useState(fullName);
+  const [newEmail, setNewEmail] = useState(email);
+  const [newPhone, setNewPhone] = useState(phone);
+  const [newProfilePicture, setNewProfilePicture] = useState(profilePicturePath);
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleEdit = (mode) => {
+    setEditMode(mode);
+    if (mode && mode === 'picture') {
+      // Trigger file input for picture
+      document.getElementById('icon-button-file').click();
+    }
+  };
+
+  const handleClose = () => {
+    setEditMode('');
+    setNewPassword('');
+    setConfirmPassword('');
+  };
+
+  const handleSave = async () => {
+    const url = '/users/me';
+    const payload = {
+      username: '',
+      email: '',
+      password: '',
+      telNumber: '',
+      picture: ''
+    };
+    switch (editMode) {
+      case 'name':
+        payload.username = newName;
+        break;
+      case 'email':
+        payload.email = newEmail;
+        break;
+      case 'phone':
+        payload.telNumber = newPhone;
+        break;
+      case 'password':
+        if (newPassword !== confirmPassword) {
+          alert("Passwords do not match");
+          return;
+        }
+        payload.password = newPassword;
+        break;
+      default:
+        return;
+    }
+
+    // Call API to update user data based on payload
+    console.log("Payload to update:", payload);
+
+    try {
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + user.accessToken,
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log('Successfully updated user:', data);
+      alert('Profile updated successfully!');
+      handleClose();
+    } catch (error) {
+      console.error('Failed to update user:', error);
+      alert('Failed to update profile.');
+    }
+
+    handleClose();
+  };
+
   return (
-    <Paper className={`container_0 ${styles.container_0}`}>
-      <img
-        className={`container_1 ${styles.container_1}`}
-        src={profilePicturePath}
-        alt="Photo de profile"
-      />
-      <div className={`container_2 ${styles.container_2}`}>
-        <p className={`container_3 ${styles.container_3}`}>Identification</p>
-        <p className={`container_4 ${styles.container_4}`}>{fullName}</p>
-        <p>{email}</p>
-        <p>{phone}</p>
+    <Paper className="relative flex flex-row m-5 ml-0 p-5 items-center justify-start">
+      <div className="flex flex-col flex-grow mx-5 space-y-2">
+        <div className="flex items-center space-x-2">
+          <img src={newProfilePicture} alt="Profile" className="w-20 h-20 rounded-full"/>
+          <label htmlFor="icon-button-file">
+            <input accept="image/*" id="icon-button-file" type="file" className="hidden"
+                   onClick={() => handleEdit('picture')}/>
+            <IconButton color="primary" aria-label="upload picture" component="span">
+              <PhotoCamera/>
+            </IconButton>
+          </label>
+        </div>
+        <div className={`row ${styles.row}`}>
+          <p className="text-lg font-bold my-2">{user.username}</p>
+          <ButtonBase onClick={() => handleEdit('name')}><EditIcon/></ButtonBase>
+        </div>
+        <div className={`row ${styles.row}`}>
+          <p>{user.email}</p>
+          <ButtonBase onClick={() => handleEdit('email')}><EditIcon/></ButtonBase>
+        </div>
+        <div className={`row ${styles.row}`}>
+          <p>{user.telNumber}</p>
+          <ButtonBase onClick={() => handleEdit('phone')}><EditIcon/></ButtonBase>
+        </div>
+        <div className={`row ${styles.row}`}>
+          <p>Change password</p>
+          <ButtonBase onClick={() => handleEdit('password')}><EditIcon/></ButtonBase>
+        </div>
       </div>
-      <ButtonBase className={`container_5 ${styles.container_5}`}>
-        <EditIcon />
-      </ButtonBase>
+
+      {editMode && (
+        <Modal open={Boolean(editMode)} onClose={handleClose}>
+          <Box
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-xl p-4 flex flex-col items-center justify-center w-96">
+            <TextField
+              fullWidth
+              label={`Edit ${editMode.charAt(0).toUpperCase() + editMode.slice(1)}`}
+              variant="outlined"
+              value={editMode === 'name' ? newName : editMode === 'email' ? newEmail : editMode === 'phone' ? newPhone : newPassword}
+              onChange={(e) => editMode === 'name' ? setNewName(e.target.value) : editMode === 'email' ? setNewEmail(e.target.value) : editMode === 'phone' ? setNewPhone(e.target.value) : setNewPassword(e.target.value)}
+              margin="normal"
+              type={editMode === 'password' ? 'password' : 'text'}
+            />
+            {editMode === 'password' && (
+              <TextField
+                fullWidth
+                label="Confirm New Password"
+                type="password"
+                variant="outlined"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                margin="normal"
+              />
+            )}
+            <Button onClick={handleSave} variant="contained" color="primary">Save</Button>
+          </Box>
+        </Modal>
+      )}
     </Paper>
   );
 }

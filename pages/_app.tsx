@@ -68,6 +68,9 @@ const AppRouter = () => {
               <Route path="/videoAccess" element={<VideoAccess />} />
               <Route path="/location" element={<Location />} />
               <Route path="/account" element={<Account />} />
+              <Route path="/account/artworks" element={<ArtworksPage />} />
+
+              <Route path="/artistModification" element={<ArtistModificationPage/>} />
 
               <Route path="/places" element={<Sites />} />
               <Route path="/places/place-modifiaction-page" element={<SiteModificationPage />} />
@@ -76,6 +79,7 @@ const AppRouter = () => {
               <Route path="/artists/artists-modification-page" element={<ArtistModificationPage />} />
 
               <Route path="/places/exhibitions" element={<ExhibitionsPage />} />
+              <Route path="/places/artworks" element={<ArtworksPage />} />
               <Route path="/places/exhibitions/exhibition-modification-page" element={<ExhibitionModificationPage/>} />
 
               <Route

@@ -186,11 +186,6 @@ const Exhibition: React.FC<ExhibitionsProps> & {
             <div className={`divTitlePage ${styles["divTitlePage"]}`}>
               <h1 className={`pageTitle ${styles["pageTitle"]}`}>Mes exposition</h1>
             </div>
-
-
-
-
-
             <ButtonBase disableRipple onClick={() => handleAddExhibition(siteId)}>
               <div className={styles.buttons}>
                 Ajouter une exposition
@@ -207,7 +202,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
 
                 <div key={exhibition.id} className={`divExhibition ${styles["divExhibition"]}`}>
                   <img
-                    src=""
+                    src={exhibition.picture}
                     loading="lazy" alt="" className={`image16 ${styles["image16"]}`}/>
                   <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>
                     <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>

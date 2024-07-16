@@ -54,6 +54,17 @@ const ArtworkModificationPage = () => {
     setArtwork({ ...artwork, [name]: value });
   };
 
+  const handleImageChange = (event: any) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setArtwork((previousState: any) => ({ ...previousState, picture: reader.result }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = async () => {
     const method = artwork.id ? "PUT" : "POST";
     const url = `http://localhost:3001/items${
@@ -128,18 +139,6 @@ const ArtworkModificationPage = () => {
     }
   };
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const result = e.target?.result as string;
-        setArtwork((prev: any) => ({ ...prev, picture: result }));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   const resetFields = () => {
     setArtwork({
       name: "",
@@ -167,12 +166,20 @@ const ArtworkModificationPage = () => {
           className={`artworkCardModification ${styles["artworkCardModification"]}`}
         >
           <div className={styles.divBlockGeneralInformations}>
-            <img
-              src={artwork.picture || "https://cataas.com/cat"}
-              alt="Exhibition Image"
-              className={styles.image22}
-              onClick={() => document.getElementById("imageUpload")?.click()}
-            />
+            <div>
+              <img
+                src={artwork.picture || "https://cataas.com/cat"}
+                alt="Exhibition Image"
+                className={styles.image22}
+                onClick={() => document.getElementById("imageUpload")?.click()}
+              />
+              <input
+                id="picture"
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+            </div>
             <div className={styles.divGeneralInformations}>
               <div className={styles.nameBlockInput}>
                 <div className={styles.textName}>
@@ -218,8 +225,8 @@ const ArtworkModificationPage = () => {
                   value={
                     artwork.createdAt
                       ? new Date(artwork.createdAt)
-                          .toISOString()
-                          .substring(0, 10)
+                        .toISOString()
+                        .substring(0, 10)
                       : ""
                   }
                   onChange={handleInputChange}

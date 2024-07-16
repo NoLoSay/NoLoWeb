@@ -130,7 +130,7 @@ const Sites: React.FC<SitesProps> = () => {
             throw new Error(`HTTP status ${response.status}: Failed to fetch exhibitions`);
           }
           const exhibitions = await response.json();
-          const filteredExhibitions = exhibitions.filter((exhibition:any) => exhibition.site.id === siteId);
+          const filteredExhibitions = exhibitions.filter((exhibition:any) => exhibition.site.id == siteId);
           navigate('/places/exhibitions', { state: { item: filteredExhibitions , siteId: siteId} });
         } catch (error) {
           console.error('Failed to fetch exhibition details:', error);
