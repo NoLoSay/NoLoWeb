@@ -26,22 +26,21 @@ interface Exhibition {
 const exhibitions: Exhibition[] = exhibitionsData.exhibitions;
 
 const styles: { [key: string]: string } = {
-  mainDiv: "flex flex-col space-y-5 m-5 justify-center w-3/4 mx-auto",
   listDiv: "flex flex-col",
   cardlistDiv:
-    "w-[1280px] mt-8 ml-8 flex flex-col items-start justify-start gap-[35px] min-h-[493px] max-w-full text-left text-3xl text-base-black font-poppins",
+    " mt-8 ml-8 flex flex-col items-start justify-start gap-[35px] max-w-full text-left text-3xl text-base-black font-poppins mb-8",
   nbcardlistDiv:
-    "self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray mq450:gap-[19px] mq750:gap-[38px]",
-  container_0: "flex flex-col space-y-5 m-5 w-4/5 mx-auto",
+    "flex flex-row gap-10 items-center justify-center mt-8 relative w-full self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray ",
+  container_0: "flex flex-col space-y-5 m-5  mx-auto",
   container_1:
-    "flex p-5 flex-col space-x-5 w-full items-center justify-around border-solid border-4 border-yellow-300",
+    "flex p-5 flex-col mx-auto space-x-5 w-full items-center justify-around border-solid border-4 border-yellow-300",
   container_2: "flex flex-col",
   container_3: "flex flex-row ml-2 mr-7 p-2",
   container_4: "mt-36 ",
   container_5: "flex-shrink-0 pr-10",
-  container_6: "w-1/3 mr-2 pl-4",
+  container_6: " mr-2 pl-4",
   container_7: "flex h-80 w-96 rounded-1.5lg shadow-lg",
-  container_8: "w-2/3 border ml-10",
+  container_8: "border ml-10",
   container_9: "p-5 m-4 flex flex-col justify-between h-full",
   container_10: "font-bold text-4xl",
   container_11: "flex items-center pt-5",

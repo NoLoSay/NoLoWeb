@@ -19,12 +19,12 @@ interface CardTemplateProps {
 
 const styles: { [key: string]: string } = {
   container:
-    "hover:cursor-pointer h-[200px] flex flex-col items-start justify-start min-w-[281px] max-w-[375px] text-left text-mini text-darkslategray font-poppins",
+    "hover:cursor-pointer h-[200px] flex flex-col items-start justify-start min-w-[281px] max-w-[395px] text-left text-mini text-darkslategray font-poppins",
   card: "bg-white rounded-xl flex flex-col items-start justify-center min-h-[225px] border-4 border-transparent border-solid hover:border-yellow-300",
   cardContent:
     "bg-white  shadow-[0px_4px_9px_rgba(0,_0,_0,_0.25)] min-h-[218px] rounded-1.5lg flex flex-row items-center gap-[10px]",
   cardImage:
-    "h-[218px] w-[129px] rounded-l-lg",
+    "h-[218px] w-[129px] rounded-l-lg object-cover mq450:flex-1",
   cardDetails:
     "flex-1 flex flex-col items-start justify-center py-4 pl-2  gap-[13px] min-w-[138px] p-[10px]",
   cardTitle:

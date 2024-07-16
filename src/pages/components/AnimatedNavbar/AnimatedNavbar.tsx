@@ -35,11 +35,11 @@ const styles: { [key: string]: string } = {
   container_14:
     "rounded-full bg-gray-300 hover:cursor-pointer flex items-center justify-center py-2 px-6 gap-2 text-base-white font-semibold hover:underline",
   container_15:
-    "flex flex-row justify-around w-full items-center text-gray-200",
+    "flex flex-row justify-around w-full px-5 items-center gap-5 text-gray-200",
 };
 
 export type NavLinkProps = {
-  links: { href: string; title: string; image:string; props?: any }[];
+  links: { href: string; title: string; image:string; imageClick:string, props?: any }[];
   handleChangePage: (link: string, props?: any) => void;
 };
 
@@ -49,9 +49,9 @@ type NavbarProps = {
 };
 
 const NavLinksItems = [
-  { href: "/findlocation", title: "Rechercher", image: "/icon/search.png" },
-  { href: "/tickets", title: "Créer", image: "/icon/create.png" },
-  { href: "/about", title: "Mes Vidéos", image: "/icon/video.png"},
+  { href: "/findlocation", title: "Rechercher", image: "/icon/search.png", imageClick: "/icon/searchClick.png" },
+  { href: "/tickets", title: "Créer", image: "/icon/create.png", imageClick: "/icon/createClick.png" },
+  { href: "/about", title: "Mes Vidéos", image: "/icon/video.png", imageClick: "/icon/videoClick.png"},
 ];
 
 interface logoButtonProps {
@@ -80,19 +80,40 @@ const LogoButton = ({ handleChangePage }: logoButtonProps) => {
 };
 
 const NavLinks = ({ links, handleChangePage }: NavLinkProps) => {
+  const [activeImages, setActiveImages] = useState<{ [key: number]: string }>({});
+  
+  const handleMouseDown = (index: number) => {
+    setActiveImages((prevImages) => ({
+      ...prevImages,
+      [index]: links[index].imageClick,
+    }));
+  };
+
+  const handleMouseUpOrLeave = (index: number) => {
+    setActiveImages((prevImages) => ({
+      ...prevImages,
+      [index]: links[index].image,
+    }));
+  };
+
   const renderLinks = () => {
     return links.map((link, index) => (
-      <button key={index} 
+      <div
+        key={index}
+        onMouseDown={() => handleMouseDown(index)}
+        onMouseUp={() => handleMouseUpOrLeave(index)}
+        onMouseLeave={() => handleMouseUpOrLeave(index)}
         onClick={() => handleChangePage(link.href, link.props)}
-        className="shadow-none bg-white flex items-center space-x-4 text-left text-sm font-medium margin-8 px-7 py-2 border-2 rounded-md border-transparent  hover:cursor-pointer hover:border-yellow-300 focus:outline-none">
+        className="shadow-none bg-white flex items-center space-x-4 text-left text-sm font-medium margin-8 px-7 py-2 border-2 rounded-md border-transparent border-solid hover:cursor-pointer hover:border-yellow-300 focus:outline-none active:text-yellow-300"
+      >
         <img
-          src={link.image}
+          src={activeImages[index] || link.image}
           className="w-10 h-10"
         />
         <div className="text-lg font-bold">
           {link.title}
         </div>
-      </button>
+      </div>
     ));
   };
 
@@ -209,15 +230,19 @@ const AnimatedNavbar: React.FC<NavbarProps> = ({ InApp }: NavbarProps) => {
         />
       ) : (
         <div className={`container_15 ${styles.container_15}`}>
-          <NavLinks
-            links={[...NavLinksItems]}
-            handleChangePage={handleChangePage}
-          />
+          {isLogged ? (
+              <NavLinks
+                  links={[...NavLinksItems]}
+                  handleChangePage={handleChangePage}
+              />
+            ) : (
+              <div className={`container_5 ${styles.container_5}`}/>
+            )}
           <Divider orientation="vertical" variant="middle" flexItem />
           {isLogged ? (
-            <ProfileButton name={user.username} />
+              <ProfileButton name={user.username} />
           ) : (
-            <LoginButton handleChangePage={handleChangePage} />
+              <LoginButton handleChangePage={handleChangePage} />
           )}
         </div>
       )}

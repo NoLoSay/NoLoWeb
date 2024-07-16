@@ -26,12 +26,12 @@ interface Exhibition {
 const exhibitions: Exhibition[] = exhibitionsData.exhibitions;
 
 const styles: { [key: string]: string } = {
-  mainDiv: "flex flex-col space-y-5 m-5 justify-center w-3/4 mx-auto",
-  listDiv: "flex flex-col",
+  mainDiv: "flex flex-col space-y-5 m-5",
+  listDiv: "relative max-w-full mt-8 flex flex-col items-center gap-[35px] min-h-[493px] max-w-full text-left text-3xl text-base-black font-poppins",
   cardlistDiv:
-    "w-[1280px] mt-8 flex flex-col items-start justify-start gap-[35px] min-h-[493px] max-w-full text-left text-3xl text-base-black font-poppins",
+    "flex flex-col flex-wrap gap-10 items-center max-w-full z-[1] mb-8 ",
   nbcardlistDiv:
-    "self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray mq450:gap-[19px] mq750:gap-[38px]",
+    "flex flex-row gap-10 items-center justify-center mt-8 relative w-full self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray ",
 };
 
 const Location = () => {
@@ -113,14 +113,16 @@ const Location = () => {
         <title>Nolosay</title>
       </Head>
       <div className={`mainDiv ${styles["mainDiv"]}`}>
-        <TitleCard
-          title={name}
-          description={description}
-          website={website}
-          location={`${city}, ${locationText}`}
-          imgPath=""
-          pagePath="/findlocation/"
-        />
+        <div className="justify-center w-4/5 mx-auto">
+          <TitleCard
+            title={name}
+            description={description}
+            website={website}
+            location={`${city}, ${locationText}`}
+            imgPath=""
+            pagePath="/findlocation/"
+          />
+        </div>
         <div className={`listDiv ${styles["listDiv"]}`}>
           <FilterListArtwork
             handleArtworkTypeChange={handleArtworkTypeChange}

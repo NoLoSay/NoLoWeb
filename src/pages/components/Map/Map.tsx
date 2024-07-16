@@ -17,8 +17,8 @@ interface MapProps {
 }
 
 const styles: { [key: string]: string } = {
-  Map: "relative w-[1280px] h-[800px] md:w-[700px] md:h-[300px] sm:w-[100px] sm:h-[50px] border rounded-lg ",
-  Img: "bg-cover bg-center w-[300px] h-[200px]",
+  Map: "min-w-[1493px] mt-8 gap-[35px] min-h-[893px]",
+  Img: "h-[218px] w-[129px] rounded-l-lg object-cover ",
   LoadingText: "text-base-black text-base",
 };
 
@@ -96,26 +96,32 @@ const Map: React.FC<MapProps> = (props) => {
                 position={place.position}
                 icon={redIcon}
               >
-                <Leaflet.Popup>
-                  <div>
+                <Leaflet.Popup maxWidth={400}>
+                  <div className="">
+                    <div className="rounded-xl flex flex-col items-start justify-center ">
+                      <div className="rounded-1.5lg flex flex-row items-center gap-[10px]">
                     <img
                       className={`Img ${styles["Img"]}`}
                       loading="eager"
                       alt=""
                       src={place.image}
                     />
-                    <p>{place.name}</p>
-                    <p>
-                      {place.city}, {place.location}
-                    </p>
-                    <p>
-                      {textData.page.components.map.description}{" "}
-                      {place.description}
-                    </p>
-                    <p>
-                      {textData.page.components.map.website}{" "}
-                      <Link href={place.website}>{place.website}</Link>
-                    </p>
+                    <div className="flex-1 flex flex-col py-4 pl-2  gap-[13px] min-w-[138px] p-[10px]">
+                      <div className=" items-center justify-center text-inherit leading-[19px] font-bold font-inherit text-lg">{place.name}</div>
+                      <div>
+                        {place.city}, {place.location}
+                      </div>
+                      <div>
+                        {textData.page.components.map.description}{" "}
+                        {place.description}
+                      </div>
+                      <div>
+                        {textData.page.components.map.website}{" "}
+                        <Link href={place.website}>{place.website}</Link>
+                      </div>
+                    </div>
+                    </div>
+                    </div>
                   </div>
                 </Leaflet.Popup>
               </Leaflet.Marker>
