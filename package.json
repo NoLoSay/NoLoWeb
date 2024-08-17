@@ -15,6 +15,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-leaflet": "^4.2.1",
+    "react-multi-carousel": "^2.8.5",
     "react-router-dom": "^6.22.3",
     "react-slick": "^0.29.0",
     "recharts": "^2.10.4",
@@ -43,7 +44,7 @@
     "eslint-plugin-storybook": "^0.6.15",
     "postcss": "^8",
     "postcss-loader": "^7.3.4",
-    "storybook": "^7.6.19",
+    "storybook": "^8.1.8",
     "style-loader": "^3.3.4",
     "tailwindcss": "^3.3.0",
     "typedoc": "^0.25.4",
@@ -54,7 +55,7 @@
     "build": "./build.sh",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.ts\"",
+    "format": "npx prettier --write \"pages/**/*.tsx\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   }

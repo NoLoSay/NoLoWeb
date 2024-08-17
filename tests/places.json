@@ -1,0 +1,142 @@
+[
+  {
+      "position": [47.2186371, -1.5541362],
+      "name": "Château des Ducs de Bretagne",
+      "city": "Nantes",
+      "location": "France",
+      "description": "Forteresse médiévale avec des expositions sur l'histoire locale",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "3 Expositions",
+      "website": "https://www.chateaunantes.fr/"
+  },
+  {
+      "position": [47.21725, -1.55363],
+      "name": "Cathédrale Saint-Pierre",
+      "city": "Nantes",
+      "location": "France",
+      "description": "Monument gothique majeur abritant les tombeaux de François II et Marguerite de Foix",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "2 Expositions",
+      "website": "https://www.cathedrale-nantes.fr/"
+  },
+  {
+      "position": [47.21386, -1.55952],
+      "name": "Place Royale",
+      "city": "Nantes",
+      "location": "France",
+      "description": "Place historique avec une fontaine monumentale et des cafés",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "8 Expositions",
+      "website": "https://en.wikipedia.org/wiki/Place_Royale_(Nantes)"
+  },
+  {
+      "position": [48.8566, 2.3522],
+      "name": "Île de Versailles",
+      "city": "Paris",
+      "location": "France",
+      "description": "Jardin japonais artificiel sur une île de la Loire",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "7 Expositions",
+      "website": "https://fr.wikipedia.org/wiki/Jardin_des_plantes_de_Nantes"
+  },
+  {
+      "position": [53.3438, -6.2546],
+      "name": "Trinity College",
+      "city": "Dublin",
+      "location": "Ireland",
+      "description": "Université du 16ème siècle avec le célèbre Livre de Kells",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "4 Expositions",
+      "website": "https://www.tcd.ie/"
+  },
+  {
+      "position": [53.3425, -6.2713],
+      "name": "Dublin Castle",
+      "city": "Dublin",
+      "location": "Ireland",
+      "description": "Ancien siège du gouvernement irlandais avec des visites guidées et des expositions",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "1 Expositions",
+      "website": "https://www.dublincastle.ie/"
+  },
+  {
+      "position": [53.3478, -6.2861],
+      "name": "Guinness Storehouse",
+      "city": "Dublin",
+      "location": "Ireland",
+      "description": "Musée interactif de la bière Guinness avec vue panoramique sur la ville",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "3 Expositions",
+      "website": "https://www.guinness-storehouse.com/"
+  },
+  {
+      "position": [53.3397, -6.2559],
+      "name": "National Museum of Ireland",
+      "city": "Dublin",
+      "location": "Ireland",
+      "description": "Musée national avec des collections d'archéologie, d'art et d'histoire naturelle",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "3 Expositions",
+      "website": "https://www.museum.ie/"
+  },
+  {
+      "position": [53.3393, -6.2714],
+      "name": "St. Patrick's Cathedral",
+      "city": "Dublin",
+      "location": "Ireland",
+      "description": "Cathédrale médiévale nationale de l'Église d'Irlande",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "6 Expositions",
+      "website": "https://www.stpatrickscathedral.ie/"
+  },
+  {
+      "position": [53.3566, -6.3208],
+      "name": "Phoenix Park",
+      "city": "Dublin",
+      "location": "Ireland",
+      "description": "Parc urbain étendu avec des cerfs, des jardins formels et des attractions touristiques",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "3 Expositions",
+      "website": "https://www.phoenixpark.ie/"
+  },
+  {
+      "position": [53.357, -6.2946],
+      "name": "Dublin Zoo",
+      "city": "Dublin",
+      "location": "Ireland",
+      "description": "Zoo fondé en 1830 avec des espèces animales du monde entier",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "5 Expositions",
+      "website": "https://www.dublinzoo.ie/"
+  },
+  {
+      "position": [53.3416, -6.3107],
+      "name": "Kilmainham Gaol",
+      "city": "Dublin",
+      "location": "Ireland",
+      "description": "Ancienne prison historique avec des visites guidées populaires",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "4 Expositions",
+      "website": "https://www.kilmainhamgaolmuseum.ie/"
+  },
+  {
+      "position": [53.3455, -6.2642],
+      "name": "Temple Bar",
+      "city": "Dublin",
+      "location": "Ireland",
+      "description": "Quartier animé avec des pubs traditionnels, des boutiques d'artisanat et des galeries d'art",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "3 Expositions",
+      "website": "https://www.templebar.ie/"
+  },
+  {
+      "position": [53.3531, -6.2649],
+      "name": "Dublin Writers Museum",
+      "city": "Dublin",
+      "location": "Ireland",
+      "description": "Musée dédié aux grands écrivains irlandais et à leur patrimoine littéraire",
+      "image": "/images/castle/castle-template-list.png",
+      "videocount": "3 Expositions",
+      "website": "https://www.writersmuseum.com/"
+  }
+]

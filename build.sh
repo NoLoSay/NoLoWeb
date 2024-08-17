@@ -11,7 +11,7 @@ find . -name "*.stories.ts" -type f -exec mv {} $TEMP_STORIES_DIR \;
 find . -name "*.stories.ts" -type f -exec rm {} \;
 
 # Vérifier si le répertoire `pages` ou `app` existe
-if [ ! -d "./pages" ] && [ ! -d "./app" ]; then
+if [ ! -d "./src" ] && [ ! -d "./app" ]; then
   echo "Error: Couldn't find any 'pages' or 'app' directory. Please create one under the project root."
   # Restaurer les fichiers .stories.ts
   mv $TEMP_STORIES_DIR/* .

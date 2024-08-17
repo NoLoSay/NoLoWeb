@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     screens: {
@@ -13,19 +13,21 @@ module.exports = {
       lg: { min: "1024px", max: "1800px" },
     },
     extend: {
-      backgroundImage: theme => ({
-        'map': "url('../public/images/map.png')",
+      backgroundImage: (theme) => ({
+        map: "url('../public/images/map.png')",
+        "miroir-d-eau-château-nantes_photo":
+          "url('../public/images/artworkToTranslateSelectionScreen/miroir-d-eau-château-nantes_photo.png')",
       }),
       flex: {
-        '2': '2 2 0%',
-        '3': '3 3 0%',
-        '4': '4 4 0%',
-        '5': '5 5 0%',
-        '6': '6 6 0%',
-        '7': '7 7 0%',
-        '8': '8 8 0%',
-        '9': '9 9 0%',
-        '10': '10 10 0%',
+        2: "2 2 0%",
+        3: "3 3 0%",
+        4: "4 4 0%",
+        5: "5 5 0%",
+        6: "6 6 0%",
+        7: "7 7 0%",
+        8: "8 8 0%",
+        9: "9 9 0%",
+        10: "10 10 0%",
       },
       colors: {
         "base-white": "#fff",
@@ -37,7 +39,7 @@ module.exports = {
         black: "#000",
         darkslategray: "#1e303a",
         lightgoldenrodyellow: "#dfffcc",
-        lightyellow:"#FEEAAE",
+        lightyellow: "#FEEAAE",
         limegreen: "#42b100",
         gray: "#0b0b0b",
         gainsboro: "#e6e6e6",
