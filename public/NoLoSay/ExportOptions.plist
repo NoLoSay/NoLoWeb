@@ -9,7 +9,7 @@
 	<key>manifest</key>
 	<dict>
 		<key>appURL</key>
-		<string>https://nolosay.com/NoLoSay/Apps/NoLoSay.ipa</string>
+		<string>https://noloweb.vercel.app/NoLoSay/Apps/NoLoSay.ipa</string>
 		<key>displayImageURL</key>
 		<string>https://avatars.githubusercontent.com/u/117668974?s=200&amp;amp;amp;v=4</string>
 		<key>fullSizeImageURL</key>
