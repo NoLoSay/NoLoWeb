@@ -11,7 +11,7 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>https://nolosay.vercel.app/NoLoSay/Apps/NoLoSay.ipa</string>
+					<string>https://nolosay.com/NoLoSay/Apps/NoLoSay.ipa</string>
 				</dict>
 				<dict>
 					<key>kind</key>
@@ -47,7 +47,7 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>https://nolosay.vercel.app/NoLoSay/Apps/NoLoSay-B90A7518-F904-40D6-8673-1FE806D72A1D.ipa</string>
+					<string>https://nolosay.com/NoLoSay/Apps/NoLoSay-B90A7518-F904-40D6-8673-1FE806D72A1D.ipa</string>
 					<key>variantDescriptors</key>
 					<array>
 						<dict>
@@ -594,7 +594,7 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>https://nolosay.vercel.app/NoLoSay/Apps/NoLoSay-1A9B9343-F4F4-4B34-BEB1-83C5692B8C31.ipa</string>
+					<string>https://nolosay.com/NoLoSay/Apps/NoLoSay-1A9B9343-F4F4-4B34-BEB1-83C5692B8C31.ipa</string>
 					<key>variantDescriptors</key>
 					<array>
 						<dict>
@@ -738,7 +738,7 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>https://nolosay.vercel.app/NoLoSay/Apps/NoLoSay-75517A97-8B51-4828-AB53-BF4CD5B1A08A.ipa</string>
+					<string>https://nolosay.com/NoLoSay/Apps/NoLoSay-75517A97-8B51-4828-AB53-BF4CD5B1A08A.ipa</string>
 					<key>variantDescriptors</key>
 					<array>
 						<dict>
@@ -2173,7 +2173,7 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>https://nolosay.vercel.app/NoLoSay/Apps/NoLoSay-35E49AD9-A4DC-4897-B195-6B678BF13653.ipa</string>
+					<string>https://nolosay.com/NoLoSay/Apps/NoLoSay-35E49AD9-A4DC-4897-B195-6B678BF13653.ipa</string>
 					<key>variantDescriptors</key>
 					<array>
 						<dict>
@@ -2371,7 +2371,7 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>https://nolosay.vercel.app/NoLoSay/Apps/NoLoSay-AF641AFE-3059-4DBC-9762-7CDE2AA68029.ipa</string>
+					<string>https://nolosay.com/NoLoSay/Apps/NoLoSay-AF641AFE-3059-4DBC-9762-7CDE2AA68029.ipa</string>
 					<key>variantDescriptors</key>
 					<array>
 						<dict>
@@ -2895,7 +2895,7 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>https://nolosay.vercel.app/NoLoSay/Apps/NoLoSay-5AAFDDD0-DB43-465E-9AAA-11143155C8E8.ipa</string>
+					<string>https://nolosay.com/NoLoSay/Apps/NoLoSay-5AAFDDD0-DB43-465E-9AAA-11143155C8E8.ipa</string>
 					<key>variantDescriptors</key>
 					<array>
 						<dict>
