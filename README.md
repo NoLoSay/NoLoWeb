@@ -82,4 +82,3 @@ Issues and requests for improvements are welcome!<br />Feel free to check [issue
 Copyright © 2023 [NoLo Incorporation](https://github.com/NoLoSay).<br />
 This project is [privately](https://github.com/NoLoSay/NoLoWeb/blob/main/LICENSE.md) licensed.
 
----
