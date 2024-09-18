@@ -201,9 +201,10 @@ const Exhibition: React.FC<ExhibitionsProps> & {
                 /// TODO Remove debug after test by all developers
 
                 <div key={exhibition.id} className={`divExhibition ${styles["divExhibition"]}`}>
-                  <img
-                    src={exhibition.picture}
-                    loading="lazy" alt="" className={`image16 ${styles["image16"]}`}/>
+
+                  {/*<img*/}
+                  {/*  src={exhibition.picture}*/}
+                  {/*  loading="lazy" alt="" className={`image16 ${styles["image16"]}`}/>*/}
                   <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>
                     <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>
                       <h1 className={`heading13 ${styles["heading13"]}`}> {exhibition.name} </h1>

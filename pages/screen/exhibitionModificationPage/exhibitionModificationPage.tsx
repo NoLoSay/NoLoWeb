@@ -138,12 +138,12 @@ const ExhibitionModificationPage = () => {
           className={styles.exhibitionCardModification}
         >
           <div className={styles.divBlockGeneralInformations}>
-            <img
-              src={exhibition.picture || "https://cataas.com/cat"}
-              alt="Exhibition Image"
-              className={styles.image22}
-              onClick={() => document.getElementById("imageUpload")?.click()}
-            />
+            {/*<img*/}
+            {/*  src={exhibition.picture || "https://cataas.com/cat"}*/}
+            {/*  alt="Exhibition Image"*/}
+            {/*  className={styles.image22}*/}
+            {/*  onClick={() => document.getElementById("imageUpload")?.click()}*/}
+            {/*/>*/}
             <div className={styles.divGeneralInformations}>
               <div className={styles.textName}>
                 {textData.page.screen.exhibitionModificationPage.name}
