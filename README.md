@@ -2,7 +2,7 @@
 
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
-  <a href="https://nolosay.github.io/documentation" target="_blank">
+  <a href="https://nolosay.github.io/NoLoWeb" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
   <a href="https://github.com/NoLoSay/NoLoApp/blob/main/LICENSE.md" target="_blank">
