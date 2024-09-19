@@ -1,4 +1,4 @@
-import { Header } from '../../global/types/httpClient/Header'
+import { Header } from '@global/types/httpClient/Header'
 
 export const defaultHeaders: Header = {
   Accept: 'application/json',
@@ -14,12 +14,13 @@ interface PostProps {
 }
 
 export function post({
-  url = "http://localhost:3001",
+  url,
   endpoint,
   body,
   headers = defaultHeaders,
   authorizationToken = '',
 }: PostProps): Promise<Response> {
+
   return requestServer({
     url,
     endpoint,
@@ -31,7 +32,7 @@ export function post({
 }
 
 export function put({
-  url = "http://localhost:3001",
+  url,
   endpoint,
   body,
   headers = defaultHeaders,
@@ -55,7 +56,7 @@ interface DeleteProps {
 }
 
 export function deleteRequest({
-  url = "http://localhost:3001",
+  url,
   endpoint,
   headers = defaultHeaders,
   authorizationToken = '',
@@ -77,7 +78,7 @@ interface GetProps {
 }
 
 export function get({
-  url = "http://localhost:3001",
+  url,
   endpoint,
   headers = defaultHeaders,
   authorizationToken = '',
@@ -92,7 +93,8 @@ export function get({
 }
 
 interface RequestServerProps {
-  url: string
+  url?: string
+  port?: string
   endpoint: `/${string}`
   method: 'POST' | 'GET' | 'PUT' | 'DELETE'
   headers: Header
@@ -101,14 +103,23 @@ interface RequestServerProps {
 }
 
 export function requestServer({
-  url = "http://localhost:3001",
+  url = process.env.PROD_API_URL,
+  port = process.env.API_PORT ?? ":3001",
   endpoint,
   method,
   headers,
   body,
   authorizationToken,
 }: RequestServerProps): Promise<Response> {
-  return fetch(url + endpoint, {
+  var finalUrl;
+  // if (process.env.ENV_MODE == "dev" /* && process.env.DEV_API_URL */) {
+  //   finalUrl = process.env.DEV_API_URL + endpoint;
+
+  // } else {
+  // }
+  finalUrl = /* process.env.REACT_APP_DEV_API_URL */"http://localhost:3001" + endpoint;
+
+  return fetch(finalUrl, {
     method,
     headers: {
       Accept: headers.Accept,

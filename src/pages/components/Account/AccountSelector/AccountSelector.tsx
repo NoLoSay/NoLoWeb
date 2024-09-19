@@ -11,7 +11,7 @@ import Dialog from "@mui/material/Dialog";
 import PersonIcon from "@mui/icons-material/Person";
 import AddIcon from "@mui/icons-material/Add";
 import { blue } from "@mui/material/colors";
-import CategoryButton from "../CategoryButton/CategoryButton";
+import CategoryButton from "@components/Account/CategoryButton/CategoryButton";
 
 export interface SimpleDialogProps {
   open: boolean;

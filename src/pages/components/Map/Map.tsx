@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import "leaflet/dist/leaflet.css";
-import textData from "../../../../public/text.json";
+import textData from "@public/text.json";
 
 interface MapProps {
   center: [number, number];

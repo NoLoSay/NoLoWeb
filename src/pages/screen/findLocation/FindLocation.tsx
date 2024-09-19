@@ -1,10 +1,10 @@
-import Layout from "../../components/Layout/Layout";
+import Layout from "@components/Layout/Layout";
 import React, { useState, useEffect } from "react";
-import ImageSlider from "../../components/ImageSlider/ImageSlider";
+import ImageSlider from "@components/ImageSlider/ImageSlider";
 import PlaceList from "./PlaceList";
-import Map from "../../components/Map/Map";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import placesData from "../../../../tests/places.json";
+import Map from "@components/Map/Map";
+import SearchBar from "@components/SearchBar/SearchBar";
+import placesData from "@tests/places.json";
 
 type Place = {
   position: [number, number];

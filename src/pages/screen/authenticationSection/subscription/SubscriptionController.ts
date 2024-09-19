@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useSubscribe from "../../../../helpers/httpClient/queries/auth/useSubscribe";
+import useSubscribe from "@helpers/httpClient/queries/auth/useSubscribe";
 
 interface SubscriptionController {
   setUsername: (username: string) => void;

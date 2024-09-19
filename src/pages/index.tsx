@@ -1,5 +1,5 @@
-import Layout from "./components/Layout/Layout";
-import Home from "./screen/home/Home";
+import Layout from "@components/Layout/Layout";
+import Home from "@screen/home/Home";
 
 interface AppRouterProps {}
 

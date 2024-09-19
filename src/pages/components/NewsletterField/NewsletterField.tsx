@@ -1,5 +1,5 @@
 import { Button, TextField } from "@mui/material";
-import textData from "../../../../public/text.json";
+import textData from "@public/text.json";
 
 const styles: { [key: string]: string } = {
   container_0: "font-sans text-2xl w-1/3 text-center text-black font-bold",

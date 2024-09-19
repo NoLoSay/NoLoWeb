@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "../../../../../node_modules/react-router-dom/dist/index";
-import Layout from "../../../components/Layout/Layout";
+import Layout from "@components/Layout/Layout";
 import ConnectionController from "./ConnectionController";
-import textData from "../../../../../public/text.json";
+import textData from "@public/text.json";
+import ForgotPasswordModal from "./views/ForgotPasswordModal";
+import Input from "@components/Input/Input";
 
 const styles: { [key: string]: string } = {
+  backgroundDiv:
+    "relative w-[100%] grid place-items-center bg-connectionBackground bg-origin-border\
+    bg-clip-border bg-center bg-cover bg-no-repeat",
+
   mainDiv:
     "relative w-[40%] self-center justify-center items-center rounded-2.5xl\
     flex flex-1 flex-col gap-5 px-10 py-20 my-[5rem] bg-base-white shadow-[0_4px_9px_0_rgba(0,0,0,0.25)] " +
@@ -31,6 +37,9 @@ const styles: { [key: string]: string } = {
     "bg-gray-50 w-auto font-normal text-xl p-2 relative rounded-1.5lg w-full",
 
   formPasswordDiv: "flex flex-row bg-gray-50 px-2 w-full rounded-1.5lg",
+
+  formForgotPasswordButton:
+    "text-black font-medium self-end hover:underline hover:cursor-pointer",
 
   formConnectionButton:
     "bg-base-button font-poppins font-semibold hover:cursor-pointer p-2 relative rounded-1.5lg text-black text-sm w-2/3 " +
@@ -64,128 +73,158 @@ export const ConnectionScreen = (): JSX.Element => {
   const navigate = useNavigate();
   const {
     setUsername,
+    setEmail,
     setPassword,
     showPassword,
     setShowPassword,
+    showForgotPasswordModal,
+    openForgotPasswordModal,
+    closeForgotPasswordModal,
+    forgottenPassword,
     connect,
     error,
   } = ConnectionController({ navigate });
 
+  useEffect(() => {
+    if (process.env.SALUT === "dev") {
+    } else {
+      console.log("prod");
+    }
+    console.log(process.env.REACT_APP_DEV_API_URL + " coucou");
+  }, []);
+
   return (
-    <div className={`ConnectionScreen/mainDiv ${styles["mainDiv"]}`}>
-      <div className={`ConnectionScreen/titleDiv ${styles["titleDiv"]}`}>
-        <img
-          className={`ConnectionScreen/titleDivLogo ${styles["titleDivLogo"]}`}
-          alt="Black logo"
-          src="/images/tmp/Black_logo.png"
-        />
-        <div
-          className={`ConnectionScreen/titleDivTextDiv ${styles["titleDivTextDiv"]}`}
-        >
-          <p
-            className={`ConnectionScreen/titleDivTextDivTitle ${styles["titleDivTextDivTitle"]}`}
+    <div
+      className={`ConnectionScreen/backgroundDiv ${styles["backgroundDiv"]}`}
+    >
+      <div className={`ConnectionScreen/mainDiv ${styles["mainDiv"]}`}>
+        <div className={`ConnectionScreen/titleDiv ${styles["titleDiv"]}`}>
+          <img
+            className={`ConnectionScreen/titleDivLogo ${styles["titleDivLogo"]}`}
+            alt="Black logo"
+            src="/images/tmp/Black_logo.png"
+          />
+          <div
+            className={`ConnectionScreen/titleDivTextDiv ${styles["titleDivTextDiv"]}`}
           >
-            {textData.page.screen.authentificationSection.connection.connecty}
-          </p>
-          <p
-            className={`ConnectionScreen/titleDivTextDivSubtitle ${styles["titleDivTextDivSubtitle"]}`}
-          >
-            {textData.page.screen.authentificationSection.connection.connectyou}
-          </p>
+            <p
+              className={`ConnectionScreen/titleDivTextDivTitle ${styles["titleDivTextDivTitle"]}`}
+            >
+              {textData.page.screen.authentificationSection.connection.connecty}
+            </p>
+            <p
+              className={`ConnectionScreen/titleDivTextDivSubtitle ${styles["titleDivTextDivSubtitle"]}`}
+            >
+              {
+                textData.page.screen.authentificationSection.connection
+                  .connectyou
+              }
+            </p>
+          </div>
         </div>
-      </div>
-      <form
-        className={`ConnectionScreen/form ${styles["form"]}`}
-        onSubmit={connect}
-      >
-        <input
-          className={`ConnectionScreen/formInput ${styles["formInput"]}`}
-          type="text"
-          placeholder={
-            textData.page.screen.authentificationSection.connection.pusername
-          }
-          name="username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <div
-          className={`ConnectionScreen/formPasswordDiv ${styles["formPasswordDiv"]}`}
+        <form
+          className={`ConnectionScreen/form ${styles["form"]}`}
+          onSubmit={connect}
         >
           <input
             className={`ConnectionScreen/formInput ${styles["formInput"]}`}
-            type={showPassword ? "text" : "password"}
+            type="text"
             placeholder={
+              textData.page.screen.authentificationSection.connection.pusername
+            }
+            name="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Input
+            divClassName={`ConnectionScreen/formPasswordDiv ${styles["formPasswordDiv"]}`}
+            inputClassName={`ConnectionScreen/formInput ${styles["formInput"]}`}
+            inputName="password"
+            inputOnChange={(e) => setPassword(e.target.value)}
+            inputPlaceholder={
               textData.page.screen.authentificationSection.connection.ppassword
             }
-            name="password"
-            onChange={(e) => setPassword(e.target.value)}
+            isPassword
+            showPassword={showPassword}
+            setShowPassword={setShowPassword}
           />
-          <input
-            type="checkbox"
-            onChange={() => setShowPassword(!showPassword)}
-          />
-        </div>
-
-        <button
-          className={`ConnectionScreen/formConnectionButton ${styles["formConnectionButton"]}`}
-        >
-          {textData.page.screen.authentificationSection.connection.connectme}
-        </button>
-      </form>
-      {error && (
-        <p
-          className={`ConnectionScreen/errorMessage ${styles["errorMessage"]}`}
-        >
-          {error}
-        </p>
-      )}
-      <div
-        className={`ConnectionScreen/otherConnectionsDiv ${styles["otherConnectionsDiv"]}`}
-      >
-        <div
-          className={`ConnectionScreen/otherConnectionsDivSeperationDiv ${styles["otherConnectionsDivSeperationDiv"]}`}
-        >
-          <hr
-            className={`ConnectionScreen/otherConnectionsDivSeperationDivLine ${styles["otherConnectionsDivSeperationDivLine"]}`}
-          />
-          <p
-            className={`ConnectionScreen/otherConnectionsDivSeperationDivText ${styles["otherConnectionsDivSeperationDivText"]}`}
+          <text
+            onClick={openForgotPasswordModal}
+            className={`ConnectionScreen/formForgotPasswordButton ${styles["formForgotPasswordButton"]}`}
           >
-            {textData.page.screen.authentificationSection.connection.or}
+            {
+              textData.page.screen.authentificationSection.connection
+                .forgotpassword
+            }
+          </text>
+          <button
+            className={`ConnectionScreen/formConnectionButton ${styles["formConnectionButton"]}`}
+          >
+            {textData.page.screen.authentificationSection.connection.connectme}
+          </button>
+        </form>
+        {error && (
+          <p
+            className={`ConnectionScreen/errorMessage ${styles["errorMessage"]}`}
+          >
+            {error}
           </p>
-          <hr
-            className={`ConnectionScreen/otherConnectionsDivSeperationDivLine ${styles["otherConnectionsDivSeperationDivLine"]}`}
-          />
-        </div>
+        )}
         <div
-          className={`ConnectionScreen/otherConnectionsDivButtonDiv ${styles["otherConnectionsDivButtonDiv"]}`}
+          className={`ConnectionScreen/otherConnectionsDiv ${styles["otherConnectionsDiv"]}`}
         >
-          <img
-            className={`ConnectionScreen/otherConnectionsDivButtonDivButtons ${styles["otherConnectionsDivButtonDivButtons"]}`}
-            src="/icon/social/Google button.png"
-          />
-          <img
-            className={`ConnectionScreen/otherConnectionsDivButtonDivButtons ${styles["otherConnectionsDivButtonDivButtons"]}`}
-            src="/icon/social/Apple button.png"
-          />
-          <img
-            className={`ConnectionScreen/otherConnectionsDivButtonDivButtons ${styles["otherConnectionsDivButtonDivButtons"]}`}
-            src="/icon/social/Facebook button.png"
-          />
+          <div
+            className={`ConnectionScreen/otherConnectionsDivSeperationDiv ${styles["otherConnectionsDivSeperationDiv"]}`}
+          >
+            <hr
+              className={`ConnectionScreen/otherConnectionsDivSeperationDivLine ${styles["otherConnectionsDivSeperationDivLine"]}`}
+            />
+            <p
+              className={`ConnectionScreen/otherConnectionsDivSeperationDivText ${styles["otherConnectionsDivSeperationDivText"]}`}
+            >
+              {textData.page.screen.authentificationSection.connection.or}
+            </p>
+            <hr
+              className={`ConnectionScreen/otherConnectionsDivSeperationDivLine ${styles["otherConnectionsDivSeperationDivLine"]}`}
+            />
+          </div>
+          <div
+            className={`ConnectionScreen/otherConnectionsDivButtonDiv ${styles["otherConnectionsDivButtonDiv"]}`}
+          >
+            <img
+              className={`ConnectionScreen/otherConnectionsDivButtonDivButtons ${styles["otherConnectionsDivButtonDivButtons"]}`}
+              src="/icon/social/Google button.png"
+            />
+            <img
+              className={`ConnectionScreen/otherConnectionsDivButtonDivButtons ${styles["otherConnectionsDivButtonDivButtons"]}`}
+              src="/icon/social/Apple button.png"
+            />
+            <img
+              className={`ConnectionScreen/otherConnectionsDivButtonDivButtons ${styles["otherConnectionsDivButtonDivButtons"]}`}
+              src="/icon/social/Facebook button.png"
+            />
+          </div>
         </div>
-      </div>
-      <p
-        className={`ConnectionScreen/noAccountText ${styles["noAccountText"]}`}
-      >
-        {textData.page.screen.authentificationSection.connection.noaccount}{" "}
-        <button
-          className={`ConnectionScreen/noAccountButton ${styles["noAccountButton"]}`}
-          onClick={() => {
-            navigate("/subscription");
-          }}
+        <p
+          className={`ConnectionScreen/noAccountText ${styles["noAccountText"]}`}
         >
-          {textData.page.screen.authentificationSection.connection.create}
-        </button>
-      </p>
+          {textData.page.screen.authentificationSection.connection.noaccount}{" "}
+          <button
+            className={`ConnectionScreen/noAccountButton ${styles["noAccountButton"]}`}
+            onClick={() => {
+              navigate("/subscription");
+            }}
+          >
+            {textData.page.screen.authentificationSection.connection.create}
+          </button>
+        </p>
+        {showForgotPasswordModal && (
+          <ForgotPasswordModal
+            onClose={closeForgotPasswordModal}
+            setEmail={setEmail}
+            onSubmit={forgottenPassword}
+          />
+        )}
+      </div>
     </div>
   );
 };

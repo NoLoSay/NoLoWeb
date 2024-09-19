@@ -1,4 +1,4 @@
-import textData from "../../../../public/text.json";
+import textData from "@public/text.json";
 
 const styles: { [key: string]: string } = {
   mainDiv:

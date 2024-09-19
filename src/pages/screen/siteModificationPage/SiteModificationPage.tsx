@@ -1,8 +1,8 @@
-import Layout from "../../components/Layout/Layout";
+import Layout from "@components/Layout/Layout";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Fragment, useState, useContext, useEffect } from "react";
-import { UserContext } from "../../../global/contexts/UserProvider";
-import textData from "../../../../public/text.json";
+import { UserContext } from "@global/contexts/UserProvider";
+import textData from "@public/text.json";
 
 const styles = {
   siteModificationPage: "flex flex-col w-full pl-8 pr-8 sm:flex-col text-black",

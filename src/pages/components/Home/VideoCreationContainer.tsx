@@ -1,6 +1,6 @@
 const styles: { [key: string]: string } = {
   mainDiv:
-    "w-full flex flex-col items-start justify-center text-left text-2xl text-black font-poppins gap-2",
+    "rounded-2.5xl w-full flex flex-col items-start justify-center text-left text-2xl text-black font-poppins gap-2",
 
   title:
     "relative text-[2rem] font-semibold contents " +

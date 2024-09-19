@@ -1,6 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "../../../../node_modules/react-router-dom/dist/index";
-import { UserContext, defaultUser } from "../../../global/contexts/UserProvider";
+import {
+  UserContext,
+  defaultUser,
+} from "@global/contexts/UserProvider";
 import {
   Drawer,
   Box,
@@ -13,6 +16,8 @@ import {
 } from "../../../../node_modules/@mui/material/index";
 import ProfileButton from "./ProfileButton/ProfileButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import PersonIcon from "@mui/icons-material/Person";
+import textData from "@public/text.json";
 
 const styles: { [key: string]: string } = {
   container_0: "flex items-center gap-2",
@@ -21,10 +26,10 @@ const styles: { [key: string]: string } = {
   container_3: "w-32 h-8",
   container_4:
     "text-zinc-500 hover:underline hover:cursor-pointer bg-transparent underline-offset-2 text-base",
-  container_5: "flex flex-row justify-around items-center w-full px-5 ",
-  container_6: "flex flex-row justify-between items-center space-x-4",
+  container_5: "flex flex-row justify-around items-center w-full px-5",
+  container_6: "flex flex-row justify-between items-center",
   container_7:
-    "flex flex-row items-center gap-8 text-gray-200 bg-transparent hover:underline hover:cursor-pointer",
+    "flex flex-row items-center gap-3 text-gray-200 bg-gray-50 rounded-2.5xl px-3 py-2 hover:cursor-pointer",
   container_8: "font-medium text-base",
   container_9:
     "rounded-full bg-gray-300 hover:cursor-pointer flex items-center justify-center py-2 px-6 gap-2 text-base-white font-semibold hover:underline",
@@ -108,15 +113,8 @@ const LoginButton = ({ handleChangePage }: loginButtonProps) => {
         onClick={() => handleChangePage("/connection")}
         className={`container_7 ${styles.container_7}`}
       >
-        <div className={`container_8 ${styles.container_8}`}>Connexion</div>
-      </button>
-      <button
-        onClick={() => handleChangePage("/subscription")}
-        className={`container_9 ${styles.container_9}`}
-      >
-        <div
-          className={`container_10 ${styles.container_10}`}
-        >{`Inscription`}</div>
+        <PersonIcon />
+        {textData.page.components.animatedNavBar.profile}
       </button>
     </div>
   );

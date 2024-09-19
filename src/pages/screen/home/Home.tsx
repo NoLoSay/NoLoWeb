@@ -1,8 +1,8 @@
 import { Fragment } from "react";
-import DownloadContainer from "../../components/Home/DownloadContainer";
-import VideoCreationContainer from "../../components/Home/VideoCreationContainer";
-import Layout from "../../components/Layout/Layout";
-import textData from "../../../../public/text.json";
+import DownloadContainer from "@components/Home/DownloadContainer";
+import VideoCreationContainer from "@components/Home/VideoCreationContainer";
+import Layout from "@components/Layout/Layout";
+import textData from "@public/text.json";
 
 interface HomeProps {}
 

@@ -1,5 +1,5 @@
 import React from "react";
-import textData from "../../../../public/text.json";
+import textData from "@public/text.json";
 
 interface FilterPageProps {
   handleArtworkTypeChange: (

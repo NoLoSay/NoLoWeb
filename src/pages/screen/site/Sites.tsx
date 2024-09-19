@@ -1,8 +1,8 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../../global/contexts/UserProvider";
+import { UserContext } from "@global/contexts/UserProvider";
 import { ButtonBase } from "@mui/material";
-import textData from "../../../../public/text.json";
+import textData from "@public/text.json";
 
 interface SitesProps {}
 

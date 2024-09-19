@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { Header } from "../../../../global/types/httpClient/Header";
+import { Header } from "@global/types/httpClient/Header";
 import {
   UserContext,
   defaultUser,
-} from "../../../../global/contexts/UserProvider";
-import ConnectJSON from "../../../../global/types/httpClient/auth/Connection";
-import { connect } from "../../../../helpers/httpClient/queries/auth/auth";
+} from "@global/contexts/UserProvider";
+import ConnectJSON from "@global/types/httpClient/auth/Connection";
+import { connect } from "@helpers/httpClient/queries/auth/auth";
 
 interface ConnectProps {
   formUsername: string;

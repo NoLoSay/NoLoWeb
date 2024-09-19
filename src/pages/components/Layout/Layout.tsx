@@ -11,7 +11,7 @@ interface LayoutProps {
 
 const styles: { [key: string]: string } = {
   mainDiv:
-    "bg-base-white flex flex-col w-full text-left text-base text-base-white font-poppins gap-y-3 min-h-screen",
+    "bg-base-white flex flex-col w-full text-left text-base text-base-white font-poppins min-h-screen",
 };
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {

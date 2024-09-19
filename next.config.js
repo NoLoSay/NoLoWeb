@@ -54,3 +54,19 @@
 //       ];
 //     },
 //   };
+
+const path = require('path');
+
+module.exports = {
+  webpack: (config, { isServer }) => {
+    config.resolve.alias['@components'] = path.join(__dirname, 'src/pages/components');
+    config.resolve.alias['@screen'] = path.join(__dirname, 'src/pages/screen');
+    config.resolve.alias['@helpers'] = path.join(__dirname, 'src/helpers');
+    config.resolve.alias['@global'] = path.join(__dirname, 'src/global');
+    config.resolve.alias['@stories'] = path.join(__dirname, 'stories');
+    config.resolve.alias['@tests'] = path.join(__dirname, 'tests');
+    config.resolve.alias['@styles'] = path.join(__dirname, 'styles');
+    return config;
+  },
+};
+
