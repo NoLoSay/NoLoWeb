@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
 interface SideMenuButtonProps {
-  title: string;
-  color?: string;
-  onClick?: () => void;
+  title: string
+  color?: string
+  onClick?: () => void
 }
 
 const SideMenuButton = ({ title, onClick, color }: SideMenuButtonProps) => {
@@ -15,7 +15,7 @@ const SideMenuButton = ({ title, onClick, color }: SideMenuButtonProps) => {
     >
       <p>{title}</p>
     </button>
-  );
-};
+  )
+}
 
-export default SideMenuButton;
+export default SideMenuButton

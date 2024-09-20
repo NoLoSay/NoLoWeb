@@ -8,6 +8,7 @@
     "@mui/icons-material": "^5.15.4",
     "@mui/material": "^5.15.4",
     "@storybook/addon-a11y": "^7.6.7",
+    "@tanstack/react-query": "^5.56.2",
     "framer-motion": "^11.2.6",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
@@ -55,7 +56,7 @@
     "build": "./build.sh",
     "start": "next start",
     "lint": "next lint",
-    "format": "npx prettier --write \"pages/**/*.tsx\"",
+    "format": "npx prettier --write '**/*.{tsx,ts,jsx,js}' --config './.prettierrc.js'",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   }

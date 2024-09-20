@@ -1,44 +1,36 @@
-import { useContext } from "react";
-import { Header } from "../../../../global/types/httpClient/Header";
-import {
-  UserContext,
-  defaultUser,
-} from "../../../../global/contexts/UserProvider";
-import ConnectJSON from "../../../../global/types/httpClient/auth/Connection";
-import { connect } from "../../../../helpers/httpClient/queries/auth/auth";
+import { useContext } from 'react'
+import { Header } from '../../../../global/types/httpClient/Header'
+import { UserContext, defaultUser } from '../../../../global/contexts/UserProvider'
+import ConnectJSON from '../../../../global/types/httpClient/auth/Connection'
+import { connect } from '../../../../helpers/httpClient/queries/auth/auth'
 
 interface ConnectProps {
-  formUsername: string;
-  password: string;
-  navigate: any;
-  headers?: Header;
-  setError: (error: string) => void;
+  formUsername: string
+  password: string
+  navigate: any
+  headers?: Header
+  setError: (error: string) => void
 }
 
 type LogUserProps = {
-  id: number;
-  uuid: string;
-  username: string;
-  email: string;
-  picture: string | null;
-  telNumber: string | null;
-  accessToken: string;
-  createdAt: string;
-  status: number;
-  message: string;
-};
-
-interface useConnect {
-  tryToConnect: () => Promise<void>;
+  id: number
+  uuid: string
+  username: string
+  email: string
+  picture: string | null
+  telNumber: string | null
+  accessToken: string
+  createdAt: string
+  status: number
+  message: string
 }
 
-export default function useConnect({
-  formUsername,
-  password,
-  navigate,
-  setError,
-}: ConnectProps): useConnect {
-  const { user, setUser } = useContext(UserContext);
+interface useConnect {
+  tryToConnect: () => Promise<void>
+}
+
+export default function useConnect({ formUsername, password, navigate, setError }: ConnectProps): useConnect {
+  const { user, setUser } = useContext(UserContext)
 
   const logUser = ({
     id,
@@ -60,19 +52,19 @@ export default function useConnect({
         email,
         username,
         picture: picture ?? defaultUser.picture,
-        telNumber: telNumber ?? "",
+        telNumber: telNumber ?? '',
         accessToken,
         createdAt: new Date(createdAt),
-      });
-      navigate("/account");
+      })
+      navigate('/account')
     } else {
-      setError(message);
+      setError(message)
     }
-  };
+  }
 
   const tryToConnect = async () => {
     try {
-      var data: ConnectJSON = await connect({ formUsername, password });
+      var data: ConnectJSON = await connect({ formUsername, password })
       logUser({
         id: data.json.id,
         uuid: data.json.uuid,
@@ -84,13 +76,13 @@ export default function useConnect({
         createdAt: data.json.createdAt,
         status: data.status,
         message: data.message,
-      });
+      })
     } catch (error: any) {
-      throw new Error(error instanceof Error ? error.message : String(error));
+      throw new Error(error instanceof Error ? error.message : String(error))
     }
-  };
+  }
 
   return {
     tryToConnect: tryToConnect,
-  };
+  }
 }

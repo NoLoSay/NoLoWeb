@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react"
+import { Dispatch, SetStateAction } from 'react'
 
 export interface UserType {
   id: number
@@ -9,6 +9,8 @@ export interface UserType {
   telNumber: string | null
   createdAt: Date
   accessToken: string
+  latitude: number
+  longitude: number
 }
 
 export interface UserContextType {

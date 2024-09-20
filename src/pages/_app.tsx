@@ -1,103 +1,160 @@
-import React from "react";
-import "../../styles/global.css";
-import Head from "../../node_modules/next/head";
-import { useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "../../node_modules/react-router-dom/dist/index";
-import Layout from "./components/Layout/Layout";
-import Home from "./screen/home/Home";
-import ConnectionScreen from "./screen/authenticationSection/connection/ConnectionScreen";
-import SubscriptionScreen from "./screen/authenticationSection/subscription/SubscriptionScreen";
-import ArtworkToTranslateSelectionScreen from "./screen/creationSection/artworkToTranslateSelectionSection/ArtworkToTranslateSelectionScreen";
-import About from "./screen/about/About";
-import ArtworksPage from "./screen/artworks/Artworks";
-import ExhibitionsPage from "./screen/exhibitions/Exhibitions";
-import FindLocation from "./screen/findLocation/FindLocation";
-import Location from "./screen/location/Location";
-import ShowArtwork from "./screen/location/Artwork/Artwork";
-import VideoAccess from "./screen/videoAccess/VideoAccess";
-import Account from "./screen/account/Account";
-import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
-import AccountSettings from "./screen/accountSettings/AccountSettings";
-import ArtworkModificationPage from "./screen/artworkmodificationPage/ArtworkModificationPage";
-import { UserProvider } from "../global/contexts/UserProvider";
-import Sites from "./screen/site/Sites";
-import ExhibitionModificationPage from "./screen/exhibitionModificationPage/exhibitionModificationPage";
-import SiteModificationPage from "./screen/siteModificationPage/SiteModificationPage";
+import React from 'react'
+import '../../styles/global.css'
+import Head from '../../node_modules/next/head'
+import { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from '../../node_modules/react-router-dom/dist/index'
+import Layout from './components/Layout/Layout'
+import Home from './screen/home/Home'
+import ConnectionScreen from './screen/authenticationSection/connection/ConnectionScreen'
+import SubscriptionScreen from './screen/authenticationSection/subscription/SubscriptionScreen'
+import ArtworkToTranslateSelectionScreen from './screen/creationSection/artworkToTranslateSelectionSection/ArtworkToTranslateSelectionScreen'
+import About from './screen/about/About'
+import ArtworksPage from './screen/artworks/Artworks'
+import ExhibitionsPage from './screen/exhibitions/Exhibitions'
+import FindLocation from './screen/findLocation/FindLocation'
+import Location from './screen/location/Location'
+import ShowArtwork from './screen/location/Artwork/Artwork'
+import VideoAccess from './screen/videoAccess/VideoAccess'
+import Account from './screen/account/Account'
+import RecordVideo from './screen/videoCaptureSection/RecordVideo'
+import AccountSettings from './screen/accountSettings/AccountSettings'
+import ArtworkModificationPage from './screen/artworkmodificationPage/ArtworkModificationPage'
+import { UserProvider } from '../global/contexts/UserProvider'
+import Sites from './screen/site/Sites'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import ExhibitionModificationPage from './screen/exhibitionModificationPage/exhibitionModificationPage'
+import SiteModificationPage from './screen/siteModificationPage/SiteModificationPage'
 
 const AppRouter = (): JSX.Element => {
-  const [isClient, setIsClient] = useState(false);
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    setIsClient(typeof window !== "undefined");
-  }, []);
+    setIsClient(typeof window !== 'undefined')
+  }, [])
 
   if (!isClient) {
-    return <div>Loading...</div>; // Or render null or any other placeholder content
+    return <div>Loading...</div> // Or render null or any other placeholder content
   }
+
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        retry: false,
+      },
+    },
+  })
 
   return (
     <div>
       <Head>
-        <link rel="icon" href="/images/logo/nologo.png" />
+        <link
+          rel='icon'
+          href='/images/logo/nologo.png'
+        />
       </Head>
       <UserProvider>
-        <Router>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/connection" element={<ConnectionScreen />} />
-              <Route path="/subscription" element={<SubscriptionScreen />} />
+        <QueryClientProvider client={queryClient}>
+          <Router>
+            <Layout>
+              <Routes>
+                <Route
+                  path='/'
+                  element={<Home />}
+                />
+                <Route
+                  path='/home'
+                  element={<Home />}
+                />
+                <Route
+                  path='/about'
+                  element={<About />}
+                />
+                <Route
+                  path='/connection'
+                  element={<ConnectionScreen />}
+                />
+                <Route
+                  path='/subscription'
+                  element={<SubscriptionScreen />}
+                />
 
-              <Route
-                path="/tickets"
-                element={<ArtworkToTranslateSelectionScreen />}
-              />
-              <Route
-                path="/artworkmodifications"
-                element={<ArtworkModificationPage />}
-              />
-              <Route path="/artworks" element={<ArtworksPage />} />
-              <Route path="/videoAccess" element={<VideoAccess />} />
-              <Route path="/location" element={<Location />} />
-              <Route path="/account" element={<Account />} />
+                <Route
+                  path='/tickets'
+                  element={<ArtworkToTranslateSelectionScreen />}
+                />
+                <Route
+                  path='/artworkmodifications'
+                  element={<ArtworkModificationPage />}
+                />
+                <Route
+                  path='/artworks'
+                  element={<ArtworksPage />}
+                />
+                <Route
+                  path='/videoAccess'
+                  element={<VideoAccess />}
+                />
+                <Route
+                  path='/location'
+                  element={<Location />}
+                />
+                <Route
+                  path='/account'
+                  element={<Account />}
+                />
 
-              <Route path="/places" element={<Sites />} />
-              <Route
-                path="/places/modificationPlace"
-                element={<SiteModificationPage />}
-              />
+                <Route
+                  path='/places'
+                  element={<Sites />}
+                />
+                <Route
+                  path='/places/modificationPlace'
+                  element={<SiteModificationPage />}
+                />
 
-              <Route path="/places/exhibitions" element={<ExhibitionsPage />} />
-              <Route
-                path="/places/exhibitions/exhibitionModification"
-                element={<ExhibitionModificationPage />}
-              />
+                <Route
+                  path='/places/exhibitions'
+                  element={<ExhibitionsPage />}
+                />
+                <Route
+                  path='/places/exhibitions/exhibitionModification'
+                  element={<ExhibitionModificationPage />}
+                />
 
-              <Route
-                path="/places/exhibitions/artworks"
-                element={<ArtworksPage />}
-              />
-              <Route
-                path="/places/exhibitions/artworks/artworkModification"
-                element={<ArtworkModificationPage />}
-              />
+                <Route
+                  path='/places/exhibitions/artworks'
+                  element={<ArtworksPage />}
+                />
+                <Route
+                  path='/places/exhibitions/artworks/artworkModification'
+                  element={<ArtworkModificationPage />}
+                />
 
-              <Route path="/accountSettings" element={<AccountSettings />} />
-              <Route path="/record" element={<RecordVideo />} />
-              <Route path="/findlocation" element={<FindLocation />} />
-              <Route path="/showartwork" element={<ShowArtwork />} />
-            </Routes>
-          </Layout>
-        </Router>
+                <Route
+                  path='/accountSettings'
+                  element={<AccountSettings />}
+                />
+                <Route
+                  path='/record'
+                  element={<RecordVideo />}
+                />
+                <Route
+                  path='/findlocation'
+                  element={<FindLocation />}
+                />
+                <Route
+                  path='/showartwork'
+                  element={<ShowArtwork />}
+                />
+              </Routes>
+            </Layout>
+          </Router>
+        </QueryClientProvider>
       </UserProvider>
     </div>
-  );
-};
+  )
+}
 
-export default AppRouter;
+export default AppRouter

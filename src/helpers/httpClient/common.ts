@@ -14,7 +14,7 @@ interface PostProps {
 }
 
 export function post({
-  url = "http://localhost:3001",
+  url = 'http://localhost:3001',
   endpoint,
   body,
   headers = defaultHeaders,
@@ -31,7 +31,7 @@ export function post({
 }
 
 export function put({
-  url = "http://localhost:3001",
+  url = 'http://localhost:3001',
   endpoint,
   body,
   headers = defaultHeaders,
@@ -55,7 +55,7 @@ interface DeleteProps {
 }
 
 export function deleteRequest({
-  url = "http://localhost:3001",
+  url = 'http://localhost:3001',
   endpoint,
   headers = defaultHeaders,
   authorizationToken = '',
@@ -77,7 +77,7 @@ interface GetProps {
 }
 
 export function get({
-  url = "http://localhost:3001",
+  url = 'http://localhost:3001',
   endpoint,
   headers = defaultHeaders,
   authorizationToken = '',
@@ -101,7 +101,7 @@ interface RequestServerProps {
 }
 
 export function requestServer({
-  url = "http://localhost:3001",
+  url = 'http://localhost:3001',
   endpoint,
   method,
   headers,

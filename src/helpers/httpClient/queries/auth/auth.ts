@@ -1,74 +1,66 @@
-import { Header } from "../../../../global/types/httpClient/Header";
-import SubscriptionJSON from "../../../../global/types/httpClient/auth/Subscription";
-import ConnectionJSON from "../../../../global/types/httpClient/auth/Connection";
-import { post } from "../../common";
+import { Header } from '../../../../global/types/httpClient/Header'
+import SubscriptionJSON from '../../../../global/types/httpClient/auth/Subscription'
+import ConnectionJSON from '../../../../global/types/httpClient/auth/Connection'
+import { post } from '../../common'
 
 interface SubscribeProps {
-  url?: string;
-  email: string;
-  username?: string;
-  password: string;
-  telNumber: string | null;
-  headers?: Header;
+  url?: string
+  email: string
+  username?: string
+  password: string
+  telNumber: string | null
+  headers?: Header
 }
 
 interface ConnectProps {
-  url?: string;
-  formUsername: string;
-  password: string;
-  headers?: Header;
+  url?: string
+  formUsername: string
+  password: string
+  headers?: Header
 }
 
-export async function subscribe({
-  email,
-  username,
-  password,
-  telNumber,
-}: SubscribeProps): Promise<SubscriptionJSON> {
+export async function subscribe({ email, username, password, telNumber }: SubscribeProps): Promise<SubscriptionJSON> {
   try {
     const response = await post({
-      endpoint: "/register",
+      endpoint: '/register',
       body: JSON.stringify({
         email,
         username,
         password,
-        telNumber
+        telNumber,
       }),
-    });
+    })
 
-    const responseData = await response.json();
+    const responseData = await response.json()
 
     if (!response.ok) {
-      throw new Error(responseData.message);
+      throw new Error(responseData.message)
     }
 
     return {
       json: responseData,
       status: response.status,
       message: responseData.message,
-    };
+    }
   } catch (error) {
-    throw new Error(error instanceof Error ? error.message : String(error));
+    throw new Error(error instanceof Error ? error.message : String(error))
   }
 }
 
-export async function connect({
-  formUsername,
-  password,
-}: ConnectProps): Promise<ConnectionJSON> {
+export async function connect({ formUsername, password }: ConnectProps): Promise<ConnectionJSON> {
   try {
     const response = await post({
-      endpoint: "/auth/login",
+      endpoint: '/auth/login',
       body: JSON.stringify({
         username: formUsername,
         password,
       }),
-    });
+    })
 
-    const responseData = await response.json();
+    const responseData = await response.json()
 
     if (!response.ok) {
-      throw new Error(responseData.message);
+      throw new Error(responseData.message)
     }
 
     return {
@@ -84,8 +76,8 @@ export async function connect({
       },
       status: response.status,
       message: responseData.message,
-    };
+    }
   } catch (error) {
-    throw new Error(error instanceof Error ? error.message : String(error));
+    throw new Error(error instanceof Error ? error.message : String(error))
   }
 }

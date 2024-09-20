@@ -1,29 +1,29 @@
-import { useState } from "react";
-import { TextField, IconButton } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import { useState } from 'react'
+import { TextField, IconButton } from '@mui/material'
+import SearchIcon from '@mui/icons-material/Search'
 
 const SearchBar = () => {
-  const [isInputFocused, setIsInputFocused] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [isInputFocused, setIsInputFocused] = useState(false)
+  const [inputValue, setInputValue] = useState('')
 
   function removeFocus() {
-    setIsInputFocused(false);
+    setIsInputFocused(false)
   }
 
   function enableFocus() {
-    setIsInputFocused(true);
+    setIsInputFocused(true)
   }
 
   return (
     <TextField
-      id="search-bar"
-      label={isInputFocused || inputValue ? "" : "Search"}
-      type="search"
+      id='search-bar'
+      label={isInputFocused || inputValue ? '' : 'Search'}
+      type='search'
       fullWidth
       sx={{ marginX: 5 }}
       InputProps={{
         endAdornment: (
-          <IconButton aria-label="search">
+          <IconButton aria-label='search'>
             <SearchIcon />
           </IconButton>
         ),
@@ -31,7 +31,7 @@ const SearchBar = () => {
       onFocus={enableFocus}
       onBlur={removeFocus}
     />
-  );
-};
+  )
+}
 
-export default SearchBar;
+export default SearchBar
