@@ -85,14 +85,6 @@ export const ConnectionScreen = (): JSX.Element => {
     error,
   } = ConnectionController({ navigate });
 
-  useEffect(() => {
-    if (process.env.SALUT === "dev") {
-    } else {
-      console.log("prod");
-    }
-    console.log(process.env.REACT_APP_DEV_API_URL + " coucou");
-  }, []);
-
   return (
     <div
       className={`ConnectionScreen/backgroundDiv ${styles["backgroundDiv"]}`}

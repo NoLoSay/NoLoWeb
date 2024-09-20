@@ -7,6 +7,7 @@ export const defaultHeaders: Header = {
 
 interface PostProps {
   url?: string
+  port?: string
   endpoint: `/${string}`
   body: string
   headers?: Header
@@ -15,6 +16,7 @@ interface PostProps {
 
 export function post({
   url,
+  port,
   endpoint,
   body,
   headers = defaultHeaders,
@@ -23,6 +25,7 @@ export function post({
 
   return requestServer({
     url,
+    port,
     endpoint,
     method: 'POST',
     headers,
@@ -31,13 +34,23 @@ export function post({
   })
 }
 
+interface PutProps {
+  url?: string
+  port?: string
+  endpoint: `/${string}`
+  body: string
+  headers?: Header
+  authorizationToken?: string
+}
+
 export function put({
   url,
+  port,
   endpoint,
   body,
   headers = defaultHeaders,
   authorizationToken = '',
-}: PostProps): Promise<Response> {
+}: PutProps): Promise<Response> {
   return requestServer({
     url,
     endpoint,
@@ -50,6 +63,7 @@ export function put({
 
 interface DeleteProps {
   url?: string
+  port?: string
   endpoint: `/${string}`
   headers?: Header
   authorizationToken?: string
@@ -57,12 +71,14 @@ interface DeleteProps {
 
 export function deleteRequest({
   url,
+  port,
   endpoint,
   headers = defaultHeaders,
   authorizationToken = '',
 }: DeleteProps): Promise<Response> {
   return requestServer({
     url,
+    port,
     endpoint,
     method: 'DELETE',
     headers,
@@ -72,6 +88,7 @@ export function deleteRequest({
 
 interface GetProps {
   url?: string
+  port? :string
   endpoint: `/${string}`
   headers?: Header
   authorizationToken?: string
@@ -79,12 +96,14 @@ interface GetProps {
 
 export function get({
   url,
+  port,
   endpoint,
   headers = defaultHeaders,
   authorizationToken = '',
 }: GetProps): Promise<Response> {
   return requestServer({
     url,
+    port,
     endpoint,
     method: 'GET',
     headers,
@@ -103,8 +122,8 @@ interface RequestServerProps {
 }
 
 export function requestServer({
-  url = process.env.PROD_API_URL,
-  port = process.env.API_PORT ?? ":3001",
+  url = process.env.NEXT_PUBLIC_PROD_API_URL ?? "",
+  port = process.env.NEXT_PUBLIC_API_PORT ?? "",
   endpoint,
   method,
   headers,
@@ -112,12 +131,12 @@ export function requestServer({
   authorizationToken,
 }: RequestServerProps): Promise<Response> {
   var finalUrl;
-  // if (process.env.ENV_MODE == "dev" /* && process.env.DEV_API_URL */) {
-  //   finalUrl = process.env.DEV_API_URL + endpoint;
 
-  // } else {
-  // }
-  finalUrl = /* process.env.REACT_APP_DEV_API_URL */"http://localhost:3001" + endpoint;
+  if (process.env.NEXT_PUBLIC_ENV_MODE == "dev" && process.env.NEXT_PUBLIC_DEV_API_URL) {
+    finalUrl = process.env.NEXT_PUBLIC_DEV_API_URL + port + endpoint;
+  } else {
+    finalUrl = url + port + endpoint;
+  }
 
   return fetch(finalUrl, {
     method,
