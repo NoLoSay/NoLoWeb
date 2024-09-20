@@ -1,4 +1,4 @@
-import useChangePassword from "@helpers/httpClient/queries/account/useChangePassword";
+import useChangePassword from "@helpers/httpClient/queries/auth/useChangePassword";
 import { useLocation } from "node_modules/react-router-dom/dist/index";
 import { useEffect, useState } from "react";
 

@@ -3,6 +3,7 @@ import SubscriptionJSON from "@global/types/httpClient/auth/Subscription";
 import ConnectionJSON from "@global/types/httpClient/auth/Connection";
 import { post } from "@helpers/httpClient/common";
 import ForgotPasswordJSON from "@global/types/httpClient/auth/ForgotPassword";
+import ChangePasswordJSON from "@global/types/httpClient/account/ChangePassword";
 
 interface SubscribeProps {
   url?: string;
@@ -120,3 +121,37 @@ export async function forgotPassword({
     throw new Error(error instanceof Error ? error.message : String(error));
   }
 }
+
+interface ChangePasswordProps {
+  token: string | null;
+  password: string;
+}
+
+export async function changePassword({
+  token,
+  password,
+}: ChangePasswordProps): Promise<ChangePasswordJSON> {
+  try {
+    const response = await post({
+      endpoint: "/auth/change-password",
+      body: JSON.stringify({
+        token,
+        password,
+      }),
+    });
+
+    const responseData = await response.json();
+
+    if (!response.ok) {
+      throw new Error(responseData.message);
+    }
+
+    return {
+      status: response.status,
+      message: responseData.message,
+    };
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : String(error));
+  }
+}
+

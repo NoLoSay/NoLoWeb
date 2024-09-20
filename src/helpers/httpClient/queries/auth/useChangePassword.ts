@@ -1,5 +1,5 @@
-import { changePassword } from "./account";
 import ChangePasswordJSON from "@global/types/httpClient/account/ChangePassword";
+import { changePassword } from "./auth";
 
 interface ChangePasswordProps {
   newPassword: string;

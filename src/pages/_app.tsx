@@ -27,7 +27,7 @@ import { UserProvider } from "@global/contexts/UserProvider";
 import Sites from "@screen/site/Sites";
 import ExhibitionModificationPage from "@screen/exhibitionModificationPage/exhibitionModificationPage";
 import SiteModificationPage from "@screen/siteModificationPage/SiteModificationPage";
-import ChangePassword from "@screen/account/ChangePassword/ChangePassword";
+import ChangePassword from "@screen/authenticationSection/ChangePassword/ChangePassword";
 
 const AppRouter = (): JSX.Element => {
   const [isClient, setIsClient] = useState(false);
