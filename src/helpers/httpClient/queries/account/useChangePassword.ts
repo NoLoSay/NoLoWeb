@@ -1,8 +1,3 @@
-import { useContext } from "react";
-import { Header } from "@global/types/httpClient/Header";
-import { UserContext, defaultUser } from "@global/contexts/UserProvider";
-import ConnectJSON from "@global/types/httpClient/auth/Connection";
-import { connect } from "@helpers/httpClient/queries/auth/auth";
 import { changePassword } from "./account";
 import ChangePasswordJSON from "@global/types/httpClient/account/ChangePassword";
 
@@ -44,7 +39,7 @@ export default function useChangePassword({
     try {
       var data: ChangePasswordJSON = await changePassword({
         token: token,
-        newPassword: newPassword,
+        password: newPassword,
       });
       changeUserPassword({
         status: data.status,

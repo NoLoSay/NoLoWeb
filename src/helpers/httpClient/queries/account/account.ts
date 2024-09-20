@@ -3,19 +3,19 @@ import { post } from "@helpers/httpClient/common";
 
 interface ChangePasswordProps {
   token: string | null;
-  newPassword: string;
+  password: string;
 }
 
 export async function changePassword({
   token,
-  newPassword,
+  password,
 }: ChangePasswordProps): Promise<ChangePasswordJSON> {
   try {
     const response = await post({
-      endpoint: "/change-password",
+      endpoint: "/auth/change-password",
       body: JSON.stringify({
         token,
-        newPassword,
+        password,
       }),
     });
 
