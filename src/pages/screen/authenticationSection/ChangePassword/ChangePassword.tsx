@@ -74,7 +74,10 @@ export const ChangePassword = (): JSX.Element => {
             <p
               className={`ConnectionScreen/titleDivTextDivTitle ${styles["titleDivTextDivTitle"]}`}
             >
-              {"Changer le mot de passe"}
+              {
+                textData.page.screen.authentificationSection.changePassword
+                  .changepassword
+              }
             </p>
           </div>
         </div>
@@ -82,40 +85,59 @@ export const ChangePassword = (): JSX.Element => {
           className={`ChangePassword/form ${styles["form"]}`}
           onSubmit={changePassword}
         >
-          <p className={`ChangePassword/formPasswordTitle ${styles["formPasswordTitle"]}`}>
-            {"Nouveau mot de passe"}
-          </p>
-          <Input
-            divClassName={`ChangePassword/formPasswordDiv ${styles["formPasswordDiv"]}`}
-            inputClassName={`ChangePassword/formInput ${styles["formInput"]}`}
-            inputName="newPassword"
-            inputOnChange={(e) => setNewPassword(e.target.value)}
-            inputPlaceholder={
-              "**********"
-            }
-            isPassword
-            showPassword={showNewPassword}
-            setShowPassword={setShowNewPassword}
-          />
-          <p className={`ChangePassword/formPasswordTitle ${styles["formPasswordTitle"]}`}>
-            {"Confirmation du nouveau mot de passe"}
-          </p>
-          <Input
-            divClassName={`ChangePassword/formPasswordDiv ${styles["formPasswordDiv"]}`}
-            inputClassName={`ChangePassword/formInput ${styles["formInput"]}`}
-            inputName="newConfirmPassword"
-            inputOnChange={(e) => setNewConfirmPassword(e.target.value)}
-            inputPlaceholder={
-              "**********"
-            }
-            isPassword
-            showPassword={showNewConfirmPassword}
-            setShowPassword={setShowNewConfirmPassword}
-          />
+          <div>
+            <p
+              className={`ChangePassword/formPasswordTitle ${styles["formPasswordTitle"]}`}
+            >
+              {
+                textData.page.screen.authentificationSection.changePassword
+                  .newpassword
+              }
+            </p>
+            <Input
+              divClassName={`ChangePassword/formPasswordDiv ${styles["formPasswordDiv"]}`}
+              inputClassName={`ChangePassword/formInput ${styles["formInput"]}`}
+              inputName="newPassword"
+              inputOnChange={(e) => setNewPassword(e.target.value)}
+              inputPlaceholder={
+                textData.page.screen.authentificationSection.changePassword
+                  .passwordplaceholder
+              }
+              isPassword
+              showPassword={showNewPassword}
+              setShowPassword={setShowNewPassword}
+            />
+          </div>
+          <div>
+            <p
+              className={`ChangePassword/formPasswordTitle ${styles["formPasswordTitle"]}`}
+            >
+              {
+                textData.page.screen.authentificationSection.changePassword
+                  .confirmnewpassword
+              }
+            </p>
+            <Input
+              divClassName={`ChangePassword/formPasswordDiv ${styles["formPasswordDiv"]}`}
+              inputClassName={`ChangePassword/formInput ${styles["formInput"]}`}
+              inputName="newConfirmPassword"
+              inputOnChange={(e) => setNewConfirmPassword(e.target.value)}
+              inputPlaceholder={
+                textData.page.screen.authentificationSection.changePassword
+                  .passwordplaceholder
+              }
+              isPassword
+              showPassword={showNewConfirmPassword}
+              setShowPassword={setShowNewConfirmPassword}
+            />
+          </div>
           <button
             className={`ChangePassword/formConfirmButton ${styles["formConfirmButton"]}`}
           >
-            {"Confirmer"}
+            {
+              textData.page.screen.authentificationSection.changePassword
+                .confirm
+            }
           </button>
         </form>
         {error && (
