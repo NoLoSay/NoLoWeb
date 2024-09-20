@@ -2,7 +2,7 @@
 
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
-  <a href="https://nolosay.github.io/documentation" target="_blank">
+  <a href="https://nolosay.github.io/NoLoWeb" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
   <a href="https://github.com/NoLoSay/NoLoApp/blob/main/LICENSE.md" target="_blank">
@@ -18,13 +18,16 @@
 
 ## 🏠 [Homepage](https://nolosay.github.io)
 
-## ✨ [Visuals](https://nolosay.github.io/demo)
+## ✨ [Visuals](noloweb.vercel.app)
 
 ## 📝 [Documentation](https://nolosay.github.io/documentation)
 
 ## Development environment installation
 
-Before starting, you need to setup your environment. We have a guide for that [here](./SETUP_ENVIRONMENT.md).
+Before setting up the project, ensure you have the following installed:
+
+- **Node.js** (version 14 or higher) - [Download here](https://nodejs.org/)
+- **npm** or **yarn** (depending on your package manager choice)
 
 ## Install dependencies
 
@@ -36,10 +39,18 @@ Run `npm run dev` to view project in browser
 
 ## Tests
 
-
+run `npm run test`
 
 ## Build the app for production
 
+To create an optimized build for production, you can use the following commands:
+Build the Project:
+
+`npm run build`
+
+or
+
+`yarn build`
 
 ## 🤝 Contributing
 
@@ -69,6 +80,5 @@ Issues and requests for improvements are welcome!<br />Feel free to check [issue
 ## 📝 License
 
 Copyright © 2023 [NoLo Incorporation](https://github.com/NoLoSay).<br />
-This project is [privately](https://github.com/NoLoSay/NoLoApp/blob/main/LICENSE.md) licensed.
+This project is [privately](https://github.com/NoLoSay/NoLoWeb/blob/main/LICENSE.md) licensed.
 
----

@@ -10,7 +10,7 @@
 				<string>arm64</string>
 			</array>
 			<key>buildNumber</key>
-			<string>1</string>
+			<string>4</string>
 			<key>certificate</key>
 			<dict>
 				<key>SHA1</key>
@@ -79,7 +79,7 @@
 				<string>Epitech (Innovation Hub)</string>
 			</dict>
 			<key>versionNumber</key>
-			<string>0</string>
+			<string>0.1</string>
 		</dict>
 	</array>
 </dict>
