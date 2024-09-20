@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { UserContext } from "../../../global/contexts/UserProvider";
-import Layout from "../../components/Layout/Layout";
-import textData from "../../../../public/text.json";
+import { UserContext } from "@global/contexts/UserProvider";
+import Layout from "@components/Layout/Layout";
+import textData from "@public/text.json";
 
 const styles = {
   exhibitionModificationPage:

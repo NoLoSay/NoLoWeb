@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import NoVideoPlaceholder from "../NoVideoPlaceholder/NoVideoPlaceholder";
+import NoVideoPlaceholder from "@components/NoVideoPlaceholder/NoVideoPlaceholder";
 import { ButtonBase } from "@mui/material";
 import { ArrowBackIosNewRounded } from "@mui/icons-material";
 import { Paper } from "@mui/material";
-import videoData from "../../../../tests/videos.json";
+import videoData from "@tests/videos.json";
 import { useNavigate } from "react-router-dom";
-import textData from "../../../../public/text.json";
+import textData from "@public/text.json";
 
 const styles: { [key: string]: string } = {
   container_0:

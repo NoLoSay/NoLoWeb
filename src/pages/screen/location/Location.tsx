@@ -1,12 +1,12 @@
 import { Fragment, useState, ChangeEvent, useEffect } from "react";
 import Head from "next/head";
-import Layout from "../../components/Layout/Layout";
-import TitleCard from "../../components/TitleCard/TitleCard";
-import CardTemplate from "../../components/CardTemplate/CardTemplate";
+import Layout from "@components/Layout/Layout";
+import TitleCard from "@components/TitleCard/TitleCard";
+import CardTemplate from "@components/CardTemplate/CardTemplate";
 import { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
-import FilterListArtwork from "../../components/Filter/FilterListArtwork";
-import exhibitionsData from "../../../../tests/exhibitions.json";
+import FilterListArtwork from "@components/Filter/FilterListArtwork";
+import exhibitionsData from "@tests/exhibitions.json";
 
 interface Artwork {
   name: string;

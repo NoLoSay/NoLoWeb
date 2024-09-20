@@ -1,8 +1,8 @@
-import Layout from "../../components/Layout/Layout";
+import Layout from "@components/Layout/Layout";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { Fragment, useState, useContext } from "react";
-import { UserContext } from "../../../global/contexts/UserProvider";
-import textData from "../../../../public/text.json";
+import { UserContext } from "@global/contexts/UserProvider";
+import textData from "@public/text.json";
 
 const styles: { [key: string]: string } = {
   artworkModificationPage:

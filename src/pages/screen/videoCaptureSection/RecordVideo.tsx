@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import Layout from "../../components/Layout/Layout";
-import textData from "../../../../public/text.json";
+import Layout from "@components/Layout/Layout";
+import textData from "@public/text.json";
 
 const toto: string = "bg-yellow-300 text-base-white";
 const tata: string = "bg-base-black text-yellow-300";

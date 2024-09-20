@@ -1,4 +1,4 @@
-import { Header } from '../../global/types/httpClient/Header'
+import { Header } from '@global/types/httpClient/Header'
 
 export const defaultHeaders: Header = {
   Accept: 'application/json',
@@ -7,6 +7,7 @@ export const defaultHeaders: Header = {
 
 interface PostProps {
   url?: string
+  port?: string
   endpoint: `/${string}`
   body: string
   headers?: Header
@@ -14,14 +15,17 @@ interface PostProps {
 }
 
 export function post({
-  url = "http://localhost:3001",
+  url,
+  port,
   endpoint,
   body,
   headers = defaultHeaders,
   authorizationToken = '',
 }: PostProps): Promise<Response> {
+
   return requestServer({
     url,
+    port,
     endpoint,
     method: 'POST',
     headers,
@@ -30,13 +34,23 @@ export function post({
   })
 }
 
+interface PutProps {
+  url?: string
+  port?: string
+  endpoint: `/${string}`
+  body: string
+  headers?: Header
+  authorizationToken?: string
+}
+
 export function put({
-  url = "http://localhost:3001",
+  url,
+  port,
   endpoint,
   body,
   headers = defaultHeaders,
   authorizationToken = '',
-}: PostProps): Promise<Response> {
+}: PutProps): Promise<Response> {
   return requestServer({
     url,
     endpoint,
@@ -49,19 +63,22 @@ export function put({
 
 interface DeleteProps {
   url?: string
+  port?: string
   endpoint: `/${string}`
   headers?: Header
   authorizationToken?: string
 }
 
 export function deleteRequest({
-  url = "http://localhost:3001",
+  url,
+  port,
   endpoint,
   headers = defaultHeaders,
   authorizationToken = '',
 }: DeleteProps): Promise<Response> {
   return requestServer({
     url,
+    port,
     endpoint,
     method: 'DELETE',
     headers,
@@ -71,19 +88,22 @@ export function deleteRequest({
 
 interface GetProps {
   url?: string
+  port? :string
   endpoint: `/${string}`
   headers?: Header
   authorizationToken?: string
 }
 
 export function get({
-  url = "http://localhost:3001",
+  url,
+  port,
   endpoint,
   headers = defaultHeaders,
   authorizationToken = '',
 }: GetProps): Promise<Response> {
   return requestServer({
     url,
+    port,
     endpoint,
     method: 'GET',
     headers,
@@ -92,7 +112,8 @@ export function get({
 }
 
 interface RequestServerProps {
-  url: string
+  url?: string
+  port?: string
   endpoint: `/${string}`
   method: 'POST' | 'GET' | 'PUT' | 'DELETE'
   headers: Header
@@ -101,14 +122,23 @@ interface RequestServerProps {
 }
 
 export function requestServer({
-  url = "http://localhost:3001",
+  url = process.env.NEXT_PUBLIC_PROD_API_URL ?? "",
+  port = process.env.NEXT_PUBLIC_API_PORT ?? "",
   endpoint,
   method,
   headers,
   body,
   authorizationToken,
 }: RequestServerProps): Promise<Response> {
-  return fetch(url + endpoint, {
+  var finalUrl;
+
+  if (process.env.NEXT_PUBLIC_ENV_MODE == "dev" && process.env.NEXT_PUBLIC_DEV_API_URL) {
+    finalUrl = process.env.NEXT_PUBLIC_DEV_API_URL + port + endpoint;
+  } else {
+    finalUrl = url + port + endpoint;
+  }
+
+  return fetch(finalUrl, {
     method,
     headers: {
       Accept: headers.Accept,

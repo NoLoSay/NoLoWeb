@@ -1,9 +1,9 @@
 import { Fragment } from "react";
 import Head from "next/head";
-import Layout from "../../components/Layout/Layout";
-import Container from "../../components/About/Container";
-import textData from "../../../../public/text.json";
-import Timeline from "../../components/About/Timeline";
+import Layout from "@components/Layout/Layout";
+import Container from "@components/About/Container";
+import textData from "@public/text.json";
+import Timeline from "@components/About/Timeline";
 
 interface AboutProps {}
 

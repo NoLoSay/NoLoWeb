@@ -1,9 +1,9 @@
-import Layout from "../../components/Layout/Layout";
+import Layout from "@components/Layout/Layout";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { Fragment, useContext, useState } from "react";
-import { UserContext } from "../../../global/contexts/UserProvider";
+import { UserContext } from "@global/contexts/UserProvider";
 import { ButtonBase } from "@mui/material";
-import textData from "../../../../public/text.json";
+import textData from "@public/text.json";
 
 interface ExhibitionsProps {}
 

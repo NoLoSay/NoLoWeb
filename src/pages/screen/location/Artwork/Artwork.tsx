@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Paper } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import CardTemplate from "../../../components/CardTemplate/CardTemplate";
-import exhibitionsData from "../../../../../tests/exhibitions.json";
+import CardTemplate from "@components/CardTemplate/CardTemplate";
+import exhibitionsData from "@tests/exhibitions.json";
 import { ButtonBase } from "@mui/material";
 import { ArrowBackIosNewRounded } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import FilterListExhibitions from "../../../components/Filter/FilterListExhibitions";
+import FilterListExhibitions from "@components/Filter/FilterListExhibitions";
 
 interface Artwork {
   name: string;

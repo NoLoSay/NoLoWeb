@@ -68,6 +68,9 @@
          "description": "Description:",
          "website" : "Website:",
          "location" : "Location:"
+      },
+      "animatedNavBar" : {
+        "profile": "Profil"
       }
     },
     "screen" : {
@@ -100,6 +103,7 @@
           "connectyou": "Connecte-toi pour continuer",
           "pusername" : "Nom d'utilisateur",
           "ppassword" : "Mot de passe",
+          "forgotpassword" : "Mot de passe oublié",
           "connectme" : "Me connecter",
           "or" : "ou avec",
           "noaccount" :"Pas de compte ?",
@@ -115,8 +119,19 @@
           "pphone" : "Téléphone",
           "ppassword" : "Mot de passe",
           "pconfirmpassword" : "Confirmer le mot de passe"
+        },
+        "forgottenpassword" : {
+          "title": "Entrez votre adresse mail",
+          "email" : "Email de l'utilisateur",
+          "submit" : "Envoyer le mail"
+        },
+        "changePassword" : {
+          "changepassword": "Changer le mot de passe",
+          "newpassword": "Nouveau mot de passe",
+          "confirmnewpassword": "Confirmation du nouveau mot de passe",
+          "passwordplaceholder": "**********",
+          "confirm": "Confirmer"
         }
-
       },
       "creationSection" : {
         "artworkToTranslateSelectionSection" : {

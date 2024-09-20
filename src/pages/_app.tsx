@@ -1,32 +1,33 @@
 import React from "react";
-import "../../styles/global.css";
-import Head from "../../node_modules/next/head";
+import "@styles/global.css";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from "../../node_modules/react-router-dom/dist/index";
-import Layout from "./components/Layout/Layout";
-import Home from "./screen/home/Home";
-import ConnectionScreen from "./screen/authenticationSection/connection/ConnectionScreen";
-import SubscriptionScreen from "./screen/authenticationSection/subscription/SubscriptionScreen";
-import ArtworkToTranslateSelectionScreen from "./screen/creationSection/artworkToTranslateSelectionSection/ArtworkToTranslateSelectionScreen";
-import About from "./screen/about/About";
-import ArtworksPage from "./screen/artworks/Artworks";
-import ExhibitionsPage from "./screen/exhibitions/Exhibitions";
-import FindLocation from "./screen/findLocation/FindLocation";
-import Location from "./screen/location/Location";
-import ShowArtwork from "./screen/location/Artwork/Artwork";
-import VideoAccess from "./screen/videoAccess/VideoAccess";
-import Account from "./screen/account/Account";
-import RecordVideo from "./screen/videoCaptureSection/RecordVideo";
-import AccountSettings from "./screen/accountSettings/AccountSettings";
-import ArtworkModificationPage from "./screen/artworkmodificationPage/ArtworkModificationPage";
-import { UserProvider } from "../global/contexts/UserProvider";
-import Sites from "./screen/site/Sites";
-import ExhibitionModificationPage from "./screen/exhibitionModificationPage/exhibitionModificationPage";
-import SiteModificationPage from "./screen/siteModificationPage/SiteModificationPage";
+import Layout from "@components/Layout/Layout";
+import Home from "@screen/home/Home";
+import ConnectionScreen from "@screen/authenticationSection/connection/ConnectionScreen";
+import SubscriptionScreen from "@screen/authenticationSection/subscription/SubscriptionScreen";
+import ArtworkToTranslateSelectionScreen from "@screen/creationSection/artworkToTranslateSelectionSection/ArtworkToTranslateSelectionScreen";
+import About from "@screen/about/About";
+import ArtworksPage from "@screen/artworks/Artworks";
+import ExhibitionsPage from "@screen/exhibitions/Exhibitions";
+import FindLocation from "@screen/findLocation/FindLocation";
+import Location from "@screen/location/Location";
+import ShowArtwork from "@screen/location/Artwork/Artwork";
+import VideoAccess from "@screen/videoAccess/VideoAccess";
+import Account from "@screen/account/Account";
+import RecordVideo from "@screen/videoCaptureSection/RecordVideo";
+import AccountSettings from "@screen/accountSettings/AccountSettings";
+import ArtworkModificationPage from "@screen/artworkmodificationPage/ArtworkModificationPage";
+import { UserProvider } from "@global/contexts/UserProvider";
+import Sites from "@screen/site/Sites";
+import ExhibitionModificationPage from "@screen/exhibitionModificationPage/exhibitionModificationPage";
+import SiteModificationPage from "@screen/siteModificationPage/SiteModificationPage";
+import ChangePassword from "@screen/authenticationSection/ChangePassword/ChangePassword";
 
 const AppRouter = (): JSX.Element => {
   const [isClient, setIsClient] = useState(false);
@@ -66,6 +67,7 @@ const AppRouter = (): JSX.Element => {
               <Route path="/videoAccess" element={<VideoAccess />} />
               <Route path="/location" element={<Location />} />
               <Route path="/account" element={<Account />} />
+              <Route path="/changePassword" element={<ChangePassword />} />
 
               <Route path="/places" element={<Sites />} />
               <Route

@@ -1,7 +1,9 @@
-import { Header } from "../../../../global/types/httpClient/Header";
-import SubscriptionJSON from "../../../../global/types/httpClient/auth/Subscription";
-import ConnectionJSON from "../../../../global/types/httpClient/auth/Connection";
-import { post } from "../../common";
+import { Header } from "@global/types/httpClient/Header";
+import SubscriptionJSON from "@global/types/httpClient/auth/Subscription";
+import ConnectionJSON from "@global/types/httpClient/auth/Connection";
+import { post } from "@helpers/httpClient/common";
+import ForgotPasswordJSON from "@global/types/httpClient/auth/ForgotPassword";
+import ChangePasswordJSON from "@global/types/httpClient/account/ChangePassword";
 
 interface SubscribeProps {
   url?: string;
@@ -19,6 +21,10 @@ interface ConnectProps {
   headers?: Header;
 }
 
+interface ForgotPasswordProps {
+  email: string;
+}
+
 export async function subscribe({
   email,
   username,
@@ -32,7 +38,7 @@ export async function subscribe({
         email,
         username,
         password,
-        telNumber
+        telNumber,
       }),
     });
 
@@ -89,3 +95,63 @@ export async function connect({
     throw new Error(error instanceof Error ? error.message : String(error));
   }
 }
+
+export async function forgotPassword({
+  email,
+}: ForgotPasswordProps): Promise<ForgotPasswordJSON> {
+  try {
+    const response = await post({
+      endpoint: "/auth/forgot-password",
+      body: JSON.stringify({
+        email: email,
+      }),
+    });
+
+    const responseData = await response.json();
+
+    if (!response.ok) {
+      throw new Error(responseData.message);
+    }
+
+    return {
+      status: response.status,
+      message: responseData.message,
+    };
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : String(error));
+  }
+}
+
+interface ChangePasswordProps {
+  token: string | null;
+  password: string;
+}
+
+export async function changePassword({
+  token,
+  password,
+}: ChangePasswordProps): Promise<ChangePasswordJSON> {
+  try {
+    const response = await post({
+      endpoint: "/auth/change-password",
+      body: JSON.stringify({
+        token,
+        password,
+      }),
+    });
+
+    const responseData = await response.json();
+
+    if (!response.ok) {
+      throw new Error(responseData.message);
+    }
+
+    return {
+      status: response.status,
+      message: responseData.message,
+    };
+  } catch (error) {
+    throw new Error(error instanceof Error ? error.message : String(error));
+  }
+}
+

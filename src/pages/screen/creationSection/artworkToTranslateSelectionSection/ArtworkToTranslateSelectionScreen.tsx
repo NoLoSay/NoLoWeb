@@ -1,7 +1,7 @@
 import React from "react";
-import Layout from "../../../components/Layout/Layout";
-import ArtworkCard from "../../../components/ArtworkCard/ArtworkCard";
-import textData from "../../../../../public/text.json";
+import Layout from "@components/Layout/Layout";
+import ArtworkCard from "@components/ArtworkCard/ArtworkCard";
+import textData from "@public/text.json";
 
 type artWork = {
   title: string;

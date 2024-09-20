@@ -1,16 +1,16 @@
 import React, { Fragment, ReactNode, useContext } from "react";
-import Layout from "../../components/Layout/Layout";
-import GenericCard from "../../components/Account/GenericCard/GenericCard";
+import Layout from "@components/Layout/Layout";
+import GenericCard from "@components/Account/GenericCard/GenericCard";
 import { ButtonBase, Divider } from "@mui/material";
-import ProfileCard from "../../components/Account/ProfileCard/ProfileCard";
-import testProfile from "../../../../stories/assets/testProfile.json";
-import CategoryButton from "../../components/Account/CategoryButton/CategoryButton";
-import locationData from "../../components/Account/LocationCard/example.json";
-import LocationCard from "../../components/Account/LocationCard/LocationCard";
+import ProfileCard from "@components/Account/ProfileCard/ProfileCard";
+import testProfile from "@stories/assets/testProfile.json";
+import CategoryButton from "@components/Account/CategoryButton/CategoryButton";
+import locationData from "@components/Account/LocationCard/example.json";
+import LocationCard from "@components/Account/LocationCard/LocationCard";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import AccountSelector from "../../components/Account/AccountSelector/AccountSelector";
-import { UserContext } from "../../../global/contexts/UserProvider";
+import AccountSelector from "@components/Account/AccountSelector/AccountSelector";
+import { UserContext } from "@global/contexts/UserProvider";
 
 const styles: { [key: string]: string } = {
   container_0: "grid grid-cols-3 gap-4 text-black w-4/5 mx-auto my-10",

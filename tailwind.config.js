@@ -17,6 +17,12 @@ module.exports = {
         map: "url('../public/images/map.png')",
         "miroir-d-eau-château-nantes_photo":
           "url('../public/images/artworkToTranslateSelectionScreen/miroir-d-eau-château-nantes_photo.png')",
+        connectionBackground:
+          "url('../public/images/backgrounds/connectionBackground.png')",
+        subscriptionBackground:
+          "url('../public/images/backgrounds/subscriptionBackground.png')",
+        changePasswordBackground:
+          "url('../public/images/backgrounds/changePasswordBackground.jpg')",
       }),
       flex: {
         2: "2 2 0%",

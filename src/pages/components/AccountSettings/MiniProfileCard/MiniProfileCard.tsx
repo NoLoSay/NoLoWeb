@@ -1,4 +1,4 @@
-import testProfile from "../../../../../stories/assets/testProfile.json";
+import testProfile from "@stories/assets/testProfile.json";
 
 const styles: { [key: string]: string } = {
   container_0:

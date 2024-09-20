@@ -1,5 +1,16 @@
 {
   "compilerOptions": {
+    "baseUrl": "",
+    "paths": {
+      "@components/*": ["src/pages/components/*"],
+      "@screen/*": ["src/pages/screen/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@global/*": ["src/global/*"],
+      "@public/*": ["public/*"],
+      "@stories/*": ["stories/*"],
+      "@tests/*": ["tests/*"],
+      "@styles/*": ["styles/*"],
+    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

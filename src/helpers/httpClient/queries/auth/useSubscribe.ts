@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { Header } from "../../../../global/types/httpClient/Header";
-import { UserContext } from "../../../../global/contexts/UserProvider";
-import SubscribeJSON from "../../../../global/types/httpClient/auth/Subscription";
+import { Header } from "@global/types/httpClient/Header";
+import { UserContext } from "@global/contexts/UserProvider";
+import SubscribeJSON from "@global/types/httpClient/auth/Subscription";
 import { subscribe } from "./auth";
 
 interface SubscribeProps {

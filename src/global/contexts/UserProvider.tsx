@@ -1,5 +1,5 @@
 import { createContext, useEffect, useMemo, useState } from "react";
-import { UserContextType, UserType } from "../types/User";
+import { UserContextType, UserType } from "@global/types/User";
 
 export const defaultUser: UserType = {
   id: 0,

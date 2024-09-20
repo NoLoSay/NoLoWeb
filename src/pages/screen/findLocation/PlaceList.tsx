@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import CardTemplate from "../../components/CardTemplate/CardTemplate";
-import Pagination from "../../components/Pagination/Pagination";
-import FilterListPlace from "../../components/Filter/FilterListPlace";
+import CardTemplate from "@components/CardTemplate/CardTemplate";
+import Pagination from "@components/Pagination/Pagination";
+import FilterListPlace from "@components/Filter/FilterListPlace";
 interface Place {
   name: string;
   description: string;

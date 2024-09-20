@@ -1,14 +1,14 @@
 import { Fragment, ReactNode, useState, useContext } from "react";
 import Head from "next/head";
-import Layout from "../../components/Layout/Layout";
+import Layout from "@components/Layout/Layout";
 import { useLocation } from "react-router-dom";
-import SideMenu from "../../components/AccountSettings/SideMenu/SideMenu";
-import SettingsProfileForm from "../../components/AccountSettings/SettingsProfileForm/SettingsProfileForm";
-import MiniProfileCard from "../../components/AccountSettings/MiniProfileCard/MiniProfileCard";
-import SettingsLocationForm from "../../components/AccountSettings/SettingsLocationForm/SettingsLocationForm";
-import SettingsTeamAdminForm from "../../components/AccountSettings/SettingsTeamAdminForm/SettingsTeamAdminForm";
-import SettingsNotificationsForm from "../../components/AccountSettings/SettingsNotificationsForm/SettingsNotificationsForm";
-import { UserContext } from "../../../global/contexts/UserProvider";
+import SideMenu from "@components/AccountSettings/SideMenu/SideMenu";
+import SettingsProfileForm from "@components/AccountSettings/SettingsProfileForm/SettingsProfileForm";
+import MiniProfileCard from "@components/AccountSettings/MiniProfileCard/MiniProfileCard";
+import SettingsLocationForm from "@components/AccountSettings/SettingsLocationForm/SettingsLocationForm";
+import SettingsTeamAdminForm from "@components/AccountSettings/SettingsTeamAdminForm/SettingsTeamAdminForm";
+import SettingsNotificationsForm from "@components/AccountSettings/SettingsNotificationsForm/SettingsNotificationsForm";
+import { UserContext } from "@global/contexts/UserProvider";
 
 const FormTab = [
   <SettingsProfileForm />,

@@ -1,6 +1,6 @@
-import Link from "../../../../node_modules/next/link";
+import Link from "next/link";
 import { useNavigate } from "../../../../node_modules/react-router-dom/dist/index";
-import textData from "../../../../public/text.json";
+import textData from "@public/text.json";
 
 const styles: { [key: string]: string } = {
   mainDiv:

@@ -2,7 +2,7 @@ import { ButtonBase } from "@mui/material";
 import { ArrowBackIosNewRounded } from "@mui/icons-material";
 import Link from "next/link";
 import { useNavigate } from "react-router-dom";
-import textData from "../../../../public/text.json";
+import textData from "@public/text.json";
 
 const styles: { [key: string]: string } = {
   container_0: "relative w-full",
