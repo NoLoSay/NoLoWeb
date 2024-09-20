@@ -1,0 +1,47 @@
+{
+  "name": "NoLoSay Scource",
+  "subtitle": "All NoLoSay apps in one place.",
+  "description": "Accessible NoLoSay apps, all in one place.",
+  "iconURL": "https://avatars.githubusercontent.com/u/117668974?s=200&v=4",
+  "headerURL": "https://avatars.githubusercontent.com/u/117668974?s=200&v=4",
+  "website": "https://nolosay.com",
+  "tintColor": "#FDC810",
+  "featuredApps": [
+    "com.nolosay.nolosayapp"
+  ],
+  "apps": [
+    {
+      "name": "NoLoSay",
+      "bundleIdentifier": "com.nolosay.nolosayapp",
+      "developerName": "NoLoSay",
+      "subtitle": "An app that improve accessibility for deaf people in cultural places.",
+      "localizedDescription": "This is an awesome app only available on AltStore.",
+      "iconURL": "https://avatars.githubusercontent.com/u/117668974?s=200&v=4",
+      "tintColor": "#FDC810",
+      "screenshots": [],
+      "versions": [
+        {
+          "version": "1.0",
+          "date": "2024-08-20T07:00:00-08:00",
+          "size": 6449108,
+          "downloadURL": "https://noloweb.vercel.app/NoLoSay/Apps/NoLoSay.ipa",
+          "localizedDescription": "Initial release."
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [
+          "com.apple.security.application-groups",
+          "com.apple.developer.siri"
+        ],
+        "privacy": {
+          "NSPhotoLibraryUsageDescription": "App saves photos to your Photo Library.",
+          "NSCameraUsageDescription": "App uses camera to take photos.",
+          "NSMicrophoneUsageDescription": "App uses microphone to record video.",
+          "NSLocationAlwaysAndWhenInUseUsageDescription": "Nous avons besoin de votre localisation afin de trouver les musées les plus proches de vous !",
+          "NSLocationAlwaysUsageDescription": "Nous avons besoin de votre localisation afin de trouver les musées les plus proches de vous !",
+          "NSLocationWhenInUseUsageDescription": "Nous avons besoin de votre localisation afin de trouver les musées les plus proches de vous !"
+        }
+      }
+    }
+  ]
+}
