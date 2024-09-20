@@ -54,7 +54,7 @@ const DownloadContainer: React.FC = () => {
             src='/icon/social/app-store.png'
             onClick={() => {
               window.location.href =
-                'itms-services://?action=download-manifest&url=https://noloweb.vercel.app/NoLoSay/'
+                'itms-services://?action=download-manifest&url=https://noloweb.vercel.app/NoLoSay/manifest.plist'
             }}
           />
           <img
