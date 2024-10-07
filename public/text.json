@@ -131,6 +131,11 @@
           "confirmnewpassword": "Confirmation du nouveau mot de passe",
           "passwordplaceholder": "**********",
           "confirm": "Confirmer"
+        },
+        "passwordChanged" : {
+          "passwordChangedSuccessfully": "Le mot de passe a bien été modifié",
+          "youNeedToReconnect": "Vous devez vous reconnecter",
+          "reconnect": "Reconnection"
         }
       },
       "creationSection" : {

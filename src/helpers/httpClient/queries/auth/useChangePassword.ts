@@ -9,12 +9,13 @@ interface ChangePasswordProps {
 }
 
 interface ChangeUserPasswordProps {
+  setPasswordStatus: (passwordStatus: boolean) => void;
   status: number;
   message: string;
 }
 
 interface useChangePassword {
-  tryToChangePassword: () => Promise<void>;
+  tryToChangePassword: (passwordStatus: (passwordStatus: boolean) => void) => Promise<void>;
 }
 
 export default function useChangePassword({
@@ -25,23 +26,25 @@ export default function useChangePassword({
 }: ChangePasswordProps): useChangePassword {
 
   const changeUserPassword = ({
+    setPasswordStatus,
     status,
     message,
   }: ChangeUserPasswordProps) => {
     if (status === 201) {
-      navigate("/connection");
+      setPasswordStatus(true);
     } else {
       setError(message);
     }
   };
 
-  const tryToChangePassword = async () => {
+  const tryToChangePassword = async (setPasswordStatus: (passwordStatus: boolean) => void) => {
     try {
       var data: ChangePasswordJSON = await changePassword({
         token: token,
         password: newPassword,
       });
       changeUserPassword({
+        setPasswordStatus,
         status: data.status,
         message: data.message,
       });

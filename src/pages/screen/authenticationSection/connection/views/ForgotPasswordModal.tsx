@@ -1,12 +1,6 @@
 import React from "react";
 import textData from "@public/text.json";
 
-interface ForgotPasswordModalProps {
-  onClose: () => void;
-  setEmail: (email: string) => void;
-  onSubmit: () => Promise<void>;
-}
-
 const styles: { [key: string]: string } = {
   mainDiv:
     "fixed flex items-center justify-center top-0 left-0 right-0 bottom-0 bg-black/[0.5] text-black",
@@ -27,6 +21,12 @@ const styles: { [key: string]: string } = {
   submitButton:
     "bg-base-button font-poppins font-semibold hover:cursor-pointer p-2 relative rounded-1.5lg text-black text-sm w-auto "
 };
+
+interface ForgotPasswordModalProps {
+  onClose: () => void;
+  setEmail: (email: string) => void;
+  onSubmit: () => Promise<void>;
+}
 
 const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({
   onClose,
