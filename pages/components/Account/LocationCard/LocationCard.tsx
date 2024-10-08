@@ -161,17 +161,14 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
                 Voir
               </div>
             </ButtonBase>**/}
-            <ButtonBase disableRipple >
-              <div className={styles.buttons}>Supprimer</div>
-            </ButtonBase>
-            <ButtonBase disableRipple >
-              <div className={styles.buttons}>Modifier</div>
-            </ButtonBase>
             <ButtonBase disableRipple onClick={() => handleAction("handleGoToAllArtworks", cardInfo.id)}>
-              <div className={styles.buttons}>Voir les oeuvres</div>
+              <div className={styles.buttons}>Voir les salles</div>
             </ButtonBase>
             <ButtonBase disableRipple onClick={() => handleAction("handleGoToExhibitions", cardInfo.id)}>
               <div className={styles.buttons}>Voir les expositions</div>
+            </ButtonBase>
+            <ButtonBase disableRipple onClick={() => handleAction("handleGoToAllArtworks", cardInfo.id)}>
+              <div className={styles.buttons}>Voir les oeuvres</div>
             </ButtonBase>
           </div>
         </div>
