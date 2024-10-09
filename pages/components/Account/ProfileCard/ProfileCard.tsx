@@ -38,37 +38,22 @@ function ProfileCard({
   };
 
   const handleSave = async () => {
-    const url = '/users/me';
-    const payload = {
-      username: '',
-      email: '',
-      password: '',
-      telNumber: '',
-      picture: ''
-    };
-    switch (editMode) {
-      case 'name':
-        payload.username = newName;
-        break;
-      case 'email':
-        payload.email = newEmail;
-        break;
-      case 'phone':
-        payload.telNumber = newPhone;
-        break;
-      case 'password':
-        if (newPassword !== confirmPassword) {
-          alert("Passwords do not match");
-          return;
-        }
-        payload.password = newPassword;
-        break;
-      default:
-        return;
-    }
+    const url = 'http://localhost:3001/users/me';
 
-    // Call API to update user data based on payload
-    console.log("Payload to update:", payload);
+    // Initialize payload with the most up-to-date info from edit fields
+    const payload = {
+      username: editMode === 'name' ? newName : user.username,
+      email: editMode === 'email' ? newEmail : user.email,
+      telNumber: editMode === 'phone' ? newPhone : user.telNumber,
+      picture: editMode === 'picture' ? newProfilePicture : user.profilePicturePath
+    };
+
+    if (editMode === 'password' && newPassword === confirmPassword) {
+      payload.password = newPassword;
+    } else if (editMode === 'password' && newPassword !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
 
     try {
       const response = await fetch(url, {
@@ -83,16 +68,24 @@ function ProfileCard({
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      const data = await response.json();
-      console.log('Successfully updated user:', data);
+      const updatedUser = await response.json();
+
+      // Update user context with new user data
+      setUser({
+        ...user,
+        username: updatedUser.username || user.username,
+        email: updatedUser.email || user.email,
+        telNumber: updatedUser.telNumber || user.telNumber,
+        profilePicturePath: updatedUser.picture || user.profilePicturePath
+      });
+
+      console.log('Successfully updated user:', updatedUser);
       alert('Profile updated successfully!');
-      handleClose();
+      handleClose(); // Close the edit modal or panel
     } catch (error) {
       console.error('Failed to update user:', error);
       alert('Failed to update profile.');
     }
-
-    handleClose();
   };
 
   return (
