@@ -117,7 +117,7 @@ const ExhibitionModificationPage = () => {
 
       const responseData = await response.json();
       console.log("Operation successful:", responseData);
-      navigate("/places");
+      navigate("/account");
     } catch (error) {
       console.error("Failed to update exhibition:", error);
     }
