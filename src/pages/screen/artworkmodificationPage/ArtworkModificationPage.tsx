@@ -1,7 +1,7 @@
-import Layout from "@components/Layout/Layout";
+import Layout from "../../components/Layout/Layout";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { Fragment, useState, useContext } from "react";
-import { UserContext } from "@global/contexts/UserProvider";
+import { UserContext } from "src/global/contexts/UserProvider";
 import textData from "@public/text.json";
 
 const styles: { [key: string]: string } = {
@@ -23,13 +23,13 @@ const styles: { [key: string]: string } = {
   divButtonSave:
     "bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 cursor-pointer",
   nameInput:
-    "font-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+    "font-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500",
   descriptionInput:
-    "font-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+    "font-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500",
   artistNameInput:
-    "font-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+    "font-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500",
   dateInput:
-    "font-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+    "font-black bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500",
 };
 
 const ArtworkModificationPage = () => {
@@ -54,12 +54,25 @@ const ArtworkModificationPage = () => {
     setArtwork({ ...artwork, [name]: value });
   };
 
+  const handleImageChange = (event: any) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setArtwork((previousState: any) => ({ ...previousState, picture: reader.result }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = async () => {
     const method = artwork.id ? "PUT" : "POST";
     const url = `http://localhost:3001/items${
       artwork.id ? `/${artwork.id}` : ""
     }`;
 
+    console.log("method", method)
+    console.log("artwork", artwork)
     try {
       if (method === "POST") {
         const response = await fetch(url, {
@@ -80,6 +93,7 @@ const ArtworkModificationPage = () => {
         if (!response.ok) {
           throw new Error(`HTTP status ${response.status}`);
         }
+
 
         const responseData = await response.json();
         if (exhibitionId) {
@@ -128,18 +142,6 @@ const ArtworkModificationPage = () => {
     }
   };
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const result = e.target?.result as string;
-        setArtwork((prev: any) => ({ ...prev, picture: result }));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   const resetFields = () => {
     setArtwork({
       name: "",
@@ -167,12 +169,20 @@ const ArtworkModificationPage = () => {
           className={`artworkCardModification ${styles["artworkCardModification"]}`}
         >
           <div className={styles.divBlockGeneralInformations}>
-            <img
-              src={artwork.picture || "https://cataas.com/cat"}
-              alt="Exhibition Image"
-              className={styles.image22}
-              onClick={() => document.getElementById("imageUpload")?.click()}
-            />
+            <div>
+              <img
+                src={artwork.picture || "https://cataas.com/cat"}
+                alt="Exhibition Image"
+                className={styles.image22}
+                onClick={() => document.getElementById("imageUpload")?.click()}
+              />
+              <input
+                id="picture"
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+            </div>
             <div className={styles.divGeneralInformations}>
               <div className={styles.nameBlockInput}>
                 <div className={styles.textName}>
@@ -218,8 +228,8 @@ const ArtworkModificationPage = () => {
                   value={
                     artwork.createdAt
                       ? new Date(artwork.createdAt)
-                          .toISOString()
-                          .substring(0, 10)
+                        .toISOString()
+                        .substring(0, 10)
                       : ""
                   }
                   onChange={handleInputChange}
