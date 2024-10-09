@@ -71,13 +71,13 @@ const styles = {
 const ArtworkModificationPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = useContext(UserContext);
+  const {user} = useContext(UserContext);
   const [artworks, setArtworks] = useState(location.state?.items || []);
 
   useEffect(() => {
     if (location.state?.from === 'accountArtworks') {
       fetchAllArtworks();
-    } else if (location.state?.from === 'siteArtworks'){
+    } else if (location.state?.from === 'siteArtworks') {
       console.log("test2")
       setArtworks(location.state.item);
     } else if (location.state?.item) {
@@ -100,160 +100,169 @@ const ArtworkModificationPage = () => {
       setArtworks(artworks);
     } catch (error) {
       console.error('Error fetching artworks:', error);
-      console.log(error.message);
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log('An unknown error occurred');
+      }
     }
-  };
+    ;
 
-  const handleAction = (buttonName:any, artworkId:any) => {
-    switch (buttonName) {
-      case 'modificationArtwork':
-        const artwork = artworks.find((art:any) => art.id === artworkId);
-        if (artwork) {
-          navigate('/places/exhibitions/artworks/artwork-modification-page', { state: { item: artwork } });
-        } else {
-          navigate('/places/exhibitions/artworks/artwork-modification-page', { state: { item: null, exhibitionId: location.state?.exhibitionId } });
+    const handleAction = (buttonName: any, artworkId: any) => {
+      switch (buttonName) {
+        case 'modificationArtwork':
+          const artwork = artworks.find((art: any) => art.id === artworkId);
+          if (artwork) {
+            navigate('/places/exhibitions/artworks/artwork-modification-page', {state: {item: artwork}});
+          } else {
+            navigate('/places/exhibitions/artworks/artwork-modification-page', {
+              state: {
+                item: null,
+                exhibitionId: location.state?.exhibitionId
+              }
+            });
+          }
+          break;
+        case 'deleteArtwork':
+          handleDeleteArtwork(artworkId);
+          break;
+        default:
+          console.log(`Unknown action: ${buttonName}`);
+      }
+    };
+
+    const handleDeleteArtwork = async (artworkId: any, exhibitionId?: any) => {
+      try {
+        // First, delete the artwork from the main items service
+        const response = await fetch(`http://localhost:3001/items/${artworkId}`,
+          {
+            method: 'DELETE',
+            headers: {
+              'Authorization': `Bearer ${user.accessToken}`,
+            }
+          });
+        if (!response.ok) {
+          throw new Error('Failed to delete the artwork.');
         }
-        break;
-      case 'deleteArtwork':
-        handleDeleteArtwork(artworkId);
-        break;
-      default:
-        console.log(`Unknown action: ${buttonName}`);
+
+        // If the main deletion is successful, proceed to delete the link from the exhibition
+        const linkDeleteResponse = await fetch(`http://localhost:3001/exhibitions/${exhibitionId}/items/${artworkId}`,
+          {
+            method: 'DELETE',
+            headers: {
+              'Authorization': `Bearer ${user.accessToken}`,
+            }
+          });
+        if (!linkDeleteResponse.ok) {
+          throw new Error('Failed to delete the link between the exhibition and the artwork.');
+        }
+
+        // Update the local state to remove the artwork
+        const updatedArtworks = artworks.filter((art: any) => art.id !== artworkId);
+        setArtworks(updatedArtworks);
+        console.log('Artwork and its exhibition link deleted successfully');
+      } catch (error) {
+        console.error('Error deleting artwork:', error);
+      }
+    };
+
+
+    /* Button add after back modification
+
+    <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
+                                            <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
+                                                <div
+                                                  role="deleteExhibitionBtn"
+                                                  tabIndex={0}
+                                                  className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
+                                                  onClick={() => handleDeleteArtwork(artwork.id, location.state.exhibitionId)}
+                                                  onKeyDown={(event) => {
+                                                      if (event.key === 'Enter' || event.key === ' ') {
+                                                          handleDeleteArtwork(artwork.id, location.state.exhibitionId);
+                                                          event.preventDefault();
+                                                      }
+                                                  }}
+                                                >
+                                                    <img
+                                                      src=""
+                                                      loading="lazy"
+                                                      alt=""
+                                                      className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+     */
+
+
+    if (artworks.length === 0) {
+      return (
+        <Fragment>
+          <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
+            <ButtonBase disableRipple onClick={() => navigate(-1)}>
+              <div className={styles.buttons}>
+                Retour
+              </div>
+            </ButtonBase>
+            <div className={`divTitlePage ${styles["divTitlePage"]}`}>
+              <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
+            </div>
+            <ButtonBase disableRipple onClick={() => handleAction("modificationArtwork", 0)}>
+              <div className={styles.buttons}>
+                Ajouter une oeuvre
+              </div>
+            </ButtonBase>
+          </div>
+          <div style={{textAlign: 'center'}}>No artworks available.</div>
+        </Fragment>
+      );
+    } else {
+      return (
+        <Fragment>
+          <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
+            <ButtonBase disableRipple onClick={() => navigate(-1)}>
+              <div className={styles.buttons}>
+                Retour
+              </div>
+            </ButtonBase>
+            <div className={`divTitlePage ${styles["divTitlePage"]}`}>
+              <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
+            </div>
+            <ButtonBase disableRipple onClick={() => handleAction("modificationArtwork", 0)}>
+              <div className={styles.buttons}>
+                Ajouter une oeuvre
+              </div>
+            </ButtonBase>
+          </div>
+
+          <div className={`divBlockArtworkList ${styles["divBlockArtworkList"]}`}>
+            <div className={`divArtworksList ${styles["divArtworksList"]}`}>
+              {artworks.map((artwork: any) => (
+                <div key={artwork.id} className={`divArtwork ${styles["divArtwork"]}`}>
+                  <img src={artwork.imageUrl} className={`image16 ${styles["image16"]}`}/>
+                  <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>
+                    <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>
+                      <h1 className={`heading13 ${styles["heading13"]}`}> {artwork.name} </h1>
+                    </div>
+                    <div
+                      className={`divBlockExhibitionInformations ${styles["divBlockExhibitionInformations"]}`}>
+                      <p>{artwork.description}</p>
+                    </div>
+                    <div className={`divBlockGoToArtworksBtn ${styles["divBlockGoToArtworksBtn"]}`}>
+                      <ButtonBase disableRipple onClick={() => handleAction('modificationArtwork', artwork.id)}>
+                        <div className={styles.buttons}>
+                          Modifier l'oeuvre
+                        </div>
+                      </ButtonBase>
+                    </div>
+                  </div>
+                </div>))}
+            </div>
+          </div>
+        </Fragment>
+      );
     }
   };
-
-  const handleDeleteArtwork = async (artworkId:any, exhibitionId?:any) => {
-    try {
-      // First, delete the artwork from the main items service
-      const response = await fetch(`http://localhost:3001/items/${artworkId}`,
-        {
-          method: 'DELETE',
-          headers: {
-            'Authorization': `Bearer ${user.accessToken}`,
-          }
-        });
-      if (!response.ok) {
-        throw new Error('Failed to delete the artwork.');
-      }
-
-      // If the main deletion is successful, proceed to delete the link from the exhibition
-      const linkDeleteResponse = await fetch(`http://localhost:3001/exhibitions/${exhibitionId}/items/${artworkId}`,
-        {
-          method: 'DELETE',
-          headers: {
-            'Authorization': `Bearer ${user.accessToken}`,
-          }
-        });
-      if (!linkDeleteResponse.ok) {
-        throw new Error('Failed to delete the link between the exhibition and the artwork.');
-      }
-
-      // Update the local state to remove the artwork
-      const updatedArtworks = artworks.filter((art:any) => art.id !== artworkId);
-      setArtworks(updatedArtworks);
-      console.log('Artwork and its exhibition link deleted successfully');
-    } catch (error) {
-      console.error('Error deleting artwork:', error);
-    }
-  };
-
-
-  /* Button add after back modification
-
-  <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
-                                          <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
-                                              <div
-                                                role="deleteExhibitionBtn"
-                                                tabIndex={0}
-                                                className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
-                                                onClick={() => handleDeleteArtwork(artwork.id, location.state.exhibitionId)}
-                                                onKeyDown={(event) => {
-                                                    if (event.key === 'Enter' || event.key === ' ') {
-                                                        handleDeleteArtwork(artwork.id, location.state.exhibitionId);
-                                                        event.preventDefault();
-                                                    }
-                                                }}
-                                              >
-                                                  <img
-                                                    src=""
-                                                    loading="lazy"
-                                                    alt=""
-                                                    className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}
-                                                  />
-                                              </div>
-                                          </div>
-                                      </div>
-
-   */
-
-
-  if (artworks.length === 0) {
-    return (
-      <Fragment>
-        <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
-          <ButtonBase disableRipple onClick={() => navigate(-1)}>
-            <div className={styles.buttons}>
-              Retour
-            </div>
-          </ButtonBase>
-          <div className={`divTitlePage ${styles["divTitlePage"]}`}>
-            <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
-          </div>
-          <ButtonBase disableRipple onClick={() => handleAction("modificationArtwork", 0)}>
-            <div className={styles.buttons}>
-              Ajouter une oeuvre
-            </div>
-          </ButtonBase>
-        </div>
-        <div style={{textAlign: 'center'}}>No artworks available.</div>
-      </Fragment>
-    );
-  } else {
-    return (
-      <Fragment>
-        <div className={`divBlockTitlePage ${styles["divBlockTitlePage"]}`}>
-          <ButtonBase disableRipple onClick={() => navigate(-1)}>
-            <div className={styles.buttons}>
-              Retour
-            </div>
-          </ButtonBase>
-          <div className={`divTitlePage ${styles["divTitlePage"]}`}>
-            <h1 className={`pageTitle ${styles["pageTitle"]}`}>Oeuvres de l'exposition</h1>
-          </div>
-          <ButtonBase disableRipple onClick={() => handleAction("modificationArtwork", 0)}>
-            <div className={styles.buttons}>
-              Ajouter une oeuvre
-            </div>
-          </ButtonBase>
-        </div>
-
-        <div className={`divBlockArtworkList ${styles["divBlockArtworkList"]}`}>
-          <div className={`divArtworksList ${styles["divArtworksList"]}`}>
-            {artworks.map((artwork:any) => (
-              <div key={artwork.id} className={`divArtwork ${styles["divArtwork"]}`}>
-                <img src={artwork.imageUrl} className={`image16 ${styles["image16"]}`}/>
-                <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>
-                  <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>
-                    <h1 className={`heading13 ${styles["heading13"]}`}> {artwork.name} </h1>
-                  </div>
-                  <div
-                    className={`divBlockExhibitionInformations ${styles["divBlockExhibitionInformations"]}`}>
-                    <p>{artwork.description}</p>
-                  </div>
-                  <div className={`divBlockGoToArtworksBtn ${styles["divBlockGoToArtworksBtn"]}`}>
-                    <ButtonBase disableRipple onClick={() => handleAction('modificationArtwork', artwork.id)}>
-                      <div className={styles.buttons}>
-                        Modifier l'oeuvre
-                      </div>
-                    </ButtonBase>
-                  </div>
-                </div>
-              </div>))}
-          </div>
-        </div>
-      </Fragment>
-    );
-  }
-};
-
+}
 export default ArtworkModificationPage;

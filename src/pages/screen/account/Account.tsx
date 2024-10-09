@@ -14,6 +14,21 @@ type BigButtonProps = {
   onClick?: () => void;
 };
 
+interface Place {
+  id: number;
+  name: string;
+  longDescription: string;
+  pictures: string[];
+  website: string;
+  address: {
+    city: {
+      name: string;
+    };
+    houseNumber: string;
+    street: string;
+  };
+}
+
 const BigButton = ({ label, textSize, onClick }: BigButtonProps) => {
   return (
     <ButtonBase
@@ -29,7 +44,7 @@ const Account = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
-  const [places, setPlaces] = useState([]);
+  const [places, setPlaces] = useState<Place[]>([]);
 
   console.log("user = ", user)
 
@@ -76,17 +91,20 @@ const Account = () => {
             */}
 
             <ButtonBase disableRipple onClick={() => navigate("/account/artworks", {state: {from: 'accountArtworks'}})}>
-              <div className="flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100">
+              <div
+                className="flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100">
                 Mes oeuvres
               </div>
             </ButtonBase>
             <ButtonBase disableRipple onClick={() => navigate("/artists")}>
-              <div className="flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100">
+              <div
+                className="flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100">
                 Voir tous les artistes
               </div>
             </ButtonBase>
             <ButtonBase disableRipple onClick={() => navigate("/artistModification")}>
-              <div className="flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100">
+              <div
+                className="flex p-3 rounded-lg items-center justify-center space-x-5 stroke-black h-full bg-yellow-100">
                 Ajouter un artiste
               </div>
             </ButtonBase>
@@ -105,7 +123,7 @@ const Account = () => {
                       title: place.name,
                       description: place.longDescription,
                       imageSrc: place.pictures[0],
-                      videoCountPlaceholder: "Enter video count",
+                      //videoCountPlaceholder: "Enter video count",
                       website: place.website,
                       city: place.address.city.name,
                       location: `${place.address.houseNumber} ${place.address.street}`,
@@ -121,8 +139,11 @@ const Account = () => {
         </div>
 
         <div className="flex flex-col w-1/2">
-          <ProfileCard email={user.email} fullName={user.username} phone={user.telNumber}
-                       // profilePicturePath={}
+          <ProfileCard
+            email={user.email}
+            fullName={user.username}
+            phone={user.telNumber ? user.telNumber : ''}
+            profilePicturePath={user.picture}
           />
           <p className="text-black font-bold text-xs m-2">Plus d'informations</p>
           <CategoryButton text="Aide et support"/>

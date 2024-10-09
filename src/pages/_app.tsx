@@ -17,7 +17,6 @@ import ArtworksPage from "@screen/artworks/Artworks";
 import ExhibitionsPage from "@screen/exhibitions/Exhibitions";
 import FindLocation from "@screen/findLocation/FindLocation";
 import Location from "@screen/location/Location";
-import ShowArtwork from "@screen/location/Artwork/Artwork";
 import VideoAccess from "@screen/videoAccess/VideoAccess";
 import Account from "@screen/account/Account";
 import RecordVideo from "@screen/videoCaptureSection/RecordVideo";
@@ -105,7 +104,6 @@ const AppRouter = (): JSX.Element => {
               <Route path="/accountSettings" element={<AccountSettings />} />
               <Route path="/record" element={<RecordVideo />} />
               <Route path="/findlocation" element={<FindLocation />} />
-              <Route path="/showartwork" element={<ShowArtwork />} />
             </Routes>
           </Layout>
         </Router>

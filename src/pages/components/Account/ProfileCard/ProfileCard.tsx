@@ -1,20 +1,35 @@
 import { Button, ButtonBase, IconButton, Modal, Paper, TextField, Box } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import { useContext, useState } from "react";
-import { UserContext } from "@global/contexts/UserProvider";
+import { SetStateAction, useContext, useState} from "react";
+import {UserContext} from "@global/contexts/UserProvider";
 
 const styles: { [key: string]: string } = {
   row: "flex flex-row w-full justify-between",
 };
+
+interface UserType {
+  username: string;
+  email: string;
+  telNumber: string;
+  picture: string;
+  profilePicturePath?: string; // Add this line
+}
+
+interface ProfileCardProps {
+  profilePicturePath: string;
+  fullName: string;
+  email: string;
+  phone: string;
+}
 
 function ProfileCard({
                        profilePicturePath,
                        fullName,
                        email,
                        phone,
-                     }) {
-  const { user, setUser } = useContext(UserContext);
+                     }: ProfileCardProps) {
+  const {user, setUser} = useContext(UserContext);
   const [editMode, setEditMode] = useState('');  // Controls which field is being edited
   const [newName, setNewName] = useState(fullName);
   const [newEmail, setNewEmail] = useState(email);
@@ -23,11 +38,13 @@ function ProfileCard({
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleEdit = (mode) => {
+  const handleEdit = (mode: SetStateAction<string>) => {
     setEditMode(mode);
     if (mode && mode === 'picture') {
-      // Trigger file input for picture
-      document.getElementById('icon-button-file').click();
+      const fileInput = document.getElementById('icon-button-file');
+      if (fileInput) {
+        fileInput.click();
+      }
     }
   };
 
@@ -45,15 +62,15 @@ function ProfileCard({
       username: editMode === 'name' ? newName : user.username,
       email: editMode === 'email' ? newEmail : user.email,
       telNumber: editMode === 'phone' ? newPhone : user.telNumber,
-      picture: editMode === 'picture' ? newProfilePicture : user.profilePicturePath
+      picture: editMode === 'picture' ? newProfilePicture : user.picture
     };
 
-    if (editMode === 'password' && newPassword === confirmPassword) {
-      payload.password = newPassword;
-    } else if (editMode === 'password' && newPassword !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
+    // if (editMode === 'password' && newPassword === confirmPassword) {
+    //   payload.password = newPassword;
+    // } else if (editMode === 'password' && newPassword !== confirmPassword) {
+    //   alert("Passwords do not match");
+    //   return;
+    // }
 
     try {
       const response = await fetch(url, {
@@ -70,13 +87,12 @@ function ProfileCard({
       }
       const updatedUser = await response.json();
 
-      // Update user context with new user data
       setUser({
         ...user,
         username: updatedUser.username || user.username,
         email: updatedUser.email || user.email,
         telNumber: updatedUser.telNumber || user.telNumber,
-        profilePicturePath: updatedUser.picture || user.profilePicturePath
+        picture: updatedUser.picture || user.picture,
       });
 
       console.log('Successfully updated user:', updatedUser);

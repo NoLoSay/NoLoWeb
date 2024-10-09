@@ -90,10 +90,10 @@ const Sites: React.FC<SitesProps> = () => {
             throw new Error(`HTTP status ${response.status}: Failed to fetch exhibitions`);
           }
           const exhibitions = await response.json();
-          const exhibitionIds = exhibitions.map((exhibition) => exhibition.id);
+          const exhibitionIds = exhibitions.map((exhibition : any) => exhibition.id);
 
           // Fetch all artworks for each exhibition
-          let allArtworks = [];
+          let allArtworks : any = [];
           for (const id of exhibitionIds) {
             const artworksUrl = `http://localhost:3001/exhibitions/${id}/items`;
             const artworksResponse = await fetch(artworksUrl, {

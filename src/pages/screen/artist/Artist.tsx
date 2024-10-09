@@ -18,9 +18,16 @@ const styles = {
     "sm:items-center",
 };
 
+interface Artist {
+  id: number;
+  name: string;
+  bio: string;
+  type: string;
+}
+
 const ArtistPage = () => {
   const navigate = useNavigate();
-  const [artists, setArtists] = useState([]);
+  const [artists, setArtists] = useState<Artist[]>([]);
 
   const { user, setUser } = useContext(UserContext);
 

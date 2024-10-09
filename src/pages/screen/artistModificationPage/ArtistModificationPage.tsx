@@ -34,16 +34,16 @@ const ArtistModificationPage = () => {
 
   const [artist, setArtist] = useState(initialArtist);
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: { target: { name: any; value: any; }; }) => {
     const { name, value } = event.target;
     setArtist({ ...artist, [name]: value });
   };
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString : any) => {
     return dateString ? new Date(dateString).toISOString() : undefined;
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event : any) => {
     event.preventDefault();
     const method = artist.id ? 'PUT' : 'POST';
     const url = `http://localhost:3001/persons${artist.id ? `/${artist.id}` : ''}`;
@@ -89,7 +89,7 @@ const ArtistModificationPage = () => {
               Retour
             </div>
           </ButtonBase>
-          <div className={`divTitlePage ${styles["divTitlePage"]}`}>
+          <div>
             <h1 className={`pageTitle ${styles["pageTitle"]}`}>{artist.name}</h1>
           </div>
 
