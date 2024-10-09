@@ -10,7 +10,7 @@ const styles = {
   exhibitionCardModification: "shadow-xl rounded-lg flex flex-col w-full p-5",
   divBlockGeneralInformations: "w-full flex flex-row sm:flex-col",
   image22: "rounded-lg w-1/3 h-auto sm:w-full",
-  divGeneralInformations: "w-full pb-0 pl-5 sm:pl-0",
+  divGeneralInformations: "w-full pb-0 sm:pl-0",
   textName: "pt-5 pb-2.5",
   descriptionText: "pt-5 pb-2.5",
   divBlockButtonModification:
@@ -20,7 +20,7 @@ const styles = {
   divButtonSave:
     "bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 cursor-pointer",
   inputStyle:
-    "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+    "bg-gray-50 border border-gray-300 mb-5 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500",
 };
 
 const ExhibitionModificationPage = () => {
@@ -91,7 +91,7 @@ const ExhibitionModificationPage = () => {
     if (!validStartDate || !validEndDate) {
       console.error("Invalid date provided");
       alert("Please provide valid dates.");
-      return; // Sortie anticipée de la fonction
+      return;
     }
 
     try {
@@ -156,19 +156,6 @@ const ExhibitionModificationPage = () => {
                 className={styles.inputStyle}
                 placeholder={
                   textData.page.screen.exhibitionModificationPage.pname
-                }
-              />
-              <div className={styles.textName}>
-                {textData.page.screen.exhibitionModificationPage.phone}
-              </div>
-              <input
-                type="text"
-                name="telNumber"
-                value={exhibition.telNumber}
-                onChange={handleInputChange}
-                className={styles.inputStyle}
-                placeholder={
-                  textData.page.screen.exhibitionModificationPage.pphone
                 }
               />
               <div className={styles.descriptionText}>
