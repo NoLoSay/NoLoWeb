@@ -135,7 +135,7 @@ export function requestServer({
   if (process.env.NEXT_PUBLIC_ENV_MODE == "dev" && process.env.NEXT_PUBLIC_DEV_API_URL) {
     finalUrl = process.env.NEXT_PUBLIC_DEV_API_URL + port + endpoint;
   } else {
-    finalUrl = url + port + endpoint;
+    finalUrl = url + endpoint;
   }
 
   return fetch(finalUrl, {
