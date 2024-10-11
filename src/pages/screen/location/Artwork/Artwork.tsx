@@ -1,36 +1,51 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Paper } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 import CardTemplate from '../../../components/CardTemplate/CardTemplate'
-import exhibitionsData from '../../../../../tests/exhibitions.json'
 import { ButtonBase } from '@mui/material'
 import { ArrowBackIosNewRounded } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
 import FilterListExhibitions from '../../../components/Filter/FilterListExhibitions'
+import { UserContext } from '../../../../global/contexts/UserProvider'
 
 interface Artwork {
   name: string
   description: string
   location: string
   city: string
-  image: string
+  pictures: any[]
+  id :any
 }
 
-interface Exhibition {
-  name: string
-  description: string
-  image: string
-  artworks: Artwork[]
+const getArtworks = async (exhibitionId: any, setArtworks: Function, user: any) => {
+  try {
+    const url = `http://localhost:3001/exhibitions/${exhibitionId}/items`
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${user.accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    })
+    let artworks = []
+    if (response.ok) {
+      artworks = await response.json()
+    } else {
+      console.error(`HTTP status ${response.status}: Failed to fetch artworks`)
+    }
+    console.log(artworks)
+    setArtworks(artworks) // Mise à jour avec les œuvres filtrées
+  } catch (error) {
+    console.error('Failed to fetch artwork details:', error)
+  }
 }
-
-const exhibitions: Exhibition[] = exhibitionsData.exhibitions
 
 const styles: { [key: string]: string } = {
   listDiv: 'flex flex-col',
   cardlistDiv:
     ' mt-8 ml-8 flex flex-col items-start justify-start gap-[35px] max-w-full text-left text-3xl text-base-black font-poppins mb-8',
   nbcardlistDiv:
-    'flex flex-row gap-10 items-center justify-center mt-8 relative w-full self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray ',
+    'flex flex-row gap-10 items-center mt-8 relative w-full self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray ',
   container_0: 'flex flex-col space-y-5 m-5  mx-auto',
   container_1:
     'flex p-5 flex-col mx-auto space-x-5 w-full items-center justify-around border-solid border-4 border-yellow-300',
@@ -54,26 +69,26 @@ const styles: { [key: string]: string } = {
 }
 
 const ShowArtwork = () => {
+  const { user } = useContext(UserContext)
   const locationn = useLocation()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [imageSrc, setImageSrc] = useState('')
-  const [artworks, setArtworks] = useState<Artwork[]>([])
+  const [filteredArtworks, setFilteredArtworks] = useState<Artwork[]>([])
+  const [id, setId] = useState('')
 
   useEffect(() => {
     if (locationn.state) {
-      const { name, description, imageSrc } = locationn.state
+      const { name, description, imageSrc, id } = locationn.state
       setTitle(name)
       setDescription(description)
       setImageSrc(imageSrc)
-      console.log(title)
-      const exhibition = exhibitions.find(exhibition => exhibition.name === name)
-      if (exhibition) {
-        setArtworks(exhibition.artworks)
+      setId(id)
+      if (user) {
+        getArtworks(id, setFilteredArtworks, user)
       }
-      console.log(artworks)
     }
-  }, [locationn.state])
+  }, [locationn.state, user])
 
   const navigate = useNavigate()
 
@@ -84,6 +99,17 @@ const ShowArtwork = () => {
     setPlacesPerPage(parseInt(event.target.value))
     setCurrentPage(1)
   }
+
+  const renderCardInfo = (artwork: Artwork) => ({
+    title: artwork.name,
+    description: artwork.description,
+    imageSrc: artwork.pictures && artwork.pictures.length > 0 ? artwork.pictures[0].hostingUrl : '', // Utilise la première image si disponible
+    location: artwork.location || '',
+    city: artwork.city || '',
+    videoCountPlaceholder: `1 videos`, // Exemple de texte statique pour la vidéo
+    pathname: '/videoaccess',
+    id: artwork.id
+  })
 
   return (
     <div className={`container_0 ${styles.container_0}`}>
@@ -101,7 +127,7 @@ const ShowArtwork = () => {
             <div className={`container_6 ${styles.container_6}`}>
               <img
                 src={imageSrc}
-                alt='Image'
+                alt='Artwork'
                 className={`container_7 ${styles.container_7}`}
               />
             </div>
@@ -113,18 +139,6 @@ const ShowArtwork = () => {
                     <p className={`container_12 ${styles.container_12}`}>Description:</p>
                     <p>{description}</p>
                   </div>
-                  <div className={`container_13 ${styles.container_13}`}>
-                    <p className={`container_14 ${styles.container_14}`}>Type d'exposition:</p>
-                    <p>{`Art moderne`}</p>
-                  </div>
-                  <div className={`container_15 ${styles.container_15}`}>
-                    <p className={`container_16 ${styles.container_16}`}>Date de création:</p>
-                    <p>{`Juillet 2018`}</p>
-                  </div>
-                  <div className={`container_17 ${styles.container_17}`}>
-                    <p className={`container_18 ${styles.container_18}`}>Lieu:</p>
-                    <p>{`Château des Ducs de Bretagne, Nantes`}</p>
-                  </div>
                 </div>
               </div>
             </div>
@@ -135,19 +149,8 @@ const ShowArtwork = () => {
         <FilterListExhibitions handlePerPageChange={handlePerPageChange} />
         <div className={`cardlistDiv ${styles.cardlistDiv}`}>
           <div className={`nbcardlistDiv ${styles.nbcardlistDiv}`}>
-            {artworks.map((artwork, index) => (
-              <CardTemplate
-                key={index}
-                cardInfo={{
-                  title: artwork.name,
-                  description: artwork.description,
-                  imageSrc: artwork.image,
-                  location: artwork.location,
-                  city: artwork.city,
-                  videoCountPlaceholder: '22 videos',
-                  pathname: '/videoaccess',
-                }}
-              />
+            {filteredArtworks.map((artwork, index) => (
+              <CardTemplate key={index} cardInfo={renderCardInfo(artwork)} />
             ))}
           </div>
         </div>

@@ -51,12 +51,12 @@ const PlaceList: React.FC<PlaceListProps> = ({ places }) => {
                 cardInfo={{
                   title: place.name,
                   description: place.shortDescription,
-                  imageSrc: place.pictures[0].hostingUrl,
+                  //imageSrc: place.pictures[0].hostingUrl,
                   videoCountPlaceholder: place.exhibitions.length.toString(),
                   website: place.website,
                   city: place.address.city.name,
                   location: place.address.city.department.country.name,
-                  exhibition: place.exhibitions,
+                  id: place.id,
                   pathname: '/location',
                 }}
               />

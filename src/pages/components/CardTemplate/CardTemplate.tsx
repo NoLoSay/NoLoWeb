@@ -11,7 +11,7 @@ interface CardInfo {
   city?: string
   location?: string
   pathname: string
-  exhibition: any[]
+  id?: any
 }
 
 interface CardTemplateProps {
@@ -59,6 +59,7 @@ const CardTemplate: NextPage<CardTemplateProps> = ({ cardInfo }) => {
         ...(cardInfo.website && { website: cardInfo.website }),
         ...(cardInfo.city && { city: cardInfo.city }),
         ...(cardInfo.location && { location: cardInfo.location }),
+        id: cardInfo.id,
       },
     })
   }
