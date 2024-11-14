@@ -184,11 +184,11 @@ export const ConnectionScreen = (): JSX.Element => {
           >
             <img
               onClick={async () => {
-                try {
-                  window.open("http://localhost:3001/auth/google");
-                } catch (e: any) {
-                  console.error("error: " + e.message);
-                }
+                // try {
+                //   window.open("http://localhost:3001/auth/google");
+                // } catch (e: any) {
+                //   console.error("error: " + e.message);
+                // }
               }}
               className={`ConnectionScreen/otherConnectionsDivButtonDivButtons ${styles["otherConnectionsDivButtonDivButtons"]}`}
               src="/icon/social/Google button.png"
