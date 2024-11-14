@@ -1,4 +1,4 @@
-import React, { Fragment, ReactNode, useContext } from "react";
+import React, { Fragment, ReactNode, useContext, useEffect, useState } from "react";
 import Layout from "@components/Layout/Layout";
 import GenericCard from "@components/Account/GenericCard/GenericCard";
 import { ButtonBase, Divider } from "@mui/material";
@@ -10,9 +10,12 @@ import LocationCard from "@components/Account/LocationCard/LocationCard";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import AccountSelector from "@components/Account/AccountSelector/AccountSelector";
-import { UserContext } from "@global/contexts/UserProvider";
+import { defaultUser, UserContext } from "@global/contexts/UserProvider";
+import RemoveProfileModal from "./Views/RemoveProfileModal";
+import useRemoveProfile from "@helpers/httpClient/queries/profile/useRemoveProfile";
 
 const styles: { [key: string]: string } = {
+  errorMessage: "text-red-600 text-center",
   container_0: "grid grid-cols-3 gap-4 text-black w-4/5 mx-auto my-10",
   container_1: "flex flex-col space-y-5 items-center p-5",
   container_2: "flex flex-ro space-x-5 my-10 px-5",
@@ -52,9 +55,59 @@ const Account = () => {
   const { isPlace } = location.state || {};
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
+  const [showRemoveProfileModal, setShowRemoveProfileModal] =
+    useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+  const { tryToRemoveProfile } = useRemoveProfile({
+    authorizationToken: user.accessToken,
+    setError: setError,
+  });
+
+  useEffect(() => {
+    const getUserFromURL = () => {
+      const params = new URLSearchParams(location.search);
+
+
+      if (params.get("user")) {
+        const userGet = JSON.parse(params.get("user") ?? "");
+        console.log("user: " + JSON.stringify(userGet));
+        setUser({
+          ...user,
+          email: userGet.email,
+          username: userGet.name,
+          picture: userGet.picture ?? defaultUser.picture,
+          telNumber: userGet.telNumber ?? "",
+          accessToken: userGet.accessToken,
+          createdAt: new Date(userGet.createdAt),
+        });
+      }
+    };
+
+    getUserFromURL();
+  }, [location.search]);
+
+  function closeRemoveProfileModal() {
+    setError("");
+    setShowRemoveProfileModal(false);
+  }
+
+  const removeProfile = async (): Promise<void> => {
+    try {
+      await tryToRemoveProfile(setShowRemoveProfileModal);
+    } catch (error: any) {
+      setError(error.message)
+    }
+  };
 
   return (
     <Fragment>
+      {error && !showRemoveProfileModal && (
+        <p
+          className={`Account/errorMessage ${styles["errorMessage"]}`}
+        >
+          {error}
+        </p>
+      )}
       <div className={`container_0 ${styles.container_0}`}>
         <div className={`container_1 ${styles.container_1}`}>
           <h2>Rechercher des oeuvres par :</h2>
@@ -91,7 +144,7 @@ const Account = () => {
             email={user.email}
             fullName={user.username}
             phone={user.telNumber ?? undefined}
-            profilePicturePath={testProfile.profilePicturePath}
+            profilePicturePath={user.picture}
           />
           <div className={`container_3 ${styles.container_3}`}>
             <CategoryButton
@@ -113,6 +166,11 @@ const Account = () => {
               ]}
             />
             <CategoryButton altColor text="Se déconnecter" />
+            <CategoryButton
+              altColor
+              text="Supprimer le profil"
+              onClick={() => setShowRemoveProfileModal(true)}
+            />
           </div>
           <div className={`container_4 ${styles.container_4}`}>
             <p className={`container_5 ${styles.container_5}`}>
@@ -142,6 +200,13 @@ const Account = () => {
           </div>
         </div>
       </div>
+      {showRemoveProfileModal && (
+        <RemoveProfileModal
+          onConfirm={removeProfile}
+          onCancel={closeRemoveProfileModal}
+          error={error}
+        />
+      )}
     </Fragment>
   );
 };

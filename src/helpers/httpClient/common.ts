@@ -53,6 +53,7 @@ export function put({
 }: PutProps): Promise<Response> {
   return requestServer({
     url,
+    port,
     endpoint,
     method: 'PUT',
     headers,
@@ -122,8 +123,8 @@ interface RequestServerProps {
 }
 
 export function requestServer({
-  url = process.env.NEXT_PUBLIC_PROD_API_URL ?? "",
-  port = process.env.NEXT_PUBLIC_API_PORT ?? "",
+  url = process.env.NEXT_PUBLIC_PROD_API_URL,
+  port = process.env.NEXT_PUBLIC_API_PORT,
   endpoint,
   method,
   headers,
@@ -135,7 +136,7 @@ export function requestServer({
   if (process.env.NEXT_PUBLIC_ENV_MODE == "dev" && process.env.NEXT_PUBLIC_DEV_API_URL) {
     finalUrl = process.env.NEXT_PUBLIC_DEV_API_URL + port + endpoint;
   } else {
-    finalUrl = url + port + endpoint;
+    finalUrl = url + endpoint;
   }
 
   return fetch(finalUrl, {

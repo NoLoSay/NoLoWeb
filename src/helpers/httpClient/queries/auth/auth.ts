@@ -154,4 +154,3 @@ export async function changePassword({
     throw new Error(error instanceof Error ? error.message : String(error));
   }
 }
-

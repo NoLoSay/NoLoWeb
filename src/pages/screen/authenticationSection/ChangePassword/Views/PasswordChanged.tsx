@@ -36,7 +36,7 @@ const PasswordChanged: React.FC<PasswordChangedProps> = ({ reconnect }) => {
           <p>
             {
               textData.page.screen.authentificationSection.passwordChanged
-                .youNeedToReconnect
+                .goToConnection
             }
           </p>
         </div>
@@ -46,7 +46,7 @@ const PasswordChanged: React.FC<PasswordChangedProps> = ({ reconnect }) => {
         >
           {
             textData.page.screen.authentificationSection.passwordChanged
-              .reconnect
+              .connect
           }
         </button>
       </div>

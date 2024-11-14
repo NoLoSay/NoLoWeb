@@ -27,7 +27,8 @@ export default function ChangePasswordController({
   const [newConfirmPassword, setNewConfirmPassword] = useState<string>("");
   const [showNewConfirmPassword, setShowNewConfirmPassword] =
     useState<boolean>(false);
-  const [showPasswordChanged, setShowPasswordChanged] = useState<boolean>(false);
+  const [showPasswordChanged, setShowPasswordChanged] =
+    useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [token, setToken] = useState<string | null>("");
   const location = useLocation();
@@ -67,14 +68,18 @@ export default function ChangePasswordController({
 
     try {
       tryToChangePassword(setShowPasswordChanged);
-    } catch (e) {
-      console.error("API error: ", e);
+    } catch (error: any) {
+      if (error && error.message) {
+        setError(error.message);
+      } else {
+        setError(error);
+      }
     }
   };
 
   const reconnect = () => {
-    navigate('/connection');
-  }
+    navigate("/connection");
+  };
 
   return {
     setNewPassword,
