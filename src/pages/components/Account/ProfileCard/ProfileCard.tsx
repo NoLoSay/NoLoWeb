@@ -62,7 +62,7 @@ function ProfileCard({
       username: editMode === 'name' ? newName : user.username,
       email: editMode === 'email' ? newEmail : user.email,
       telNumber: editMode === 'phone' ? newPhone : user.telNumber,
-      picture: editMode === 'picture' ? newProfilePicture : user.picture
+      picture: editMode === 'picture' ? newProfilePicture : user.picture.hostingUrl
     };
 
     // if (editMode === 'password' && newPassword === confirmPassword) {

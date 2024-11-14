@@ -87,6 +87,8 @@ const ArtworkModificationPage = () => {
     }
   }, [location.state]);
 
+  console.log("artworkssssss=", artworks);
+
   const handleAction = (buttonName: any, artworkId: any) => {
     switch (buttonName) {
       case "modificationArtwork":
@@ -237,7 +239,7 @@ const ArtworkModificationPage = () => {
                 className={`divArtwork ${styles["divArtwork"]}`}
               >
                 <img
-                  src={artwork.imageUrl}
+                  src={artwork.pictures[0].hostingUrl}
                   className={`image16 ${styles["image16"]}`}
                 />
                 <div

@@ -40,7 +40,7 @@ const ArtistModificationPage = () => {
   };
 
   const formatDate = (dateString : any) => {
-    return dateString ? new Date(dateString).toISOString() : undefined;
+    return dateString ? dateString : undefined;
   };
 
   const handleSubmit = async (event : any) => {
@@ -119,7 +119,7 @@ const ArtistModificationPage = () => {
             <label className={styles.label} htmlFor="birthDate">Birth Date</label>
             <input type="date" id="birthDate" name="birthDate"
                    className={styles.input}
-                   value={artist.birthDate ? new Date(artist.birthDate).toISOString().substring(0, 10) : ''}
+                   value={artist.birthDate ? artist.birthDate : ''}
                    onChange={handleInputChange}
                    placeholder="Select birth date"/>
           </div>
@@ -127,7 +127,7 @@ const ArtistModificationPage = () => {
             <label className={styles.label} htmlFor="deathDate">Death Date (optional)</label>
             <input type="date" id="deathDate" name="deathDate"
                    className={styles.input}
-                   value={artist.deathDate ? new Date(artist.deathDate).toISOString().substring(0, 10) : ''}
+                   value={artist.deathDate ? artist.deathDate : ''}
                    onChange={handleInputChange}
                    placeholder="Select death date"/>
           </div>

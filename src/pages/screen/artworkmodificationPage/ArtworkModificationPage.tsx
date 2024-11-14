@@ -1,6 +1,6 @@
 import Layout from "../../components/Layout/Layout";
 import { useLocation, useNavigate } from "react-router-dom";
-import React, { Fragment, useState, useContext } from "react";
+import React, { Fragment, useState, useContext, useEffect } from "react";
 import { UserContext } from "src/global/contexts/UserProvider";
 import textData from "@public/text.json";
 
@@ -9,7 +9,7 @@ const styles: { [key: string]: string } = {
     "font-black flex flex-col w-full pl-8 pr-8 sm:flex-col text-black",
   artworkCardModification: "shadow-xl rounded-lg flex flex-col w-full p-5",
   divBlockGeneralInformations: "w-full flex flex-row sm:flex-col",
-  image22: "rounded-lg w-1/3 h-auto sm:w-full",
+  image22: "rounded-lg w-2/3 h-auto sm:w-full",
   divGeneralInformations: "w-full pb-0 pl-5 sm:pl-0",
   textName: "font-black pt-5 pb-2.5",
   artistName: "font-black pt-5 pb-2.5",
@@ -48,6 +48,34 @@ const ArtworkModificationPage = () => {
   const exhibitionId = location.state?.exhibitionId;
 
   const [artwork, setArtwork] = useState(initialArtwork);
+  const [artists, setArtists] = useState([]);
+
+  useEffect(() => {
+    const fetchArtists = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3001/persons`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user.accessToken}`,
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP status ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("Artists fetched successfully:", data);
+        setArtists(data);
+        console.log("Artists fetched successfully:", data);
+      } catch (error) {
+        console.error("Failed to fetch artists:", error);
+      }
+    };
+
+    fetchArtists();
+  }, []);
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
@@ -71,8 +99,6 @@ const ArtworkModificationPage = () => {
       artwork.id ? `/${artwork.id}` : ""
     }`;
 
-    console.log("method", method)
-    console.log("artwork", artwork)
     try {
       if (method === "POST") {
         const response = await fetch(url, {
@@ -93,7 +119,6 @@ const ArtworkModificationPage = () => {
         if (!response.ok) {
           throw new Error(`HTTP status ${response.status}`);
         }
-
 
         const responseData = await response.json();
         if (exhibitionId) {
@@ -152,10 +177,6 @@ const ArtworkModificationPage = () => {
     });
   };
 
-  // Todo
-  // <input type="file" id="imageUpload" accept="image/*" className={styles.hiddenInput}
-  //  onChange={handleImageChange}/>
-
   return (
     <Fragment>
       <section
@@ -171,22 +192,21 @@ const ArtworkModificationPage = () => {
           <div className={styles.divBlockGeneralInformations}>
             <div>
               <img
-                src={artwork.picture || "https://cataas.com/cat"}
+                src={artwork.pictures[0].hostingUrl}
                 alt="Exhibition Image"
                 className={styles.image22}
                 onClick={() => document.getElementById("imageUpload")?.click()}
               />
-              <input
-                id="picture"
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-              />
+              {/*<input*/}
+              {/*  id="picture"*/}
+              {/*  type="file"*/}
+              {/*  accept="image/*"*/}
+              {/*  onChange={handleImageChange}*/}
+              {/*/>*/}
             </div>
             <div className={styles.divGeneralInformations}>
               <div className={styles.nameBlockInput}>
                 <div className={styles.textName}>
-                  {" "}
                   {textData.page.screen.artworkmodificationPage.name}
                 </div>
                 <input
@@ -205,16 +225,19 @@ const ArtworkModificationPage = () => {
                 <div className={styles.artistName}>
                   {textData.page.screen.artworkmodificationPage.artistid}
                 </div>
-                <input
-                  type="number"
-                  className={styles.artistNameInput}
+                <select
                   name="relatedPersonId"
                   value={artwork.relatedPersonId}
                   onChange={handleInputChange}
-                  placeholder={
-                    textData.page.screen.artworkmodificationPage.partistid
-                  }
-                />
+                  className={styles.artistNameInput}
+                >
+                  <option value="">Select an artist</option>
+                  {artists.map((artist) => (
+                    <option key={artist.id} value={artist.id}>
+                      {artist.name}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div className={styles.dateOfCreationBlock}>

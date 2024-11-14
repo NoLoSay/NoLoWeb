@@ -28,6 +28,7 @@ const ExhibitionModificationPage = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const siteId = location.state?.siteId;
+
   const defaultExhibition = {
     id: null,
     name: "",
@@ -44,6 +45,32 @@ const ExhibitionModificationPage = () => {
   const [exhibition, setExhibition] = useState(
     location.state?.item || defaultExhibition
   );
+  const [sites, setSites] = useState([]);
+
+  useEffect(() => {
+    const fetchSites = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3001/sites`, {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user.accessToken}`,
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP status ${response.status}`);
+        }
+        const data = await response.json();
+        setSites(data);
+      } catch (error) {
+        console.error("Failed to fetch sites:", error);
+      }
+    };
+
+    fetchSites();
+  }, []);
+
   useEffect(() => {
     if (location.state?.exhibition) {
       setExhibition({
@@ -123,10 +150,6 @@ const ExhibitionModificationPage = () => {
     }
   };
 
-  // TODO put this under exhibition image
-  // <input type="file" id="imageUpload" accept="image/*" className={styles.hiddenInput}
-  //                    onChange={handleImageChange}/>
-
   return (
     <Fragment>
       <section className={styles.exhibitionModificationPage}>
@@ -138,12 +161,6 @@ const ExhibitionModificationPage = () => {
           className={styles.exhibitionCardModification}
         >
           <div className={styles.divBlockGeneralInformations}>
-            {/*<img*/}
-            {/*  src={exhibition.picture || "https://cataas.com/cat"}*/}
-            {/*  alt="Exhibition Image"*/}
-            {/*  className={styles.image22}*/}
-            {/*  onClick={() => document.getElementById("imageUpload")?.click()}*/}
-            {/*/>*/}
             <div className={styles.divGeneralInformations}>
               <div className={styles.textName}>
                 {textData.page.screen.exhibitionModificationPage.name}
@@ -193,18 +210,21 @@ const ExhibitionModificationPage = () => {
                 }
               />
               <div className={styles.textName}>
-                {textData.page.screen.exhibitionModificationPage.id}
+                {textData.page.screen.exhibitionModificationPage.site}
               </div>
-              <input
-                type="number"
+              <select
                 name="siteId"
                 value={exhibition.siteId}
                 onChange={handleInputChange}
                 className={styles.inputStyle}
-                placeholder={
-                  textData.page.screen.exhibitionModificationPage.pid
-                }
-              />
+              >
+                <option value="">Select a site</option>
+                {sites.map((site) => (
+                  <option key={site.id} value={site.id}>
+                    {site.name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
           <div className={styles.textName}>

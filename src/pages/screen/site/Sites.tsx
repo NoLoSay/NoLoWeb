@@ -168,7 +168,7 @@ const Sites: React.FC<SitesProps> = () => {
       <section className="flex flex-col w-full text-black">
         {places.map((site:any) => (
           <div key={site.id} className="flex flex-row items-center justify-start p-5 shadow-xl rounded-lg mb-10">
-            <img src={site.picture} alt={site.name} className="w-36 h-36 md:w-full sm:w-full object-cover"/>
+            {/*<img src={site.picture} alt={site.name} className="w-36 h-36 md:w-full sm:w-full object-cover"/>*/}
 
             <div className="flex-1 pl-5">
               <h1 className="text-xl font-bold">{site.name}</h1>

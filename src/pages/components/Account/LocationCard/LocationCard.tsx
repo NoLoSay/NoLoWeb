@@ -49,7 +49,7 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
 
-  console.log("image=", cardInfo.imageSrc)
+  console.log("image=", cardInfo.imageSrc.hostingUrl)
 
   const handleAction = async (buttonName: string, siteId:any) => {
     switch (buttonName) {
@@ -143,7 +143,7 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
       <div className={`container ${styles.container}`}>
         <div className={`card ${styles.card}`}>
           <div className={`cardContent ${styles.cardContent}`}>
-            <img src={cardInfo.imageSrc} alt={cardInfo.title} className="w-36 h-36 object-cover"/>
+            <img src={cardInfo.imageSrc.hostingUrl} alt={cardInfo.title} className="w-36 h-36 object-cover"/>
             <div className={`cardDetails ${styles.cardDetails}`}>
               <div className={`cardTitle ${styles.cardTitle}`}>
                 <p>{cardInfo.title}</p>
@@ -160,9 +160,9 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
              Voir
              </div>
              </ButtonBase>**/}
-            <ButtonBase disableRipple onClick={() => handleAction("handleGoToAllArtworks", cardInfo.id)}>
-              <div className={styles.buttons}>Voir les salles</div>
-            </ButtonBase>
+            {/*<ButtonBase disableRipple onClick={() => handleAction("handleGoToAllArtworks", cardInfo.id)}>*/}
+            {/*  <div className={styles.buttons}>Voir les salles</div>*/}
+            {/*</ButtonBase>*/}
             <ButtonBase disableRipple onClick={() => handleAction("handleGoToExhibitions", cardInfo.id)}>
               <div className={styles.buttons}>Voir les expositions</div>
             </ButtonBase>

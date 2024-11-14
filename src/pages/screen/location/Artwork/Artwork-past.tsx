@@ -84,6 +84,7 @@ const ArtworkModificationPage = () => {
       console.log("test")
       setArtworks(location.state.item);
     }
+    console.log('Artworks fetched successfully', artworks);
   }, [location.state]);
 
   const fetchAllArtworks = async () => {
@@ -106,7 +107,7 @@ const ArtworkModificationPage = () => {
         console.log('An unknown error occurred');
       }
     }
-    ;
+    console.log('Artworks fetched successfully', artworks);
 
     const handleAction = (buttonName: any, artworkId: any) => {
       switch (buttonName) {
@@ -240,7 +241,7 @@ const ArtworkModificationPage = () => {
             <div className={`divArtworksList ${styles["divArtworksList"]}`}>
               {artworks.map((artwork: any) => (
                 <div key={artwork.id} className={`divArtwork ${styles["divArtwork"]}`}>
-                  <img src={artwork.imageUrl} className={`image16 ${styles["image16"]}`}/>
+                  <img src={artwork.picture.picturePath} className={`image16 ${styles["image16"]}`}/>
                   <div className={`divBlockExhibitionInfos ${styles["divBlockExhibitionInfos"]}`}>
                     <div className={`divExhibitionChangeBtn ${styles["divExhibitionChangeBtn"]}`}>
                       <h1 className={`heading13 ${styles["heading13"]}`}> {artwork.name} </h1>
