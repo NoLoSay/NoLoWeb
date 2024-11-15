@@ -71,7 +71,7 @@ const SiteModificationPage = () => {
       return;
     }
 
-    const url = `http://localhost:3001/sites/${site.id}`;
+    const url = `https://api.nolosay.com/sites/${site.id}`;
 
     const bodyContent = {
       name: site.name,

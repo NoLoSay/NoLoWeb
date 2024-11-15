@@ -15,8 +15,9 @@ import ArtworkToTranslateSelectionScreen from "@screen/creationSection/artworkTo
 import About from "@screen/about/About";
 import ArtworksPage from "@screen/artworks/Artworks";
 import ExhibitionsPage from "@screen/exhibitions/Exhibitions";
-import FindLocation from "@screen/findLocation/FindLocation";
-import Location from "@screen/location/Location";
+import FindLocation from "@screen/findSite/FindSite";
+import Location from "@screen/findExhibition/findExhibition";
+import ShowArtwork from "@screen/findArtwork/findArtwork";
 import VideoAccess from "@screen/videoAccess/VideoAccess";
 import Account from "@screen/account/Account";
 import RecordVideo from "@screen/videoCaptureSection/RecordVideo";
@@ -27,6 +28,8 @@ import Sites from "@screen/site/Sites";
 import ExhibitionModificationPage from "@screen/exhibitionModificationPage/exhibitionModificationPage";
 import SiteModificationPage from "@screen/siteModificationPage/SiteModificationPage";
 import ChangePassword from "@screen/authenticationSection/ChangePassword/ChangePassword";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
 import ArtistModificationPage from "@screen/artistModificationPage/ArtistModificationPage";
 import ArtistPage from "@screen/artist/Artist";
 
@@ -42,12 +45,23 @@ const AppRouter = (): JSX.Element => {
     return <div>Loading...</div>; // Or render null or any other placeholder content
   }
 
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        retry: false,
+      },
+    },
+  })
+
   return (
     <div>
       <Head>
         <link rel="icon" href="/images/logo/nologo.png" />
       </Head>
       <UserProvider>
+       <QueryClientProvider client={queryClient}>
           <Router>
             <Layout>
               <Routes>
@@ -104,9 +118,11 @@ const AppRouter = (): JSX.Element => {
               <Route path="/accountSettings" element={<AccountSettings />} />
               <Route path="/record" element={<RecordVideo />} />
               <Route path="/findlocation" element={<FindLocation />} />
+              <Route path="/showartwork" element={<ShowArtwork />} />
             </Routes>
           </Layout>
         </Router>
+        </QueryClientProvider>
       </UserProvider>
     </div>
   );

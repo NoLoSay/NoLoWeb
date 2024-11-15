@@ -185,7 +185,7 @@ export const ConnectionScreen = (): JSX.Element => {
             <img
               onClick={async () => {
                 // try {
-                //   window.open("http://localhost:3001/auth/google");
+                //   window.open("https://api.nolosay.com/auth/google");
                 // } catch (e: any) {
                 //   console.error("error: " + e.message);
                 // }
