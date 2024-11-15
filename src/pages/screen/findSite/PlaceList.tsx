@@ -1,19 +1,11 @@
-import React, { useState } from "react";
-import CardTemplate from "@components/CardTemplate/CardTemplate";
-import Pagination from "@components/Pagination/Pagination";
-import FilterListPlace from "@components/Filter/FilterListPlace";
-interface Place {
-  name: string;
-  description: string;
-  image: string;
-  videocount: string;
-  website: string;
-  city: string;
-  location: string;
-}
+import React, { useState } from 'react'
+import CardTemplate from '../../components/CardTemplate/CardTemplate'
+import Pagination from '../../components/Pagination/Pagination'
+import FilterListPlace from '../../components/Filter/FilterListPlace'
+import { Place } from '../../../global/types/Places'
 
 interface PlaceListProps {
-  places: Place[];
+  places: Place[]
 }
 
 const PlaceList: React.FC<PlaceListProps> = ({ places }) => {
@@ -21,12 +13,12 @@ const PlaceList: React.FC<PlaceListProps> = ({ places }) => {
     container:
       "w-[1280px] mt-8 flex flex-col items-start justify-start gap-[35px] min-h-[493px] max-w-full text-left text-3xl text-base-black font-poppins",
     CardsDiv:
-      "self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray mq450:gap-[19px] mq750:gap-[38px]",
+      "self-stretch flex flex-row flex-wrap items-start justify-start gap-[47px] max-w-full z-[1] text-mini text-darkslategray mq450:gap-[19px] mq750:gap-[38px]",
     pagDiv: "flex justify-center items-center pt-4",
   };
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [placesPerPage, setPlacesPerPage] = useState(12);
+  const [placesPerPage, setPlacesPerPage] = useState(9);
 
   const indexOfLastPlace = currentPage * placesPerPage;
   const indexOfFirstPlace = indexOfLastPlace - placesPerPage;
@@ -52,16 +44,17 @@ const PlaceList: React.FC<PlaceListProps> = ({ places }) => {
                 key={index}
                 cardInfo={{
                   title: place.name,
-                  description: place.description,
-                  imageSrc: place.image,
-                  videoCountPlaceholder: place.videocount,
+                  description: place.shortDescription,
+                  imageSrc: place.pictures && place.pictures.length > 0 && place.pictures[0].hostingUrl ? place.pictures[0].hostingUrl : '/images/empty.jpg',
+                  videoCountPlaceholder: place.exhibitions.length.toString(),
                   website: place.website,
-                  city: place.city,
-                  location: place.location,
-                  pathname: "/location",
+                  city: place.address.city.name,
+                  location: place.address.city.department.country.name,
+                  id: place.id,
+                  pathname: '/location',
                 }}
               />
-            );
+            )
           })}
         </div>
       </div>
@@ -73,7 +66,7 @@ const PlaceList: React.FC<PlaceListProps> = ({ places }) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PlaceList;
+export default PlaceList
