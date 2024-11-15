@@ -4,6 +4,7 @@ import Layout from "@components/Layout/Layout";
 import textData from "@public/text.json";
 import Input from "@components/Input/Input";
 import ChangePasswordController from "./ChangePasswordController";
+import PasswordChanged from "./Views/PasswordChanged";
 
 const styles: { [key: string]: string } = {
   backgroundDiv:
@@ -55,6 +56,8 @@ export const ChangePassword = (): JSX.Element => {
     setNewConfirmPassword,
     showNewConfirmPassword,
     setShowNewConfirmPassword,
+    showPasswordChanged,
+    reconnect,
     changePassword,
     error,
   } = ChangePasswordController({ navigate });
@@ -147,6 +150,7 @@ export const ChangePassword = (): JSX.Element => {
             {error}
           </p>
         )}
+        {showPasswordChanged && <PasswordChanged reconnect={reconnect} />}
       </div>
     </div>
   );

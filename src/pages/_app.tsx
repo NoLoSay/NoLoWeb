@@ -48,14 +48,14 @@ const AppRouter = (): JSX.Element => {
         <link rel="icon" href="/images/logo/nologo.png" />
       </Head>
       <UserProvider>
-        <Router>
-          <Layout>
-            <Routes>
+          <Router>
+            <Layout>
+              <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/connection" element={<ConnectionScreen />} />
-              <Route path="/subscription" element={<SubscriptionScreen />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/connection" element={<ConnectionScreen />} />
+                <Route path="/subscription" element={<SubscriptionScreen />} />
 
               <Route
                 path="/tickets"
@@ -92,14 +92,14 @@ const AppRouter = (): JSX.Element => {
                 element={<ExhibitionModificationPage />}
               />
 
-              <Route
-                path="/places/exhibitions/artworks"
-                element={<ArtworksPage />}
-              />
-              <Route
-                path="/places/exhibitions/artworks/artworkModification"
-                element={<ArtworkModificationPage />}
-              />
+                <Route
+                  path="/places/exhibitions/artworks"
+                  element={<ArtworksPage />}
+                />
+                <Route
+                  path="/places/exhibitions/artworks/artworkModification"
+                  element={<ArtworkModificationPage />}
+                />
 
               <Route path="/accountSettings" element={<AccountSettings />} />
               <Route path="/record" element={<RecordVideo />} />

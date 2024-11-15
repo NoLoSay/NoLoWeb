@@ -139,7 +139,7 @@ export const ConnectionScreen = (): JSX.Element => {
             showPassword={showPassword}
             setShowPassword={setShowPassword}
           />
-          <text
+          <p
             onClick={openForgotPasswordModal}
             className={`ConnectionScreen/formForgotPasswordButton ${styles["formForgotPasswordButton"]}`}
           >
@@ -147,7 +147,7 @@ export const ConnectionScreen = (): JSX.Element => {
               textData.page.screen.authentificationSection.connection
                 .forgotpassword
             }
-          </text>
+          </p>
           <button
             className={`ConnectionScreen/formConnectionButton ${styles["formConnectionButton"]}`}
           >
@@ -183,6 +183,13 @@ export const ConnectionScreen = (): JSX.Element => {
             className={`ConnectionScreen/otherConnectionsDivButtonDiv ${styles["otherConnectionsDivButtonDiv"]}`}
           >
             <img
+              onClick={async () => {
+                // try {
+                //   window.open("http://localhost:3001/auth/google");
+                // } catch (e: any) {
+                //   console.error("error: " + e.message);
+                // }
+              }}
               className={`ConnectionScreen/otherConnectionsDivButtonDivButtons ${styles["otherConnectionsDivButtonDivButtons"]}`}
               src="/icon/social/Google button.png"
             />

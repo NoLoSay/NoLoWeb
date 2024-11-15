@@ -58,9 +58,13 @@ export default function SubscriptionController({
     }
 
     try {
-      tryToSubscribe();
-    } catch (e) {
-      console.error("API error: ", e);
+      await tryToSubscribe();
+    } catch (error: any) {
+      if (error && error.message) {
+        setError(error.message);
+      } else {
+        setError(error);
+      }
     }
   };
 

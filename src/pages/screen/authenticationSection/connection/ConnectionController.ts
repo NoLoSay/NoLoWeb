@@ -28,7 +28,8 @@ export default function ConnectionController({
   const [password, setPassword] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showForgotPasswordModal, setShowForgotPasswordModal] = useState<boolean>(false);
+  const [showForgotPasswordModal, setShowForgotPasswordModal] =
+    useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const { tryToConnect } = useConnect({
     formUsername: username,
@@ -48,9 +49,13 @@ export default function ConnectionController({
   const connectUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      tryToConnect();
-    } catch (e) {
-      console.error("API error: ", e);
+      await tryToConnect();
+    } catch (error: any) {
+      if (error && error.message) {
+        setError(error.message);
+      } else {
+        setError(error);
+      }
     }
   };
 
@@ -63,7 +68,7 @@ export default function ConnectionController({
     await forgotPassword({ email });
     alert(
       "Email envoyé " +
-      "Si le compte existe, un email a été envoyé pour réinitialiser le mot de passe."
+        "Si le compte existe, un email a été envoyé pour réinitialiser le mot de passe."
     );
   }
 

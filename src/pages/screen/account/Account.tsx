@@ -1,12 +1,18 @@
-import React, {Fragment, ReactNode, useContext, useEffect, useState} from "react";
-import Layout from "../../components/Layout/Layout";
+import React, { Fragment, ReactNode, useContext, useEffect, useState } from "react";
+import Layout from "@components/Layout/Layout";
 import { Button, ButtonBase, Divider } from "@mui/material";
-import ProfileCard from "../../components/Account/ProfileCard/ProfileCard";
-import CategoryButton from "../../components/Account/CategoryButton/CategoryButton";
-import LocationCard from "../../components/Account/LocationCard/LocationCard";
+import ProfileCard from "@components/Account/ProfileCard/ProfileCard";
+import CategoryButton from "@components/Account/CategoryButton/CategoryButton";
+import LocationCard from "@components/Account/LocationCard/LocationCard";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "src/global/contexts/UserProvider";
+import { defaultUser, UserContext } from "@global/contexts/UserProvider";
+import RemoveProfileModal from "./Views/RemoveProfileModal";
+import useRemoveProfile from "@helpers/httpClient/queries/profile/useRemoveProfile";
+
+const styles: { [key: string]: string } = {
+  errorMessage: "text-red-600 text-center",
+};
 
 type BigButtonProps = {
   label: string;
@@ -44,9 +50,49 @@ const Account = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
-  const [places, setPlaces] = useState<Place[]>([]);
+  const [showRemoveProfileModal, setShowRemoveProfileModal] =
+    useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+  const { tryToRemoveProfile } = useRemoveProfile({
+    authorizationToken: user.accessToken,
+    setError: setError,
+  });
 
-  console.log("user = ", user)
+  useEffect(() => {
+    const getUserFromURL = () => {
+      const params = new URLSearchParams(location.search);
+
+
+      if (params.get("user")) {
+        const userGet = JSON.parse(params.get("user") ?? "");
+        setUser({
+          ...user,
+          email: userGet.email,
+          username: userGet.name,
+          picture: userGet.picture ?? defaultUser.picture,
+          telNumber: userGet.telNumber ?? "",
+          accessToken: userGet.accessToken,
+          createdAt: new Date(userGet.createdAt),
+        });
+      }
+    };
+
+    getUserFromURL();
+  }, [location.search]);
+
+  function closeRemoveProfileModal() {
+    setError("");
+    setShowRemoveProfileModal(false);
+  }
+
+  const removeProfile = async (): Promise<void> => {
+    try {
+      await tryToRemoveProfile(setShowRemoveProfileModal);
+    } catch (error: any) {
+      setError(error.message)
+    }
+  };
+  const [places, setPlaces] = useState<Place[]>([]);
 
   useEffect(() => {
     const fetchSites = async () => {
@@ -73,11 +119,17 @@ const Account = () => {
     }
   }, [user]);
 
-  console.log("places", places)
 
   // @ts-ignore
   return (
     <Fragment>
+      {error && !showRemoveProfileModal && (
+        <p
+          className={`Account/errorMessage ${styles["errorMessage"]}`}
+        >
+          {error}
+        </p>
+      )}
       <div className="w-full flex flex-row">
 
         <div className="w-full flex flex-col m-5">
@@ -150,8 +202,20 @@ const Account = () => {
           <CategoryButton text="Aide et support"/>
           <CategoryButton text="A propos de l'app" onClick={() => navigate("/about")}/>
           <CategoryButton text="Conditions Générales d'Utilisation"/>
+          <CategoryButton
+              altColor
+              text="Supprimer le profil"
+              onClick={() => setShowRemoveProfileModal(true)}
+            />
         </div>
       </div>
+      {showRemoveProfileModal && (
+        <RemoveProfileModal
+          onConfirm={removeProfile}
+          onCancel={closeRemoveProfileModal}
+          error={error}
+        />
+      )}
 
       <div>
 
