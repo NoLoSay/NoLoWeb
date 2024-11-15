@@ -237,7 +237,7 @@ const ArtworkModificationPage = () => {
                 className={`divArtwork ${styles["divArtwork"]}`}
               >
                 <img
-                  src={artwork.imageUrl}
+                  src={artwork.pictures[0].hostingUrl}
                   className={`image16 ${styles["image16"]}`}
                 />
                 <div

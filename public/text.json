@@ -154,7 +154,8 @@
         "createdate" : "Creation Date:",
         "enddate" : "End Date:",
         "back" : "Back",
-        "save" : "Save"
+        "save" : "Save",
+        "site": "Site"
       },
       "exhibitions" : {
           "back" : "Retour",
