@@ -100,6 +100,7 @@
           "connectyou": "Connecte-toi pour continuer",
           "pusername" : "Nom d'utilisateur",
           "ppassword" : "Mot de passe",
+          "forgotpassword" : "Mot de passe oublié",
           "connectme" : "Me connecter",
           "or" : "ou avec",
           "noaccount" :"Pas de compte ?",
@@ -117,9 +118,9 @@
           "pconfirmpassword" : "Confirmer le mot de passe"
         },
         "forgottenpassword" : {
-        "title": "Entrez votre adresse mail",
-        "email" : "Email de l'utilisateur",
-        "submit" : "Envoyer le mail"
+          "title": "Entrez votre adresse mail",
+          "email" : "Email de l'utilisateur",
+          "submit" : "Envoyer le mail"
         },
         "changePassword" : {
           "changepassword": "Changer le mot de passe",
