@@ -118,6 +118,18 @@
         }
 
       },
+      "forgottenpassword" : {
+        "title": "Entrez votre adresse mail",
+        "email" : "Email de l'utilisateur",
+        "submit" : "Envoyer le mail"
+      },
+      "changePassword" : {
+        "changepassword": "Changer le mot de passe",
+        "newpassword": "Nouveau mot de passe",
+        "confirmnewpassword": "Confirmation du nouveau mot de passe",
+        "passwordplaceholder": "**********",
+        "confirm": "Confirmer"
+      },
       "creationSection" : {
         "artworkToTranslateSelectionSection" : {
           "artworkToTranslateSelectionSection" : {
