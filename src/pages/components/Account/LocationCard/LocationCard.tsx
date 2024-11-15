@@ -49,7 +49,6 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
 
-  // console.log("image=", cardInfo.imageSrc.hostingUrl)
 
   const handleAction = async (buttonName: string, siteId:any) => {
     switch (buttonName) {
@@ -67,7 +66,6 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
          break;
          */
       case 'handleGoToAllArtworks':
-        console.log("infos", siteId)
         try {
           const url = 'http://localhost:3001/exhibitions';
           const response = await fetch(url, {
@@ -101,15 +99,12 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
               allArtworks = [...allArtworks, ...artworks];
             }
           }
-          console.log("allArtworks", allArtworks)
-          console.log("siteId", siteId)
           navigate('/places/artworks', { state: { item: allArtworks, from: 'siteArtworks', siteId: siteId } });
         } catch (error) {
           console.error('Failed to fetch exhibition details:', error);
         }
         break;
       case 'handleGoToExhibitions':
-        console.log("infos", siteId)
         try {
           const url = 'http://localhost:3001/exhibitions';
           const response = await fetch(url, {
@@ -125,11 +120,8 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
           }
 
           const exhibitions = await response.json();
-          console.log("exhibitions", exhibitions)
-          console.log("siteId", siteId)
+
           const filteredExhibitions = exhibitions.filter((exhibition:any) => exhibition.site.id == siteId);
-          console.log("filteredExhibitions", filteredExhibitions)
-          console.log("siteId", siteId)
           navigate('/places/exhibitions', { state: { item: filteredExhibitions , siteId: siteId} });
         } catch (error) {
           console.error('Failed to fetch exhibition details:', error);

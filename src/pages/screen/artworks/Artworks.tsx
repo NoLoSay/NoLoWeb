@@ -87,8 +87,6 @@ const ArtworkModificationPage = () => {
     }
   }, [location.state]);
 
-  console.log("artworkssssss=", artworks);
-
   const handleAction = (buttonName: any, artworkId: any) => {
     switch (buttonName) {
       case "modificationArtwork":

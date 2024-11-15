@@ -54,10 +54,6 @@ const ArtistModificationPage = () => {
       deathDate: formatDate(artist.deathDate)
     };
 
-    console.log("url =", url);
-    console.log("payload =", payload);
-    console.log("method =", method);
-
     try {
       const response = await fetch(url, {
         method: method,
@@ -73,7 +69,6 @@ const ArtistModificationPage = () => {
       }
 
       const responseData = await response.json();
-      console.log(`${artist.id ? 'Updated' : 'Created'} artist successfully:`, responseData);
       navigate('/artists');
     } catch (error) {
       console.error(`Failed to ${artist.id ? 'update' : 'create'} artist:`, error);

@@ -78,13 +78,10 @@ const ArtworkModificationPage = () => {
     if (location.state?.from === 'accountArtworks') {
       fetchAllArtworks();
     } else if (location.state?.from === 'siteArtworks') {
-      console.log("test2")
       setArtworks(location.state.item);
     } else if (location.state?.item) {
-      console.log("test")
       setArtworks(location.state.item);
     }
-    console.log('Artworks fetched successfully', artworks);
   }, [location.state]);
 
   const fetchAllArtworks = async () => {
@@ -107,7 +104,6 @@ const ArtworkModificationPage = () => {
         console.log('An unknown error occurred');
       }
     }
-    console.log('Artworks fetched successfully', artworks);
 
     const handleAction = (buttonName: any, artworkId: any) => {
       switch (buttonName) {

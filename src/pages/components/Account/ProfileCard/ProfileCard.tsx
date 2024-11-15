@@ -97,11 +97,9 @@ function ProfileCard({
         picture: updatedUser.picture || user.picture,
       });
 
-      console.log('Successfully updated user:', updatedUser);
       alert('Profile updated successfully!');
       handleClose(); // Close the edit modal or panel
     } catch (error) {
-      console.error('Failed to update user:', error);
       alert('Failed to update profile.');
     }
   };
