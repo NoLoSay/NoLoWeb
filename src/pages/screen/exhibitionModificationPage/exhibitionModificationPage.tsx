@@ -42,10 +42,15 @@ const ExhibitionModificationPage = () => {
     endDate: new Date().toISOString().slice(0, 10),
   };
 
+  interface Site {
+    id: number;
+    name: string;
+  }
+
   const [exhibition, setExhibition] = useState(
     location.state?.item || defaultExhibition
   );
-  const [sites, setSites] = useState([]);
+  const [sites, setSites] = useState<Site[]>([]);
 
   useEffect(() => {
     const fetchSites = async () => {

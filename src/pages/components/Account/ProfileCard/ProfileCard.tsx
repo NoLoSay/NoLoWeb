@@ -12,8 +12,10 @@ interface UserType {
   username: string;
   email: string;
   telNumber: string;
-  picture: string;
-  profilePicturePath?: string; // Add this line
+  picture: {
+    hostingUrl: string;
+  };
+  profilePicturePath?: string;
 }
 
 interface ProfileCardProps {
@@ -62,7 +64,7 @@ function ProfileCard({
       username: editMode === 'name' ? newName : user.username,
       email: editMode === 'email' ? newEmail : user.email,
       telNumber: editMode === 'phone' ? newPhone : user.telNumber,
-      picture: editMode === 'picture' ? newProfilePicture : user.picture.hostingUrl
+      picture: editMode === 'picture' ? newProfilePicture : user.picture,
     };
 
     // if (editMode === 'password' && newPassword === confirmPassword) {

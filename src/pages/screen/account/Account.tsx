@@ -75,6 +75,7 @@ const Account = () => {
 
   console.log("places", places)
 
+  // @ts-ignore
   return (
     <Fragment>
       <div className="w-full flex flex-row">

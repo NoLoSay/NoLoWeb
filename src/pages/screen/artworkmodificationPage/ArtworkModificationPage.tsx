@@ -37,6 +37,11 @@ const ArtworkModificationPage = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
+  interface Artist {
+    id: number;
+    name: string;
+  }
+
   const initialArtwork = location.state?.item || {
     name: "",
     description: "",
@@ -48,7 +53,7 @@ const ArtworkModificationPage = () => {
   const exhibitionId = location.state?.exhibitionId;
 
   const [artwork, setArtwork] = useState(initialArtwork);
-  const [artists, setArtists] = useState([]);
+  const [artists, setArtists] = useState<Artist[]>([]);
 
   useEffect(() => {
     const fetchArtists = async () => {
