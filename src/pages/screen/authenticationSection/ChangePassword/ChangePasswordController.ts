@@ -9,7 +9,9 @@ interface ChangePasswordController {
   setNewConfirmPassword: (password: string) => void;
   showNewConfirmPassword: boolean;
   setShowNewConfirmPassword: (showNewConfirmPassword: boolean) => void;
+  showPasswordChanged: boolean;
   changePassword: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  reconnect: () => void;
   error: string | undefined;
 }
 
@@ -24,6 +26,8 @@ export default function ChangePasswordController({
   const [showNewPassword, setShowNewPassword] = useState<boolean>(false);
   const [newConfirmPassword, setNewConfirmPassword] = useState<string>("");
   const [showNewConfirmPassword, setShowNewConfirmPassword] =
+    useState<boolean>(false);
+  const [showPasswordChanged, setShowPasswordChanged] =
     useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [token, setToken] = useState<string | null>("");
@@ -63,10 +67,18 @@ export default function ChangePasswordController({
     }
 
     try {
-      tryToChangePassword();
-    } catch (e) {
-      console.error("API error: ", e);
+      tryToChangePassword(setShowPasswordChanged);
+    } catch (error: any) {
+      if (error && error.message) {
+        setError(error.message);
+      } else {
+        setError(error);
+      }
     }
+  };
+
+  const reconnect = () => {
+    navigate("/connection");
   };
 
   return {
@@ -76,7 +88,9 @@ export default function ChangePasswordController({
     setNewConfirmPassword,
     showNewConfirmPassword,
     setShowNewConfirmPassword,
+    showPasswordChanged,
     changePassword: changeUserPassword,
+    reconnect: reconnect,
     error,
   };
 }

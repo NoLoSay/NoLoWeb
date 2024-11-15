@@ -44,7 +44,7 @@ interface Site {
 
 const getExhibitions = async (siteId: any, setExhibitions: Function, user: any) => {
   try {
-    const url = 'http://localhost:3001/exhibitions'
+    const url = 'https://api.nolosay.com/exhibitions'
     const response = await fetch(url, {
       method: 'GET',
       headers: {

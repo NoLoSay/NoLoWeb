@@ -1,4 +1,4 @@
-import Layout from "@components/Layout/Layout";
+import Layout from "../../components/Layout/Layout";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Fragment, useState, useContext, useEffect } from "react";
 import { UserContext } from "@global/contexts/UserProvider";
@@ -30,27 +30,27 @@ const SiteModificationPage = () => {
     Array.isArray(location.state?.site) && location.state.site.length > 0
       ? location.state.site[0]
       : {
-          id: 1,
-          name: "",
-          shortDescription: "",
-          longDescription: "",
-          telNumber: "",
-          email: "",
-          website: "",
-          price: 0,
-          picture: "",
-          type: "MUSEUM",
-          tags: [],
-          address: {
-            houseNumber: "",
-            street: "",
-            zip: "",
-            otherDetails: "",
-            longitude: 0,
-            latitude: 0,
-            cityId: 0,
-          },
-        };
+        id: 1,
+        name: "",
+        shortDescription: "",
+        longDescription: "",
+        telNumber: "",
+        email: "",
+        website: "",
+        price: 0,
+        picture: "",
+        type: "MUSEUM",
+        tags: [],
+        address: {
+          houseNumber: "",
+          street: "",
+          zip: "",
+          otherDetails: "",
+          longitude: 0,
+          latitude: 0,
+          cityId: 0,
+        },
+      };
 
   const [site, setSite] = useState(initialSite);
 
@@ -71,7 +71,7 @@ const SiteModificationPage = () => {
       return;
     }
 
-    const url = `http://localhost:3001/sites/${site.id}`;
+    const url = `https://api.nolosay.com/sites/${site.id}`;
 
     const bodyContent = {
       name: site.name,

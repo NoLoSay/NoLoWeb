@@ -30,6 +30,8 @@ import SiteModificationPage from "@screen/siteModificationPage/SiteModificationP
 import ChangePassword from "@screen/authenticationSection/ChangePassword/ChangePassword";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
+import ArtistModificationPage from "@screen/artistModificationPage/ArtistModificationPage";
+import ArtistPage from "@screen/artist/Artist";
 
 
 const AppRouter = (): JSX.Element => {
@@ -59,15 +61,15 @@ const AppRouter = (): JSX.Element => {
         <link rel="icon" href="/images/logo/nologo.png" />
       </Head>
       <UserProvider>
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <Layout>
-            <Routes>
+       <QueryClientProvider client={queryClient}>
+          <Router>
+            <Layout>
+              <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/connection" element={<ConnectionScreen />} />
-              <Route path="/subscription" element={<SubscriptionScreen />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/connection" element={<ConnectionScreen />} />
+                <Route path="/subscription" element={<SubscriptionScreen />} />
 
               <Route
                 path="/tickets"
@@ -77,11 +79,20 @@ const AppRouter = (): JSX.Element => {
                 path="/artworkmodifications"
                 element={<ArtworkModificationPage />}
               />
+
               <Route path="/artworks" element={<ArtworksPage />} />
+              <Route path="/places/artworks" element={<ArtworksPage />} />
+              <Route path="/account/artworks" element={<ArtworksPage />} />
+
               <Route path="/videoAccess" element={<VideoAccess />} />
               <Route path="/location" element={<Location />} />
               <Route path="/account" element={<Account />} />
+
               <Route path="/changePassword" element={<ChangePassword />} />
+
+              <Route path="/artists" element={<ArtistPage />} />
+              <Route path="/artists/artists-modification-page" element={<ArtistModificationPage />} />
+              <Route path="/artistModification" element={<ArtistModificationPage/>} />
 
               <Route path="/places" element={<Sites />} />
               <Route
@@ -91,18 +102,18 @@ const AppRouter = (): JSX.Element => {
 
               <Route path="/places/exhibitions" element={<ExhibitionsPage />} />
               <Route
-                path="/places/exhibitions/exhibitionModification"
+                path="/places/exhibitions/exhibition-modification-page"
                 element={<ExhibitionModificationPage />}
               />
 
-              <Route
-                path="/places/exhibitions/artworks"
-                element={<ArtworksPage />}
-              />
-              <Route
-                path="/places/exhibitions/artworks/artworkModification"
-                element={<ArtworkModificationPage />}
-              />
+                <Route
+                  path="/places/exhibitions/artworks"
+                  element={<ArtworksPage />}
+                />
+                <Route
+                  path="/places/exhibitions/artworks/artworkModification"
+                  element={<ArtworkModificationPage />}
+                />
 
               <Route path="/accountSettings" element={<AccountSettings />} />
               <Route path="/record" element={<RecordVideo />} />

@@ -19,7 +19,7 @@ interface Artwork {
 
 const getArtworks = async (exhibitionId: any, setArtworks: Function, user: any) => {
   try {
-    const url = `http://localhost:3001/exhibitions/${exhibitionId}/items`
+    const url = `https://api.nolosay.com/exhibitions/${exhibitionId}/items`
     const response = await fetch(url, {
       method: 'GET',
       headers: {

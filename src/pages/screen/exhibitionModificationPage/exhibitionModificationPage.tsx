@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { UserContext } from "@global/contexts/UserProvider";
-import Layout from "@components/Layout/Layout";
+import { UserContext } from "src/global/contexts/UserProvider";
+import Layout from "../../components/Layout/Layout";
 import textData from "@public/text.json";
 
 const styles = {
@@ -10,7 +10,7 @@ const styles = {
   exhibitionCardModification: "shadow-xl rounded-lg flex flex-col w-full p-5",
   divBlockGeneralInformations: "w-full flex flex-row sm:flex-col",
   image22: "rounded-lg w-1/3 h-auto sm:w-full",
-  divGeneralInformations: "w-full pb-0 pl-5 sm:pl-0",
+  divGeneralInformations: "w-full pb-0 sm:pl-0",
   textName: "pt-5 pb-2.5",
   descriptionText: "pt-5 pb-2.5",
   divBlockButtonModification:
@@ -20,7 +20,7 @@ const styles = {
   divButtonSave:
     "bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 cursor-pointer",
   inputStyle:
-    "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+    "bg-gray-50 border border-gray-300 mb-5 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500",
 };
 
 const ExhibitionModificationPage = () => {
@@ -28,6 +28,7 @@ const ExhibitionModificationPage = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const siteId = location.state?.siteId;
+
   const defaultExhibition = {
     id: null,
     name: "",
@@ -41,22 +42,53 @@ const ExhibitionModificationPage = () => {
     endDate: new Date().toISOString().slice(0, 10),
   };
 
+  interface Site {
+    id: number;
+    name: string;
+  }
+
   const [exhibition, setExhibition] = useState(
     location.state?.item || defaultExhibition
   );
+  const [sites, setSites] = useState<Site[]>([]);
+
+  useEffect(() => {
+    const fetchSites = async () => {
+      try {
+        const response = await fetch(
+          `https://api.nolosay.com/sites`, {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user.accessToken}`,
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP status ${response.status}`);
+        }
+        const data = await response.json();
+        setSites(data);
+      } catch (error) {
+        console.error("Failed to fetch sites:", error);
+      }
+    };
+
+    fetchSites();
+  }, []);
+
   useEffect(() => {
     if (location.state?.exhibition) {
       setExhibition({
         ...location.state.exhibition,
         createdAt: location.state.exhibition.createdAt
           ? new Date(location.state.exhibition.createdAt)
-              .toISOString()
-              .slice(0, 10)
+            .toISOString()
+            .slice(0, 10)
           : new Date().toISOString().slice(0, 10),
         endDate: location.state.exhibition.endDate
           ? new Date(location.state.exhibition.endDate)
-              .toISOString()
-              .slice(0, 10)
+            .toISOString()
+            .slice(0, 10)
           : new Date().toISOString().slice(0, 10),
       });
     }
@@ -82,8 +114,8 @@ const ExhibitionModificationPage = () => {
   const handleSubmit = async () => {
     const isNewExhibition = !exhibition.id;
     const url = isNewExhibition
-      ? `http://localhost:3001/exhibitions`
-      : `http://localhost:3001/exhibitions/${exhibition.id}`;
+      ? `https://api.nolosay.com/exhibitions`
+      : `https://api.nolosay.com/exhibitions/${exhibition.id}`;
 
     const validStartDate = new Date(exhibition.startDate);
     const validEndDate = new Date(exhibition.endDate);
@@ -91,7 +123,7 @@ const ExhibitionModificationPage = () => {
     if (!validStartDate || !validEndDate) {
       console.error("Invalid date provided");
       alert("Please provide valid dates.");
-      return; // Sortie anticipée de la fonction
+      return;
     }
 
     try {
@@ -117,15 +149,11 @@ const ExhibitionModificationPage = () => {
 
       const responseData = await response.json();
       console.log("Operation successful:", responseData);
-      navigate("/places");
+      navigate("/account");
     } catch (error) {
       console.error("Failed to update exhibition:", error);
     }
   };
-
-  // TODO put this under exhibition image
-  // <input type="file" id="imageUpload" accept="image/*" className={styles.hiddenInput}
-  //                    onChange={handleImageChange}/>
 
   return (
     <Fragment>
@@ -138,12 +166,6 @@ const ExhibitionModificationPage = () => {
           className={styles.exhibitionCardModification}
         >
           <div className={styles.divBlockGeneralInformations}>
-            <img
-              src={exhibition.picture || "https://cataas.com/cat"}
-              alt="Exhibition Image"
-              className={styles.image22}
-              onClick={() => document.getElementById("imageUpload")?.click()}
-            />
             <div className={styles.divGeneralInformations}>
               <div className={styles.textName}>
                 {textData.page.screen.exhibitionModificationPage.name}
@@ -156,19 +178,6 @@ const ExhibitionModificationPage = () => {
                 className={styles.inputStyle}
                 placeholder={
                   textData.page.screen.exhibitionModificationPage.pname
-                }
-              />
-              <div className={styles.textName}>
-                {textData.page.screen.exhibitionModificationPage.phone}
-              </div>
-              <input
-                type="text"
-                name="telNumber"
-                value={exhibition.telNumber}
-                onChange={handleInputChange}
-                className={styles.inputStyle}
-                placeholder={
-                  textData.page.screen.exhibitionModificationPage.pphone
                 }
               />
               <div className={styles.descriptionText}>
@@ -206,18 +215,21 @@ const ExhibitionModificationPage = () => {
                 }
               />
               <div className={styles.textName}>
-                {textData.page.screen.exhibitionModificationPage.id}
+                {textData.page.screen.exhibitionModificationPage.site}
               </div>
-              <input
-                type="number"
+              <select
                 name="siteId"
                 value={exhibition.siteId}
                 onChange={handleInputChange}
                 className={styles.inputStyle}
-                placeholder={
-                  textData.page.screen.exhibitionModificationPage.pid
-                }
-              />
+              >
+                <option value="">Select a site</option>
+                {sites.map((site) => (
+                  <option key={site.id} value={site.id}>
+                    {site.name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
           <div className={styles.textName}>

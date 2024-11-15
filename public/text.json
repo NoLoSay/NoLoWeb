@@ -120,7 +120,8 @@
         "forgottenpassword" : {
           "title": "Entrez votre adresse mail",
           "email" : "Email de l'utilisateur",
-          "submit" : "Envoyer le mail"
+          "submit" : "Envoyer le mail",
+          "close": "Fermer"
         },
         "changePassword" : {
           "changepassword": "Changer le mot de passe",
@@ -128,6 +129,11 @@
           "confirmnewpassword": "Confirmation du nouveau mot de passe",
           "passwordplaceholder": "**********",
           "confirm": "Confirmer"
+        },
+        "passwordChanged" : {
+          "passwordChangedSuccessfully": "Le mot de passe a bien été modifié",
+          "goToConnection": "Vous pouvez maintenant revenir à la page de connexion",
+          "connect": "Se connecter"
         }
       },
       "creationSection" : {
@@ -135,6 +141,13 @@
           "artworkToTranslateSelectionSection" : {
             "totranslate" : "Oeuvres à traduire"
           }
+        }
+      },
+      "profileSection" : {
+        "removeProfileModalSection": {
+          "removeProfileConfirmationText": "Voulez-vous vraiment supprimer votre profil ?",
+          "confirm": "Confirmer",
+          "cancel": "Annuler"
         }
       },
       "exhibitionModificationPage" : {
@@ -151,7 +164,8 @@
         "createdate" : "Creation Date:",
         "enddate" : "End Date:",
         "back" : "Back",
-        "save" : "Save"
+        "save" : "Save",
+        "site": "Site"
       },
       "exhibitions" : {
           "back" : "Retour",

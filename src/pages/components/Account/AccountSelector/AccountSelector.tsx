@@ -86,8 +86,8 @@ export default function AccountSelector({
     <div>
       <CategoryButton
         altColor
-        description="Choisir un profile parmi la liste"
-        text="Changer de profile"
+        description="Choisir un profil parmi la liste"
+        text="Changer de profil"
         onClick={handleClickOpen}
       />
       <SimpleDialog
