@@ -13,6 +13,7 @@ interface ConnectionController {
   closeForgotPasswordModal: () => void;
   forgottenPassword: () => Promise<void>;
   connect: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  loginWithGoogle: (endpoint: string) => void;
   error: string | undefined;
 }
 
@@ -45,6 +46,29 @@ export default function ConnectionController({
   function closeForgotPasswordModal(): void {
     setShowForgotPasswordModal(false);
   }
+
+  const loginWithGoogle = (endpoint: string) => {
+    var url: string = process.env.NEXT_PUBLIC_PROD_API_URL + endpoint;
+
+    if (
+      process.env.NEXT_PUBLIC_ENV_MODE == "dev" &&
+      process.env.NEXT_PUBLIC_DEV_API_URL
+    )
+      var url: string =
+        process.env.NEXT_PUBLIC_DEV_API_URL +
+        process.env.NEXT_PUBLIC_API_PORT +
+        endpoint;
+
+    try {
+      window.open(url);
+    } catch (error: any) {
+      if (error.message) {
+        setError(error.message);
+      } else {
+        setError(error);
+      }
+    }
+  };
 
   const connectUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -83,6 +107,7 @@ export default function ConnectionController({
     closeForgotPasswordModal,
     forgottenPassword,
     connect: connectUser,
+    loginWithGoogle,
     error,
   };
 }

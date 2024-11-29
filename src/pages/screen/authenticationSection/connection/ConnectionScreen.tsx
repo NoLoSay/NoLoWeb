@@ -83,6 +83,7 @@ export const ConnectionScreen = (): JSX.Element => {
     forgottenPassword,
     connect,
     error,
+    loginWithGoogle,
   } = ConnectionController({ navigate });
 
   return (
@@ -183,12 +184,8 @@ export const ConnectionScreen = (): JSX.Element => {
             className={`ConnectionScreen/otherConnectionsDivButtonDiv ${styles["otherConnectionsDivButtonDiv"]}`}
           >
             <img
-              onClick={async () => {
-                // try {
-                //   window.open("http://localhost:3001/auth/google");
-                // } catch (e: any) {
-                //   console.error("error: " + e.message);
-                // }
+              onClick={() => {
+                loginWithGoogle("/auth/google");
               }}
               className={`ConnectionScreen/otherConnectionsDivButtonDivButtons ${styles["otherConnectionsDivButtonDivButtons"]}`}
               src="/icon/social/Google button.png"
