@@ -10,6 +10,8 @@ export const defaultUser: UserType = {
   telNumber: "",
   createdAt: new Date(2024, 0, 0, 0, 0, 0, 0),
   accessToken: "",
+  latitude: 0,
+  longitude: 0
 };
 
 export const UserContext = createContext<UserContextType>({

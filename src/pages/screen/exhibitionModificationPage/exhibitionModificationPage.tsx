@@ -56,7 +56,7 @@ const ExhibitionModificationPage = () => {
     const fetchSites = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3001/sites`, {
+          `https://api.nolosay.com/sites`, {
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${user.accessToken}`,
@@ -114,8 +114,8 @@ const ExhibitionModificationPage = () => {
   const handleSubmit = async () => {
     const isNewExhibition = !exhibition.id;
     const url = isNewExhibition
-      ? `http://localhost:3001/exhibitions`
-      : `http://localhost:3001/exhibitions/${exhibition.id}`;
+      ? `https://api.nolosay.com/exhibitions`
+      : `https://api.nolosay.com/exhibitions/${exhibition.id}`;
 
     const validStartDate = new Date(exhibition.startDate);
     const validEndDate = new Date(exhibition.endDate);

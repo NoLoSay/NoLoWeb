@@ -68,9 +68,6 @@
          "description": "Description:",
          "website" : "Website:",
          "location" : "Location:"
-      },
-      "animatedNavBar" : {
-        "profile": "Profil"
       }
     },
     "screen" : {

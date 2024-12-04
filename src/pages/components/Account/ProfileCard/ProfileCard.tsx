@@ -57,7 +57,7 @@ function ProfileCard({
   };
 
   const handleSave = async () => {
-    const url = 'http://localhost:3001/users/me';
+    const url = 'https://api.nolosay.com/users/me';
 
     // Initialize payload with the most up-to-date info from edit fields
     const payload = {

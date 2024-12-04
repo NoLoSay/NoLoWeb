@@ -90,7 +90,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
 
   const handleDeleteExhibition = async (exhibitionId:any) => {
     try {
-      const response = await fetch(`http://localhost:3001/exhibitions/${exhibitionId}`, {
+      const response = await fetch(`https://api.nolosay.com/exhibitions/${exhibitionId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${user.accessToken}`,
@@ -114,7 +114,7 @@ const Exhibition: React.FC<ExhibitionsProps> & {
     switch (buttonName) {
       case 'handleGoToArtwork':
         try {
-          const url = `http://localhost:3001/exhibitions/${exhibitionId}/items`;
+          const url = `https://api.nolosay.com/exhibitions/${exhibitionId}/items`;
           const response = await fetch(url, {
             method: 'GET',
             headers: {

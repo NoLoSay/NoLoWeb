@@ -9,6 +9,8 @@ export interface UserType {
   telNumber: string | null
   createdAt: Date
   accessToken: string
+  latitude: number
+  longitude: number
 }
 
 export interface UserContextType {

@@ -65,8 +65,8 @@ const Account = () => {
   useEffect(() => {
     const fetchSites = async () => {
       try {
-        const response = await fetch("http://localhost:3001/sites", {
-          method: "GET",
+        const response = await fetch('https://api.nolosay.com/sites', {
+          method: 'GET',
           headers: {
             Authorization: `Bearer ${user.accessToken}`,
             "Content-Type": "application/json",
