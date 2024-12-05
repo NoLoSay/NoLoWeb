@@ -13,7 +13,7 @@ interface UploadVideoProps {
 }
 
 interface useUploadVideo {
-  tryToUploadVideo: () => Promise<void>;
+  tryToUploadVideo: (formData: FormData) => Promise<void>;
 }
 
 export default function useUploadVideo({
@@ -25,16 +25,16 @@ export default function useUploadVideo({
     if (status === 201) {
       alert("Vidéo envoyée");
     } else {
-      console.error(message);
       setError(message);
     }
   };
 
-  const tryToUploadVideo = async () => {
+  const tryToUploadVideo = async (formData: FormData) => {
     try {
       var data: UploadVideoJSON = await uploadVideo({
         authorizationToken: authorizationToken,
         artworkId: artworkId,
+        formData: formData,
       });
       videoUploaded({
         status: data.status,

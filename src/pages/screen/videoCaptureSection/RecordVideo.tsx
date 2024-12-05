@@ -29,10 +29,12 @@ export const RecordVideo = ({}: RecordVideoProps): JSX.Element => {
     videoRef,
     isRecording,
     recordedChunks,
+    file,
     startCapture,
     stopCapture,
     saveVideo,
     uploadVideo,
+    selectVideo,
     navigate,
     error,
   } = RecordVideoController({});
@@ -85,10 +87,20 @@ export const RecordVideo = ({}: RecordVideoProps): JSX.Element => {
         >
           {textData.page.screen.videoCaptureSection.saveVideo}
         </button>
+        <input
+          type={"file"}
+          accept={"video/*"}
+          onChange={(e) => {
+            selectVideo(e);
+          }}
+          className={`RecordVideo/button ${styles.button} ${styles.buttonEnabled}`}
+        />
         <button
-          onClick={uploadVideo}
-          disabled={recordedChunks.length === 0 || isRecording}
-          className={`RecordVideo/button ${styles.button} ${recordedChunks.length > 0 ? styles.buttonEnabled : styles.buttonDisabled}`}
+          onClick={() => {
+            uploadVideo();
+          }}
+          disabled={!file}
+          className={`RecordVideo/button ${styles.button} ${file ? styles.buttonEnabled : styles.buttonDisabled}`}
         >
           {textData.page.screen.videoCaptureSection.uploadVideo}
         </button>
