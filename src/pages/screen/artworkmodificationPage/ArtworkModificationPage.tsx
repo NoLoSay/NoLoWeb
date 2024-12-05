@@ -197,7 +197,7 @@ const ArtworkModificationPage = () => {
           <div className={styles.divBlockGeneralInformations}>
             <div>
               <img
-                src={artwork.pictures[0].hostingUrl}
+                src={artwork.picture}
                 alt="Exhibition Image"
                 className={styles.image22}
                 onClick={() => document.getElementById("imageUpload")?.click()}

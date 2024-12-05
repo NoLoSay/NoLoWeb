@@ -7,6 +7,8 @@ import { ArrowBackIosNewRounded } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
 import FilterListExhibitions from '../../components/Filter/FilterListExhibitions'
 import { UserContext } from '../../../global/contexts/UserProvider'
+import Pagination from '../../components/Pagination/Pagination'
+
 
 interface Artwork {
   name: string
@@ -14,7 +16,7 @@ interface Artwork {
   location: string
   city: string
   pictures: any[]
-  id :any
+  id : any
 }
 
 const getArtworks = async (exhibitionId: any, setArtworks: Function, user: any) => {
@@ -33,7 +35,7 @@ const getArtworks = async (exhibitionId: any, setArtworks: Function, user: any) 
     } else {
       console.error(`HTTP status ${response.status}: Failed to fetch artworks`)
     }
-    console.log(artworks)
+    console.log('art: ', artworks)
     setArtworks(artworks) // Mise à jour avec les œuvres filtrées
   } catch (error) {
     console.error('Failed to fetch artwork details:', error)
@@ -43,12 +45,12 @@ const getArtworks = async (exhibitionId: any, setArtworks: Function, user: any) 
 const styles: { [key: string]: string } = {
   listDiv: 'flex flex-col',
   cardlistDiv:
-    ' mt-8 ml-8 flex flex-col items-start justify-start gap-[35px] max-w-full text-left text-3xl text-base-black font-poppins mb-8',
+    ' mt-8 ml-48 flex flex-col items-start justify-start gap-[35px] max-w-full text-left text-3xl text-base-black font-poppins mb-8',
   nbcardlistDiv:
     'flex flex-row gap-10 items-center mt-8 relative w-full self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray ',
   container_0: 'flex flex-col space-y-5 m-5  mx-auto',
   container_1:
-    'flex p-5 flex-col mx-auto space-x-5 w-full items-center justify-around border-solid border-4 border-yellow-300',
+    'justify-center w-4/5 mx-auto border-solid border-4 border-yellow-300',
   container_2: 'flex flex-col',
   container_3: 'flex flex-row ml-2 mr-7 p-2',
   container_4: 'mt-36 ',
@@ -59,13 +61,14 @@ const styles: { [key: string]: string } = {
   container_9: 'p-5 m-4 flex flex-col justify-between h-full',
   container_10: 'font-bold text-4xl',
   container_11: 'flex items-center pt-5',
-  container_12: 'font-bold text-xl mr-2',
+  container_12: 'font-bold text-xl mr-5',
   container_13: 'flex items-center pt-5',
   container_14: 'font-bold text-xl mr-2',
   container_15: 'flex items-center pt-5',
   container_16: 'font-bold text-xl mr-2',
   container_17: 'flex items-center pt-5',
   container_18: 'font-bold text-xl mr-2',
+  pagDiv: "flex justify-center items-center pt-4",
 }
 
 const ShowArtwork = () => {
@@ -74,18 +77,23 @@ const ShowArtwork = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [imageSrc, setImageSrc] = useState('')
+  const [location, setLocation] = useState('')
+  const [city, setCity] = useState('')
   const [filteredArtworks, setFilteredArtworks] = useState<Artwork[]>([])
   const [id, setId] = useState('')
 
   useEffect(() => {
     if (locationn.state) {
-      const { name, description, imageSrc, id } = locationn.state
+      const { name, description, imageSrc, id, location, city } = locationn.state
       setTitle(name)
       setDescription(description)
       setImageSrc(imageSrc)
       setId(id)
+      setLocation(location)
+      setCity(city)
       if (user) {
         getArtworks(id, setFilteredArtworks, user)
+        console.log('fiktered:', filteredArtworks)
       }
     }
   }, [locationn.state, user])
@@ -104,12 +112,20 @@ const ShowArtwork = () => {
     title: artwork.name,
     description: artwork.description,
     imageSrc: artwork.pictures && artwork.pictures.length > 0 ? artwork.pictures[0].hostingUrl : '', // Utilise la première image si disponible
-    location: artwork.location || '',
+    location: location,
     city: artwork.city || '',
-    videoCountPlaceholder: `1 videos`, // Exemple de texte statique pour la vidéo
+    videoCountPlaceholder: `Voir les vidéos`, // Exemple de texte statique pour la vidéo
     pathname: '/videoaccess',
     id: artwork.id
   })
+
+  const indexOfLastPlace = currentPage * placesPerPage;
+  const indexOfFirstPlace = indexOfLastPlace - placesPerPage;
+  const currentPlaces = filteredArtworks.slice(indexOfFirstPlace, indexOfLastPlace);
+
+  const onPageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div className={`container_0 ${styles.container_0}`}>
@@ -136,8 +152,16 @@ const ShowArtwork = () => {
                 <div>
                   <p className={`container_10 ${styles.container_10}`}>{title}</p>
                   <div className={`container_11 ${styles.container_11}`}>
-                    <p className={`container_12 ${styles.container_12}`}>Description:</p>
-                    <p>{description}</p>
+                    <div className={`container_12 ${styles.container_12}`}>Description:</div>
+                    <>{description}</>
+                  </div>
+                  <div className={`container_11 ${styles.container_11}`}>
+                    <div className={`container_12 ${styles.container_12}`}>Lieux:</div>
+                    <>{location}</>
+                  </div>
+                  <div className={`container_11 ${styles.container_11}`}>
+                    <div className={`container_12 ${styles.container_12}`}>Ville:</div>
+                    <>{city}</>
                   </div>
                 </div>
               </div>
@@ -155,6 +179,13 @@ const ShowArtwork = () => {
           </div>
         </div>
       </div>
+      <div className={`pagDiv ${styles.pagDiv}`}>
+          <Pagination
+            totalPages={Math.ceil(filteredArtworks.length / placesPerPage)}
+            currentPage={currentPage}
+            onPageChange={onPageChange}
+          />
+        </div>
     </div>
   )
 }

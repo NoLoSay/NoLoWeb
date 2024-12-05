@@ -3,13 +3,12 @@ import NoVideoPlaceholder from "@components/NoVideoPlaceholder/NoVideoPlaceholde
 import { ButtonBase } from "@mui/material";
 import { ArrowBackIosNewRounded } from "@mui/icons-material";
 import { Paper } from "@mui/material";
-import videoData from "@tests/videos.json";
 import { useNavigate } from "react-router-dom";
 import textData from "@public/text.json";
 
 const styles: { [key: string]: string } = {
   container_0:
-    "\n      flex flex-col space-y-5 m-5 \n      w-4/5 mx-auto\n    ",
+    "\n      flex flex-col space-y-5 m-5 \n      w-4/5 mx-auto\n    mb-32",
   container_1:
     "flex p-5 flex-col space-x-5 w-full items-center justify-around border border-solid border-4 border-yellow-300",
   container_2: "flex flex-col",
@@ -32,7 +31,7 @@ const styles: { [key: string]: string } = {
   container_18: "font-bold text-xl mr-2",
   container_19: "flex flex-wrap justify-around items-center p-5",
   container_20:
-    "flex m-4 border rounded-lg shadow-lg border-solid border-yellow-300 w-96",
+    "flex m-4 border rounded-lg shadow-lg border-solid border-yellow-300",
   container_21: "w-1/3 mr-4",
   container_22: "flex flex-col m-2 p-2 w-40 h-80 border rounded-lg shadow-lg",
   container_23: "w-2/3",
@@ -47,11 +46,7 @@ const styles: { [key: string]: string } = {
 };
 
 type VideoDetails = {
-  videoId: string;
-  title: string;
-  creator: string;
-  duration: string;
-  language: string;
+  hostingProviderVideoId: any
 };
 
 type Infos = {
@@ -59,14 +54,12 @@ type Infos = {
   artImage?: string;
   description: string;
   pagePath: string;
+  videos?: VideoDetails[];
+  location: any;
+  id: any;
 };
 
-function ArtCard({ title, artImage, description }: Infos) {
-  const [videos, setVideos] = useState<VideoDetails[]>([]);
-
-  useEffect(() => {
-    setVideos(videoData);
-  }, []);
+function ArtCard({ title, artImage, description, videos, location, id }: Infos) {
 
   const navigate = useNavigate();
 
@@ -102,28 +95,17 @@ function ArtCard({ title, artImage, description }: Infos) {
                     </p>
                     <p>{description}</p>
                   </div>
-                  <div className={`container_13 ${styles.container_13}`}>
-                    <p className={`container_14 ${styles.container_14}`}>
-                      {textData.page.components.artCard.autor}
-                    </p>
-                    <p>{`Creator name`}</p>
-                  </div>
-                  <div className={`container_15 ${styles.container_15}`}>
-                    <p className={`container_16 ${styles.container_16}`}>
-                      {textData.page.components.artCard.createdate}
-                    </p>
-                    <p>{`1986`}</p>
-                  </div>
                   <div className={`container_17 ${styles.container_17}`}>
                     <p className={`container_18 ${styles.container_18}`}>
                       {textData.page.components.artCard.place}
                     </p>
-                    <p>{`Nantes`}</p>
+                    <p>{location}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <NoVideoPlaceholder artworkId={id} />
           {videos && videos.length > 0 ? (
             <div>
               <div className={`container_19 ${styles.container_19}`}>
@@ -140,50 +122,11 @@ function ArtCard({ title, artImage, description }: Infos) {
                         <iframe
                           width="100%"
                           height="300"
-                          src={`https://www.youtube.com/embed/${video.videoId}`}
+                          src={`https://www.youtube.com/embed/${video.hostingProviderVideoId}`}
                           frameBorder="0"
                           allowFullScreen
                           style={{ aspectRatio: "9/16" }}
                         ></iframe>
-                      </div>
-                    </div>
-                    <div className={`container_23 ${styles.container_23}`}>
-                      <div className={`container_24 ${styles.container_24}`}>
-                        <div>
-                          <p className={`container_25 ${styles.container_25}`}>
-                            {video.title}
-                          </p>
-                          <div
-                            className={`container_26 ${styles.container_26}`}
-                          >
-                            <p
-                              className={`container_27 ${styles.container_27}`}
-                            >
-                              {textData.page.components.artCard.creator}&nbsp;
-                            </p>
-                            <p>{video.creator}</p>
-                          </div>
-                          <div
-                            className={`container_28 ${styles.container_28}`}
-                          >
-                            <p
-                              className={`container_29 ${styles.container_29}`}
-                            >
-                              {textData.page.components.artCard.duration}&nbsp;
-                            </p>
-                            <p>{video.duration}</p>
-                          </div>
-                          <div
-                            className={`container_30 ${styles.container_30}`}
-                          >
-                            <p
-                              className={`container_31 ${styles.container_31}`}
-                            >
-                              {textData.page.components.artCard.language}&nbsp;
-                            </p>
-                            <p>{video.language}</p>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -191,7 +134,7 @@ function ArtCard({ title, artImage, description }: Infos) {
               </div>
             </div>
           ) : (
-            <NoVideoPlaceholder artworkId={"1"} />
+            <></>
           )}
         </div>
       </Paper>
