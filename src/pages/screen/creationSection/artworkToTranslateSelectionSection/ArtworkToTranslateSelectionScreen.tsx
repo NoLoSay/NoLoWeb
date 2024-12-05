@@ -2,65 +2,25 @@ import React from "react";
 import Layout from "@components/Layout/Layout";
 import ArtworkCard from "@components/ArtworkCard/ArtworkCard";
 import textData from "@public/text.json";
+import ArtworkToTranslateSelectionScreenController from "./ArtworkToTranslateSelectionScreenController";
 
-type artWork = {
-  title: string;
-  imageSrc: string;
-  imageAlt: string;
+interface artWork {
+  id: string;
+  name: string;
+  pictures: any[];
   description: string;
-};
-
-const artworkList: artWork[] = [
-  {
-    title: "La tapisserie de Charles X",
-    imageSrc: "/images/artworkToTranslateSelectionScreen/image 17.png",
-    imageAlt: "Castle image",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    title: "La tapisserie de Charles X",
-    imageSrc: "/images/artworkToTranslateSelectionScreen/image 17.png",
-    imageAlt: "Castle image",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    title: "La tapisserie de Charles X",
-    imageSrc: "/images/artworkToTranslateSelectionScreen/image 17.png",
-    imageAlt: "Castle image",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    title: "Château sur bois",
-    imageSrc: "/images/artworkToTranslateSelectionScreen/Frame 23395.png",
-    imageAlt: "Rdv de l'Erdre",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    title: "Château sur bois",
-    imageSrc: "/images/artworkToTranslateSelectionScreen/Frame 23395.png",
-    imageAlt: "Rdv de l'Erdre",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    title: "Château sur bois",
-    imageSrc: "/images/artworkToTranslateSelectionScreen/Frame 23395.png",
-    imageAlt: "Rdv de l'Erdre",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-];
+  site: any;
+}
 
 const styles: { [key: string]: string } = {
   mainDiv:
-    "bg-white flex flex-col gap-10 items-center justify-center mt-8 relative w-full",
-  smMainDiv: "sm:gap-0",
-  mdMainDiv: "md:gap-5",
+    "bg-white flex flex-col gap-10 items-center justify-center mt-8 relative w-full " +
+    "sm:gap-0 " +
+    "md:gap-5",
 
-  leftLine: "absolute flex flex-start self-start w-full",
-  smLeftLine: "sm:hidden",
+  leftLine: "absolute flex flex-start self-start w-full " + "sm:hidden",
 
-  rightLine: "absolute flex flex-end self-end",
-  smRightLine: "sm:hidden",
-  mdRightLine: "md:hidden",
+  rightLine: "absolute flex flex-end self-end " + "sm:hidden " + "md:hidden",
 
   titleDiv: `bg-miroir-d-eau-château-nantes_photo bg-cover bg-center relative rounded-2.5xl w-2/3`,
 
@@ -68,28 +28,33 @@ const styles: { [key: string]: string } = {
     "absolute bg-gray-300 bg-opacity-65 h-full rounded-2.5xl w-full",
 
   titleDivText:
-    "font-black font-helvetica py-5 relative text-center text-white text-6xl",
-  smTitleDivText: "sm:text-xl",
-  mdTitleDivText: "md:text-4xl",
+    "font-black font-helvetica py-5 relative text-center text-white text-6xl " +
+    "sm:text-xl " +
+    "md:text-4xl",
 
-  artworkList: "gap-x-5 gap-y-10 grid grid-cols-3 my-20 w-5/6",
-  smArtworkList: "sm:grid-none sm:flex sm:flex-col sm:w-[92%]",
-  mdArtworkList: "md:grid-cols-2",
-  lgArtworkList: "lg:grid-cols-2",
+  artworkList:
+    "gap-x-5 gap-y-10 grid grid-cols-3 my-20 w-5/6 " +
+    "sm:grid-none sm:flex sm:flex-col sm:w-[92%] " +
+    "md:grid-cols-2 " +
+    "lg:grid-cols-2",
+
+  errorMessage: "text-red-600 text-center",
 };
 
 const ArtworkToTranslateSelectionScreen = (): JSX.Element => {
+  const { error, data } = ArtworkToTranslateSelectionScreenController({});
+
   return (
     <div
-      className={`ArtworkToTranslateSelectionScreen/mainDiv ${styles["mainDiv"]} ${styles["smMainDiv"]} ${styles["mdMainDiv"]}`}
+      className={`ArtworkToTranslateSelectionScreen/mainDiv ${styles["mainDiv"]}`}
     >
       <img
-        className={`ArtworkToTranslateSelectionScreen/leftLine ${styles["leftLine"]} ${styles["smLeftLine"]}`}
+        className={`ArtworkToTranslateSelectionScreen/leftLine ${styles["leftLine"]}`}
         src="/images/artworkToTranslateSelectionScreen/Vector 60.png"
         alt="Vector"
       />
       <img
-        className={`ArtworkToTranslateSelectionScreen/rightLine ${styles["rightLine"]} ${styles["smRightLine"]} ${styles["mdRightLine"]}`}
+        className={`ArtworkToTranslateSelectionScreen/rightLine ${styles["rightLine"]}`}
         src="/images/artworkToTranslateSelectionScreen/Vector 61.png"
         alt="Vector"
       />
@@ -100,7 +65,7 @@ const ArtworkToTranslateSelectionScreen = (): JSX.Element => {
           className={`ArtworkToTranslateSelectionScreen/titleDivFilterDiv ${styles["titleDivFilterDiv"]}`}
         />
         <p
-          className={`ArtworkToTranslateSelectionScreen/titleDivText ${styles["titleDivText"]} ${styles["smTitleDivText"]} ${styles["mdTitleDivText"]}`}
+          className={`ArtworkToTranslateSelectionScreen/titleDivText ${styles["titleDivText"]}`}
         >
           {
             textData.page.screen.creationSection
@@ -109,17 +74,26 @@ const ArtworkToTranslateSelectionScreen = (): JSX.Element => {
           }
         </p>
       </div>
+      {error && (
+        <p
+          className={`ArtworkToTranslateSelectionScreen/errorMessage ${styles["errorMessage"]}`}
+        >
+          {error}
+        </p>
+      )}
       <div
-        className={`ArtworkToTranslateSelectionScreen/artworkList ${styles["artworkList"]} ${styles["smArtworkList"]} ${styles["mdArtworkList"]} ${styles["lgArtworkList"]}`}
+        className={`ArtworkToTranslateSelectionScreen/artworkList ${styles["artworkList"]}`}
       >
-        {artworkList.map(
-          ({ title, imageSrc, imageAlt, description }, index) => (
+        {data.map(
+          ({ id, name, pictures, description, site }: artWork, index: any) => (
             <ArtworkCard
               key={index}
-              title={title}
-              imageSrc={imageSrc}
-              imageAlt={imageAlt}
+              id={id}
+              title={name}
               description={description}
+              imageSrc={pictures[0]?.hostingUrl}
+              imageAlt={""}
+              location={site.name}
             />
           )
         )}

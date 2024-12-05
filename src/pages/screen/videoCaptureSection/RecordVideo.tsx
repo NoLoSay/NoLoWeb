@@ -1,7 +1,6 @@
-import { useState, useRef, useEffect } from "react";
 import Layout from "@components/Layout/Layout";
 import textData from "@public/text.json";
-import { Camera } from "node_modules/@mui/icons-material/index";
+import RecordVideoController from "./RecordVideoController";
 
 const styles: { [key: string]: string } = {
   mainDiv:
@@ -11,94 +10,44 @@ const styles: { [key: string]: string } = {
 
   video: "w-auto rounded-[50px] shadow-cardShadow",
 
+  backButton: "relative self-start ml-8",
+
   buttonsDiv: "flex flex-row relative gap-8",
 
   button:
     "font-poppins text-xs font-normal relative text-center rounded-xl flex gap-2.5 p-2.5 hover: cursor-pointer",
   buttonDisabled: "bg-base-black text-yellow-300 hover:cursor-not-allowed",
   buttonEnabled: "bg-yellow-300 text-base-white",
+
+  errorMessage: "text-red-600 text-center",
 };
 
-export const RecordVideo = (): JSX.Element => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [mediaStream, setMediaStream] = useState<MediaStream | null>(null);
-  const [recorder, setRecorder] = useState<MediaRecorder | null>(null);
-  const [isRecording, setIsRecording] = useState(false);
-  const [recordedChunks, setRecordedChunks] = useState<Blob[]>([]);
+interface RecordVideoProps {}
 
-  useEffect(() => {
-    const setupCamera = async () => {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: true,
-        });
-        setMediaStream(stream);
-
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-        }
-      } catch (error) {
-        console.error("Error accessing camera:", error);
-      }
-    };
-
-    setupCamera();
-  }, []);
-
-  const startCapture = () => {
-    if (mediaStream) {
-      const recorderInstance = new MediaRecorder(mediaStream);
-      setRecorder(recorderInstance);
-
-      const chunks: Blob[] = [];
-
-      recorderInstance.ondataavailable = (event) => {
-        if (event.data.size > 0) {
-          chunks.push(event.data);
-        }
-      };
-
-      recorderInstance.onstop = () => {
-        setRecordedChunks(chunks);
-      };
-
-      recorderInstance.start();
-      setIsRecording(true);
-    }
-  };
-
-  const stopCapture = () => {
-    if (recorder) {
-      recorder.stop();
-      setIsRecording(false);
-    }
-  };
-
-  const saveVideo = async () => {
-    try {
-      const videoBlob = new Blob(recordedChunks, { type: ".mp4" });
-      const videoUrl = URL.createObjectURL(videoBlob);
-      const videoRequest = new Request(videoUrl);
-      fetch(videoRequest)
-        .then(() => {
-          const link = document.createElement('a');
-          link.href = videoUrl;
-          link.setAttribute('download', 'recorded-video.mp4');
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        });
-    } catch (error) {
-      console.error(error);
-    }
-  };
+export const RecordVideo = ({}: RecordVideoProps): JSX.Element => {
+  const {
+    videoRef,
+    isRecording,
+    recordedChunks,
+    startCapture,
+    stopCapture,
+    saveVideo,
+    uploadVideo,
+    navigate,
+    error,
+  } = RecordVideoController({});
 
   return (
     <div className={`RecordVideo/mainDiv ${styles.mainDiv}`}>
+      <button
+        onClick={() => {
+          navigate(-1);
+        }}
+        className={`RecordVideo/button ${styles.button} ${styles.buttonEnabled} ${styles.backButton}`}
+      >
+        {textData.page.screen.videoCaptureSection.goBack}
+      </button>
       <div className={`RecordVideo/videoDiv ${styles.videoDiv}`}>
-        <Camera
-        
-        />
         <video
           ref={videoRef}
           width={1280}
@@ -109,27 +58,39 @@ export const RecordVideo = (): JSX.Element => {
           className={`RecordVideo/video ${styles.video}`}
         />
       </div>
+      {error && (
+        <p className={`RecordVideo/errorMessage ${styles["errorMessage"]}`}>
+          {error}
+        </p>
+      )}
       <div className={`RecordVideo/buttonsDiv ${styles.buttonsDiv}`}>
         <button
           onClick={startCapture}
           disabled={isRecording}
           className={`RecordVideo/button ${styles.button} ${!isRecording ? styles.buttonEnabled : styles.buttonDisabled}`}
         >
-          {textData.page.screen.videoCaptureSection.start}
+          {textData.page.screen.videoCaptureSection.startRecording}
         </button>
         <button
           onClick={stopCapture}
           disabled={!isRecording}
           className={`RecordVideo/button ${styles.button} ${isRecording ? styles.buttonEnabled : styles.buttonDisabled}`}
         >
-          {textData.page.screen.videoCaptureSection.stop}
+          {textData.page.screen.videoCaptureSection.stopRecording}
         </button>
         <button
           onClick={saveVideo}
-          disabled={recordedChunks.length === 0}
+          disabled={recordedChunks.length === 0 || isRecording}
           className={`RecordVideo/button ${styles.button} ${recordedChunks.length > 0 ? styles.buttonEnabled : styles.buttonDisabled}`}
         >
-          {textData.page.screen.videoCaptureSection.save}
+          {textData.page.screen.videoCaptureSection.saveVideo}
+        </button>
+        <button
+          onClick={uploadVideo}
+          disabled={recordedChunks.length === 0 || isRecording}
+          className={`RecordVideo/button ${styles.button} ${recordedChunks.length > 0 ? styles.buttonEnabled : styles.buttonDisabled}`}
+        >
+          {textData.page.screen.videoCaptureSection.uploadVideo}
         </button>
       </div>
     </div>

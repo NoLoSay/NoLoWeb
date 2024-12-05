@@ -191,7 +191,7 @@ function ArtCard({ title, artImage, description }: Infos) {
               </div>
             </div>
           ) : (
-            <NoVideoPlaceholder />
+            <NoVideoPlaceholder artworkId={"1"} />
           )}
         </div>
       </Paper>

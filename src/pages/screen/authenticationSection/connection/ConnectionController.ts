@@ -45,6 +45,7 @@ export default function ConnectionController({
 
   function closeForgotPasswordModal(): void {
     setShowForgotPasswordModal(false);
+    setError("");
   }
 
   const loginWithGoogle = (endpoint: string) => {
@@ -75,7 +76,7 @@ export default function ConnectionController({
     try {
       await tryToConnect();
     } catch (error: any) {
-      if (error && error.message) {
+      if (error.message) {
         setError(error.message);
       } else {
         setError(error);
@@ -89,11 +90,20 @@ export default function ConnectionController({
       setError("Veuillez rentrer un email valide");
       return;
     }
-    await forgotPassword({ email });
-    alert(
-      "Email envoyé " +
-        "Si le compte existe, un email a été envoyé pour réinitialiser le mot de passe."
-    );
+
+    try {
+      await forgotPassword({ email });
+      alert(
+        "Email envoyé " +
+          "Si le compte existe, un email a été envoyé pour réinitialiser le mot de passe."
+      );
+    } catch (error: any) {
+      if (error.message) {
+        setError(error.message);
+      } else {
+        setError(error);
+      }
+    }
   }
 
   return {

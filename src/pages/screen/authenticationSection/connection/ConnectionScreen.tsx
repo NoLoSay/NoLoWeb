@@ -155,14 +155,14 @@ export const ConnectionScreen = (): JSX.Element => {
             {textData.page.screen.authentificationSection.connection.connectme}
           </button>
         </form>
-        {error && (
+        {error && !showForgotPasswordModal && (
           <p
             className={`ConnectionScreen/errorMessage ${styles["errorMessage"]}`}
           >
             {error}
           </p>
         )}
-        <div
+        {/* <div
           className={`ConnectionScreen/otherConnectionsDiv ${styles["otherConnectionsDiv"]}`}
         >
           <div
@@ -199,7 +199,7 @@ export const ConnectionScreen = (): JSX.Element => {
               src="/icon/social/Facebook button.png"
             />
           </div>
-        </div>
+        </div> */}
         <p
           className={`ConnectionScreen/noAccountText ${styles["noAccountText"]}`}
         >
@@ -218,6 +218,7 @@ export const ConnectionScreen = (): JSX.Element => {
             onClose={closeForgotPasswordModal}
             setEmail={setEmail}
             onSubmit={forgottenPassword}
+            error={error}
           />
         )}
       </div>
