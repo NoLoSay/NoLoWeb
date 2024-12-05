@@ -1,4 +1,4 @@
-import { Fragment, ReactNode, useEffect, useState } from "react";
+import { Fragment, ReactNode, useEffect, useState, useContext } from "react";
 import Head from "next/head";
 import Layout from "@components/Layout/Layout";
 import ArtCard from "@components/ArtCard/ArtCard";
@@ -8,19 +8,40 @@ import placesData from "@tests/places.json";
 import CardTemplate from "@components/CardTemplate/CardTemplate";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { UserContext } from '../../../global/contexts/UserProvider'
 
-type Place = {
-  position: [number, number];
-  name: string;
-  city: string;
-  location: string;
-  description: string;
-  image: string;
-  videocount: string;
-  website: string;
-};
+interface Artwork {
+  name: string
+  description: string
+  location: string
+  city: string
+  pictures: any[]
+  id : any
+  videos: { hostingProviderVideoId: string }[];
+}
 
-const places: Place[] = placesData as Place[];
+const getArt = async (itemId: any, setArt: Function, user: any) => {
+  try {
+    const url = `https://api.nolosay.com/items/${itemId}`
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${user.accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    })
+    let artworks = []
+    if (response.ok) {
+      artworks = await response.json()
+      console.log('art: ', artworks)
+    } else {
+      console.error(`HTTP status ${response.status}: Failed to fetch artworks`)
+    }
+    setArt(artworks)
+  } catch (error) {
+    console.error('Failed to fetch artwork details:', error)
+  }
+}
 
 const styles: { [key: string]: string } = {
   container: "w-[1280px] mt-8 items-center gap-[35px] max-w-full ml-30",
@@ -34,13 +55,15 @@ const styles: { [key: string]: string } = {
 };
 
 const VideoAccess = () => {
+  const { user } = useContext(UserContext)
   const locationn = useLocation();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [imageSrc, setImageSrc] = useState("");
+  const [location, setLocation] = useState("");
+  const [art, setArt] = useState<Artwork | null>(null);
   const [videoCountPlaceholder, setVideoCountPlaceholder] = useState("");
-  const [city, setCity] = useState("");
-  const [locationText, setLocationText] = useState("");
+  const [id, setId] = useState('');
 
   useEffect(() => {
     if (locationn.state) {
@@ -49,15 +72,18 @@ const VideoAccess = () => {
         description,
         imageSrc,
         videoCountPlaceholder,
-        city,
         location,
+        id,
       } = locationn.state;
       setName(name);
       setDescription(description);
       setImageSrc(imageSrc);
       setVideoCountPlaceholder(videoCountPlaceholder);
-      setCity(city);
-      setLocationText(location);
+      setId(id);
+      setLocation(location)
+      if (user) {
+        getArt(id, setArt, user)
+      }
     }
   }, [locationn.state]);
 
@@ -71,70 +97,12 @@ const VideoAccess = () => {
         artImage={imageSrc}
         description={description}
         pagePath=""
+        videos={art?.videos}
+        location={location}
+        id={id}
       />
-      <div className={`container_0 ${styles.container_0}`}>
-        <div className={`container_1 ${styles.container_1}`}>
-          <p className={`container_2 ${styles.container_2}`}>
-            Découvrez d'autres oeuvres similaires :
-          </p>
-        </div>
-        <div className={`container ${styles.container}`}>
-          <Carousel
-            className={`container_3 ${styles.container_3}`}
-            responsive={{
-              desktop: {
-                breakpoint: { max: 3000, min: 1024 },
-                items: 3,
-                slidesToSlide: 3,
-              },
-              tablet: {
-                breakpoint: { max: 1024, min: 464 },
-                items: 2,
-                slidesToSlide: 2,
-              },
-              mobile: {
-                breakpoint: { max: 464, min: 0 },
-                items: 1,
-                slidesToSlide: 1,
-              },
-            }}
-            ssr
-            infinite
-            autoPlay
-            autoPlaySpeed={300}
-            keyBoardControl
-            customTransition="transform 500ms ease-in-out"
-            transitionDuration={10000}
-            containerClass={`carousel-container ${styles.CardsDiv}`}
-            itemClass={`carousel-item-padding-40-px ${styles.CardsDiv}`}
-            arrows={false}
-          >
-            {places.map((place, index) => {
-              return (
-                <CardTemplate
-                  key={index}
-                  cardInfo={{
-                    title: place.name,
-                    description: place.description,
-                    imageSrc: place.image,
-                    videoCountPlaceholder: place.videocount,
-                    website: place.website,
-                    city: place.city,
-                    location: place.location,
-                    pathname: "/location",
-                  }}
-                />
-              );
-            })}
-          </Carousel>
-        </div>
-      </div>
     </Fragment>
   );
-};
-
-VideoAccess.getLayout = function getLayout(page: ReactNode) {
-  return <Layout>{page}</Layout>;
 };
 
 export default VideoAccess;

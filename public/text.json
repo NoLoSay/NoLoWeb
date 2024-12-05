@@ -15,7 +15,7 @@
       },
       "filter" : {
         "filterListArtwork" : {
-          "exhibitions": "Expostions / Oeuvres",
+          "exhibitions": "Expostions",
           "nbelements" : "Nombre d'éléments par page",
           "seeexhibitions" : "Afficher les expositions",
           "seeartworks" : "Afficher les oeuvres",
