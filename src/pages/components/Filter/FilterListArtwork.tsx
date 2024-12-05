@@ -9,7 +9,7 @@ const styles: { [key: string]: string } = {
   backgroundDiv: 'bg-white flex max-w-full  gap-10 items-center justify-center mt-8 ',
   main: 'flex items-baseline justify-between',
   textDiv: 'text-2xl font-bold tracking-tight text-base-black',
-  lineDiv: 'border-b-8 rounded-lg border-solid border-yellow-300 w-[800px] mt-2',
+  lineDiv: 'border-b-8 rounded-lg border-solid border-yellow-300 w-[1000px] mt-2',
   blockfilterDiv: 'relative inline-block text-left ml-4',
   borderDiv:
     'border-gray-300 text-md ' + 'focus:ring-yellow-300 ' + 'focus:border-yellow-300 ' + 'h-10 pl-3 pr-7 rounded-lg',
@@ -33,23 +33,9 @@ const FilterListArtwork: React.FC<FilterPageProps> = ({ handleArtworkTypeChange 
                 className={`boderDiv ${styles.borderDiv} `}
                 onChange={handleArtworkTypeChange}
               >
-                <option value='exhibitions'>{textData.page.components.filter.filterListArtwork.seeexhibitions}</option>
-                <option value='artworks'>{textData.page.components.filter.filterListArtwork.seeartworks}</option>
-              </select>
-            </div>
-          </div>
-          <div className={`blockfilterDiv ${styles.blockfilterDiv}`}>
-            <div>
-              <select
-                id='sortSelect'
-                name='sortSelect'
-                className={`borderDiv ${styles.borderDiv}`}
-              >
-                <option value=''>{textData.page.components.filter.filterListArtwork.sort}</option>
-                <option value=''>{textData.page.components.filter.filterListArtwork.mostpopular}</option>
-                <option value=''>{textData.page.components.filter.filterListArtwork.new}</option>
-                <option value=''>{textData.page.components.filter.filterListArtwork.atoz}</option>
-                <option value=''>{textData.page.components.filter.filterListArtwork.ztoa}</option>
+                <option value='9'>{textData.page.components.filter.filterListPlace.twelelements}</option>
+                <option value='18'>{textData.page.components.filter.filterListPlace.twentelements}</option>
+                <option value='36'>{textData.page.components.filter.filterListPlace.thirtelements}</option>
               </select>
             </div>
           </div>

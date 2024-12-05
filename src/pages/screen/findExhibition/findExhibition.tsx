@@ -4,9 +4,13 @@ import Layout from '../../components/Layout/Layout'
 import TitleCard from '../../components/TitleCard/TitleCard'
 import CardTemplate from '../../components/CardTemplate/CardTemplate'
 import { ReactNode } from 'react'
-import { useLocation } from 'react-router-dom'
+
+import { useLocation, useNavigate } from 'react-router-dom'
 import FilterListArtwork from '../../components/Filter/FilterListArtwork'
 import { UserContext } from '../../../global/contexts/UserProvider'
+import Exhibition from '@screen/exhibitions/Exhibitions'
+import Pagination from '../../components/Pagination/Pagination'
+
 
 interface Artwork {
   name: string
@@ -57,8 +61,8 @@ const getExhibitions = async (siteId: any, setExhibitions: Function, user: any) 
       throw new Error(`HTTP status ${response.status}: Failed to fetch exhibitions`)
     }
     const exhibitions = await response.json()
+    console.log('Exhibitions:', exhibitions)
     const filteredExhibitions = exhibitions.filter((exhibition: any) => exhibition.site.id === siteId)
-    console.log(filteredExhibitions)
     setExhibitions(filteredExhibitions) // Stockage des expositions filtrées
   } catch (error) {
     console.error('Failed to fetch exhibition details:', error)
@@ -66,13 +70,15 @@ const getExhibitions = async (siteId: any, setExhibitions: Function, user: any) 
 }
 
 const styles: { [key: string]: string } = {
-  mainDiv: 'flex flex-col space-y-5 m-5',
-  listDiv:
-    'relative max-w-full mt-8 flex flex-col gap-[35px] min-h-[493px] max-w-full text-left text-3xl text-base-black font-poppins',
-  cardlistDiv: 'flex flex-col flex-wrap gap-10 items-center max-w-full z-[1] mb-8 ',
+  mainDiv: 'flex flex-col space-y-5 m-5  mx-auto',
+  listDiv: 'flex flex-col',
+  cardlistDiv:
+    ' mt-8 ml-32 flex flex-coljustify-start gap-[35px] max-w-full text-left text-3xl text-base-black font-poppins mb-8',
   nbcardlistDiv:
-    ' gap-10 items-center mt-8 relative w-full self-stretch flex flex-row flex-wrap ml-44 justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray ',
-}
+    'flex flex-row gap-10 items-center mt-8 relative w-full self-stretch flex flex-row flex-wrap items-start justify-start gap-[77px] max-w-full z-[1] text-mini text-darkslategray ',
+  pagDiv: "flex justify-center items-center pt-4",
+
+  }
 
 const Location = () => {
   const { user } = useContext(UserContext) // Récupération de l'utilisateur via le contexte
@@ -123,15 +129,26 @@ const Location = () => {
   const renderCardInfo = (item: Exhibition) => {
     return {
       title: item.name,
-      description: item.shortDescription,
+      description: item.longDescription,
       imageSrc: item.site.pictures[0]?.hostingUrl || '', // Utilisation de l'image du site
-      location: `${item.site.address.houseNumber} ${item.site.address.street}`,
-      city: item.site.address.city.name,
-      videoCountPlaceholder: `1 oeuvres`, // Compter les expositions
+      location: item.site.name,
+      city: city,
+      videoCountPlaceholder: `Voir les oeuvres`,
       pathname: '/showartwork',
       id: item.id
     }
   }
+  const [currentPage, setCurrentPage] = useState(1);
+  const [placesPerPage, setPlacesPerPage] = useState(9);
+
+  const indexOfLastPlace = currentPage * placesPerPage;
+  const indexOfFirstPlace = indexOfLastPlace - placesPerPage;
+  const currentPlaces = filteredExhibitions.slice(indexOfFirstPlace, indexOfLastPlace);
+
+  const onPageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+  const navigate = useNavigate()
 
   return (
     <Fragment>
@@ -149,23 +166,26 @@ const Location = () => {
             pagePath='/findlocation/'
           />
         </div>
-        <div className={`listDiv ${styles['listDiv']}`}>
-          <FilterListArtwork handleArtworkTypeChange={handleArtworkTypeChange} />
-          <div className={`cardlistDiv ${styles['cardlistDiv']}`}>
-            <div className={`nbcardlistDiv ${styles['nbcardlistDiv']}`}>
+        <div className={`listDiv ${styles.listDiv}`}>
+            <FilterListArtwork handleArtworkTypeChange={handleArtworkTypeChange} />          
+            <div className={`cardlistDiv ${styles.cardlistDiv}`}>
+            <div className={`nbcardlistDiv ${styles.nbcardlistDiv}`}>
               {filteredItems.map((item, index) => (
                 <CardTemplate key={index} cardInfo={renderCardInfo(item)} />
               ))}
             </div>
           </div>
         </div>
+        <div className={`pagDiv ${styles.pagDiv}`}>
+          <Pagination
+            totalPages={Math.ceil(filteredExhibitions.length / placesPerPage)}
+            currentPage={currentPage}
+            onPageChange={onPageChange}
+          />
+        </div>
       </div>
     </Fragment>
   )
-}
-
-Location.getLayout = function getLayout(page: ReactNode) {
-  return <Layout>{page}</Layout>
 }
 
 export default Location
