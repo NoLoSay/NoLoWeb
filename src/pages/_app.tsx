@@ -32,6 +32,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import ArtistModificationPage from "@screen/artistModificationPage/ArtistModificationPage";
 import ArtistPage from "@screen/artist/Artist";
+import MyVideos from "@screen/myvideos/MyVideos";
 
 
 const AppRouter = (): JSX.Element => {
@@ -87,6 +88,7 @@ const AppRouter = (): JSX.Element => {
               <Route path="/videoAccess" element={<VideoAccess />} />
               <Route path="/location" element={<Location />} />
               <Route path="/account" element={<Account />} />
+              <Route path="/myvideos" element={<MyVideos />} />
 
               <Route path="/changePassword" element={<ChangePassword />} />
 
