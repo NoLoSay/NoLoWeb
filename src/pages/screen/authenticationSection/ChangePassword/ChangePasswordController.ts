@@ -67,7 +67,7 @@ export default function ChangePasswordController({
     }
 
     try {
-      tryToChangePassword(setShowPasswordChanged);
+      await tryToChangePassword(setShowPasswordChanged);
     } catch (error: any) {
       if (error.message) {
         setError(error.message);

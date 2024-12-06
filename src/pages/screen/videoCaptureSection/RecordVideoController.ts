@@ -5,7 +5,6 @@ import {
   useNavigate,
 } from "node_modules/react-router-dom/dist/index";
 import { RefObject, useContext, useEffect, useRef, useState } from "react";
-import { createFFmpeg } from "@ffmpeg/ffmpeg";
 
 interface RecordVideoController {
   videoRef: RefObject<HTMLVideoElement>;
@@ -73,27 +72,6 @@ export default function RecordVideoController({}: RecordVideoControllerProps): R
     getArtworkId();
   }, [location.state]);
 
-  const ffmpeg = createFFmpeg({ log: true });
-
-  const convertBlobToMp4 = async (blob) => {
-    if (!ffmpeg.isLoaded()) {
-      await ffmpeg.load();
-    }
-
-    // Chargez le blob dans le système de fichiers virtuel de FFmpeg
-    const webmFile = new Uint8Array(await blob.arrayBuffer());
-    ffmpeg.FS("writeFile", "input.webm", webmFile);
-
-    // Commande FFmpeg pour convertir en MP4
-    await ffmpeg.run("-i", "input.webm", "output.mp4");
-
-    // Récupérez le fichier MP4 converti
-    const mp4Data = ffmpeg.FS("readFile", "output.mp4");
-    const mp4Blob = new Blob([mp4Data.buffer], { type: "video/mp4" });
-
-    return mp4Blob; // Retourne le Blob MP4
-  };
-
   const startCapture = () => {
     if (mediaStream) {
       const recorderInstance = new MediaRecorder(mediaStream);
@@ -126,8 +104,7 @@ export default function RecordVideoController({}: RecordVideoControllerProps): R
   const saveVideo = async () => {
     try {
       const videoBlob = new Blob(recordedChunks, { type: "video/mp4" });
-      const mp4Blob = await convertBlobToMp4(webmBlob);
-      const videoUrl = URL.createObjectURL(mp4Blob);
+      const videoUrl = URL.createObjectURL(videoBlob);
       const videoRequest = new Request(videoUrl);
       fetch(videoRequest).then(() => {
         const link = document.createElement("a");
