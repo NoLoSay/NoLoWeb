@@ -212,7 +212,7 @@ const ArtworkModificationPage = () => {
                 className={`divArtwork ${styles["divArtwork"]}`}
               >
                 <img
-                  src={artwork.pictures[0].hostingUrl}
+                  src={artwork.pictures && artwork.pictures.length > 0 ? artwork.pictures[0].hostingUrl : '/images/empty.jpg'}
                   className={`image16 ${styles["image16"]}`}
                 />
                 <div
