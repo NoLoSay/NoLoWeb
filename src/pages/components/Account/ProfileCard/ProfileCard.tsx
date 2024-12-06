@@ -13,13 +13,13 @@ interface UserType {
   email: string;
   telNumber: string;
   picture: {
-    hostingUrl: string;
+    hostingUrl: any;
   };
   profilePicturePath?: string;
 }
 
 interface ProfileCardProps {
-  profilePicturePath: string;
+  profilePicturePath: any;
   fullName: string;
   email: string;
   phone: string;
