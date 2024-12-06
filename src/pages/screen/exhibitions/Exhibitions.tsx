@@ -128,7 +128,9 @@ const Exhibition: React.FC<ExhibitionsProps> & {
           } else {
             console.error(`HTTP status ${response.status}: Failed to fetch exhibitions`);
           }
-          navigate('/places/exhibitions/artworks', { state: { item: artworks, exhibitionId: exhibitionId } });
+          console.log('exhibitionId:', exhibitionId);
+          console.log('siteId:', siteId);
+          navigate('/places/exhibitions/artworks', { state: { item: artworks, exhibitionId: exhibitionId, siteId: siteId } });
         } catch (error) {
           console.error('Failed to fetch exhibition details:', error);
           //navigate('/places/exhibitions/artworks', { state: { item: exhibitionId } });

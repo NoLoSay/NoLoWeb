@@ -83,6 +83,7 @@ const ArtworkModificationPage = () => {
 
   useEffect(() => {
     if (location.state?.item) {
+      console.log("location.state.item", location.state);
       setArtworks(location.state.item);
     }
   }, [location.state]);
@@ -96,8 +97,10 @@ const ArtworkModificationPage = () => {
             state: { item: artwork },
           });
         } else {
+          console.log("location.state?.exhibitionId", location.state?.siteId);
+          console.log('location.state?.exhibitionId', location.state?.exhibitionId)
           navigate("/places/exhibitions/artworks/artworkModification", {
-            state: { item: null, exhibitionId: location.state?.exhibitionId },
+            state: { item: null, siteId: location.state.siteId, exhibitionId: location.state.exhibitionId },
           });
         }
         break;
@@ -148,34 +151,6 @@ const ArtworkModificationPage = () => {
       console.error("Error deleting artwork:", error);
     }
   };
-
-  /* Button add after back modification
-
-    <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
-                                            <div className={`divModifyButtons ${styles["divModifyButtons"]}`}>
-                                                <div
-                                                  role="deleteExhibitionBtn"
-                                                  tabIndex={0}
-                                                  className={`divDeleteBtn ${styles["divDeleteBtn"]}`}
-                                                  onClick={() => handleDeleteArtwork(artwork.id, location.state.exhibitionId)}
-                                                  onKeyDown={(event) => {
-                                                      if (event.key === 'Enter' || event.key === ' ') {
-                                                          handleDeleteArtwork(artwork.id, location.state.exhibitionId);
-                                                          event.preventDefault();
-                                                      }
-                                                  }}
-                                                >
-                                                    <img
-                                                      src=""
-                                                      loading="lazy"
-                                                      alt=""
-                                                      className={`deleteBtnIcon ${styles["deleteBtnIcon"]}`}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-
-     */
 
   if (artworks.length === 0) {
     return (
