@@ -13,15 +13,14 @@ export async function uploadVideo({
   formData,
 }: UploadVideoProps): Promise<UploadVideoJSON> {
   try {
-    const url = process.env.NEXT_PUBLIC_PROD_API_URL;
-    const port = process.env.NEXT_PUBLIC_VIDEO_API_PORT;
+    const url = process.env.NEXT_PUBLIC_PROD_VIDEO_API_URL;
     var finalUrl: any = url;
 
     if (
       process.env.NEXT_PUBLIC_ENV_MODE == "dev" &&
       process.env.NEXT_PUBLIC_DEV_API_URL
     ) {
-      finalUrl = process.env.NEXT_PUBLIC_DEV_API_URL + port;
+      finalUrl = process.env.NEXT_PUBLIC_DEV_API_URL + process.env.NEXT_PUBLIC_VIDEO_API_PORT;
     }
 
     const response = await fetch(`${finalUrl}/upload/${artworkId}`, {
