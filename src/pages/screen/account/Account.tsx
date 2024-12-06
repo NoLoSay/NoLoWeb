@@ -24,7 +24,7 @@ interface Place {
   id: number;
   name: string;
   longDescription: string;
-  pictures: string[];
+  pictures: any[];
   website: string;
   address: {
     city: {
