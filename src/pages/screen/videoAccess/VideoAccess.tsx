@@ -10,6 +10,12 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { UserContext } from '../../../global/contexts/UserProvider'
 
+
+export enum VideoValidationStatus {
+  Pending = 'PENDING',
+  Approved = 'APPROVED',
+  Rejected = 'REJECTED',
+}
 interface Artwork {
   name: string
   description: string
@@ -17,7 +23,9 @@ interface Artwork {
   city: string
   pictures: any[]
   id : any
-  videos: { hostingProviderVideoId: string }[];
+  videos: { hostingProviderVideoId: string,
+            validationStatus: VideoValidationStatus
+  }[];
 }
 
 const getArt = async (itemId: any, setArt: Function, user: any) => {
@@ -97,7 +105,7 @@ const VideoAccess = () => {
         artImage={imageSrc}
         description={description}
         pagePath=""
-        videos={art?.videos}
+        videos={art?.videos.filter(video => video.validationStatus === VideoValidationStatus.Approved)}
         location={location}
         id={id}
       />
