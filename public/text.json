@@ -11,7 +11,7 @@
         "language" : "Langue:"
       },
       "artworkcard" : {
-        "clicktosee" : "Cliquer pour voir l'oeuvre"
+        "clickToSee" : "Cliquer pour voir l'oeuvre"
       },
       "filter" : {
         "filterListArtwork" : {
@@ -214,9 +214,11 @@
         "back" : "Back"
       },
       "videoCaptureSection" : {
-        "start": "Start Recording",
-        "stop" : "Stop Recording",
-        "save" : "Enregistrer Video"
+        "goBack": "Retour",
+        "startRecording": "Démarrer l'enregistrement",
+        "stopRecording" : "Arrêter l'enregistrement",
+        "saveVideo" : "Enregistrer la video",
+        "uploadVideo" : "Envoyer la video"
       }
     }
   }

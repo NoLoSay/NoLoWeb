@@ -8,7 +8,7 @@ import placesData from "@tests/places.json";
 import CardTemplate from "@components/CardTemplate/CardTemplate";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { UserContext } from '../../../global/contexts/UserProvider'
+import { UserContext } from '@global/contexts/UserProvider'
 
 
 export enum VideoValidationStatus {

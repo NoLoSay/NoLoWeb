@@ -83,6 +83,7 @@ export const ConnectionScreen = (): JSX.Element => {
     forgottenPassword,
     connect,
     error,
+    loginWithGoogle,
   } = ConnectionController({ navigate });
 
   return (
@@ -154,14 +155,14 @@ export const ConnectionScreen = (): JSX.Element => {
             {textData.page.screen.authentificationSection.connection.connectme}
           </button>
         </form>
-        {error && (
+        {error && !showForgotPasswordModal && (
           <p
             className={`ConnectionScreen/errorMessage ${styles["errorMessage"]}`}
           >
             {error}
           </p>
         )}
-        <div
+        {/* <div
           className={`ConnectionScreen/otherConnectionsDiv ${styles["otherConnectionsDiv"]}`}
         >
           <div
@@ -183,12 +184,8 @@ export const ConnectionScreen = (): JSX.Element => {
             className={`ConnectionScreen/otherConnectionsDivButtonDiv ${styles["otherConnectionsDivButtonDiv"]}`}
           >
             <img
-              onClick={async () => {
-                // try {
-                //   window.open("https://api.nolosay.com/auth/google");
-                // } catch (e: any) {
-                //   console.error("error: " + e.message);
-                // }
+              onClick={() => {
+                loginWithGoogle("/auth/google");
               }}
               className={`ConnectionScreen/otherConnectionsDivButtonDivButtons ${styles["otherConnectionsDivButtonDivButtons"]}`}
               src="/icon/social/Google button.png"
@@ -202,7 +199,7 @@ export const ConnectionScreen = (): JSX.Element => {
               src="/icon/social/Facebook button.png"
             />
           </div>
-        </div>
+        </div> */}
         <p
           className={`ConnectionScreen/noAccountText ${styles["noAccountText"]}`}
         >
@@ -221,6 +218,7 @@ export const ConnectionScreen = (): JSX.Element => {
             onClose={closeForgotPasswordModal}
             setEmail={setEmail}
             onSubmit={forgottenPassword}
+            error={error}
           />
         )}
       </div>

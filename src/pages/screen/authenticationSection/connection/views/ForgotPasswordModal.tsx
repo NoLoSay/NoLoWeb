@@ -20,18 +20,22 @@ const styles: { [key: string]: string } = {
 
   submitButton:
     "bg-base-button font-poppins font-semibold hover:cursor-pointer p-2 relative rounded-1.5lg text-black text-sm w-auto ",
+
+  errorMessage: "text-red-600 text-center",
 };
 
 interface ForgotPasswordModalProps {
   onClose: () => void;
   setEmail: (email: string) => void;
   onSubmit: () => Promise<void>;
+  error: string | undefined;
 }
 
 const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({
   onClose,
   setEmail,
   onSubmit,
+  error,
 }) => {
   return (
     <div className={`ForgotPasswordModal/mainDiv ${styles["mainDiv"]}`}>
@@ -65,6 +69,13 @@ const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+        {error && (
+          <p
+            className={`ForgotPasswordModal/errorMessage ${styles["errorMessage"]}`}
+          >
+            {error}
+          </p>
+        )}
         <button
           onClick={onSubmit}
           className={`ForgotPasswordModal/submitButton ${styles["submitButton"]}`}

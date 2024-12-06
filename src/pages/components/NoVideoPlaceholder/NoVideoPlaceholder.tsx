@@ -1,6 +1,6 @@
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
-import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
 import { ButtonBase } from "@mui/material";
+import NoVideoPlaceholderController from "./NoVideoPlaceholderController";
 
 const styles: { [key: string]: string } = {
   container_0: "flex flex-row text-black max-w-lg",
@@ -10,7 +10,15 @@ const styles: { [key: string]: string } = {
   container_4: "flex flex-col justify-evenly px-10",
 };
 
-const NoVideoPlaceholder = () => {
+interface NoVideoPlaceholderProps {
+  artworkId: string;
+}
+
+const NoVideoPlaceholder = ({ artworkId }: NoVideoPlaceholderProps) => {
+  const { goToVideoCreation } = NoVideoPlaceholderController({
+    artworkId,
+  });
+
   return (
     <div className={`container_0 ${styles.container_0}`}>
       <div className={`container_1 ${styles.container_1}`}>
@@ -23,10 +31,12 @@ const NoVideoPlaceholder = () => {
       </div>
       <div className={`container_4 ${styles.container_4}`}>
         <ButtonBase disableRipple>
-          <AddBoxOutlinedIcon sx={{ fontSize: 60, color: "#f5d442" }} />
-        </ButtonBase>
-        <ButtonBase disableRipple>
-          <StarBorderRoundedIcon sx={{ fontSize: 60, color: "#f5d442" }} />
+          <AddBoxOutlinedIcon
+            onClick={() => {
+              goToVideoCreation();
+            }}
+            sx={{ fontSize: 60, color: "#f5d442" }}
+          />
         </ButtonBase>
       </div>
     </div>

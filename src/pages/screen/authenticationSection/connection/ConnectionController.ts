@@ -13,6 +13,7 @@ interface ConnectionController {
   closeForgotPasswordModal: () => void;
   forgottenPassword: () => Promise<void>;
   connect: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  loginWithGoogle: (endpoint: string) => void;
   error: string | undefined;
 }
 
@@ -44,14 +45,38 @@ export default function ConnectionController({
 
   function closeForgotPasswordModal(): void {
     setShowForgotPasswordModal(false);
+    setError("");
   }
+
+  const loginWithGoogle = (endpoint: string) => {
+    var url: string = process.env.NEXT_PUBLIC_PROD_API_URL + endpoint;
+
+    if (
+      process.env.NEXT_PUBLIC_ENV_MODE == "dev" &&
+      process.env.NEXT_PUBLIC_DEV_API_URL
+    )
+      var url: string =
+        process.env.NEXT_PUBLIC_DEV_API_URL +
+        process.env.NEXT_PUBLIC_API_PORT +
+        endpoint;
+
+    try {
+      window.open(url);
+    } catch (error: any) {
+      if (error.message) {
+        setError(error.message);
+      } else {
+        setError(error);
+      }
+    }
+  };
 
   const connectUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       await tryToConnect();
     } catch (error: any) {
-      if (error && error.message) {
+      if (error.message) {
         setError(error.message);
       } else {
         setError(error);
@@ -65,11 +90,20 @@ export default function ConnectionController({
       setError("Veuillez rentrer un email valide");
       return;
     }
-    await forgotPassword({ email });
-    alert(
-      "Email envoyé " +
-        "Si le compte existe, un email a été envoyé pour réinitialiser le mot de passe."
-    );
+
+    try {
+      await forgotPassword({ email });
+      alert(
+        "Email envoyé " +
+          "Si le compte existe, un email a été envoyé pour réinitialiser le mot de passe."
+      );
+    } catch (error: any) {
+      if (error.message) {
+        setError(error.message);
+      } else {
+        setError(error);
+      }
+    }
   }
 
   return {
@@ -83,6 +117,7 @@ export default function ConnectionController({
     closeForgotPasswordModal,
     forgottenPassword,
     connect: connectUser,
+    loginWithGoogle,
     error,
   };
 }

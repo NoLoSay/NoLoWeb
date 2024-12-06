@@ -105,7 +105,7 @@ function ArtCard({ title, artImage, description, videos, location, id }: Infos) 
               </div>
             </div>
           </div>
-          <NoVideoPlaceholder />
+          <NoVideoPlaceholder artworkId={id} />
           {videos && videos.length > 0 ? (
             <div>
               <div className={`container_19 ${styles.container_19}`}>
