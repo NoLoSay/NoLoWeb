@@ -48,7 +48,7 @@ type NavbarProps = {
 const NavLinksItems = [
   { href: '/findlocation', title: 'Rechercher', image: '/icon/search.png', imageClick: '/icon/searchClick.png' },
   { href: '/tickets', title: 'Créer', image: '/icon/create.png', imageClick: '/icon/createClick.png' },
-  { href: '/about', title: 'Mes Vidéos', image: '/icon/video.png', imageClick: '/icon/videoClick.png' },
+  { href: '/myvideos', title: 'Mes Vidéos', image: '/icon/video.png', imageClick: '/icon/videoClick.png' },
 ]
 
 interface logoButtonProps {
