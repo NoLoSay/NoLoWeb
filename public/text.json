@@ -76,6 +76,7 @@
         "team" : "L’équipe NOLOSAY !"
       },
       "artworkmodificationPage" : {
+        "textToTranslate": "Text to translate",
         "name" : "Name :",
         "pname" : "Enter artwork name",
         "artistid" : "Artist ID :",
@@ -151,6 +152,7 @@
         }
       },
       "exhibitionModificationPage" : {
+        "picture": "Picture:",
         "name" : "Name :",
         "pname" : "Enter exhibition name",
         "phone" : "Telephone Number:",

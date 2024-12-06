@@ -48,11 +48,14 @@ const ArtworkModificationPage = () => {
     picture: "https://cataas.com/cat",
     relatedPersonId: 0,
     itemTypeId: 1,
+    textToTranslate: "", // Ajouter cette propriété
   };
 
-  const exhibitionId = location.state?.exhibitionId;
-
   const [artwork, setArtwork] = useState(initialArtwork);
+
+  const exhibitionId = location.state?.exhibitionId;
+  const siteId = location.state?.siteId;
+
   const [artists, setArtists] = useState<Artist[]>([]);
 
   useEffect(() => {
@@ -87,90 +90,70 @@ const ArtworkModificationPage = () => {
     setArtwork({ ...artwork, [name]: value });
   };
 
-  const handleImageChange = (event: any) => {
-    const file = event.target.files[0];
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setArtwork((previousState: any) => ({ ...previousState, picture: reader.result }));
-      };
-      reader.readAsDataURL(file);
+      setArtwork((previousState: any) => ({
+        ...previousState,
+        picture: file,
+      }));
     }
   };
 
   const handleSubmit = async () => {
     const method = artwork.id ? "PUT" : "POST";
-    const url = `https://api.nolosay.com/items${
-      artwork.id ? `/${artwork.id}` : ""
-    }`;
+    const url = `https://api.nolosay.com/items${artwork.id ? `/${artwork.id}` : ""}`;
 
     try {
-      if (method === "POST") {
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user.accessToken}`,
-          },
-          body: JSON.stringify({
-            name: artwork.name,
-            description: artwork.description,
-            picture: artwork.picture,
-            relatedPersonId: parseInt(artwork.relatedPersonId, 10),
-            itemTypeId: parseInt(artwork.itemTypeId, 10),
-          }),
-        });
+      const formData = new FormData();
+      formData.append("name", artwork.name);
+      formData.append("description", artwork.description);
+      formData.append("relatedPersonId", artwork.relatedPersonId.toString());
+      formData.append("itemTypeId", artwork.itemTypeId.toString());
+      formData.append("textToTranslate", artwork.textToTranslate);
+      formData.append("siteId", siteId ? siteId : "1");
 
-        if (!response.ok) {
-          throw new Error(`HTTP status ${response.status}`);
-        }
-
-        const responseData = await response.json();
-        if (exhibitionId) {
-          const addToExhibitionResponse = await fetch(
-            `https://api.nolosay.com/exhibitions/${exhibitionId}/items`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${user.accessToken}`,
-              },
-              body: JSON.stringify({ itemId: responseData.id }),
-            }
-          );
-
-          if (!addToExhibitionResponse.ok) {
-            throw new Error(`HTTP status ${addToExhibitionResponse.status}`);
-          }
-        }
-      } else if (method === "PUT") {
-        const response = await fetch(url, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user.accessToken}`,
-          },
-          body: JSON.stringify({
-            name: artwork.name,
-            description: artwork.description,
-            picture: artwork.picture,
-            relatedPersonId: parseInt(artwork.relatedPersonId, 10),
-            itemTypeId: parseInt(artwork.itemTypeId, 10),
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP status ${response.status}`);
-        }
-
-        const responseData = await response.json();
-        console.log("Artwork updated successfully:", responseData);
+      if (artwork.picture instanceof File) {
+        formData.append("picture", artwork.picture); // Inclure le fichier image
       }
+
+      const response = await fetch(url, {
+        method: method,
+        headers: {
+          Authorization: `Bearer ${user.accessToken}`,
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP status ${response.status}`);
+      }
+
+      const responseData = await response.json();
+      if (method === "POST" && exhibitionId) {
+        const addToExhibitionResponse = await fetch(
+          `https://api.nolosay.com/exhibitions/${exhibitionId}/items`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user.accessToken}`,
+            },
+            body: JSON.stringify({ itemId: responseData.id }),
+          }
+        );
+
+        if (!addToExhibitionResponse.ok) {
+          throw new Error(`HTTP status ${addToExhibitionResponse.status}`);
+        }
+      }
+
       navigate("/places");
     } catch (error) {
       console.error("Failed to update artwork:", error);
     }
   };
+
 
   const resetFields = () => {
     setArtwork({
@@ -197,18 +180,24 @@ const ArtworkModificationPage = () => {
           <div className={styles.divBlockGeneralInformations}>
             <div>
               <img
-                src={artwork.picture}
+                src={
+                  artwork.picture instanceof File
+                    ? URL.createObjectURL(artwork.picture) // Prévisualisation du fichier
+                    : artwork.picture
+                }
                 alt="Exhibition Image"
                 className={styles.image22}
                 onClick={() => document.getElementById("imageUpload")?.click()}
               />
-              {/*<input*/}
-              {/*  id="picture"*/}
-              {/*  type="file"*/}
-              {/*  accept="image/*"*/}
-              {/*  onChange={handleImageChange}*/}
-              {/*/>*/}
+              <input
+                id="imageUpload"
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                style={{display: "none"}}
+              />
             </div>
+
             <div className={styles.divGeneralInformations}>
               <div className={styles.nameBlockInput}>
                 <div className={styles.textName}>
@@ -281,6 +270,19 @@ const ArtworkModificationPage = () => {
               placeholder={
                 textData.page.screen.artworkmodificationPage.pdescription
               }
+            />
+          </div>
+          <div className={styles.divBlockDescription}>
+            <div className={styles.descriptionText}>
+              {textData.page.screen.artworkmodificationPage.textToTranslate || "Text to Translate"}
+            </div>
+            <input
+              type="text"
+              className={styles.descriptionInput}
+              name="textToTranslate"
+              value={artwork.textToTranslate}
+              onChange={handleInputChange}
+              placeholder="Enter text to translate"
             />
           </div>
 

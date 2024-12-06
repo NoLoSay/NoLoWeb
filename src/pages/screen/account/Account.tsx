@@ -22,7 +22,7 @@ interface Place {
   id: number;
   name: string;
   longDescription: string;
-  pictures: string[];
+  pictures: any[];
   website: string;
   address: {
     city: {
@@ -149,7 +149,7 @@ const Account = () => {
                       id: place.id.toString(),
                       title: place.name,
                       description: place.longDescription,
-                      imageSrc: place.pictures[0],
+                      imageSrc: place.pictures[0].hostingUrl,
                       //videoCountPlaceholder: "Enter video count",
                       website: place.website,
                       city: place.address.city.name,

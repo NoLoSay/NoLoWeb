@@ -13,13 +13,13 @@ interface UserType {
   email: string;
   telNumber: string;
   picture: {
-    hostingUrl: string;
+    hostingUrl: any;
   };
   profilePicturePath?: string;
 }
 
 interface ProfileCardProps {
-  profilePicturePath: string;
+  profilePicturePath: any;
   fullName: string;
   email: string;
   phone: string;
@@ -108,7 +108,7 @@ function ProfileCard({
     <Paper className="relative flex flex-row m-5 ml-0 p-5 items-center justify-start">
       <div className="flex flex-col flex-grow mx-5 space-y-2">
         <div className="flex items-center space-x-2">
-          <img src={newProfilePicture} alt="Profile" className="w-20 h-20 rounded-full"/>
+          <img src={newProfilePicture?.hostingUrl} alt="Profile" className="w-20 h-20 rounded-full"/>
           <label htmlFor="icon-button-file">
             <input accept="image/*" id="icon-button-file" type="file" className="hidden"
                    onClick={() => handleEdit('picture')}/>
