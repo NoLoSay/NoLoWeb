@@ -48,7 +48,7 @@ interface Site {
 
 const getExhibitions = async (siteId: any, setExhibitions: Function, user: any) => {
   try {
-    const url = 'https://api.nolosay.com/exhibitions'
+    const url = 'https://api.nolo.aurelenc.com/exhibitions'
     const response = await fetch(url, {
       method: 'GET',
       headers: {

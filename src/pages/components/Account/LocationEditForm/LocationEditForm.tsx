@@ -27,7 +27,7 @@ const LocationEditForm = ({ cardInfo }: any) => {
   const handleModification = async ({ cardInfo }: any) => {
     try {
       const response = await fetch(
-        "https://api.nolosay.com/sites/" + cardInfo.id,
+        "https://api.nolo.aurelenc.com/sites/" + cardInfo.id,
         {
           method: "PATCH",
           headers: {

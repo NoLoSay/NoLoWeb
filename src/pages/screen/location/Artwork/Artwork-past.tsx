@@ -86,7 +86,7 @@ const ArtworkModificationPage = () => {
 
   const fetchAllArtworks = async () => {
     try {
-      const response = await fetch('https://api.nolosay.com/items', {
+      const response = await fetch('https://api.nolo.aurelenc.com/items', {
         headers: {
           'Authorization': `Bearer ${user.accessToken}`,
         },
@@ -131,7 +131,7 @@ const ArtworkModificationPage = () => {
     const handleDeleteArtwork = async (artworkId: any, exhibitionId?: any) => {
       try {
         // First, delete the artwork from the main items service
-        const response = await fetch(`https://api.nolosay.com/items/${artworkId}`,
+        const response = await fetch(`https://api.nolo.aurelenc.com/items/${artworkId}`,
           {
             method: 'DELETE',
             headers: {
@@ -143,7 +143,7 @@ const ArtworkModificationPage = () => {
         }
 
         // If the main deletion is successful, proceed to delete the link from the exhibition
-        const linkDeleteResponse = await fetch(`https://api.nolosay.com/exhibitions/${exhibitionId}/items/${artworkId}`,
+        const linkDeleteResponse = await fetch(`https://api.nolo.aurelenc.com/exhibitions/${exhibitionId}/items/${artworkId}`,
           {
             method: 'DELETE',
             headers: {

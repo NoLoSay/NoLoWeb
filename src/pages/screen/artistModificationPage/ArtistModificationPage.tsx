@@ -46,7 +46,7 @@ const ArtistModificationPage = () => {
   const handleSubmit = async (event : any) => {
     event.preventDefault();
     const method = artist.id ? 'PUT' : 'POST';
-    const url = `https://api.nolosay.com/persons${artist.id ? `/${artist.id}` : ''}`;
+    const url = `https://api.nolo.aurelenc.com/persons${artist.id ? `/${artist.id}` : ''}`;
 
     const payload = {
       ...artist,

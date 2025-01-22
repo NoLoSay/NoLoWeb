@@ -67,7 +67,7 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
          */
       case 'handleGoToAllArtworks':
         try {
-          const url = 'https://api.nolosay.com/exhibitions';
+          const url = 'https://api.nolo.aurelenc.com/exhibitions';
           const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -85,7 +85,7 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
           // Fetch all artworks for each exhibition
           let allArtworks: any[] = [];
           for (const id of exhibitionIds) {
-            const artworksUrl = `https://api.nolosay.com/exhibitions/${id}/items`;
+            const artworksUrl = `https://api.nolo.aurelenc.com/exhibitions/${id}/items`;
             const artworksResponse = await fetch(artworksUrl, {
               method: 'GET',
               headers: {
@@ -106,7 +106,7 @@ const LocationCard: NextPage<LocationCardProps> = ({ cardInfo }) => {
         break;
       case 'handleGoToExhibitions':
         try {
-          const url = 'https://api.nolosay.com/exhibitions';
+          const url = 'https://api.nolo.aurelenc.com/exhibitions';
           const response = await fetch(url, {
             method: 'GET',
             headers: {

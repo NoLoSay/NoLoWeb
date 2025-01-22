@@ -30,7 +30,7 @@ interface Artwork {
 
 const getArt = async (itemId: any, setArt: Function, user: any) => {
   try {
-    const url = `https://api.nolosay.com/items/${itemId}`
+    const url = `https://api.nolo.aurelenc.com/items/${itemId}`
     const response = await fetch(url, {
       method: 'GET',
       headers: {

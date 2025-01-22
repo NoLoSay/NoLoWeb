@@ -62,7 +62,7 @@ const ArtworkModificationPage = () => {
     const fetchArtists = async () => {
       try {
         const response = await fetch(
-          `https://api.nolosay.com/persons`,
+          `https://api.nolo.aurelenc.com/persons`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -102,7 +102,7 @@ const ArtworkModificationPage = () => {
 
   const handleSubmit = async () => {
     const method = artwork.id ? "PUT" : "POST";
-    const url = `https://api.nolosay.com/items${artwork.id ? `/${artwork.id}` : ""}`;
+    const url = `https://api.nolo.aurelenc.com/items${artwork.id ? `/${artwork.id}` : ""}`;
 
     try {
       const formData = new FormData();
@@ -132,7 +132,7 @@ const ArtworkModificationPage = () => {
       const responseData = await response.json();
       if (method === "POST" && exhibitionId) {
         const addToExhibitionResponse = await fetch(
-          `https://api.nolosay.com/exhibitions/${exhibitionId}/items`,
+          `https://api.nolo.aurelenc.com/exhibitions/${exhibitionId}/items`,
           {
             method: "POST",
             headers: {

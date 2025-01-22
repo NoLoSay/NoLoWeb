@@ -67,7 +67,7 @@ export type VideoLibrary = {
 
 const getVideos = async (setVideos: Function, user: any) => {
   try {
-    const url = `https://api.nolosay.com/users/${user.id}/videos`
+    const url = `https://api.nolo.aurelenc.com/users/${user.id}/videos`
     const response = await fetch(url, {
       method: 'GET',
       headers: {

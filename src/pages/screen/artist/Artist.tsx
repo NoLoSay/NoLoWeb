@@ -34,7 +34,7 @@ const ArtistPage = () => {
   useEffect(() => {
     const fetchArtists = async () => {
       try {
-        const response = await fetch('https://api.nolosay.com/persons', {
+        const response = await fetch('https://api.nolo.aurelenc.com/persons', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${user.accessToken}`,
