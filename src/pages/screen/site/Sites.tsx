@@ -34,7 +34,7 @@ const Sites: React.FC<SitesProps> = () => {
   useEffect(() => {
     const fetchSites = async () => {
       try {
-        const response = await fetch('https://api.nolosay.com/sites', {
+        const response = await fetch('https://api.nolo.aurelenc.com/sites', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${user.accessToken}`,
@@ -77,7 +77,7 @@ const Sites: React.FC<SitesProps> = () => {
         break;
       case 'handleGoToAllArtworks':
         try {
-          const url = 'https://api.nolosay.com/exhibitions';
+          const url = 'https://api.nolo.aurelenc.com/exhibitions';
           const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -95,7 +95,7 @@ const Sites: React.FC<SitesProps> = () => {
           // Fetch all artworks for each exhibition
           let allArtworks : any = [];
           for (const id of exhibitionIds) {
-            const artworksUrl = `https://api.nolosay.com/exhibitions/${id}/items`;
+            const artworksUrl = `https://api.nolo.aurelenc.com/exhibitions/${id}/items`;
             const artworksResponse = await fetch(artworksUrl, {
               method: 'GET',
               headers: {
@@ -117,7 +117,7 @@ const Sites: React.FC<SitesProps> = () => {
         break;
       case 'handleGoToExhibitions':
         try {
-          const url = 'https://api.nolosay.com/exhibitions';
+          const url = 'https://api.nolo.aurelenc.com/exhibitions';
           const response = await fetch(url, {
             method: 'GET',
             headers: {

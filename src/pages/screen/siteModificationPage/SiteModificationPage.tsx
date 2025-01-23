@@ -71,7 +71,7 @@ const SiteModificationPage = () => {
       return;
     }
 
-    const url = `https://api.nolosay.com/sites/${site.id}`;
+    const url = `https://api.nolo.aurelenc.com/sites/${site.id}`;
 
     const bodyContent = {
       name: site.name,
